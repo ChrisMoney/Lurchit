@@ -1,159 +1,280 @@
-swagger: '2.0'
-info:
-version: ''
-title: Flickpitch
-description: Flickpitch APIs
-consumes:
-- application/json
-produces:
-- application/json
-securityDefinitions:
-admin:
-name: admin
-type: apiKey
-in: query
-paths:
-/login.php:
-get:
-operationId: GET_login-php
-summary: Login
-parameters:
-- name: email
-in: query
-type: string
-- name: password
-in: query
-type: string
-responses:
-'200':
-description: ''
-'400':
-description: ''
-schema:
-type:
-- boolean
-- string
-description: Invalid email or password.
-'/members/{id}':
-parameters:
-- name: id
-in: path
-required: true
-type: string
-get:
-operationId: GET-members
-summary: Get Members
-tags:
-- Members
-responses:
-'200':
-description: ''
-schema:
-$ref: '#/definitions/members-input'
-put:
-operationId: PUT-members
-summary: Update Members
-tags:
-- Members
-parameters:
-- name: body
-in: body
-schema:
-$ref: '#/definitions/members-input'
-responses:
-'200':
-description: ''
-schema:
-$ref: '#/definitions/members-input'
-delete:
-operationId: DELETE-members
-summary: Delete Members
-tags:
-- Members
-responses:
-'204':
-description: ''
-/members:
-get:
-operationId: LIST-members
-summary: List Members
-tags:
-- Members
-responses:
-'200':
-description: ''
-schema:
-type: array
-items:
-$ref: '#/definitions/members-input'
-post:
-operationId: POST-members
-summary: Create Members
-tags:
-- Members
-parameters:
-- name: body
-in: body
-schema:
-$ref: '#/definitions/members-input'
-responses:
-'201':
-description: ''
-schema:
-$ref: '#/definitions/members-input'
-definitions:
-members-input:
-title: Members Input
-type: object
-properties:
-FirstName:
-type: string
-LastName:
-type: string
-Username:
-type: string
-Email:
-type: string
-Password:
-type: string
-Gender:
-type: integer
-minLength: 0
-maxLength: 1
-HeightFeet:
-type: integer
-HeightInches:
-type: integer
-White:
-type: integer
-minimum: 0
-maximum: 1
-Black:
-type: integer
-minimum: 0
-maximum: 1
-Arabic:
-type: integer
-minimum: 0
-maximum: 1
-NativeAmerican:
-type: integer
-minimum: 0
-maximum: 1
-PacificIslander:
-type: integer
-minimum: 0
-maximum: 1
-Asian:
-type: integer
-minimum: 0
-maximum: 1
-Other:
-type: integer
-minimum: 0
-maximum: 1
-NoPreference:
-type: integer
-minimum: 0
-maximum: 1
-basePath: api.flickpitch.com/
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "",
+    "title": "Flickpitch",
+    "description": "Flickpitch APIs"
+  },
+  "host": "api.flickpitch.com",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/signup.php": {
+      "post": {
+        "operationId": "POST_signup-php",
+        "summary": "signup",
+        "parameters": [
+          {
+            "name": "FirstName",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "LastName",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Username",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Email",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Password",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          "204": {
+            "description": "",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        }
+      }
+    },
+    "/login.php": {
+      "get": {
+        "operationId": "GET_login-php",
+        "summary": "Login",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          "204": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Invalid email or password."
+            }
+          }
+        }
+      }
+    },
+    "/members/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "get": {
+        "operationId": "GET-members",
+        "summary": "Get Members",
+        "tags": [
+          "Members"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/members-input"
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "PUT-members",
+        "summary": "Update Members",
+        "tags": [
+          "Members"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/members-input"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/members-input"
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "DELETE-members",
+        "summary": "Delete Members",
+        "tags": [
+          "Members"
+        ],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/members": {
+      "get": {
+        "operationId": "LIST-members",
+        "summary": "List Members",
+        "tags": [
+          "Members"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/members-input"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "POST-members",
+        "summary": "Create Members",
+        "tags": [
+          "Members"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/members-input"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/members-input"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "members-input": {
+      "title": "Members Input",
+      "type": "object",
+      "properties": {
+        "FirstName": {
+          "type": "string"
+        },
+        "LastName": {
+          "type": "string"
+        },
+        "Username": {
+          "type": "string"
+        },
+        "Email": {
+          "type": "string"
+        },
+        "Password": {
+          "type": "string"
+        },
+        "Gender": {
+          "type": "integer",
+          "minLength": 0,
+          "maxLength": 1
+        },
+        "HeightFeet": {
+          "type": "integer"
+        },
+        "HeightInches": {
+          "type": "integer"
+        },
+        "White": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "Black": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "Arabic": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "NativeAmerican": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "PacificIslander": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "Asian": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "Other": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "NoPreference": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    }
+  }
+}

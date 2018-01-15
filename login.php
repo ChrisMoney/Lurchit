@@ -10,8 +10,8 @@ header('Content-Type: application/json');
 require 'connect.php';
 
 
-$email = trim($_POST['email']);
-$password = trim($_POST['password']);
+$email = trim($_GET['email']);
+$password = trim($_GET['password']);
 $password = md5($password);
 
 
@@ -19,13 +19,16 @@ $password = md5($password);
     $sql = "SELECT ID FROM Members WHERE Email = '$email' and Password = '$password'";
     $result = mysqli_query($conn, $sql);
 
+
     if (mysqli_num_rows($result) > 0) {
         //echo "<script>alert('200');</script>";
-        return json_encode(http_response_code(200));
+        $row = mysqli_fetch_assoc($result);
+        $ID = $row['ID'];
+        return json_encode($ID);
     }
     else {
         //echo "<script>alert('400');</script>";
-        return json_encode(http_response_code(400));
+        return json_encode(http_response_code(204));
     }
 
 

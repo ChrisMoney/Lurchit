@@ -11,18 +11,12 @@
     $pass = 'admin@10';
     $db = 'Flickpitch';
 
-    $conn = mysqli_connect($localhost,$username,$pass);
+    $conn = mysqli_connect($localhost,$username,$pass, $db);
 
     if (!$conn) {
         echo "<script>alert('failed');</script>";
         die(mysqli_error());
     }
-    else {
-        mysqli_select_db($db, $conn);
-    }
 
-?>
-
-<?php
 
 
