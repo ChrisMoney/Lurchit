@@ -18,33 +18,38 @@
   ],
   "paths": {
     "/signup.php": {
-      "post": {
-        "operationId": "POST_signup-php",
+      "get": {
+        "operationId": "GET_signup-php",
         "summary": "signup",
         "parameters": [
           {
             "name": "FirstName",
             "in": "query",
+            "required": true,
             "type": "string"
           },
           {
             "name": "LastName",
             "in": "query",
+            "required": true,
             "type": "string"
           },
           {
             "name": "Username",
             "in": "query",
+            "required": true,
             "type": "string"
           },
           {
             "name": "Email",
             "in": "query",
+            "required": true,
             "type": "string"
           },
           {
             "name": "Password",
             "in": "query",
+            "required": true,
             "type": "string"
           }
         ],
@@ -52,7 +57,15 @@
           "200": {
             "description": "",
             "schema": {
-              "type": "integer"
+              "type": "object",
+              "properties": {
+                "ID": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "ID"
+              ]
             }
           },
           "204": {
@@ -72,19 +85,43 @@
           {
             "name": "email",
             "in": "query",
+            "required": true,
             "type": "string"
           },
           {
             "name": "password",
             "in": "query",
+            "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "ID": {
+                  "type": "integer"
+                }
+              }
+            }
           }
         ],
         "responses": {
           "200": {
             "description": "",
             "schema": {
-              "type": "integer"
+              "type": "object",
+              "properties": {
+                "ID": {
+                  "type": "integer"
+                }
+              }
+            },
+            "examples": {
+              "application/json": {
+                "ID": 98124060
+              }
             }
           },
           "204": {

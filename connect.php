@@ -6,17 +6,27 @@
  * Time: 9:22 PM
  */
 
+// use this to call connection in non function calls
     $localhost = 'localhost';
     $username = 'Flickpitch';
     $pass = 'admin@10';
     $db = 'Flickpitch';
 
-    $conn = mysqli_connect($localhost,$username,$pass, $db);
+    $conn = mysqli_connect ($localhost, $username, $pass, $db);
 
-    if (!$conn) {
-        echo "<script>alert('failed');</script>";
-        die(mysqli_error());
+// use this function to pass to other functions
+function connection () {
+    $localhost = 'localhost';
+    $username = 'Flickpitch';
+    $pass = 'admin@10';
+    $db = 'Flickpitch';
+
+    static $conn;
+    if ($conn===NULL){
+        $conn = mysqli_connect ($localhost, $username, $pass, $db);
     }
+    return $conn;
+}
 
 
 
