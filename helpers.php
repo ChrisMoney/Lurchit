@@ -5,6 +5,7 @@
  * Date: 1/15/18
  * Time: 3:05 PM
  */
+require_once 'connect.php';
 
 function LogEvent($error) {
     require_once 'connect.php';

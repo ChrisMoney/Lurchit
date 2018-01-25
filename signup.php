@@ -6,10 +6,9 @@
  * Time: 6:41 AM
  */
 
-header('Content-Type: application/json');
+header("Content-Type: application/json;charset=utf-8");
 require 'connect.php';
 require 'helpers.php';
-
 
 
 $firstName = $_GET['FirstName'];
@@ -19,28 +18,46 @@ $email = $_GET['Email'];
 $password = $_GET['Password'];
 $password = md5($password);
 
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+   // invalid email
+   return json_encode(http_response_code(406));
+}
 
-/*if (strlen($firstName) > 0 && strlen($lastName) > 0 && strlen($username) > 0 && strlen($email) > 0
-&& strlen($password) > 0) {*/
+$sql1 = "Select ID From Members Where Email = '$email' ";
+$result1 = mysqli_query($conn, $sql1);
 
-   $sql = "Insert Into Members (FirstName, LastName, Username, Email, Password)
-                        Values ('$firstName', '$lastName', '$username', '$email', '$password')";
+if (mysqli_num_rows($result1)  > 0) {
+   // account already exists
+   echo json_encode(http_response_code(409));
+   exit;
+}
 
-   if (mysqli_query($conn, $sql)) {
-      return json_encode($ID);
+$sql2 = "Select ID From Members Where Username = '$username' ";
+$result2 = mysqli_query($conn, $sql2);
+
+if (mysqli_num_rows($result2)  > 0) {
+   // username already in use
+   echo json_encode(http_response_code(406));
+   exit;
+}
+
+if (strlen($firstName) > 0 && strlen($lastName) > 0 && strlen($username) > 0 && strlen($email) > 0
+       && strlen($password) >= 3) {
+
+      $sql = "Insert Into Members (FirstName, LastName, Username, Email, Password, SignupDate)
+                        Values ('$firstName', '$lastName', '$username', '$email', '$password', NOW())";
+
+      if (mysqli_query($conn, $sql)) {
+         $id = mysqli_insert_id($conn);
+         $id = intval($id);
+         echo json_encode($id);
+      }
+      else {
+         // insert login failed
+         echo json_encode(http_response_code(500));
+      }
    }
    else {
-      // insert login failed
-      return json_encode(http_response_code(204));
+      // user input bad
+      echo json_encode(http_response_code(400));
    }
-
-
-/*}
-else {
-   return json_encode(http_response_code(204));
-}*/
-
-
-
-
-
