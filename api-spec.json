@@ -17,6 +17,57 @@
     "application/json"
   ],
   "paths": {
+    "/birthdate.php": {
+      "get": {
+        "operationId": "GET_birthdate-php",
+        "summary": "Birthdate",
+        "parameters": [
+          {
+            "name": "ID",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "Month",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Day",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Year",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Birthdate saved successfully."
+            }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Too young."
+            }
+          },
+          "500": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Error saving data."
+            }
+          }
+        }
+      }
+    },
     "/signup.php": {
       "get": {
         "operationId": "GET_signup-php",
