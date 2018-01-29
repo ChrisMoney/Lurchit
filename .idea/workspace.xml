@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="246b9446-cb1d-4fa6-9d2d-8ad5a64b0916" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/birthdate.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/birthdate.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/appearance.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/education.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api-spec.json" afterPath="$PROJECT_DIR$/api-spec.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/birthdate.php" afterPath="$PROJECT_DIR$/birthdate.php" />
     </list>
     <ignored path="htdocs.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -42,7 +43,7 @@
       <file leaf-file-name="signup.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/signup.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-20.26923">
+            <state vertical-scroll-proportion="-17.307692">
               <caret line="49" column="38" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="38" />
               <folding>
                 <element signature="e#6#90#0#PHP" expanded="true" />
@@ -57,57 +58,69 @@
       <file leaf-file-name="api-spec.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api-spec.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.5384617">
-              <caret line="13" column="22" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="birthdate.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/birthdate.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.65976715">
-              <caret line="30" column="62" selection-start-line="30" selection-start-column="62" selection-end-line="30" selection-end-column="62" />
-              <folding>
-                <element signature="e#6#91#0#PHP" expanded="true" />
-                <marker date="1517182531000" expanded="true" signature="508:563" placeholder="Update Membe... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="helpers.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/helpers.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.115385">
-              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-              <folding>
-                <marker date="1516410342000" expanded="true" signature="221:294" placeholder="Insert Into Log... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="connect.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/connect.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.9615384">
-              <caret line="8" column="52" selection-start-line="8" selection-start-column="52" selection-end-line="8" selection-end-column="52" />
+            <state vertical-scroll-proportion="-28.423077">
+              <caret line="357" column="1" selection-start-line="357" selection-start-column="1" selection-end-line="357" selection-end-column="1" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="birthdate.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.idea/birthdate.php">
+        <entry file="file://$PROJECT_DIR$/birthdate.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+            <state vertical-scroll-proportion="-24.192308">
+              <caret line="37" column="8" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="8" />
               <folding>
                 <element signature="e#6#91#0#PHP" expanded="true" />
-                <marker date="1517180195000" expanded="true" signature="482:544" placeholder="Update Membe... " />
-                <marker date="1517180195000" expanded="true" signature="482:749" placeholder="Update Membe... " />
+                <marker date="1517189166000" expanded="true" signature="506:561" placeholder="Update Membe... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="appearance.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/appearance.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-13.076923">
+              <caret line="20" column="21" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
+              <folding>
+                <element signature="e#6#91#0#PHP" expanded="true" />
+                <marker date="1517191323000" expanded="true" signature="546:572" placeholder="Update Membe... " />
+                <marker date="1517191323000" expanded="true" signature="546:609" placeholder="Update Membe... " />
+                <marker date="1517191323000" expanded="true" signature="546:641" placeholder="Update Membe... " />
+                <marker date="1517191323000" expanded="true" signature="546:657" placeholder="Update Membe... " />
+                <marker date="1517191323000" expanded="true" signature="546:673" placeholder="Update Membe... " />
+                <marker date="1517191323000" expanded="true" signature="546:699" placeholder="Update Membe... " />
+                <marker date="1517191323000" expanded="true" signature="546:714" placeholder="Update Membe... " />
+                <marker date="1517191323000" expanded="true" signature="546:715" placeholder="Update Membe... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="education.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/education.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-5.230769">
+              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+              <folding>
+                <element signature="e#6#91#0#PHP" expanded="true" />
+                <marker date="1517191943000" expanded="true" signature="354:397" placeholder="Update Membe... " />
+                <marker date="1517191943000" expanded="true" signature="354:409" placeholder="Update Membe... " />
+                <marker date="1517191943000" expanded="true" signature="354:410" placeholder="Update Membe... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="gender.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/gender.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.43984476">
+              <caret line="20" column="44" selection-start-line="20" selection-start-column="44" selection-end-line="20" selection-end-column="44" />
+              <folding>
+                <element signature="e#6#91#0#PHP" expanded="true" />
+                <marker date="1517192775000" expanded="true" signature="341:390" placeholder="Update Membe... " />
               </folding>
             </state>
           </provider>
@@ -127,9 +140,12 @@
         <option value="$PROJECT_DIR$/helpers.php" />
         <option value="$PROJECT_DIR$/signup.php" />
         <option value="$PROJECT_DIR$/login.php" />
-        <option value="$PROJECT_DIR$/api-spec.json" />
         <option value="$PROJECT_DIR$/.idea/birthdate.php" />
         <option value="$PROJECT_DIR$/birthdate.php" />
+        <option value="$PROJECT_DIR$/appearance.php" />
+        <option value="$PROJECT_DIR$/education.php" />
+        <option value="$PROJECT_DIR$/api-spec.json" />
+        <option value="$PROJECT_DIR$/gender.php" />
       </list>
     </option>
   </component>
@@ -604,24 +620,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/connect.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.9615384">
-          <caret line="8" column="52" selection-start-line="8" selection-start-column="52" selection-end-line="8" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/helpers.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.115385">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding>
-            <marker date="1516410342000" expanded="true" signature="221:294" placeholder="Insert Into Log... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/login.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-9.807693">
@@ -632,15 +630,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/signup.php">
+    <entry file="file://$PROJECT_DIR$/connect.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-20.26923">
-          <caret line="49" column="38" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="38" />
+        <state vertical-scroll-proportion="0.06597672">
+          <caret line="8" column="52" selection-start-line="8" selection-start-column="52" selection-end-line="8" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/helpers.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.37386805">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding>
-            <element signature="e#6#90#0#PHP" expanded="true" />
-            <marker date="1516840091000" expanded="true" signature="506:551" placeholder="Select ID Fr... Members" />
-            <marker date="1516840091000" expanded="true" signature="729:780" placeholder="Select ID Fr... Members" />
-            <marker date="1516840091000" expanded="true" signature="1100:1282" placeholder="Insert Into Members... " />
+            <marker date="1516410342000" expanded="true" signature="221:294" placeholder="Insert Into Log... " />
           </folding>
         </state>
       </provider>
@@ -657,21 +660,76 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/birthdate.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-24.192308">
+          <caret line="37" column="8" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="8" />
+          <folding>
+            <element signature="e#6#91#0#PHP" expanded="true" />
+            <marker date="1517189166000" expanded="true" signature="506:561" placeholder="Update Membe... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/signup.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-17.307692">
+          <caret line="49" column="38" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="38" />
+          <folding>
+            <element signature="e#6#90#0#PHP" expanded="true" />
+            <marker date="1516840091000" expanded="true" signature="506:551" placeholder="Select ID Fr... Members" />
+            <marker date="1516840091000" expanded="true" signature="729:780" placeholder="Select ID Fr... Members" />
+            <marker date="1516840091000" expanded="true" signature="1100:1282" placeholder="Insert Into Members... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/appearance.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.076923">
+          <caret line="20" column="21" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
+          <folding>
+            <element signature="e#6#91#0#PHP" expanded="true" />
+            <marker date="1517191323000" expanded="true" signature="546:572" placeholder="Update Membe... " />
+            <marker date="1517191323000" expanded="true" signature="546:609" placeholder="Update Membe... " />
+            <marker date="1517191323000" expanded="true" signature="546:641" placeholder="Update Membe... " />
+            <marker date="1517191323000" expanded="true" signature="546:657" placeholder="Update Membe... " />
+            <marker date="1517191323000" expanded="true" signature="546:673" placeholder="Update Membe... " />
+            <marker date="1517191323000" expanded="true" signature="546:699" placeholder="Update Membe... " />
+            <marker date="1517191323000" expanded="true" signature="546:714" placeholder="Update Membe... " />
+            <marker date="1517191323000" expanded="true" signature="546:715" placeholder="Update Membe... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/api-spec.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.5384617">
-          <caret line="13" column="22" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
+        <state vertical-scroll-proportion="-28.423077">
+          <caret line="357" column="1" selection-start-line="357" selection-start-column="1" selection-end-line="357" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/birthdate.php">
+    <entry file="file://$PROJECT_DIR$/education.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.65976715">
-          <caret line="30" column="62" selection-start-line="30" selection-start-column="62" selection-end-line="30" selection-end-column="62" />
+        <state vertical-scroll-proportion="-5.230769">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
           <folding>
             <element signature="e#6#91#0#PHP" expanded="true" />
-            <marker date="1517182531000" expanded="true" signature="508:563" placeholder="Update Membe... " />
+            <marker date="1517191943000" expanded="true" signature="354:397" placeholder="Update Membe... " />
+            <marker date="1517191943000" expanded="true" signature="354:409" placeholder="Update Membe... " />
+            <marker date="1517191943000" expanded="true" signature="354:410" placeholder="Update Membe... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gender.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.43984476">
+          <caret line="20" column="44" selection-start-line="20" selection-start-column="44" selection-end-line="20" selection-end-column="44" />
+          <folding>
+            <element signature="e#6#91#0#PHP" expanded="true" />
+            <marker date="1517192775000" expanded="true" signature="341:390" placeholder="Update Membe... " />
           </folding>
         </state>
       </provider>

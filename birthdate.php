@@ -24,7 +24,7 @@ $birthDate = trim($birthDate);
 
 if ($age < 18) {
     // user too young
-    return http_response_code(400);
+    echo http_response_code(400);
 }
 
 
@@ -32,8 +32,8 @@ if ($age < 18) {
 
 if (mysqli_query($conn, $sql)) {
     // update successful
-    return http_response_code(200);
+    echo http_response_code(200);
 } else {
     // internal error
-    return http_response_code(500);
+    echo http_response_code(500);
 }
