@@ -17,6 +17,55 @@
     "application/json"
   ],
   "paths": {
+    "/kids.php": {
+      "get": {
+        "operationId": "GET_kids-php",
+        "summary": "Kids",
+        "parameters": [
+          {
+            "name": "ID",
+            "in": "query",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "HasKids",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "WantsKids",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Successful."
+            }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Client error."
+            }
+          },
+          "500": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Error saving data."
+            }
+          }
+        }
+      }
+    },
     "/gender.php": {
       "get": {
         "operationId": "GET_gender-php",
