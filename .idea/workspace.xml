@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="246b9446-cb1d-4fa6-9d2d-8ad5a64b0916" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kids.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/habits.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/objective.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/social.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api-spec.json" afterPath="$PROJECT_DIR$/api-spec.json" />
     </list>
@@ -41,49 +43,48 @@
       <file leaf-file-name="api-spec.json" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/api-spec.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.9532967">
-              <caret line="406" column="1" selection-start-line="406" selection-start-column="1" selection-end-line="406" selection-end-column="1" />
+            <state vertical-scroll-proportion="0.9392857">
+              <caret line="555" column="1" selection-start-line="555" selection-start-column="1" selection-end-line="555" selection-end-column="1" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="education.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/education.php">
+      <file leaf-file-name="social.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/social.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.230769">
-              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+            <state vertical-scroll-proportion="-20.23077">
+              <caret line="32" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
               <folding>
                 <element signature="e#6#91#0#PHP" expanded="true" />
-                <marker date="1517191943000" expanded="true" signature="354:397" placeholder="Update Membe... " />
-                <marker date="1517191943000" expanded="true" signature="354:409" placeholder="Update Membe... " />
-                <marker date="1517191943000" expanded="true" signature="354:410" placeholder="Update Membe... " />
+                <marker date="1517444840000" expanded="true" signature="414:491" placeholder="Update Membe... " />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="gender.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/gender.php">
+      <file leaf-file-name="habits.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/habits.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.230769">
-              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+            <state vertical-scroll-proportion="-16.961538">
+              <caret line="31" column="1" selection-start-line="8" selection-start-column="0" selection-end-line="31" selection-end-column="1" />
               <folding>
                 <element signature="e#6#91#0#PHP" expanded="true" />
-                <marker date="1517192775000" expanded="true" signature="341:390" placeholder="Update Membe... " />
+                <marker date="1517446772000" expanded="true" signature="396:461" placeholder="Update Membe... " />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="kids.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kids.php">
+      <file leaf-file-name="objective.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/objective.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.8846154">
-              <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+            <state vertical-scroll-proportion="-8.461538">
+              <caret line="17" column="52" selection-start-line="17" selection-start-column="52" selection-end-line="17" selection-end-column="52" />
               <folding>
                 <element signature="e#6#91#0#PHP" expanded="true" />
-                <marker date="1517369131000" expanded="true" signature="414:491" placeholder="Update Membe... " />
+                <marker date="1517447800000" expanded="true" signature="468:567" placeholder="Update Membe... " />
+                <marker date="1517447800000" expanded="true" signature="468:568" placeholder="Update Membe... " />
               </folding>
             </state>
           </provider>
@@ -109,6 +110,9 @@
         <option value="$PROJECT_DIR$/education.php" />
         <option value="$PROJECT_DIR$/gender.php" />
         <option value="$PROJECT_DIR$/kids.php" />
+        <option value="$PROJECT_DIR$/social.php" />
+        <option value="$PROJECT_DIR$/habits.php" />
+        <option value="$PROJECT_DIR$/objective.php" />
         <option value="$PROJECT_DIR$/api-spec.json" />
       </list>
     </option>
@@ -123,10 +127,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="1280" />
-    <option name="y" value="23" />
-    <option name="width" value="1600" />
-    <option name="height" value="877" />
+    <option name="x" value="63" />
+    <option name="y" value="79" />
+    <option name="width" value="1280" />
+    <option name="height" value="709" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -153,7 +157,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -175,6 +178,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -231,10 +235,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1280" y="23" width="1600" height="877" extended-state="6" />
+    <frame x="63" y="79" width="1280" height="709" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.156875" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15625" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -272,6 +276,59 @@
     <entry file="file://$PROJECT_DIR$/login.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding>
+            <marker date="1515954462000" expanded="true" signature="273:345" placeholder="SELECT ID FR... Members" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api-spec.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/education.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding>
+            <element signature="e#6#91#0#PHP" expanded="true" />
+            <marker date="1517191943000" expanded="true" signature="354:397" placeholder="Update Membe... " />
+            <marker date="1517191943000" expanded="true" signature="354:409" placeholder="Update Membe... " />
+            <marker date="1517191943000" expanded="true" signature="354:410" placeholder="Update Membe... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gender.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding>
+            <element signature="e#6#91#0#PHP" expanded="true" />
+            <marker date="1517192775000" expanded="true" signature="341:390" placeholder="Update Membe... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kids.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+          <folding>
+            <element signature="e#6#91#0#PHP" expanded="true" />
+            <marker date="1517369131000" expanded="true" signature="414:491" placeholder="Update Membe... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
           <caret line="18" column="84" selection-start-line="18" selection-start-column="84" selection-end-line="18" selection-end-column="84" />
           <folding>
             <marker date="1515954462000" expanded="true" signature="273:345" placeholder="SELECT ID FR... Members" />
@@ -304,9 +361,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding>
-            <marker date="1516410342000" expanded="true" signature="221:294" placeholder="Insert Into Log... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -314,7 +368,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="8" column="52" selection-start-line="8" selection-start-column="52" selection-end-line="8" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -345,9 +398,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding>
-            <marker date="1516410342000" expanded="true" signature="221:294" placeholder="Insert Into Log... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -355,7 +405,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -386,9 +435,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding>
-            <marker date="1516410342000" expanded="true" signature="221:294" placeholder="Insert Into Log... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -396,7 +442,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="8" column="52" selection-start-line="8" selection-start-column="52" selection-end-line="8" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -435,9 +480,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1516410342000" expanded="true" signature="221:294" placeholder="Insert Into Log... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -445,7 +487,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="8" column="52" selection-start-line="8" selection-start-column="52" selection-end-line="8" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -507,7 +548,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -546,7 +586,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -572,7 +611,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -588,7 +626,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.06597672">
           <caret line="8" column="52" selection-start-line="8" selection-start-column="52" selection-end-line="8" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -596,9 +633,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.37386805">
           <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding>
-            <marker date="1516410342000" expanded="true" signature="221:294" placeholder="Insert Into Log... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -606,45 +640,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding>
-            <element signature="e#6#91#0#PHP" expanded="true" />
-            <marker date="1517180195000" expanded="true" signature="482:544" placeholder="Update Membe... " />
-            <marker date="1517180195000" expanded="true" signature="482:749" placeholder="Update Membe... " />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/education.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.230769">
+        <state vertical-scroll-proportion="0.0">
           <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
           <folding>
             <element signature="e#6#91#0#PHP" expanded="true" />
             <marker date="1517191943000" expanded="true" signature="354:397" placeholder="Update Membe... " />
             <marker date="1517191943000" expanded="true" signature="354:409" placeholder="Update Membe... " />
             <marker date="1517191943000" expanded="true" signature="354:410" placeholder="Update Membe... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gender.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.230769">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding>
-            <element signature="e#6#91#0#PHP" expanded="true" />
-            <marker date="1517192775000" expanded="true" signature="341:390" placeholder="Update Membe... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kids.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.8846154">
-          <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
-          <folding>
-            <element signature="e#6#91#0#PHP" expanded="true" />
-            <marker date="1517369131000" expanded="true" signature="414:491" placeholder="Update Membe... " />
           </folding>
         </state>
       </provider>
@@ -701,10 +708,66 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/kids.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.9230769">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+          <folding>
+            <element signature="e#6#91#0#PHP" expanded="true" />
+            <marker date="1517369131000" expanded="true" signature="414:491" placeholder="Update Membe... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gender.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.119642854">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding>
+            <element signature="e#6#91#0#PHP" expanded="true" />
+            <marker date="1517192775000" expanded="true" signature="341:390" placeholder="Update Membe... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/social.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-20.23077">
+          <caret line="32" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+          <folding>
+            <element signature="e#6#91#0#PHP" expanded="true" />
+            <marker date="1517444840000" expanded="true" signature="414:491" placeholder="Update Membe... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/habits.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.961538">
+          <caret line="31" column="1" selection-start-line="8" selection-start-column="0" selection-end-line="31" selection-end-column="1" />
+          <folding>
+            <element signature="e#6#91#0#PHP" expanded="true" />
+            <marker date="1517446772000" expanded="true" signature="396:461" placeholder="Update Membe... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/objective.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.461538">
+          <caret line="17" column="52" selection-start-line="17" selection-start-column="52" selection-end-line="17" selection-end-column="52" />
+          <folding>
+            <element signature="e#6#91#0#PHP" expanded="true" />
+            <marker date="1517447800000" expanded="true" signature="468:567" placeholder="Update Membe... " />
+            <marker date="1517447800000" expanded="true" signature="468:568" placeholder="Update Membe... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/api-spec.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9532967">
-          <caret line="406" column="1" selection-start-line="406" selection-start-column="1" selection-end-line="406" selection-end-column="1" />
+        <state vertical-scroll-proportion="0.9392857">
+          <caret line="555" column="1" selection-start-line="555" selection-start-column="1" selection-end-line="555" selection-end-column="1" />
           <folding />
         </state>
       </provider>

@@ -17,6 +17,155 @@
     "application/json"
   ],
   "paths": {
+    "/objective.php": {
+      "get": {
+        "operationId": "GET_objective-php",
+        "summary": "Objective",
+        "parameters": [
+          {
+            "name": "ID",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "Dating",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Friends",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Networking",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Successful"
+            }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Invalid data."
+            }
+          },
+          "500": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Server error."
+            }
+          }
+        }
+      }
+    },
+    "/habits.php": {
+      "get": {
+        "operationId": "GET_habits-php",
+        "summary": "Habits",
+        "parameters": [
+          {
+            "name": "ID",
+            "in": "query",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "Smoke",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Drink",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Successful."
+            }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Client error."
+            }
+          },
+          "500": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Error saving data."
+            }
+          }
+        }
+      }
+    },
+    "/social.php": {
+      "get": {
+        "operationId": "GET_social-php",
+        "summary": "Social",
+        "parameters": [
+          {
+            "name": "ID",
+            "in": "query",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "Religion",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Politics",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Successful."
+            }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Client error."
+            }
+          },
+          "500": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Error saving data."
+            }
+          }
+        }
+      }
+    },
     "/kids.php": {
       "get": {
         "operationId": "GET_kids-php",
