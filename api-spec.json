@@ -17,6 +17,256 @@
     "application/json"
   ],
   "paths": {
+    "/gender.php": {
+      "get": {
+        "operationId": "GET_gender-php",
+        "summary": "Gender",
+        "parameters": [
+          {
+            "name": "ID",
+            "in": "query",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "Gender",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Successful."
+            }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Client error."
+            }
+          },
+          "500": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Error saving data."
+            }
+          }
+        }
+      }
+    },
+    "/interests.php": {
+      "get": {
+        "operationId": "GET_interests-php",
+        "summary": "Interests",
+        "parameters": [
+          {
+            "name": "Art",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Beauty",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "BoardGames",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Books",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Business",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Cooking",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Dancing",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Fashion",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Outdoors",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "HomeRepair",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Hiking",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "LiveEvents",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "MartialArts",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Movies",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Music",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "NightLife",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Performing",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Photography",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Sports",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Technology",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "VideoGames",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "WorkingOut",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Writing",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Yoga",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "ID",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "Meditation",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Traveling",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Successful."
+            }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "User error."
+            }
+          },
+          "500": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Server error."
+            }
+          }
+        }
+      }
+    },
+    "/login.php": {
+      "get": {
+        "operationId": "GET_login-php",
+        "summary": "Login",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Successful signup."
+            },
+            "examples": {
+              "application/json": {
+                "ID": 98124060
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Invalid email or password."
+            }
+          }
+        }
+      }
+    },
     "/objective.php": {
       "get": {
         "operationId": "GET_objective-php",
@@ -215,19 +465,37 @@
         }
       }
     },
-    "/gender.php": {
+    "/signup.php": {
       "get": {
-        "operationId": "GET_gender-php",
-        "summary": "Gender",
+        "operationId": "GET_signup-php",
+        "summary": "Signup",
         "parameters": [
           {
-            "name": "ID",
+            "name": "FirstName",
             "in": "query",
             "required": true,
-            "type": "integer"
+            "type": "string"
           },
           {
-            "name": "Gender",
+            "name": "LastName",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Username",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Email",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Password",
             "in": "query",
             "required": true,
             "type": "string"
@@ -238,21 +506,35 @@
             "description": "",
             "schema": {
               "type": "integer",
-              "description": "Successful."
+              "description": "User signed up successfully."
             }
           },
           "400": {
             "description": "",
             "schema": {
               "type": "integer",
-              "description": "Client error."
+              "description": "User input bad."
+            }
+          },
+          "406": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Username already exists."
+            }
+          },
+          "409": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Account already exists."
             }
           },
           "500": {
             "description": "",
             "schema": {
               "type": "integer",
-              "description": "Error saving data."
+              "description": "Sign up failed."
             }
           }
         }
@@ -430,122 +712,6 @@
             "schema": {
               "type": "integer",
               "description": "Error saving data."
-            }
-          }
-        }
-      }
-    },
-    "/signup.php": {
-      "get": {
-        "operationId": "GET_signup-php",
-        "summary": "Signup",
-        "parameters": [
-          {
-            "name": "FirstName",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "LastName",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "Username",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "Email",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "Password",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "type": "integer",
-              "description": "User signed up successfully."
-            }
-          },
-          "400": {
-            "description": "",
-            "schema": {
-              "type": "integer",
-              "description": "User input bad."
-            }
-          },
-          "406": {
-            "description": "",
-            "schema": {
-              "type": "integer",
-              "description": "Username already exists."
-            }
-          },
-          "409": {
-            "description": "",
-            "schema": {
-              "type": "integer",
-              "description": "Account already exists."
-            }
-          },
-          "500": {
-            "description": "",
-            "schema": {
-              "type": "integer",
-              "description": "Sign up failed."
-            }
-          }
-        }
-      }
-    },
-    "/login.php": {
-      "get": {
-        "operationId": "GET_login-php",
-        "summary": "Login",
-        "parameters": [
-          {
-            "name": "email",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "password",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "type": "integer",
-              "description": "Successful signup."
-            },
-            "examples": {
-              "application/json": {
-                "ID": 98124060
-              }
-            }
-          },
-          "400": {
-            "description": "",
-            "schema": {
-              "type": "integer",
-              "description": "Invalid email or password."
             }
           }
         }
