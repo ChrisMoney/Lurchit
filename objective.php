@@ -15,7 +15,7 @@ $dating = $_GET['Dating'];
 $friends = $_GET['Friends'];
 $networking = $_GET['Networking'];
 
-if (strlen($dating) == "false" && $friends == "false" && $networking == "false") {
+if ($dating == "false" && $friends == "false" && $networking == "false") {
     // client data error
     echo http_response_code(400);
     exit;

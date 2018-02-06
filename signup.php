@@ -12,7 +12,9 @@ require 'helpers.php';
 
 
 $firstName = $_GET['FirstName'];
+$firstName = ucfirst(strtolower($firstName));
 $lastName = $_GET['LastName'];
+$lastName = ucfirst(strtolower($lastName));
 $username = $_GET['Username'];
 $email = $_GET['Email'];
 $password = $_GET['Password'];

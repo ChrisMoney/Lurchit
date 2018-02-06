@@ -17,10 +17,10 @@
     "application/json"
   ],
   "paths": {
-    "/gender.php": {
+    "/kids.php": {
       "get": {
-        "operationId": "GET_gender-php",
-        "summary": "Gender",
+        "operationId": "GET_kids-php",
+        "summary": "Kids",
         "parameters": [
           {
             "name": "ID",
@@ -29,7 +29,13 @@
             "type": "integer"
           },
           {
-            "name": "Gender",
+            "name": "HasKids",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "WantsKids",
             "in": "query",
             "required": true,
             "type": "string"
@@ -55,6 +61,90 @@
             "schema": {
               "type": "integer",
               "description": "Error saving data."
+            }
+          }
+        }
+      }
+    },
+    "/agePref.php": {
+      "get": {
+        "operationId": "GET_agePref-php",
+        "summary": "AgePref",
+        "parameters": [
+          {
+            "name": "ID",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "AgeMin",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "AgeMax",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          "500": {
+            "description": "",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        }
+      }
+    },
+    "/login.php": {
+      "get": {
+        "operationId": "GET_login-php",
+        "summary": "Login",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Successful signup."
+            },
+            "examples": {
+              "application/json": {
+                "ID": 98124060
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Invalid email or password."
             }
           }
         }
@@ -226,47 +316,6 @@
         }
       }
     },
-    "/login.php": {
-      "get": {
-        "operationId": "GET_login-php",
-        "summary": "Login",
-        "parameters": [
-          {
-            "name": "email",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "password",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "type": "integer",
-              "description": "Successful signup."
-            },
-            "examples": {
-              "application/json": {
-                "ID": 98124060
-              }
-            }
-          },
-          "400": {
-            "description": "",
-            "schema": {
-              "type": "integer",
-              "description": "Invalid email or password."
-            }
-          }
-        }
-      }
-    },
     "/objective.php": {
       "get": {
         "operationId": "GET_objective-php",
@@ -416,55 +465,6 @@
         }
       }
     },
-    "/kids.php": {
-      "get": {
-        "operationId": "GET_kids-php",
-        "summary": "Kids",
-        "parameters": [
-          {
-            "name": "ID",
-            "in": "query",
-            "required": true,
-            "type": "integer"
-          },
-          {
-            "name": "HasKids",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "WantsKids",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "type": "integer",
-              "description": "Successful."
-            }
-          },
-          "400": {
-            "description": "",
-            "schema": {
-              "type": "integer",
-              "description": "Client error."
-            }
-          },
-          "500": {
-            "description": "",
-            "schema": {
-              "type": "integer",
-              "description": "Error saving data."
-            }
-          }
-        }
-      }
-    },
     "/signup.php": {
       "get": {
         "operationId": "GET_signup-php",
@@ -535,6 +535,49 @@
             "schema": {
               "type": "integer",
               "description": "Sign up failed."
+            }
+          }
+        }
+      }
+    },
+    "/gender.php": {
+      "get": {
+        "operationId": "GET_gender-php",
+        "summary": "Gender",
+        "parameters": [
+          {
+            "name": "ID",
+            "in": "query",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "Gender",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Successful."
+            }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Client error."
+            }
+          },
+          "500": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Error saving data."
             }
           }
         }
