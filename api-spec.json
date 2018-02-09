@@ -66,10 +66,10 @@
         }
       }
     },
-    "/educationPref.php": {
+    "/genderPref.php": {
       "get": {
-        "operationId": "GET_educationPref-php",
-        "summary": "EducationPref",
+        "operationId": "GET_genderPref-php",
+        "summary": "GenderPref",
         "parameters": [
           {
             "name": "ID",
@@ -77,32 +77,17 @@
             "type": "integer"
           },
           {
-            "name": "HighSchool",
+            "name": "Male",
             "in": "query",
             "type": "string"
           },
           {
-            "name": "SomeCollege",
+            "name": "Female",
             "in": "query",
             "type": "string"
           },
           {
-            "name": "Bachelor",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "Master",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "Doctorate",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "NoEducationPref",
+            "name": "NoGenderPref",
             "in": "query",
             "type": "string"
           }
@@ -111,8 +96,7 @@
           "200": {
             "description": "",
             "schema": {
-              "type": "integer",
-              "description": "Successful."
+              "type": "integer"
             }
           },
           "400": {
@@ -126,7 +110,7 @@
             "description": "",
             "schema": {
               "type": "integer",
-              "description": "Server error."
+              "description": "Sever error."
             }
           }
         }
@@ -222,6 +206,57 @@
         }
       }
     },
+    "/objective.php": {
+      "get": {
+        "operationId": "GET_objective-php",
+        "summary": "Objective",
+        "parameters": [
+          {
+            "name": "ID",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "Dating",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Friends",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Networking",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Successful"
+            }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Invalid data."
+            }
+          },
+          "500": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Server error."
+            }
+          }
+        }
+      }
+    },
     "/birthdate.php": {
       "get": {
         "operationId": "GET_birthdate-php",
@@ -272,6 +307,114 @@
             "schema": {
               "type": "integer",
               "description": "Error saving data."
+            }
+          }
+        }
+      }
+    },
+    "/education.php": {
+      "get": {
+        "operationId": "GET_education-php",
+        "summary": "Education",
+        "parameters": [
+          {
+            "name": "ID",
+            "in": "query",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "Education",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Client error."
+            }
+          },
+          "500": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Error saving data."
+            }
+          }
+        }
+      }
+    },
+    "/educationPref.php": {
+      "get": {
+        "operationId": "GET_educationPref-php",
+        "summary": "EducationPref",
+        "parameters": [
+          {
+            "name": "ID",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "HighSchool",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "SomeCollege",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Bachelor",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Master",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Doctorate",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "NoEducationPref",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Successful."
+            }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "User error."
+            }
+          },
+          "500": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Server error."
             }
           }
         }
@@ -572,29 +715,21 @@
         }
       }
     },
-    "/objective.php": {
+    "/gender.php": {
       "get": {
-        "operationId": "GET_objective-php",
-        "summary": "Objective",
+        "operationId": "GET_gender-php",
+        "summary": "Gender",
         "parameters": [
           {
             "name": "ID",
             "in": "query",
+            "required": true,
             "type": "integer"
           },
           {
-            "name": "Dating",
+            "name": "Gender",
             "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "Friends",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "Networking",
-            "in": "query",
+            "required": true,
             "type": "string"
           }
         ],
@@ -603,21 +738,21 @@
             "description": "",
             "schema": {
               "type": "integer",
-              "description": "Successful"
+              "description": "Successful."
             }
           },
           "400": {
             "description": "",
             "schema": {
               "type": "integer",
-              "description": "Invalid data."
+              "description": "Client error."
             }
           },
           "500": {
             "description": "",
             "schema": {
               "type": "integer",
-              "description": "Server error."
+              "description": "Error saving data."
             }
           }
         }
@@ -808,91 +943,6 @@
             "schema": {
               "type": "integer",
               "description": "Successful."
-            }
-          },
-          "400": {
-            "description": "",
-            "schema": {
-              "type": "integer",
-              "description": "Client error."
-            }
-          },
-          "500": {
-            "description": "",
-            "schema": {
-              "type": "integer",
-              "description": "Error saving data."
-            }
-          }
-        }
-      }
-    },
-    "/gender.php": {
-      "get": {
-        "operationId": "GET_gender-php",
-        "summary": "Gender",
-        "parameters": [
-          {
-            "name": "ID",
-            "in": "query",
-            "required": true,
-            "type": "integer"
-          },
-          {
-            "name": "Gender",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "type": "integer",
-              "description": "Successful."
-            }
-          },
-          "400": {
-            "description": "",
-            "schema": {
-              "type": "integer",
-              "description": "Client error."
-            }
-          },
-          "500": {
-            "description": "",
-            "schema": {
-              "type": "integer",
-              "description": "Error saving data."
-            }
-          }
-        }
-      }
-    },
-    "/education.php": {
-      "get": {
-        "operationId": "GET_education-php",
-        "summary": "Education",
-        "parameters": [
-          {
-            "name": "ID",
-            "in": "query",
-            "required": true,
-            "type": "integer"
-          },
-          {
-            "name": "Education",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "type": "integer"
             }
           },
           "400": {
