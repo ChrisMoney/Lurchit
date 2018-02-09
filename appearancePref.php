@@ -17,11 +17,19 @@ $athletic = $_GET['Athletic'];
 $plump = $_GET['Plump'];
 $heavy = $_GET['Heavy'];
 $overweight = $_GET['Overweight'];
-$noPref = $_GET['NoPref'];
 $minHeightFeet = $_GET['MinHeightFeet'];
 $minHeightInches = $_GET['MinHeightInches'];
 $maxHeightFeet = $_GET['MaxHeightFeet'];
 $maxHeightInches = $_GET['MaxHeightInches'];
-$noPref = $_GET['NoPref'];
+$noAppearancePref = $_GET['NoAppearancePref'];
 
-$sql = "Update MemberPref Set Slim = '$slim', Average = '$average', Plump = '$plump', Heavy = '$heavy' Overweight = '$overweight', NoPref = '$noPref', MinHeightFeet = '$minHeightFeet', MinHeightInches = '$minHeightInches', MaxHeightFeet = '$maxHeightFeet', MaxHeightInches = '$maxHeightInches' WHERE Member_ID = $id ";
+$sql = "Update MemberPref Set Slim = '$slim', Average = '$average', Athletic = '$athletic', Plump = '$plump', Heavy = '$heavy', Overweight = '$overweight', MinHeightFeet = '$minHeightFeet', MinHeightInches = '$minHeightInches', MaxHeightFeet = '$maxHeightFeet', MaxHeightInches = '$maxHeightInches', NoAppearancePref = '$noAppearancePref' WHERE Member_ID = $id ";
+
+if (mysqli_query($conn, $sql)) {
+    // successful
+    echo http_response_code(200);
+}
+else {
+    // error saving data
+    echo http_response_code(500);
+}

@@ -17,10 +17,10 @@
     "application/json"
   ],
   "paths": {
-    "/kids.php": {
+    "/social.php": {
       "get": {
-        "operationId": "GET_kids-php",
-        "summary": "Kids",
+        "operationId": "GET_social-php",
+        "summary": "Social",
         "parameters": [
           {
             "name": "ID",
@@ -29,13 +29,13 @@
             "type": "integer"
           },
           {
-            "name": "HasKids",
+            "name": "Religion",
             "in": "query",
             "required": true,
             "type": "string"
           },
           {
-            "name": "WantsKids",
+            "name": "Politics",
             "in": "query",
             "required": true,
             "type": "string"
@@ -66,10 +66,10 @@
         }
       }
     },
-    "/appearancePref.php": {
+    "/educationPref.php": {
       "get": {
-        "operationId": "GET_appearancePref-php",
-        "summary": "AppearancePref",
+        "operationId": "GET_educationPref-php",
+        "summary": "EducationPref",
         "parameters": [
           {
             "name": "ID",
@@ -77,52 +77,32 @@
             "type": "integer"
           },
           {
-            "name": "SLIM",
+            "name": "HighSchool",
             "in": "query",
             "type": "string"
           },
           {
-            "name": "Average",
+            "name": "SomeCollege",
             "in": "query",
             "type": "string"
           },
           {
-            "name": "Plump",
+            "name": "Bachelor",
             "in": "query",
             "type": "string"
           },
           {
-            "name": "Heavy",
+            "name": "Master",
             "in": "query",
             "type": "string"
           },
           {
-            "name": "Overweight",
+            "name": "Doctorate",
             "in": "query",
             "type": "string"
           },
           {
-            "name": "NoPref",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "MinHeightFeet",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "MinHeightInches",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "MaxHeightFeet",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "MaxHeightInches",
+            "name": "NoEducationPref",
             "in": "query",
             "type": "string"
           }
@@ -146,16 +126,16 @@
             "description": "",
             "schema": {
               "type": "integer",
-              "description": "Error saving data."
+              "description": "Server error."
             }
           }
         }
       }
     },
-    "/social.php": {
+    "/habits.php": {
       "get": {
-        "operationId": "GET_social-php",
-        "summary": "Social",
+        "operationId": "GET_habits-php",
+        "summary": "Habits",
         "parameters": [
           {
             "name": "ID",
@@ -164,13 +144,13 @@
             "type": "integer"
           },
           {
-            "name": "Religion",
+            "name": "Smoke",
             "in": "query",
             "required": true,
             "type": "string"
           },
           {
-            "name": "Politics",
+            "name": "Drink",
             "in": "query",
             "required": true,
             "type": "string"
@@ -285,6 +265,92 @@
             "schema": {
               "type": "integer",
               "description": "Too young."
+            }
+          },
+          "500": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Error saving data."
+            }
+          }
+        }
+      }
+    },
+    "/appearancePref.php": {
+      "get": {
+        "operationId": "GET_appearancePref-php",
+        "summary": "AppearancePref",
+        "parameters": [
+          {
+            "name": "ID",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "Slim",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Average",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Plump",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Heavy",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Overweight",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "NoAppearancePref",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "MinHeightFeet",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "MinHeightInches",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "MaxHeightFeet",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "MaxHeightInches",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Successful."
+            }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "User error."
             }
           },
           "500": {
@@ -557,55 +623,6 @@
         }
       }
     },
-    "/habits.php": {
-      "get": {
-        "operationId": "GET_habits-php",
-        "summary": "Habits",
-        "parameters": [
-          {
-            "name": "ID",
-            "in": "query",
-            "required": true,
-            "type": "integer"
-          },
-          {
-            "name": "Smoke",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "Drink",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "type": "integer",
-              "description": "Successful."
-            }
-          },
-          "400": {
-            "description": "",
-            "schema": {
-              "type": "integer",
-              "description": "Client error."
-            }
-          },
-          "500": {
-            "description": "",
-            "schema": {
-              "type": "integer",
-              "description": "Error saving data."
-            }
-          }
-        }
-      }
-    },
     "/appearance.php": {
       "get": {
         "operationId": "GET_appearance-php",
@@ -756,6 +773,55 @@
             "schema": {
               "type": "integer",
               "description": "Sign up failed."
+            }
+          }
+        }
+      }
+    },
+    "/kids.php": {
+      "get": {
+        "operationId": "GET_kids-php",
+        "summary": "Kids",
+        "parameters": [
+          {
+            "name": "ID",
+            "in": "query",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "HasKids",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "WantsKids",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Successful."
+            }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Client error."
+            }
+          },
+          "500": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Error saving data."
             }
           }
         }
