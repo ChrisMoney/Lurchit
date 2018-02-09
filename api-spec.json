@@ -66,10 +66,10 @@
         }
       }
     },
-    "/agePref.php": {
+    "/appearancePref.php": {
       "get": {
-        "operationId": "GET_agePref-php",
-        "summary": "AgePref",
+        "operationId": "GET_appearancePref-php",
+        "summary": "AppearancePref",
         "parameters": [
           {
             "name": "ID",
@@ -77,12 +77,52 @@
             "type": "integer"
           },
           {
-            "name": "AgeMin",
+            "name": "SLIM",
             "in": "query",
             "type": "string"
           },
           {
-            "name": "AgeMax",
+            "name": "Average",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Plump",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Heavy",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Overweight",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "NoPref",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "MinHeightFeet",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "MinHeightInches",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "MaxHeightFeet",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "MaxHeightInches",
             "in": "query",
             "type": "string"
           }
@@ -91,19 +131,71 @@
           "200": {
             "description": "",
             "schema": {
-              "type": "integer"
+              "type": "integer",
+              "description": "Successful."
             }
           },
           "400": {
             "description": "",
             "schema": {
-              "type": "integer"
+              "type": "integer",
+              "description": "User error."
             }
           },
           "500": {
             "description": "",
             "schema": {
-              "type": "integer"
+              "type": "integer",
+              "description": "Error saving data."
+            }
+          }
+        }
+      }
+    },
+    "/social.php": {
+      "get": {
+        "operationId": "GET_social-php",
+        "summary": "Social",
+        "parameters": [
+          {
+            "name": "ID",
+            "in": "query",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "Religion",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Politics",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Successful."
+            }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Client error."
+            }
+          },
+          "500": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Error saving data."
             }
           }
         }
@@ -145,6 +237,104 @@
             "schema": {
               "type": "integer",
               "description": "Invalid email or password."
+            }
+          }
+        }
+      }
+    },
+    "/birthdate.php": {
+      "get": {
+        "operationId": "GET_birthdate-php",
+        "summary": "Birthdate",
+        "parameters": [
+          {
+            "name": "ID",
+            "in": "query",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "Month",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Day",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Year",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Birthdate saved successfully."
+            }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Too young."
+            }
+          },
+          "500": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Error saving data."
+            }
+          }
+        }
+      }
+    },
+    "/agePref.php": {
+      "get": {
+        "operationId": "GET_agePref-php",
+        "summary": "AgePref",
+        "parameters": [
+          {
+            "name": "ID",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "AgeMin",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "AgeMax",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          "500": {
+            "description": "",
+            "schema": {
+              "type": "integer"
             }
           }
         }
@@ -416,28 +606,59 @@
         }
       }
     },
-    "/social.php": {
+    "/appearance.php": {
       "get": {
-        "operationId": "GET_social-php",
-        "summary": "Social",
+        "operationId": "GET_appearance-php",
+        "summary": "Appearance",
         "parameters": [
+          {
+            "name": "Build",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "HeightFeet",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "HeightInches",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Hair",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Eyes",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Ethnicity",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
           {
             "name": "ID",
             "in": "query",
-            "required": true,
+            "required": false,
             "type": "integer"
           },
           {
-            "name": "Religion",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "Politics",
-            "in": "query",
-            "required": true,
-            "type": "string"
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "integer"
+            }
           }
         ],
         "responses": {
@@ -445,14 +666,14 @@
             "description": "",
             "schema": {
               "type": "integer",
-              "description": "Successful."
+              "description": "Appearance data updated successfully."
             }
           },
           "400": {
             "description": "",
             "schema": {
               "type": "integer",
-              "description": "Client error."
+              "description": "Invalid user data provided."
             }
           },
           "500": {
@@ -613,141 +834,6 @@
             "schema": {
               "type": "integer",
               "description": "Client error."
-            }
-          },
-          "500": {
-            "description": "",
-            "schema": {
-              "type": "integer",
-              "description": "Error saving data."
-            }
-          }
-        }
-      }
-    },
-    "/appearance.php": {
-      "get": {
-        "operationId": "GET_appearance-php",
-        "summary": "Appearance",
-        "parameters": [
-          {
-            "name": "Build",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "HeightFeet",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "HeightInches",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "Hair",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "Eyes",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "Ethnicity",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "ID",
-            "in": "query",
-            "required": false,
-            "type": "integer"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "type": "integer",
-              "description": "Appearance data updated successfully."
-            }
-          },
-          "400": {
-            "description": "",
-            "schema": {
-              "type": "integer",
-              "description": "Invalid user data provided."
-            }
-          },
-          "500": {
-            "description": "",
-            "schema": {
-              "type": "integer",
-              "description": "Error saving data."
-            }
-          }
-        }
-      }
-    },
-    "/birthdate.php": {
-      "get": {
-        "operationId": "GET_birthdate-php",
-        "summary": "Birthdate",
-        "parameters": [
-          {
-            "name": "ID",
-            "in": "query",
-            "required": true,
-            "type": "integer"
-          },
-          {
-            "name": "Month",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "Day",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "Year",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "type": "integer",
-              "description": "Birthdate saved successfully."
-            }
-          },
-          "400": {
-            "description": "",
-            "schema": {
-              "type": "integer",
-              "description": "Too young."
             }
           },
           "500": {

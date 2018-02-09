@@ -24,7 +24,7 @@ $outdoors = $_GET['Outdoors'];
 $homeRepair = $_GET['HomeRepair'];
 $liveEvents = $_GET['LiveEvents'];
 $martialArts = $_GET['MartialArts'];
-$mediation = $_GET['Mediation'];
+$meditation = $_GET['Meditation'];
 $movies = $_GET['Movies'];
 $music = $_GET['Music'];
 $nightLife = $_GET['NightLife'];
@@ -39,8 +39,8 @@ $writing = $_GET['Writing'];
 $yoga = $_GET['Yoga'];
 
 
-$sql = "Insert Into Interests (Member_ID, Art, Beauty, BoardGames, Books, Business, Cooking, Dancing, Fashion, Outdoors, HomeRepair, Hiking, LiveEvents, MartialArts,Meditation, Movies, Music, NightLife, Performing, Photography, Sports, Technology, Traveling, VideoGames, WorkingOut, Writing, Yoga) Values
-                              ($id,'$art', '$beauty', '$boardGames', '$books', '$business', '$cooking', '$dancing', '$fashion', '$outdoors', '$homeRepair', '$hiking', '$liveEvents','$martialArts', '$mediation', '$movies', '$music', '$nightLife', '$performing', '$photography','$sports', '$technology', '$traveling', '$videoGames', '$workingOut', '$writing', '$yoga')";
+$sql = "Update Members Set Art = '$art', Beauty = '$beauty', BoardGames = '$boardGames', Books = '$books', Business = '$business', Cooking = '$cooking', Dancing = '$dancing', Fashion = '$fashion',Outdoors = '$outdoors', HomeRepair = '$homeRepair', Hiking = '$hiking', LiveEvents = '$liveEvents', MartialArts = '$martialArts', Meditation = '$meditation', Movies = '$movies', Music = '$music', NightLife = '$nightLife', Performing = '$performing', Photography = '$photography', Sports = '$sports', Technology = '$technology', Traveling = '$traveling', VideoGames = '$videoGames', WorkingOut = '$workingOut', Writing = '$writing', Yoga = '$yoga' WHERE ID = $id ";
+
 
 if (mysqli_query($conn, $sql)) {
     // successful
