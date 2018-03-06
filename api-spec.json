@@ -54,10 +54,10 @@
         }
       }
     },
-    "/getInterests.php": {
+    "/getAbout.php": {
       "get": {
-        "operationId": "GET_getInterests-php",
-        "summary": "GetInterests",
+        "operationId": "GET_getAbout-php",
+        "summary": "GetAbout",
         "parameters": [
           {
             "name": "ID",
@@ -69,165 +69,7 @@
           "200": {
             "description": "",
             "schema": {
-              "type": "object",
-              "properties": {
-                "Art": {
-                  "type": [
-                    "boolean",
-                    "string"
-                  ]
-                },
-                "Beauty": {
-                  "type": [
-                    "boolean",
-                    "string"
-                  ]
-                },
-                "BoardGames": {
-                  "type": [
-                    "boolean",
-                    "string"
-                  ]
-                },
-                "Books": {
-                  "type": [
-                    "boolean",
-                    "string"
-                  ]
-                },
-                "Business": {
-                  "type": [
-                    "boolean",
-                    "string"
-                  ]
-                },
-                "Cooking": {
-                  "type": [
-                    "boolean",
-                    "string"
-                  ]
-                },
-                "Dancing": {
-                  "type": [
-                    "boolean",
-                    "string"
-                  ]
-                },
-                "Fashion": {
-                  "type": [
-                    "boolean",
-                    "string"
-                  ]
-                },
-                "Outdoors": {
-                  "type": [
-                    "boolean",
-                    "string"
-                  ]
-                },
-                "HomeRepair": {
-                  "type": [
-                    "boolean",
-                    "string"
-                  ]
-                },
-                "Hiking": {
-                  "type": [
-                    "boolean",
-                    "string"
-                  ]
-                },
-                "LiveEvents": {
-                  "type": [
-                    "boolean",
-                    "string"
-                  ]
-                },
-                "MartialArts": {
-                  "type": [
-                    "boolean",
-                    "string"
-                  ]
-                },
-                "Mediation": {
-                  "type": [
-                    "boolean",
-                    "string"
-                  ]
-                },
-                "Movies": {
-                  "type": [
-                    "boolean",
-                    "string"
-                  ]
-                },
-                "NightLife": {
-                  "type": [
-                    "boolean",
-                    "string"
-                  ]
-                },
-                "Performing": {
-                  "type": [
-                    "boolean",
-                    "string"
-                  ]
-                },
-                "Photography": {
-                  "type": [
-                    "boolean",
-                    "string"
-                  ]
-                },
-                "Sports": {
-                  "type": [
-                    "boolean",
-                    "string"
-                  ]
-                },
-                "Technology": {
-                  "type": [
-                    "boolean",
-                    "string"
-                  ]
-                },
-                "Traveling": {
-                  "type": [
-                    "boolean",
-                    "string"
-                  ]
-                },
-                "VideoGames": {
-                  "type": [
-                    "boolean",
-                    "string"
-                  ]
-                },
-                "WorkingOut": {
-                  "type": [
-                    "boolean",
-                    "string"
-                  ]
-                },
-                "Writing": {
-                  "type": [
-                    "boolean",
-                    "string"
-                  ]
-                },
-                "Yoga": {
-                  "type": [
-                    "boolean",
-                    "string"
-                  ]
-                },
-                "Music": {
-                  "type": [
-                    "boolean",
-                    "string"
-                  ]
-                }
-              }
+              "type": "string"
             }
           },
           "500": {
@@ -1512,6 +1354,33 @@
         }
       }
     },
+    "/getDrink.php": {
+      "get": {
+        "operationId": "GET_getDrink-php",
+        "summary": "GetDrink",
+        "parameters": [
+          {
+            "name": "ID",
+            "in": "query",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "500": {
+            "description": "",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        }
+      }
+    },
     "/kidsPref.php": {
       "get": {
         "operationId": "GET_kidsPref-php",
@@ -1566,6 +1435,194 @@
             "schema": {
               "type": "integer",
               "description": "Error saving data."
+            }
+          }
+        }
+      }
+    },
+    "/appearance.php": {
+      "get": {
+        "operationId": "GET_appearance-php",
+        "summary": "Appearance",
+        "parameters": [
+          {
+            "name": "Build",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "HeightFeet",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "HeightInches",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Hair",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Eyes",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Ethnicity",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ID",
+            "in": "query",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Appearance data updated successfully."
+            }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Invalid user data provided."
+            }
+          },
+          "500": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Error saving data."
+            }
+          }
+        }
+      }
+    },
+    "/getInterests.php": {
+      "get": {
+        "operationId": "GET_getInterests-php",
+        "summary": "GetInterests",
+        "parameters": [
+          {
+            "name": "ID",
+            "in": "query",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "Art": {
+                  "type": "boolean"
+                },
+                "Beauty": {
+                  "type": "boolean"
+                },
+                "BoardGames": {
+                  "type": "boolean"
+                },
+                "Books": {
+                  "type": "boolean"
+                },
+                "Business": {
+                  "type": "boolean"
+                },
+                "Cooking": {
+                  "type": "boolean"
+                },
+                "Dancing": {
+                  "type": "boolean"
+                },
+                "Fashion": {
+                  "type": "boolean"
+                },
+                "Outdoors": {
+                  "type": "boolean"
+                },
+                "HomeRepair": {
+                  "type": "boolean"
+                },
+                "Hiking": {
+                  "type": "boolean"
+                },
+                "LiveEvents": {
+                  "type": "boolean"
+                },
+                "MartialArts": {
+                  "type": "boolean"
+                },
+                "Mediation": {
+                  "type": "boolean"
+                },
+                "Movies": {
+                  "type": "boolean"
+                },
+                "NightLife": {
+                  "type": "boolean"
+                },
+                "Performing": {
+                  "type": "boolean"
+                },
+                "Photography": {
+                  "type": "boolean"
+                },
+                "Sports": {
+                  "type": "boolean"
+                },
+                "Technology": {
+                  "type": "boolean"
+                },
+                "Traveling": {
+                  "type": "boolean"
+                },
+                "VideoGames": {
+                  "type": "boolean"
+                },
+                "WorkingOut": {
+                  "type": "boolean"
+                },
+                "Writing": {
+                  "type": "boolean"
+                },
+                "Yoga": {
+                  "type": "boolean"
+                },
+                "Music": {
+                  "type": "boolean"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Unable to retrieve data."
             }
           }
         }
@@ -1654,28 +1711,50 @@
         }
       }
     },
-    "/getDrink.php": {
+    "/social.php": {
       "get": {
-        "operationId": "GET_getDrink-php",
-        "summary": "GetDrink",
+        "operationId": "GET_social-php",
+        "summary": "Social",
         "parameters": [
           {
             "name": "ID",
             "in": "query",
+            "required": true,
             "type": "integer"
+          },
+          {
+            "name": "Religion",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Politics",
+            "in": "query",
+            "required": true,
+            "type": "string"
           }
         ],
         "responses": {
           "200": {
             "description": "",
             "schema": {
-              "type": "string"
+              "type": "string",
+              "description": "Successful."
+            }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Client error."
             }
           },
           "500": {
             "description": "",
             "schema": {
-              "type": "integer"
+              "type": "integer",
+              "description": "Error saving data."
             }
           }
         }
@@ -1831,135 +1910,6 @@
             "description": "",
             "schema": {
               "type": "integer"
-            }
-          }
-        }
-      }
-    },
-    "/social.php": {
-      "get": {
-        "operationId": "GET_social-php",
-        "summary": "Social",
-        "parameters": [
-          {
-            "name": "ID",
-            "in": "query",
-            "required": true,
-            "type": "integer"
-          },
-          {
-            "name": "Religion",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "Politics",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "type": "string",
-              "description": "Successful."
-            }
-          },
-          "400": {
-            "description": "",
-            "schema": {
-              "type": "integer",
-              "description": "Client error."
-            }
-          },
-          "500": {
-            "description": "",
-            "schema": {
-              "type": "integer",
-              "description": "Error saving data."
-            }
-          }
-        }
-      }
-    },
-    "/appearance.php": {
-      "get": {
-        "operationId": "GET_appearance-php",
-        "summary": "Appearance",
-        "parameters": [
-          {
-            "name": "Build",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "HeightFeet",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "HeightInches",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "Hair",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "Eyes",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "Ethnicity",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "ID",
-            "in": "query",
-            "required": false,
-            "type": "integer"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "integer"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "type": "integer",
-              "description": "Appearance data updated successfully."
-            }
-          },
-          "400": {
-            "description": "",
-            "schema": {
-              "type": "integer",
-              "description": "Invalid user data provided."
-            }
-          },
-          "500": {
-            "description": "",
-            "schema": {
-              "type": "integer",
-              "description": "Error saving data."
             }
           }
         }

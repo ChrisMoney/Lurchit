@@ -14,7 +14,6 @@ $id = $_GET['ID'];
 $about = $_GET['About'];
 
 $sql = "Update Members Set About = '$about' WHERE ID = $id ";
-$result = mysqli_query($conn, $sql);
 
 if (mysqli_query($conn, $sql)) {
     echo http_response_code(200);
