@@ -15,7 +15,7 @@ $male = $_GET['Male'];
 $female = $_GET['Female'];
 $noGenderPref = $_GET['NoGenderPref'];
 
-$sql = "Update MemberPref Set Male = '$male', Female = '$female', NoGenderPref = '$noGenderPref' WHERE Member_ID = $id ";
+$sql = "Update MemberPref Set Male = '$male', Female = '$female', NoGender = '$noGenderPref' WHERE Member_ID = $id ";
 
 if (mysqli_query($conn, $sql)) {
     // successful

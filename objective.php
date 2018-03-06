@@ -15,13 +15,7 @@ $dating = $_GET['Dating'];
 $friends = $_GET['Friends'];
 $networking = $_GET['Networking'];
 
-if ($dating == "false" && $friends == "false" && $networking == "false") {
-    // client data error
-    echo http_response_code(400);
-    exit;
-}
-
-$sql = "Update Members Set Dating = '$dating', Friends = '$friends', Networking = '$networking' WHERE ID = $id ";
+$sql = "Update Members Set Dating = '$dating', Friends = '$friends', Networking = '$networking'  WHERE ID = $id ";
 
 if (mysqli_query($conn, $sql)) {
     // successful

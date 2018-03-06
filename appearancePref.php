@@ -23,7 +23,7 @@ $maxHeightFeet = $_GET['MaxHeightFeet'];
 $maxHeightInches = $_GET['MaxHeightInches'];
 $noAppearancePref = $_GET['NoAppearancePref'];
 
-$sql = "Update MemberPref Set Slim = '$slim', Average = '$average', Athletic = '$athletic', Plump = '$plump', Heavy = '$heavy', Overweight = '$overweight', MinHeightFeet = '$minHeightFeet', MinHeightInches = '$minHeightInches', MaxHeightFeet = '$maxHeightFeet', MaxHeightInches = '$maxHeightInches', NoAppearancePref = '$noAppearancePref' WHERE Member_ID = $id ";
+$sql = "Update MemberPref Set Slim = '$slim', Average= '$average', Athletic= '$athletic', Plump = '$plump', Heavy = '$heavy', Overweight = '$overweight', MinHeightFeet = '$minHeightFeet', MinHeightInches = '$minHeightInches', MaxHeightFeet = '$maxHeightFeet', MaxHeightInches = '$maxHeightInches', NoAppearancePref = '$noAppearancePref' WHERE Member_ID = $id ";
 
 if (mysqli_query($conn, $sql)) {
     // successful

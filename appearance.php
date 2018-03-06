@@ -18,7 +18,6 @@ $eyes = $_GET['Eyes'];
 $ethnicity = $_GET['Ethnicity'];
 $id = $_GET['ID'];
 
-if (strlen($build) <= 0 || $heightFeet <= 0 || $heightInches <= 0 || strlen($hair) <= 0 || strlen($eyes) <= 0 || strlen($ethnicity) <= 0) {
     $sql = "Update Members Set Build = '$build', HeightFeet = '$heightFeet', HeightInches = '$heightInches', Hair = '$hair', Eyes = '$eyes', Ethnicity = '$ethnicity'
     WHERE ID = $id";
 
@@ -29,9 +28,4 @@ if (strlen($build) <= 0 || $heightFeet <= 0 || $heightInches <= 0 || strlen($hai
         // error saving data
         return http_response_code(500);
     }
-}
-else {
-    // invalid values from client
-    return http_response_code(400);
-}
 
