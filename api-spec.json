@@ -17,47 +17,10 @@
     "application/json"
   ],
   "paths": {
-    "/about.php": {
+    "/getHeightFeet.php": {
       "get": {
-        "operationId": "GET_about-php",
-        "summary": "About",
-        "parameters": [
-          {
-            "name": "ID",
-            "in": "query",
-            "type": "integer"
-          },
-          {
-            "name": "About",
-            "in": "query",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": ""
-          },
-          "400": {
-            "description": "",
-            "schema": {
-              "type": "integer",
-              "description": "Client error."
-            }
-          },
-          "500": {
-            "description": "",
-            "schema": {
-              "type": "integer",
-              "description": "Server error."
-            }
-          }
-        }
-      }
-    },
-    "/getAbout.php": {
-      "get": {
-        "operationId": "GET_getAbout-php",
-        "summary": "GetAbout",
+        "operationId": "GET_getHeightFeet-php",
+        "summary": "GetHeightFeet",
         "parameters": [
           {
             "name": "ID",
@@ -76,16 +39,55 @@
             "description": "",
             "schema": {
               "type": "integer",
-              "description": "Unable to retrieve data."
+              "description": "There was an error retrieving data."
             }
           }
         }
       }
     },
-    "/getBuild.php": {
+    "/updateAccountSettings.php": {
       "get": {
-        "operationId": "GET_getBuild-php",
-        "summary": "GetBuild",
+        "operationId": "GET_updateAccountSettings-php",
+        "summary": "UpdateAccountSettings",
+        "parameters": [
+          {
+            "name": "ID",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "Email",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Password",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Update Successful!"
+            }
+          },
+          "500": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Update Failed!"
+            }
+          }
+        }
+      }
+    },
+    "/getHeightInches.php": {
+      "get": {
+        "operationId": "GET_getHeightInches-php",
+        "summary": "GetHeightInches",
         "parameters": [
           {
             "name": "ID",
@@ -151,10 +153,10 @@
         }
       }
     },
-    "/getHeightFeet.php": {
+    "/getHair.php": {
       "get": {
-        "operationId": "GET_getHeightFeet-php",
-        "summary": "GetHeightFeet",
+        "operationId": "GET_getHair-php",
+        "summary": "GetHair",
         "parameters": [
           {
             "name": "ID",
@@ -234,10 +236,10 @@
         }
       }
     },
-    "/getHeightInches.php": {
+    "/getEthnicity.php": {
       "get": {
-        "operationId": "GET_getHeightInches-php",
-        "summary": "GetHeightInches",
+        "operationId": "GET_getEthnicity-php",
+        "summary": "GetEthnicity",
         "parameters": [
           {
             "name": "ID",
@@ -304,10 +306,10 @@
         }
       }
     },
-    "/getHair.php": {
+    "/getEyes.php": {
       "get": {
-        "operationId": "GET_getHair-php",
-        "summary": "GetHair",
+        "operationId": "GET_getEyes-php",
+        "summary": "GetEyes",
         "parameters": [
           {
             "name": "ID",
@@ -381,10 +383,10 @@
         }
       }
     },
-    "/getEthnicity.php": {
+    "/getName.php": {
       "get": {
-        "operationId": "GET_getEthnicity-php",
-        "summary": "GetEthnicity",
+        "operationId": "GET_getName-php",
+        "summary": "GetNames",
         "parameters": [
           {
             "name": "ID",
@@ -399,11 +401,10 @@
               "type": "string"
             }
           },
-          "500": {
+          "400": {
             "description": "",
             "schema": {
-              "type": "integer",
-              "description": "There was an error retrieving data."
+              "type": "integer"
             }
           }
         }
@@ -458,10 +459,10 @@
         }
       }
     },
-    "/getEyes.php": {
+    "/getEducation.php": {
       "get": {
-        "operationId": "GET_getEyes-php",
-        "summary": "GetEyes",
+        "operationId": "GET_getEducation-php",
+        "summary": "GetEducation",
         "parameters": [
           {
             "name": "ID",
@@ -480,7 +481,7 @@
             "description": "",
             "schema": {
               "type": "integer",
-              "description": "There was an error retrieving data."
+              "description": "Error retrieving data."
             }
           }
         }
@@ -652,10 +653,10 @@
         }
       }
     },
-    "/getName.php": {
+    "/getGender.php": {
       "get": {
-        "operationId": "GET_getName-php",
-        "summary": "GetNames",
+        "operationId": "GET_getGender-php",
+        "summary": "GetGender",
         "parameters": [
           {
             "name": "ID",
@@ -670,10 +671,11 @@
               "type": "string"
             }
           },
-          "400": {
+          "500": {
             "description": "",
             "schema": {
-              "type": "integer"
+              "type": "integer",
+              "description": "There was an error retrieving data."
             }
           }
         }
@@ -765,10 +767,10 @@
         }
       }
     },
-    "/getEducation.php": {
+    "/getHasKids.php": {
       "get": {
-        "operationId": "GET_getEducation-php",
-        "summary": "GetEducation",
+        "operationId": "GET_getHasKids-php",
+        "summary": "GetHasKids",
         "parameters": [
           {
             "name": "ID",
@@ -786,8 +788,7 @@
           "500": {
             "description": "",
             "schema": {
-              "type": "integer",
-              "description": "Error retrieving data."
+              "type": "integer"
             }
           }
         }
@@ -843,10 +844,10 @@
         }
       }
     },
-    "/getGender.php": {
+    "/getWantsKids.php": {
       "get": {
-        "operationId": "GET_getGender-php",
-        "summary": "GetGender",
+        "operationId": "GET_getWantsKids-php",
+        "summary": "GetWantsKids",
         "parameters": [
           {
             "name": "ID",
@@ -864,8 +865,7 @@
           "500": {
             "description": "",
             "schema": {
-              "type": "integer",
-              "description": "There was an error retrieving data."
+              "type": "integer"
             }
           }
         }
@@ -900,10 +900,10 @@
         }
       }
     },
-    "/getHasKids.php": {
+    "/getReligion.php": {
       "get": {
-        "operationId": "GET_getHasKids-php",
-        "summary": "GetHasKids",
+        "operationId": "GET_getReligion-php",
+        "summary": "GetReligion",
         "parameters": [
           {
             "name": "ID",
@@ -1006,10 +1006,74 @@
         }
       }
     },
-    "/getWantsKids.php": {
+    "/getPolitics.php": {
       "get": {
-        "operationId": "GET_getWantsKids-php",
-        "summary": "GetWantsKids",
+        "operationId": "GET_getPolitics-php",
+        "summary": "GetPolitics",
+        "parameters": [
+          {
+            "name": "ID",
+            "in": "query",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "500": {
+            "description": "",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        }
+      }
+    },
+    "/about.php": {
+      "get": {
+        "operationId": "GET_about-php",
+        "summary": "About",
+        "parameters": [
+          {
+            "name": "ID",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "About",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Client error."
+            }
+          },
+          "500": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Server error."
+            }
+          }
+        }
+      }
+    },
+    "/getSmoke.php": {
+      "get": {
+        "operationId": "GET_getSmoke-php",
+        "summary": "GetSmoke",
         "parameters": [
           {
             "name": "ID",
@@ -1108,10 +1172,10 @@
         }
       }
     },
-    "/getReligion.php": {
+    "/getDrink.php": {
       "get": {
-        "operationId": "GET_getReligion-php",
-        "summary": "GetReligion",
+        "operationId": "GET_getDrink-php",
+        "summary": "GetDrink",
         "parameters": [
           {
             "name": "ID",
@@ -1178,10 +1242,10 @@
         }
       }
     },
-    "/getPolitics.php": {
+    "/getDating.php": {
       "get": {
-        "operationId": "GET_getPolitics-php",
-        "summary": "GetPolitics",
+        "operationId": "GET_getDating-php",
+        "summary": "GetDating",
         "parameters": [
           {
             "name": "ID",
@@ -1193,13 +1257,14 @@
           "200": {
             "description": "",
             "schema": {
-              "type": "string"
+              "type": "boolean"
             }
           },
           "500": {
             "description": "",
             "schema": {
-              "type": "integer"
+              "type": "integer",
+              "description": "Failed to retrieve data."
             }
           }
         }
@@ -1261,10 +1326,10 @@
         }
       }
     },
-    "/getSmoke.php": {
+    "/getFriends.php": {
       "get": {
-        "operationId": "GET_getSmoke-php",
-        "summary": "GetSmoke",
+        "operationId": "GET_getFriends-php",
+        "summary": "GetFriends",
         "parameters": [
           {
             "name": "ID",
@@ -1276,7 +1341,7 @@
           "200": {
             "description": "",
             "schema": {
-              "type": "string"
+              "type": "boolean"
             }
           },
           "500": {
@@ -1354,10 +1419,10 @@
         }
       }
     },
-    "/getDrink.php": {
+    "/getNetworking.php": {
       "get": {
-        "operationId": "GET_getDrink-php",
-        "summary": "GetDrink",
+        "operationId": "GET_getNetworking-php",
+        "summary": "GetNetworking",
         "parameters": [
           {
             "name": "ID",
@@ -1369,13 +1434,14 @@
           "200": {
             "description": "",
             "schema": {
-              "type": "string"
+              "type": "boolean"
             }
           },
           "500": {
             "description": "",
             "schema": {
-              "type": "integer"
+              "type": "integer",
+              "description": "There was an error saving data."
             }
           }
         }
@@ -1440,81 +1506,111 @@
         }
       }
     },
-    "/appearance.php": {
+    "/getBuild.php": {
       "get": {
-        "operationId": "GET_appearance-php",
-        "summary": "Appearance",
+        "operationId": "GET_getBuild-php",
+        "summary": "GetBuild",
         "parameters": [
-          {
-            "name": "Build",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "HeightFeet",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "HeightInches",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "Hair",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "Eyes",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "Ethnicity",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          },
           {
             "name": "ID",
             "in": "query",
-            "required": false,
             "type": "integer"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "integer"
-            }
           }
         ],
         "responses": {
           "200": {
             "description": "",
             "schema": {
-              "type": "integer",
-              "description": "Appearance data updated successfully."
-            }
-          },
-          "400": {
-            "description": "",
-            "schema": {
-              "type": "integer",
-              "description": "Invalid user data provided."
+              "type": "string"
             }
           },
           "500": {
             "description": "",
             "schema": {
               "type": "integer",
-              "description": "Error saving data."
+              "description": "There was an error retrieving data."
+            }
+          }
+        }
+      }
+    },
+    "/getAccountSettings.php": {
+      "get": {
+        "operationId": "GET_getAccountSettings-php",
+        "summary": "GetAccountSettings",
+        "parameters": [
+          {
+            "name": "ID",
+            "in": "query",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "Email": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/createInviteMessage.php": {
+      "get": {
+        "operationId": "GET_createInviteMessage-php",
+        "summary": "CreateInviteMessage",
+        "parameters": [
+          {
+            "name": "ID",
+            "in": "query",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "500": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Could not get invite message."
+            }
+          }
+        }
+      }
+    },
+    "/getAbout.php": {
+      "get": {
+        "operationId": "GET_getAbout-php",
+        "summary": "GetAbout",
+        "parameters": [
+          {
+            "name": "ID",
+            "in": "query",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "500": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Unable to retrieve data."
             }
           }
         }
@@ -1628,126 +1724,74 @@
         }
       }
     },
-    "/getNetworking.php": {
+    "/appearance.php": {
       "get": {
-        "operationId": "GET_getNetworking-php",
-        "summary": "GetNetworking",
+        "operationId": "GET_appearance-php",
+        "summary": "Appearance",
         "parameters": [
+          {
+            "name": "Build",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "HeightFeet",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "HeightInches",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Hair",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Eyes",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Ethnicity",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
           {
             "name": "ID",
             "in": "query",
+            "required": false,
             "type": "integer"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "type": "boolean"
-            }
           },
-          "500": {
-            "description": "",
-            "schema": {
-              "type": "integer",
-              "description": "There was an error saving data."
-            }
-          }
-        }
-      }
-    },
-    "/getFriends.php": {
-      "get": {
-        "operationId": "GET_getFriends-php",
-        "summary": "GetFriends",
-        "parameters": [
           {
-            "name": "ID",
-            "in": "query",
-            "type": "integer"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          "500": {
-            "description": "",
+            "name": "body",
+            "in": "body",
             "schema": {
               "type": "integer"
             }
           }
-        }
-      }
-    },
-    "/getDating.php": {
-      "get": {
-        "operationId": "GET_getDating-php",
-        "summary": "GetDating",
-        "parameters": [
-          {
-            "name": "ID",
-            "in": "query",
-            "type": "integer"
-          }
         ],
         "responses": {
           "200": {
-            "description": "",
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          "500": {
             "description": "",
             "schema": {
               "type": "integer",
-              "description": "Failed to retrieve data."
-            }
-          }
-        }
-      }
-    },
-    "/social.php": {
-      "get": {
-        "operationId": "GET_social-php",
-        "summary": "Social",
-        "parameters": [
-          {
-            "name": "ID",
-            "in": "query",
-            "required": true,
-            "type": "integer"
-          },
-          {
-            "name": "Religion",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "Politics",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "type": "string",
-              "description": "Successful."
+              "description": "Appearance data updated successfully."
             }
           },
           "400": {
             "description": "",
             "schema": {
               "type": "integer",
-              "description": "Client error."
+              "description": "Invalid user data provided."
             }
           },
           "500": {
@@ -1910,6 +1954,55 @@
             "description": "",
             "schema": {
               "type": "integer"
+            }
+          }
+        }
+      }
+    },
+    "/social.php": {
+      "get": {
+        "operationId": "GET_social-php",
+        "summary": "Social",
+        "parameters": [
+          {
+            "name": "ID",
+            "in": "query",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "Religion",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Politics",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "string",
+              "description": "Successful."
+            }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Client error."
+            }
+          },
+          "500": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "Error saving data."
             }
           }
         }
