@@ -12,7 +12,7 @@ require 'helpers.php';
 
 $id = $_GET['ID'];
 
-$sql = "SELECT Media FROM Media WHERE Member_ID = $id and IsProfileMedia = 1 ";
+$sql = "SELECT Media FROM ProfileMedia WHERE Member_ID = $id";
 
 $result = mysqli_query($sql) or die(mysqli_error());
 
@@ -21,8 +21,8 @@ if (mysqli_num_rows($result) > 0) {
     $row = mysqli_fetch_assoc($result);
     $profileMedia = $row['Media'];
     $mediaUrl = "http://api.flickpitch.com/media/$profileMedia";
-    echo json_encode($mediaUrl);
+    echo $mediaUrl;
 }
 else {
-    echo http_response_code(400);
+    echo 400;
 }
