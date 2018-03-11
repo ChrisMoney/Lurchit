@@ -49,7 +49,9 @@ if (strlen($firstName) > 0 && strlen($lastName) > 0 && strlen($username) > 0 && 
       $sql = "Insert Into Members (FirstName, LastName, Username, Email, Password, SignupDate)
                         Values ('$firstName', '$lastName', '$username', '$email', '$password', NOW())";
 
+
       if (mysqli_query($conn, $sql)) {
+
           // send email
           $subject = "Thank you for signing up to Flickpitch. Start building rapport in real time with the type of people you want to date and network with using photos and videos.";
           $toEmail = $email;
@@ -74,7 +76,8 @@ if (strlen($firstName) > 0 && strlen($lastName) > 0 && strlen($username) > 0 && 
 
          $id = mysqli_insert_id($conn);
          $id = intval($id);
-         echo json_encode($id);
+
+         echo $id;
       }
       else {
          // insert login failed

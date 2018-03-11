@@ -6,6 +6,10 @@
  * Time: 3:26 PM
  */
 
+header("Content-Type: application/json;charset=utf-8");
+require 'connect.php';
+require 'helpers.php';
+
 $id = $_GET['ID'];
 
 $sql = "SELECT FirstName, LastName FROM Members WHERE ID = $id";
