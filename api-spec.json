@@ -45,10 +45,10 @@
         }
       }
     },
-    "/getFlickPageImage4.php": {
+    "/getAllMedia.php": {
       "get": {
-        "operationId": "GET_getFlickPageImage4-php",
-        "summary": "GetFlickPageImage4",
+        "operationId": "GET_getAllMedia-php",
+        "summary": "GetAllMedia",
         "parameters": [
           {
             "name": "ID",
@@ -60,21 +60,22 @@
           "200": {
             "description": "",
             "schema": {
-              "type": "string"
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "MediaName": {
+                    "type": "string"
+                  }
+                }
+              }
             }
           },
           "400": {
             "description": "",
             "schema": {
               "type": "integer",
-              "description": "No record returned."
-            }
-          },
-          "500": {
-            "description": "",
-            "schema": {
-              "type": "integer",
-              "description": "There was an error retrieving data."
+              "description": "No media found."
             }
           }
         }
@@ -1728,6 +1729,46 @@
         }
       }
     },
+    "/uploadProfileMedia.php": {
+      "post": {
+        "operationId": "POST_uploadProfileMedia-php",
+        "summary": "UploadProfileMedia",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "ID": {
+                  "type": "integer"
+                },
+                "Media": {
+                  "type": "string"
+                },
+                "MediaType": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          "500": {
+            "description": "",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        }
+      }
+    },
     "/appearance.php": {
       "get": {
         "operationId": "GET_appearance-php",
@@ -1803,6 +1844,84 @@
             "schema": {
               "type": "integer",
               "description": "Error saving data."
+            }
+          }
+        }
+      }
+    },
+    "/agePref.php": {
+      "get": {
+        "operationId": "GET_agePref-php",
+        "summary": "AgePref",
+        "parameters": [
+          {
+            "name": "ID",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "AgeMin",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "AgeMax",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          "500": {
+            "description": "",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        }
+      }
+    },
+    "/getFlickPageImage4.php": {
+      "get": {
+        "operationId": "GET_getFlickPageImage4-php",
+        "summary": "GetFlickPageImage4",
+        "parameters": [
+          {
+            "name": "ID",
+            "in": "query",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "No record returned."
+            }
+          },
+          "500": {
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "description": "There was an error retrieving data."
             }
           }
         }
@@ -1913,41 +2032,30 @@
         }
       }
     },
-    "/uploadProfileMedia.php": {
-      "post": {
-        "operationId": "POST_uploadProfileMedia-php",
-        "summary": "UploadProfileMedia",
+    "/getProfileMedia.php": {
+      "get": {
+        "operationId": "GET_getProfileMedia-php",
+        "summary": "GetProfileMedia",
         "parameters": [
           {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "ID": {
-                  "type": "integer"
-                },
-                "Media": {
-                  "type": "string"
-                },
-                "MediaType": {
-                  "type": "string"
-                }
-              }
-            }
+            "name": "ID",
+            "in": "query",
+            "type": "integer"
           }
         ],
         "responses": {
           "200": {
             "description": "",
             "schema": {
-              "type": "integer"
+              "type": "string",
+              "description": "Successful."
             }
           },
-          "500": {
+          "400": {
             "description": "",
             "schema": {
-              "type": "integer"
+              "type": "integer",
+              "description": "No media found."
             }
           }
         }
@@ -2062,78 +2170,6 @@
             "schema": {
               "type": "integer",
               "description": "Server error."
-            }
-          }
-        }
-      }
-    },
-    "/getProfileMedia.php": {
-      "get": {
-        "operationId": "GET_getProfileMedia-php",
-        "summary": "GetProfileMedia",
-        "parameters": [
-          {
-            "name": "ID",
-            "in": "query",
-            "type": "integer"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "type": "string",
-              "description": "Successful."
-            }
-          },
-          "400": {
-            "description": "",
-            "schema": {
-              "type": "integer",
-              "description": "No media found."
-            }
-          }
-        }
-      }
-    },
-    "/agePref.php": {
-      "get": {
-        "operationId": "GET_agePref-php",
-        "summary": "AgePref",
-        "parameters": [
-          {
-            "name": "ID",
-            "in": "query",
-            "type": "integer"
-          },
-          {
-            "name": "AgeMin",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "AgeMax",
-            "in": "query",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "schema": {
-              "type": "integer"
-            }
-          },
-          "400": {
-            "description": "",
-            "schema": {
-              "type": "integer"
-            }
-          },
-          "500": {
-            "description": "",
-            "schema": {
-              "type": "integer"
             }
           }
         }

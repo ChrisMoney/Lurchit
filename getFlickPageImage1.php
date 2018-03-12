@@ -22,9 +22,8 @@ if (mysqli_num_rows($result) > 0) {
 
     echo $mediaUrl;
 }
-else if (mysqli_num_rows($result) == 0) {
-    echo 400;
-}
 else {
-    echo 500;
+    $mediaUrl = "http://api.flickpitch.com/images/noimage.png";
+
+    echo $mediaUrl;
 }
