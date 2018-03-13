@@ -2,13 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="246b9446-cb1d-4fa6-9d2d-8ad5a64b0916" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/getAllMedia.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/deleteMedia.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/updateMediaDesc.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api-spec.json" afterPath="$PROJECT_DIR$/api-spec.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/getFlickPageImage1.php" afterPath="$PROJECT_DIR$/getFlickPageImage1.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/getFlickPageImage2.php" afterPath="$PROJECT_DIR$/getFlickPageImage2.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/getFlickPageImage3.php" afterPath="$PROJECT_DIR$/getFlickPageImage3.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/getFlickPageImage4.php" afterPath="$PROJECT_DIR$/getFlickPageImage4.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/getAllMedia.php" afterPath="$PROJECT_DIR$/getAllMedia.php" />
     </list>
     <ignored path="htdocs.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -20,11 +19,9 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="htdocs" />
   </component>
@@ -33,9 +30,23 @@
       <file leaf-file-name="api-spec.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api-spec.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-20.23077">
-              <caret line="2179" column="1" selection-start-line="2179" selection-start-column="1" selection-end-line="2179" selection-end-column="1" />
+            <state relative-caret-position="530">
+              <caret line="2266" column="1" lean-forward="false" selection-start-line="2266" selection-start-column="1" selection-end-line="2266" selection-end-column="1" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="deleteMedia.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/deleteMedia.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="14" column="52" lean-forward="false" selection-start-line="14" selection-start-column="52" selection-end-line="14" selection-end-column="52" />
+              <folding>
+                <marker date="1520904234000" expanded="true" signature="235:271" ph="DELETE FROM " />
+                <marker date="1520904234000" expanded="true" signature="235:272" ph="DELETE FROM " />
+                <marker date="1520904234000" expanded="true" signature="246:271" ph="SELECT Media... ProfileMedia" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -43,12 +54,12 @@
       <file leaf-file-name="getProfileMedia.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/getProfileMedia.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.8846154">
-              <caret line="14" column="64" selection-start-line="14" selection-start-column="64" selection-end-line="14" selection-end-column="64" />
+            <state relative-caret-position="51">
+              <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="12" selection-end-column="18" />
               <folding>
-                <marker date="1520723686000" expanded="true" signature="223:275" placeholder="SELECT Media... FROM" />
-                <marker date="1520723686000" expanded="true" signature="223:276" placeholder="SELECT Media... FROM" />
-                <marker date="1520723686000" expanded="true" signature="223:279" placeholder="SELECT Media... ProfileMedia" />
+                <marker date="1520723686000" expanded="true" signature="223:275" ph="..." />
+                <marker date="1520723686000" expanded="true" signature="223:276" ph="..." />
+                <marker date="1520723686000" expanded="true" signature="223:279" ph="..." />
               </folding>
             </state>
           </provider>
@@ -57,11 +68,11 @@
       <file leaf-file-name="getFlickPageImage1.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/getFlickPageImage1.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.153846">
-              <caret line="19" column="39" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
+            <state relative-caret-position="238">
+              <caret line="19" column="39" lean-forward="false" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
               <folding>
-                <marker date="1520740601000" expanded="true" signature="224:296" placeholder="SELECT * FRO... MediaLibrary" />
-                <marker date="1520740601000" expanded="true" signature="224:299" placeholder="SELECT * FRO... MediaLibrary" />
+                <marker date="1520740601000" expanded="true" signature="224:296" ph="..." />
+                <marker date="1520740601000" expanded="true" signature="224:299" ph="..." />
               </folding>
             </state>
           </provider>
@@ -70,11 +81,25 @@
       <file leaf-file-name="getAllMedia.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/getAllMedia.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5251397">
-              <caret line="20" column="63" selection-start-line="20" selection-start-column="63" selection-end-line="20" selection-end-column="63" />
+            <state relative-caret-position="354">
+              <caret line="26" column="80" lean-forward="false" selection-start-line="26" selection-start-column="80" selection-end-line="26" selection-end-column="80" />
               <folding>
                 <element signature="e#6#91#0#PHP" expanded="true" />
-                <marker date="1520827425000" expanded="true" signature="224:297" placeholder="SELECT Media... MediaLibrary" />
+                <marker date="1520953078000" expanded="true" signature="224:289" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="updateMediaDesc.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/updateMediaDesc.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+              <folding>
+                <marker date="1520911395000" expanded="true" signature="286:341" ph="Update Media... " />
+                <marker date="1520911395000" expanded="true" signature="286:353" ph="Update Media... " />
+                <marker date="1520911395000" expanded="true" signature="286:354" ph="Update Media... " />
               </folding>
             </state>
           </provider>
@@ -83,11 +108,11 @@
       <file leaf-file-name="getInterests.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/getInterests.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-21.576923">
-              <caret line="49" column="46" selection-start-line="49" selection-start-column="46" selection-end-line="49" selection-end-column="46" />
+            <state relative-caret-position="748">
+              <caret line="49" column="46" lean-forward="false" selection-start-line="49" selection-start-column="46" selection-end-line="49" selection-end-column="46" />
               <folding>
                 <element signature="e#6#90#0#PHP" expanded="true" />
-                <marker date="1520364419000" expanded="true" signature="223:510" placeholder="Select Art, Members" />
+                <marker date="1520364419000" expanded="true" signature="223:510" ph="..." />
               </folding>
             </state>
           </provider>
@@ -101,8 +126,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/habits.php" />
-        <option value="$PROJECT_DIR$/social.php" />
         <option value="$PROJECT_DIR$/interests.php" />
         <option value="$PROJECT_DIR$/uploadMedia.php" />
         <option value="$PROJECT_DIR$/appearance.php" />
@@ -150,35 +173,28 @@
         <option value="$PROJECT_DIR$/getFlickPageImage3.php" />
         <option value="$PROJECT_DIR$/getFlickPageImage4.php" />
         <option value="$PROJECT_DIR$/getFlickPageImage1.php" />
+        <option value="$PROJECT_DIR$/deleteMedia.php" />
         <option value="$PROJECT_DIR$/api-spec.json" />
+        <option value="$PROJECT_DIR$/updateMediaDesc.php" />
         <option value="$PROJECT_DIR$/getAllMedia.php" />
       </list>
     </option>
   </component>
-  <component name="JsBuildToolGruntFileManager" detection-done="true" />
-  <component name="JsBuildToolPackageJson" detection-done="true" />
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="PhpServers">
     <servers />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="41" />
-    <option name="y" value="24" />
+    <option name="x" value="33" />
+    <option name="y" value="89" />
     <option name="width" value="1141" />
     <option name="height" value="709" />
-  </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
-    <OptionsSetting value="true" id="Add" />
-    <OptionsSetting value="true" id="Remove" />
-    <OptionsSetting value="true" id="Checkout" />
-    <OptionsSetting value="true" id="Update" />
-    <OptionsSetting value="true" id="Status" />
-    <OptionsSetting value="true" id="Edit" />
-    <ConfirmationsSetting value="0" id="Add" />
-    <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -195,28 +211,19 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="htdocs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="htdocs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="htdocs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
+          <expand>
+            <path>
+              <item name="htdocs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="htdocs" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+          </expand>
+          <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -224,12 +231,31 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
-    <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.intentionPowerPack" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
     <property name="last_opened_file_path" value="$USER_HOME$/Dropbox/ConnectCommunity/htdocs/email.php" />
   </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
   <component name="RunManager">
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+    </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
       <method />
     </configuration>
@@ -244,14 +270,6 @@
     <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
       <method />
     </configuration>
-    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
-      <node-options />
-      <gulpfile />
-      <tasks />
-      <arguments />
-      <envs />
-      <method />
-    </configuration>
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
       <command value="run-script" />
       <scripts />
@@ -259,7 +277,9 @@
       <method />
     </configuration>
   </component>
-  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -268,32 +288,42 @@
       <changelist id="246b9446-cb1d-4fa6-9d2d-8ad5a64b0916" name="Default" comment="" />
       <created>1514563948533</created>
       <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
       <updated>1514563948533</updated>
+      <workItem from="1520830342816" duration="2018000" />
+      <workItem from="1520867439809" duration="2028000" />
+      <workItem from="1520883229540" duration="3538000" />
     </task>
     <servers />
   </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="7584000" />
+  </component>
   <component name="ToolWindowManager">
-    <frame x="41" y="24" width="1141" height="709" extended-state="0" />
+    <frame x="33" y="89" width="1141" height="709" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15775636" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32899022" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32899022" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -311,486 +341,390 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/gender.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.119642854">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kids.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.32988358">
-          <caret line="20" column="1" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Dropbox/ConnectCommunity/htdocs/city.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.3675079">
-          <caret line="157" column="40" selection-start-line="157" selection-start-column="40" selection-end-line="157" selection-end-column="40" />
+        <state relative-caret-position="0">
+          <caret line="157" column="40" lean-forward="false" selection-start-line="157" selection-start-column="40" selection-end-line="157" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/appearancePref.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.076923">
-          <caret line="25" column="275" selection-start-line="25" selection-start-column="275" selection-end-line="25" selection-end-column="275" />
+        <state relative-caret-position="0">
+          <caret line="25" column="275" lean-forward="false" selection-start-line="25" selection-start-column="275" selection-end-line="25" selection-end-column="275" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/educationPref.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.807693">
-          <caret line="20" column="173" selection-start-line="20" selection-start-column="173" selection-end-line="20" selection-end-column="173" />
+        <state relative-caret-position="0">
+          <caret line="20" column="173" lean-forward="false" selection-start-line="20" selection-start-column="173" selection-end-line="20" selection-end-column="173" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/genderPref.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.32176656">
-          <caret line="17" column="74" selection-start-line="17" selection-start-column="74" selection-end-line="17" selection-end-column="74" />
+        <state relative-caret-position="0">
+          <caret line="17" column="74" lean-forward="false" selection-start-line="17" selection-start-column="74" selection-end-line="17" selection-end-column="74" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/appearance.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.670347">
-          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/habitPref.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8312303">
-          <caret line="31" column="1" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
+        <state relative-caret-position="0">
+          <caret line="31" column="1" lean-forward="false" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/social.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45535713">
-          <caret line="20" column="1" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
+        <state relative-caret-position="0">
+          <caret line="20" column="1" lean-forward="false" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/socialPref.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.68214285">
-          <caret line="28" column="3" selection-start-line="28" selection-start-column="3" selection-end-line="28" selection-end-column="33" />
+        <state relative-caret-position="0">
+          <caret line="28" column="3" lean-forward="false" selection-start-line="28" selection-start-column="3" selection-end-line="28" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/Dropbox/ConnectCommunity/htdocs/email.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.84821427">
-          <caret line="407" column="16" selection-start-line="407" selection-start-column="16" selection-end-line="407" selection-end-column="16" />
+        <state relative-caret-position="0">
+          <caret line="407" column="16" lean-forward="false" selection-start-line="407" selection-start-column="16" selection-end-line="407" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/login.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.59821427">
-          <caret line="29" column="16" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="16" />
-          <folding>
-            <marker date="1519875690000" expanded="true" signature="385:457" placeholder="SELECT ID FR... Members" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="29" column="16" lean-forward="false" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/getHeightInches.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.57678574">
-          <caret line="24" column="41" selection-start-line="24" selection-start-column="41" selection-end-line="24" selection-end-column="41" />
-          <folding>
-            <marker date="1520270532000" expanded="true" signature="224:268" placeholder="SELECT Heigh... Members" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="24" column="41" lean-forward="false" selection-start-line="24" selection-start-column="41" selection-end-line="24" selection-end-column="41" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/getEducation.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7285714">
-          <caret line="24" column="41" selection-start-line="24" selection-start-column="41" selection-end-line="24" selection-end-column="41" />
-          <folding>
-            <element signature="e#6#91#0#PHP" expanded="false" />
-            <marker date="1520270482000" expanded="true" signature="224:265" placeholder="SELECT Educa... Members" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="24" column="41" lean-forward="false" selection-start-line="24" selection-start-column="41" selection-end-line="24" selection-end-column="41" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/getHair.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.57678574">
-          <caret line="24" column="41" selection-start-line="24" selection-start-column="41" selection-end-line="24" selection-end-column="41" />
-          <folding>
-            <marker date="1520270519000" expanded="true" signature="224:260" placeholder="SELECT Hair Members" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="24" column="41" lean-forward="false" selection-start-line="24" selection-start-column="41" selection-end-line="24" selection-end-column="41" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/getEthnicity.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.57678574">
-          <caret line="24" column="41" selection-start-line="24" selection-start-column="41" selection-end-line="24" selection-end-column="41" />
-          <folding>
-            <marker date="1520270498000" expanded="true" signature="224:265" placeholder="SELECT Ethni... Members" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="24" column="41" lean-forward="false" selection-start-line="24" selection-start-column="41" selection-end-line="24" selection-end-column="41" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/getHeightFeet.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.57678574">
-          <caret line="24" column="41" selection-start-line="24" selection-start-column="41" selection-end-line="24" selection-end-column="41" />
-          <folding>
-            <marker date="1520270526000" expanded="true" signature="224:266" placeholder="SELECT Heigh... Members" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="24" column="41" lean-forward="false" selection-start-line="24" selection-start-column="41" selection-end-line="24" selection-end-column="41" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/getEyes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.9615384">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="25" selection-end-column="1" />
-          <folding>
-            <marker date="1520270510000" expanded="true" signature="224:260" placeholder="SELECT Eyes Members" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="25" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/getGender.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.57678574">
-          <caret line="19" column="26" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
-          <folding>
-            <element signature="e#6#91#0#PHP" expanded="false" />
-            <marker date="1520271644000" expanded="true" signature="224:262" placeholder="SELECT Gende... Members" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="19" column="26" lean-forward="false" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/getWantsKids.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.57678574">
-          <caret line="19" column="28" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
-          <folding>
-            <element signature="e#6#91#0#PHP" expanded="false" />
-            <marker date="1520271945000" expanded="true" signature="224:265" placeholder="SELECT Wants... Members" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="19" column="28" lean-forward="false" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/getHasKids.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24285714">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="25" selection-end-column="1" />
-          <folding>
-            <element signature="e#6#91#0#PHP" expanded="false" />
-            <marker date="1520271894000" expanded="true" signature="224:263" placeholder="SELECT HasKi... Members" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="25" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/getReligion.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.060714286">
-          <caret line="2" column="23" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
-          <folding>
-            <marker date="1520272970000" expanded="true" signature="224:264" placeholder="SELECT Relig... Members" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="2" column="23" lean-forward="false" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/getPolitics.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.230769">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="25" selection-end-column="1" />
-          <folding>
-            <element signature="e#6#91#0#PHP" expanded="false" />
-            <marker date="1520273047000" expanded="true" signature="224:264" placeholder="SELECT Polit... Members" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="25" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/getSmoke.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.730769">
-          <caret line="21" column="15" selection-start-line="21" selection-start-column="15" selection-end-line="21" selection-end-column="15" />
-          <folding>
-            <element signature="e#6#90#0#PHP" expanded="false" />
-            <marker date="1520282216000" expanded="true" signature="223:260" placeholder="SELECT Smoke... Members" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="21" column="15" lean-forward="false" selection-start-line="21" selection-start-column="15" selection-end-line="21" selection-end-column="15" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/getDrink.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.65384614">
-          <caret line="1" column="3" selection-start-line="1" selection-start-column="3" selection-end-line="1" selection-end-column="3" />
-          <folding>
-            <element signature="e#6#90#0#PHP" expanded="false" />
-            <marker date="1520282374000" expanded="true" signature="223:260" placeholder="SELECT Drink... Members" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="1" column="3" lean-forward="false" selection-start-line="1" selection-start-column="3" selection-end-line="1" selection-end-column="3" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/objective.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.30357143">
-          <caret line="15" column="34" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
+        <state relative-caret-position="0">
+          <caret line="15" column="34" lean-forward="false" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/getNetworking.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.57678574">
-          <caret line="19" column="10" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
-          <folding>
-            <element signature="e#6#91#0#PHP" expanded="false" />
-            <marker date="1520311460000" expanded="true" signature="224:266" placeholder="SELECT Netwo... Members" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="19" column="10" lean-forward="false" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/interests.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.076923">
-          <caret line="41" column="15" selection-start-line="41" selection-start-column="15" selection-end-line="41" selection-end-column="660" />
+        <state relative-caret-position="0">
+          <caret line="41" column="15" lean-forward="false" selection-start-line="41" selection-start-column="15" selection-end-line="41" selection-end-column="660" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/getFriends.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.115385">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="25" selection-end-column="1" />
-          <folding>
-            <element signature="e#6#90#0#PHP" expanded="false" />
-            <marker date="1520355393000" expanded="true" signature="223:262" placeholder="SELECT Frien... Members" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="25" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/getDating.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.5384617">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="36" />
-          <folding>
-            <marker date="1520286046000" expanded="true" signature="223:261" placeholder="SELECT Datin... Members" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="36" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/getAbout.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7589286">
-          <caret line="25" column="1" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
-          <folding>
-            <element signature="e#6#90#0#PHP" expanded="false" />
-            <marker date="1520370588000" expanded="true" signature="223:260" placeholder="Select About... Members" />
-            <marker date="1520370588000" expanded="true" signature="240:260" placeholder="Update Membe... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/about.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45535713">
-          <caret line="15" column="61" selection-start-line="15" selection-start-column="61" selection-end-line="15" selection-end-column="61" />
+        <state relative-caret-position="0">
+          <caret line="25" column="1" lean-forward="false" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/getName.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.54642856">
-          <caret line="18" column="1" selection-start-line="6" selection-start-column="0" selection-end-line="18" selection-end-column="1" />
-          <folding>
-            <marker date="1520270537000" expanded="true" signature="138:189" placeholder="SELECT First... Members" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="18" column="1" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="18" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/getBuild.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.09107143">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="25" selection-end-column="1" />
-          <folding>
-            <marker date="1519880859000" expanded="true" signature="224:261" placeholder="SELECT Build... Members" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="25" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/updateAccountSettings.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6357143">
-          <caret line="26" column="36" selection-start-line="26" selection-start-column="36" selection-end-line="26" selection-end-column="36" />
+        <state relative-caret-position="0">
+          <caret line="26" column="36" lean-forward="false" selection-start-line="26" selection-start-column="36" selection-end-line="26" selection-end-column="36" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/getAccountSettings.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24285714">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="24" selection-end-column="1" />
+        <state relative-caret-position="0">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="24" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/habits.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.60714287">
-          <caret line="25" column="17" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
+        <state relative-caret-position="0">
+          <caret line="25" column="17" lean-forward="false" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/kidsPref.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/agePref.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.425">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="26" selection-end-column="1" />
+        <state relative-caret-position="0">
+          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="26" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/createInviteMessage.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6982143">
-          <caret line="23" column="16" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
-          <folding>
-            <element signature="e#6#90#0#PHP" expanded="true" />
-            <marker date="1520644955000" expanded="true" signature="223:274" placeholder="SELECT First... Members" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="23" column="16" lean-forward="false" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/birthdate.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.09107143">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="10" selection-end-column="22" />
-          <folding>
-            <marker date="1517189166000" expanded="true" signature="506:561" placeholder="Update Membe... " />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="10" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/signup.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48392856">
-          <caret line="78" column="0" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
-          <folding>
-            <element signature="e#6#90#0#PHP" expanded="false" />
-            <marker date="1520538828000" expanded="true" signature="596:641" placeholder="Select ID Fr... Members" />
-            <marker date="1520538828000" expanded="true" signature="819:870" placeholder="Select ID Fr... Members" />
-            <marker date="1520538828000" expanded="true" signature="1190:1372" placeholder="Insert Into Members... " />
-            <marker date="1520538828000" expanded="true" signature="1729:1811" placeholder="..." />
-            <marker date="1520538828000" expanded="true" signature="1826:1857" placeholder="..." />
-            <marker date="1520538828000" expanded="true" signature="1986:2008" placeholder="..." />
-            <marker date="1520538828000" expanded="true" signature="2065:2119" placeholder="..." />
-            <marker date="1520538828000" expanded="true" signature="2192:2224" placeholder="..." />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="78" column="0" lean-forward="false" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/getFlickPageImage2.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.692307">
-          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="28" selection-end-column="1" />
-          <folding>
-            <element signature="e#6#91#0#PHP" expanded="true" />
-            <marker date="1520740578000" expanded="true" signature="224:299" placeholder="SELECT * FRO... MediaLibrary" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="28" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/getFlickPageImage3.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.307692">
-          <caret line="28" column="1" selection-start-line="28" selection-start-column="1" selection-end-line="28" selection-end-column="1" />
-          <folding>
-            <element signature="e#6#91#0#PHP" expanded="true" />
-            <marker date="1520740589000" expanded="true" signature="224:299" placeholder="SELECT * FRO... MediaLibrary" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="28" column="1" lean-forward="false" selection-start-line="28" selection-start-column="1" selection-end-line="28" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/getFlickPageImage4.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.307692">
-          <caret line="28" column="1" selection-start-line="28" selection-start-column="1" selection-end-line="28" selection-end-column="1" />
-          <folding>
-            <element signature="e#6#91#0#PHP" expanded="true" />
-            <marker date="1520740595000" expanded="true" signature="224:299" placeholder="SELECT * FRO... MediaLibrary" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="28" column="1" lean-forward="false" selection-start-line="28" selection-start-column="1" selection-end-line="28" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/uploadProfileMedia.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.10892857">
-          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding>
-            <marker date="1520719386000" expanded="true" signature="500:551" placeholder="SELECT ID FR... ProfileMedia" />
-            <marker date="1520719386000" expanded="true" signature="658:750" placeholder="Update Profi... " />
-            <marker date="1520719386000" expanded="true" signature="682:726" placeholder="Insert INTO ProfileMedia... " />
-            <marker date="1520719386000" expanded="true" signature="830:935" placeholder="Insert INTO MediaLibrary... " />
-            <marker date="1520719386000" expanded="true" signature="1169:1263" placeholder="Insert INTO ProfileMedia... " />
-            <marker date="1520719386000" expanded="true" signature="1343:1448" placeholder="Insert INTO MediaLibrary... " />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/getInterests.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-21.576923">
-          <caret line="49" column="46" selection-start-line="49" selection-start-column="46" selection-end-line="49" selection-end-column="46" />
+        <state relative-caret-position="748">
+          <caret line="49" column="46" lean-forward="false" selection-start-line="49" selection-start-column="46" selection-end-line="49" selection-end-column="46" />
           <folding>
             <element signature="e#6#90#0#PHP" expanded="true" />
-            <marker date="1520364419000" expanded="true" signature="223:510" placeholder="Select Art, Members" />
+            <marker date="1520364419000" expanded="true" signature="223:510" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/getFlickPageImage1.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.153846">
-          <caret line="19" column="39" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
+        <state relative-caret-position="238">
+          <caret line="19" column="39" lean-forward="false" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
           <folding>
-            <marker date="1520740601000" expanded="true" signature="224:296" placeholder="SELECT * FRO... MediaLibrary" />
-            <marker date="1520740601000" expanded="true" signature="224:299" placeholder="SELECT * FRO... MediaLibrary" />
+            <marker date="1520740601000" expanded="true" signature="224:296" ph="..." />
+            <marker date="1520740601000" expanded="true" signature="224:299" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/api-spec.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-20.23077">
-          <caret line="2179" column="1" selection-start-line="2179" selection-start-column="1" selection-end-line="2179" selection-end-column="1" />
+        <state relative-caret-position="530">
+          <caret line="2266" column="1" lean-forward="false" selection-start-line="2266" selection-start-column="1" selection-end-line="2266" selection-end-column="1" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deleteMedia.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="14" column="52" lean-forward="false" selection-start-line="14" selection-start-column="52" selection-end-line="14" selection-end-column="52" />
+          <folding>
+            <marker date="1520904234000" expanded="true" signature="235:271" ph="DELETE FROM " />
+            <marker date="1520904234000" expanded="true" signature="235:272" ph="DELETE FROM " />
+            <marker date="1520904234000" expanded="true" signature="246:271" ph="SELECT Media... ProfileMedia" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/about.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="15" column="61" lean-forward="false" selection-start-line="15" selection-start-column="61" selection-end-line="15" selection-end-column="61" />
+          <folding>
+            <marker date="1520369587000" expanded="true" signature="250:297" ph="Update Membe... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/updateMediaDesc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding>
+            <marker date="1520911395000" expanded="true" signature="286:341" ph="Update Media... " />
+            <marker date="1520911395000" expanded="true" signature="286:353" ph="Update Media... " />
+            <marker date="1520911395000" expanded="true" signature="286:354" ph="Update Media... " />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/getProfileMedia.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.8846154">
-          <caret line="14" column="64" selection-start-line="14" selection-start-column="64" selection-end-line="14" selection-end-column="64" />
+        <state relative-caret-position="51">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="12" selection-end-column="18" />
           <folding>
-            <marker date="1520723686000" expanded="true" signature="223:275" placeholder="SELECT Media... FROM" />
-            <marker date="1520723686000" expanded="true" signature="223:276" placeholder="SELECT Media... FROM" />
-            <marker date="1520723686000" expanded="true" signature="223:279" placeholder="SELECT Media... ProfileMedia" />
+            <marker date="1520723686000" expanded="true" signature="223:275" ph="..." />
+            <marker date="1520723686000" expanded="true" signature="223:276" ph="..." />
+            <marker date="1520723686000" expanded="true" signature="223:279" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/getAllMedia.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5251397">
-          <caret line="20" column="63" selection-start-line="20" selection-start-column="63" selection-end-line="20" selection-end-column="63" />
+        <state relative-caret-position="354">
+          <caret line="26" column="80" lean-forward="false" selection-start-line="26" selection-start-column="80" selection-end-line="26" selection-end-column="80" />
           <folding>
             <element signature="e#6#91#0#PHP" expanded="true" />
-            <marker date="1520827425000" expanded="true" signature="224:297" placeholder="SELECT Media... MediaLibrary" />
+            <marker date="1520953078000" expanded="true" signature="224:289" ph="..." />
           </folding>
         </state>
       </provider>
