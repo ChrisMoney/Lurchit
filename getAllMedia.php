@@ -21,13 +21,13 @@ if (mysqli_query($conn, $sql)) {
         while ($media = mysqli_fetch_assoc($result)) {
             $mediaName = $media['MediaName'];
             $media['MediaName'] = 'http://api.flickpitch.com/media/'.$mediaName;
-            $media['ID'] = settype($media['ID'], string);
+            /*$media['ID'] = settype($media['ID'], string);
             $media['Member_ID'] = settype($media['Member_ID'], string);
             $media['UploadDate'] = settype($media['UploadDate'], string);
-            $media['Description'] = settype($media['MediaDescription'], string);
+            $media['Description'] = settype($media['MediaDescription'], string);*/
             $myArray[] = $media;
         }
-        echo json_encode($myArray);
+        echo json_encode($myArray, JSON_NUMERIC_CHECK);
 
     }
     else {

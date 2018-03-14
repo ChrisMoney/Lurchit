@@ -12,7 +12,7 @@ require 'helpers.php';
 
 $mediaID = $_GET['MediaID'];
 
-$sql = "DELETE FROM MediaLibrary WHERE ID = $mediaID";
+$sql = "DELETE FROM MediaLibrary WHERE ID = '$mediaID' ";
 
 if (mysqli_query($conn, $sql)) {
     echo http_response_code(200);
