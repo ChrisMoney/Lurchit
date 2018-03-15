@@ -12,7 +12,7 @@ require 'helpers.php';
 
 $id = $_GET['ID'];
 
-$sql = "SELECT * FROM MediaLibrary WHERE Member_ID = $id Order by ID DESC LIMIT 2,3";
+$sql = "SELECT * FROM MediaLibrary WHERE Member_ID = $id Order by ID DESC LIMIT 2,1";
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
