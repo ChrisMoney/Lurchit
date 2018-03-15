@@ -10,7 +10,6 @@ header("Content-Type: application/json;charset=utf-8");
 require 'connect.php';
 require 'helpers.php';
 
-$id = $_GET['ID'];
 $mediaDesc = $_GET['MediaDesc'];
 $mediaID = $_GET['MediaID'];
 
