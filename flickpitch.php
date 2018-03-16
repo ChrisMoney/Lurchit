@@ -15,15 +15,16 @@ $data = json_decode(file_get_contents('php://input'), true);
 $memberID = $data['MemberID'];
 $pitch = $data['Pitch'];
 $flick = $data['Flick'];
+$flickName = uniqid().'img.png';
 $source = $data['Source'];
 $long = $data['Long'];
-$late = $data['Lat'];
+$lat = $data['Lat'];
 
 // save media to file server
-file_put_contents('../api/flicks/'.$mediaName, base64_decode($flick));
+file_put_contents('../api/flicks/'.$flickName, base64_decode($flick));
 
-$sql = "INSERT INTO Flickpitch (Member_ID, Flick, Pitch, Source, Longitude, Latitude, PitchDate) VALUES"; 
-$sql .= "('$memberID', '$flick', '$pitch', '$source', '$long', '$lat', NOW())";
+$sql = "INSERT INTO PitchDeck (Member_ID, Flick, Pitch, Source, Longitude, Latitude, PitchDate) VALUES"; 
+$sql .= "('$memberID', '$flickName', '$pitch', '$source', '$long', '$lat', NOW())";
 
 if (mysqli_query($conn, $sql)) {
     return http_response_code(200);
