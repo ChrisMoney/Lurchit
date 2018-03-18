@@ -44,13 +44,13 @@
                 }
             }
         },
-        "/getAllMedia.php": {
+        "/getFlickPitchCount.php": {
             "get": {
-                "operationId": "GET_getAllMedia-php",
-                "summary": "GetAllMedia",
+                "operationId": "GET_getFlickPitchCount-php",
+                "summary": "GetFlickPitchCount",
                 "parameters": [
                     {
-                        "name": "ID",
+                        "name": "Count",
                         "in": "query",
                         "type": "integer"
                     }
@@ -59,41 +59,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "array",
-                            "items": {
-                                "type": "object",
-                                "properties": {
-                                    "MediaName": {
-                                        "type": "string"
-                                    },
-                                    "ID": {
-                                        "type": "integer"
-                                    },
-                                    "Member_ID": {
-                                        "type": "integer"
-                                    },
-                                    "UploadDate": {
-                                        "type": "string"
-                                    },
-                                    "MediaDescription": {
-                                        "type": "string"
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "No media found."
-                        }
-                    },
-                    "500": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "There was an error returning data."
+                            "type": "integer"
                         }
                     }
                 }
@@ -1697,6 +1663,61 @@
                 }
             }
         },
+        "/getAllMedia.php": {
+            "get": {
+                "operationId": "GET_getAllMedia-php",
+                "summary": "GetAllMedia",
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "MediaName": {
+                                        "type": "string"
+                                    },
+                                    "ID": {
+                                        "type": "integer"
+                                    },
+                                    "Member_ID": {
+                                        "type": "integer"
+                                    },
+                                    "UploadDate": {
+                                        "type": "string"
+                                    },
+                                    "MediaDescription": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "No media found."
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "There was an error returning data."
+                        }
+                    }
+                }
+            }
+        },
         "/getProfileMedia.php": {
             "get": {
                 "operationId": "GET_getProfileMedia-php",
@@ -1995,6 +2016,57 @@
                 }
             }
         },
+        "/flickpitch.php": {
+            "post": {
+                "operationId": "POST_flickpitch-php",
+                "summary": "Flickpitch",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "MemberID": {
+                                    "type": "integer"
+                                },
+                                "Flick": {
+                                    "type": "string"
+                                },
+                                "Pitch": {
+                                    "type": "string"
+                                },
+                                "Source": {
+                                    "type": "string"
+                                },
+                                "Long": {
+                                    "type": "number"
+                                },
+                                "Lat": {
+                                    "type": "number"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Successful"
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Insert Failed!"
+                        }
+                    }
+                }
+            }
+        },
         "/educationPref.php": {
             "get": {
                 "operationId": "GET_educationPref-php",
@@ -2056,6 +2128,92 @@
                         "schema": {
                             "type": "integer",
                             "description": "Server error."
+                        }
+                    }
+                }
+            }
+        },
+        "/getHeightFeet.php": {
+            "get": {
+                "operationId": "GET_getHeightFeet-php",
+                "summary": "GetHeightFeet",
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "There was an error retrieving data."
+                        }
+                    }
+                }
+            }
+        },
+        "/getFlickPitches.php": {
+            "get": {
+                "operationId": "GET_getFlickPitches-php",
+                "summary": "GetFlickPitches",
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "Username": {
+                                        "type": "string"
+                                    },
+                                    "Flick": {
+                                        "type": "string"
+                                    },
+                                    "Pitch": {
+                                        "type": "string"
+                                    },
+                                    "ProfilePic": {
+                                        "type": "string"
+                                    },
+                                    "PitchDate": {
+                                        "type": "string"
+                                    },
+                                    "Source": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "No media found."
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "There was an error returning data."
                         }
                     }
                 }
@@ -2156,52 +2314,29 @@
                 }
             }
         },
-        "/flickpitch.php": {
-            "post": {
-                "operationId": "POST_flickpitch-php",
-                "summary": "Flickpitch",
+        "/getEyes.php": {
+            "get": {
+                "operationId": "GET_getEyes-php",
+                "summary": "GetEyes",
                 "parameters": [
                     {
-                        "name": "body",
-                        "in": "body",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "MemberID": {
-                                    "type": "integer"
-                                },
-                                "Flick": {
-                                    "type": "string"
-                                },
-                                "Pitch": {
-                                    "type": "string"
-                                },
-                                "Source": {
-                                    "type": "string"
-                                },
-                                "Long": {
-                                    "type": "number"
-                                },
-                                "Lat": {
-                                    "type": "number"
-                                }
-                            }
-                        }
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "integer",
-                            "description": "Successful"
+                            "type": "string"
                         }
                     },
                     "500": {
                         "description": "",
                         "schema": {
                             "type": "integer",
-                            "description": "Insert Failed!"
+                            "description": "There was an error retrieving data."
                         }
                     }
                 }
@@ -2412,62 +2547,6 @@
                         "schema": {
                             "type": "integer",
                             "description": "Sign up failed."
-                        }
-                    }
-                }
-            }
-        },
-        "/getEyes.php": {
-            "get": {
-                "operationId": "GET_getEyes-php",
-                "summary": "GetEyes",
-                "parameters": [
-                    {
-                        "name": "ID",
-                        "in": "query",
-                        "type": "integer"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "500": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "There was an error retrieving data."
-                        }
-                    }
-                }
-            }
-        },
-        "/getHeightFeet.php": {
-            "get": {
-                "operationId": "GET_getHeightFeet-php",
-                "summary": "GetHeightFeet",
-                "parameters": [
-                    {
-                        "name": "ID",
-                        "in": "query",
-                        "type": "integer"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "500": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "There was an error retrieving data."
                         }
                     }
                 }

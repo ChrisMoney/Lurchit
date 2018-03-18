@@ -10,7 +10,7 @@ header("Content-Type: application/json;charset=utf-8");
 require 'connect.php';
 require 'helpers.php';
 
-$id = $_GET['ID'];
+$count = $_GET['Count'];
 
 $sql = "SELECT * FROM MediaLibrary WHERE Member_ID = $id Order by ID DESC ";
 $result = mysqli_query($conn, $sql);
