@@ -6,8 +6,9 @@ require 'helpers.php';
 
 $id = $_GET['ID'];
 
-$sql = "SELECT m.Username as Username, pd.Flick as Flick, pd.Pitch as Pitch,
-pd.PitchDate as PitchDate, p.MediaName as ProfilePic, pd.Source as Source 
+$sql = "SELECT m.Username as Username, pd.ID as FlickPitchID, pd.Flick as Flick, pd.Pitch as Pitch,
+pd.PitchDate as PitchDate, p.MediaName as ProfilePic, pd.Source as Source,
+m.Gender
 FROM Members m, PitchDeck pd, ProfileMedia p
 WHERE m.ID = $id and p.Member_ID = $id And pd.Member_ID = $id
 Order By pd.ID DESC";
@@ -36,7 +37,7 @@ if (mysqli_query($conn, $sql)) {
             
             $myArray[] = $flickPitch;
         }
-        echo json_encode($myArray);
+        echo json_encode($myArray, JSON_NUMERIC_CHECK);
 
     }
     else {
