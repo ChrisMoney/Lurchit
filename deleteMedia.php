@@ -13,8 +13,8 @@ require 'helpers.php';
 $mediaID = $_GET['MediaID'];
 
 $sql1 = "SELECT MediaName FROM MediaLibrary WHERE ID = $mediaID ";
-$result1 = mysql_query($conn, $sql1);
-$row = mysql_fetch_assoc($result1);
+$result1 = mysqli_query($conn, $sql1);
+$row = mysqli_fetch_assoc($result1);
 $mediaName = $row['MediaName'];
 
 $sql = "DELETE FROM MediaLibrary WHERE ID = '$mediaID' ";

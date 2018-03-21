@@ -2,11 +2,11 @@
 
 header("Content-Type: application/json;charset=utf-8");
 require 'connect.php';
-require 'helpers.php';
+include_once 'helpers.php';
 
 $id = $_GET['ID'];
 
-$sql = "SELECT m.Username as Username, pd.ID as FlickPitchID, pd.Flick as Flick, pd.Pitch as Pitch,
+$sql = "SELECT m.ID as MemberID, m.Username as Username, pd.ID as FlickPitchID, pd.Flick as Flick, pd.Pitch as Pitch,
 pd.PitchDate as PitchDate, p.MediaName as ProfilePic, pd.Source as Source,
 m.Gender
 FROM Members m, PitchDeck pd, ProfileMedia p
@@ -46,24 +46,4 @@ if (mysqli_query($conn, $sql)) {
 }
 else {
     echo http_response_code(500);
-}
-
-function calculate_time_span($date){
-        $seconds  = strtotime(date('Y-m-d H:i:s')) - strtotime($date);
-
-        $day = floor($seconds / (3600*24));
-        $hours = floor(($seconds / 3600)/2);
-        $mins = floor(($seconds - ($hours*3600)) / 60);
-
-if($seconds < 3600)
-            $time = $mins." min ago";
-        else if($seconds < 86400)
-            $time = $hours." hours ago";
-        else 
-            $time = $day." day ago";
-
-
-       
-
-        return $time;
 }
