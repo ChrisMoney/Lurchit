@@ -1,11 +1,11 @@
 <?php
 
-function sendMessage($appId, $content, $tag){
+function sendMessage($appId, $content, $tag, $key){
 		$content = array(
 			"en" => 'English Message'
 			);
 		
-        $filters = array("field" => "tag", "key" => "ID", "relation" => "=", "value" => $tag);
+        $filters = array("field" => "tag", "key" => $key, "relation" => "=", "value" => $tag);
     
 		$fields = array(
       "app_id" => $appId,

@@ -22,10 +22,10 @@ And (SenderID = $receiverID Or ReceiverID = $receiverID) And (OwnerID = $receive
 $result3 = mysqli_query($conn, $sql3);
 
 if (mysqli_num_rows($result3) > 0) {
-    $receiverNew = 0;
+    $receiverFirstMessage = 0;
 }
 else {
-    $receiverNew = 1;
+    $receiverFirstMessage = 1;
 }
 
 // determine if this is the first message between users for sender
@@ -34,22 +34,22 @@ And (SenderID = $receiverID Or ReceiverID = $receiverID) And (OwnerID = $senderI
 $result4 = mysqli_query($conn, $sql4);
 
 if (mysqli_num_rows($result4) > 0) {
-    $senderNew = 0;
+    $senderFirstMessage = 0;
 }
 else {
-    $senderNew = 1;
+    $senderFirstMessage = 1;
 }
 
 
 
 // assign thread ownership for receiver
-$sql = "INSERT INTO Messages (SenderID, ReceiverID, OwnerID, Pitch, Flick, New, MessageDate) 
-Values ('$senderID', '$receiverID', '$receiverID', '$pitch', '$flickName', '$receiverNew', NOW()) ";
+$sql = "INSERT INTO Messages (SenderID, ReceiverID, OwnerID, Pitch, Flick, New, FirstMessage, MessageDate) 
+Values ('$senderID', '$receiverID', '$receiverID', '$pitch', '$flickName', '1', '$receiverFirstMessage', NOW()) ";
 
 if (mysqli_query($conn, $sql)) {
     // assign thread ownership for sender
-    $sql1 = "INSERT INTO Messages (SenderID, ReceiverID, OwnerID, Pitch, Flick, New, MessageDate) 
-Values ('$senderID', '$receiverID', '$senderID', '$pitch', '$flickName', '$senderNew', NOW()) ";
+    $sql1 = "INSERT INTO Messages (SenderID, ReceiverID, OwnerID, Pitch, Flick, New, FirstMessage, MessageDate) 
+Values ('$senderID', '$receiverID', '$senderID', '$pitch', '$flickName', '1', '$senderFirstMessage', NOW()) ";
 
 if (mysqli_query($conn, $sql1)) {
     $sql2 = "Select Username FROM Members WHERE ID = $senderID ";
@@ -60,7 +60,7 @@ if (mysqli_query($conn, $sql1)) {
     $content = "Message from $name";
     $appId = "fa4f6cac-2cac-423f-8274-7e502725aaf8";
     $tag = $receiverID;
-    sendMessage($appId, $content, $tag);
+    sendMessage($appId, $content, $tag, "message");
     echo http_response_code(200);
     }
 else {

@@ -22,7 +22,11 @@ $agnostic = $_GET['Agnostic'];
 $atheist = $_GET['Atheist'];
 $noReligiousPref = $_GET['NoReligiousPref'];
 
-$sql = "Update MemberPref Set Christian = '$christian', Muslim = '$muslim', Spiritual = '$spiritual', Agnostic = '$agnostic', Atheist = '$atheist', NoReligiousPref = '$noReligiousPref', Conservative = '$conservative', Liberal = '$liberal', Moderate = '$moderate' WHERE Member_ID = $id";
+$sql = "Update MemberPref Set 
+Christian = '$christian', Muslim = '$muslim', Spiritual = '$spiritual', Agnostic = '$agnostic', 
+Atheist = '$atheist', NoReligiousPref = '$noReligiousPref', Conservative = '$conservative', 
+Liberal = '$liberal', Moderate = '$moderate', NoPoliticalPref = '$noPoliticalPref'
+ WHERE Member_ID = $id";
 
 if (mysqli_query($conn, $sql)) {
     // successful
