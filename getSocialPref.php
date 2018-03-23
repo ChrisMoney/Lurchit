@@ -6,7 +6,7 @@ require 'helpers.php';
 
 $id = $_GET['ID'];
 
-$sql = "SELECT Christian, Muslim, Spiritual, Agnostic, Atheist, NoReligousPref,
+$sql = "SELECT Christian, Muslim, Spiritual, Agnostic, Atheist, NoReligiousPref,
 Liberal, Conservative, Moderate, NoPoliticalPref
 FROM MemberPref WHERE Member_ID = $id ";
 
