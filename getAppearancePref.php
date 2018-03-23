@@ -6,7 +6,7 @@ require 'helpers.php';
 
 $id = $_GET['ID'];
 
-$sql = "SELECT Slim, Average, Athletic, Plump, Heavy, Overweight, MinHeightFeet, MinHeightInches,
+$sql = "SELECT Slim, Average, Athletic, Plump, Heavy, Overweight, NoAppearancePref, MinHeightFeet, MinHeightInches,
 MaxHeightFeet, MaxHeightInches FROM MemberPref WHERE Member_ID = $id ";
 
 $result = mysqli_query($conn, $sql);
@@ -19,6 +19,7 @@ if (mysqli_num_rows($result) > 0) {
     $appearance['Plump'] = filter_var($appearance['Plump'], FILTER_VALIDATE_BOOLEAN);
     $appearance['Heavy'] = filter_var($appearance['Heavy'], FILTER_VALIDATE_BOOLEAN);
     $appearance['Overweight'] = filter_var($appearance['Slim'], FILTER_VALIDATE_BOOLEAN);
+    $appearance['NoAppearancePref'] = filter_var($appearance['NoAppearancePref'], FILTER_VALIDATE_BOOLEAN);
     echo json_encode($appearance);
 }
 else {

@@ -13,12 +13,19 @@ require 'helpers.php';
 $id = $_GET['ID'];
 $noKids = $_GET['HasNoKids'];
 $hasKids = $_GET['HasKids'];
-$noHasKidsPref = $_GET['HasKidsNoPref'];
+$noHasKidsPref = $_GET['NoHasKidsPref'];
 $wantsKids = $_GET['WantsKids'];
 $noWantsKids = $_GET['WantsNoKids'];
-$noWantsKidsPref = $_GET['WantsKidsNoPref'];
+$noWantsKidsPref = $_GET['NoWantsKidsPref'];
 
-$sql = "Update MemberPref Set HasNoKids = '$noKids', HasKids = '$hasKids',HasKidsNoPref = '$noKidsPref', WantsKids = '$wantsKids', WantsNoKids = '$noWantsKids', WantsKidsNoPref = '$noWantsKidsPref' WHERE Member_ID = $id";
+$sql = "Update MemberPref Set 
+HasNoKids = '$noKids', 
+HasKids = '$hasKids',
+NoHasKidsPref = '$noKidsPref', 
+WantsKids = '$wantsKids', 
+WantsNoKids = '$noWantsKids', 
+NoWantsKidsPref = '$noWantsKidsPref' 
+WHERE Member_ID = $id";
 
 if (mysqli_query($conn, $sql)) {
     // successful
