@@ -44,10 +44,10 @@
                 }
             }
         },
-        "/race.php": {
+        "/deleteMessages.php": {
             "get": {
-                "operationId": "GET_race-php",
-                "summary": "Race",
+                "operationId": "GET_deleteMessages-php",
+                "summary": "DeleteMessages",
                 "parameters": [
                     {
                         "name": "ID",
@@ -55,49 +55,9 @@
                         "type": "integer"
                     },
                     {
-                        "name": "White",
+                        "name": "OtherID",
                         "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "Black",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "Hispanic",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "Indian",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "MiddleEastern",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "NativeAmerican",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "Asian",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "RaceOther",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "RaceNoPref",
-                        "in": "query",
-                        "type": "string"
+                        "type": "integer"
                     }
                 ],
                 "responses": {
@@ -105,14 +65,14 @@
                         "description": "",
                         "schema": {
                             "type": "integer",
-                            "description": "Update Successful"
+                            "description": "Delete Successful"
                         }
                     },
                     "500": {
                         "description": "",
                         "schema": {
                             "type": "integer",
-                            "description": "Update Failed"
+                            "description": "Delete Failed"
                         }
                     }
                 }
@@ -2447,6 +2407,51 @@
                 }
             }
         },
+        "/sendMessage.php": {
+            "post": {
+                "operationId": "POST_sendMessage-php",
+                "summary": "SendMessage",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "SenderID": {
+                                    "type": "integer"
+                                },
+                                "ReceiverID": {
+                                    "type": "integer"
+                                },
+                                "Pitch": {
+                                    "type": "string"
+                                },
+                                "Flick": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Message Successful"
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Message Failed"
+                        }
+                    }
+                }
+            }
+        },
         "/about.php": {
             "get": {
                 "operationId": "GET_about-php",
@@ -2482,6 +2487,108 @@
                         "schema": {
                             "type": "integer",
                             "description": "Server error."
+                        }
+                    }
+                }
+            }
+        },
+        "/getEducation.php": {
+            "get": {
+                "operationId": "GET_getEducation-php",
+                "summary": "GetEducation",
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Error retrieving data."
+                        }
+                    }
+                }
+            }
+        },
+        "/race.php": {
+            "get": {
+                "operationId": "GET_race-php",
+                "summary": "Race",
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "White",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Black",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Hispanic",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Indian",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "MiddleEastern",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "NativeAmerican",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Asian",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "RaceOther",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "RaceNoPref",
+                        "in": "query",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Update Successful"
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Update Failed"
                         }
                     }
                 }
@@ -2670,46 +2777,28 @@
                 }
             }
         },
-        "/sendMessage.php": {
-            "post": {
-                "operationId": "POST_sendMessage-php",
-                "summary": "SendMessage",
+        "/getReligion.php": {
+            "get": {
+                "operationId": "GET_getReligion-php",
+                "summary": "GetReligion",
                 "parameters": [
                     {
-                        "name": "body",
-                        "in": "body",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "SenderID": {
-                                    "type": "integer"
-                                },
-                                "ReceiverID": {
-                                    "type": "integer"
-                                },
-                                "Pitch": {
-                                    "type": "string"
-                                },
-                                "Flick": {
-                                    "type": "string"
-                                }
-                            }
-                        }
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "integer",
-                            "description": "Message Successful"
+                            "type": "string"
                         }
                     },
                     "500": {
                         "description": "",
                         "schema": {
-                            "type": "integer",
-                            "description": "Message Failed"
+                            "type": "integer"
                         }
                     }
                 }
@@ -2816,61 +2905,6 @@
                         "schema": {
                             "type": "integer",
                             "description": "Error saving data."
-                        }
-                    }
-                }
-            }
-        },
-        "/getReligion.php": {
-            "get": {
-                "operationId": "GET_getReligion-php",
-                "summary": "GetReligion",
-                "parameters": [
-                    {
-                        "name": "ID",
-                        "in": "query",
-                        "type": "integer"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "500": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                }
-            }
-        },
-        "/getEducation.php": {
-            "get": {
-                "operationId": "GET_getEducation-php",
-                "summary": "GetEducation",
-                "parameters": [
-                    {
-                        "name": "ID",
-                        "in": "query",
-                        "type": "integer"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "500": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "Error retrieving data."
                         }
                     }
                 }
