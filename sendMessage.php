@@ -57,10 +57,12 @@ if (mysqli_query($conn, $sql1)) {
     $row = mysql_fetch_assoc($result2);
     $name = $row['Username'];
     
-    $content = "Message from $name";
     $appId = "fa4f6cac-2cac-423f-8274-7e502725aaf8";
+    $content = "Message from $name";
     $tag = $receiverID;
-    sendMessage($appId, $content, $tag, "message");
+    $key = "ID";
+    $title = "New Message";
+    sendMessage($appId, $content, $key, $tag, $title);
     echo http_response_code(200);
     }
 else {

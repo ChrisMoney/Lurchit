@@ -1,6 +1,6 @@
 <?php
 
-function sendMessage($appId, $content, $tag, $key){
+function sendMessage($appId, $content, $key, $tag, $title){
 		$content = array(
 			"en" => 'English Message'
 			);
@@ -10,7 +10,8 @@ function sendMessage($appId, $content, $tag, $key){
 		$fields = array(
       "app_id" => $appId,
       "filters" => $filters,
-      "contents" => $content
+      "contents" => $content,
+      "title" => $title
     );
 		
 		$fields = json_encode($fields);
