@@ -1,10 +1,21 @@
 <?php
 
+function getDistance($id) {
+    $conn = connection();
+    
+    $sql = "SELECT Distance FROM MemberPref WHERE Member_ID = $id ";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+    $distance = $row['Distance'];
+    return $distance;
+}
+
 function sendMessage($appId, $content, $key, $tag, $title){
-		$content = array(
+		/*$content = array(
 			"en" => 'English Message'
 			);
-		
+		*/
+        
         $filters = array("field" => "tag", "key" => $key, "relation" => "=", "value" => $tag);
     
 		$fields = array(

@@ -45,63 +45,64 @@
                 }
             }
         },
-        "/getRacePref.php": {
+        "/getPitchDeck.php": {
             "get": {
-                "operationId": "GET_getRacePref-php",
-                "summary": "GetRacePref",
+                "operationId": "GET_getPitchDeck-php",
+                "summary": "GetPitchDeck",
                 "parameters": [
                     {
                         "name": "ID",
                         "in": "query",
                         "type": "integer"
+                    },
+                    {
+                        "name": "Long",
+                        "in": "query",
+                        "type": "number"
+                    },
+                    {
+                        "name": "Lat",
+                        "in": "query",
+                        "type": "number"
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object",
-                            "properties": {
-                                "White": {
-                                    "type": "boolean"
-                                },
-                                "Black": {
-                                    "type": "boolean"
-                                },
-                                "Hispanic": {
-                                    "type": "boolean"
-                                },
-                                "MiddleEastern": {
-                                    "type": "boolean"
-                                },
-                                "Indian": {
-                                    "type": "boolean"
-                                },
-                                "NativeAmerican": {
-                                    "type": "boolean"
-                                },
-                                "Asian": {
-                                    "type": "boolean"
-                                },
-                                "RaceOther": {
-                                    "type": "boolean"
-                                },
-                                "NoRacePref": {
-                                    "type": "boolean"
+                            "type": "array",
+                            "description": "Data Retrieved.",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "MemberID": {
+                                        "type": "integer"
+                                    },
+                                    "MediaName": {
+                                        "type": "string"
+                                    },
+                                    "Username": {
+                                        "type": "string"
+                                    },
+                                    "PitchDate": {
+                                        "type": "string"
+                                    }
                                 }
-                            },
-                            "required": [
-                                "White",
-                                "Black",
-                                "Hispanic"
-                            ]
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "No data retrieved."
                         }
                     },
                     "500": {
                         "description": "",
                         "schema": {
                             "type": "integer",
-                            "description": "Failed to retrieve data."
+                            "description": "Error retrieving data."
                         }
                     }
                 }
@@ -2104,6 +2105,9 @@
                                     "Username": {
                                         "type": "string"
                                     },
+                                    "PitchDate": {
+                                        "type": "string"
+                                    },
                                     "New": {
                                         "type": "boolean"
                                     }
@@ -2879,6 +2883,59 @@
                 }
             }
         },
+        "/getKidsPref.php": {
+            "get": {
+                "operationId": "GET_getKidsPref-php",
+                "summary": "GetKidsPref",
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "HasKids": {
+                                    "type": "boolean"
+                                },
+                                "HasNoKids": {
+                                    "type": "boolean"
+                                },
+                                "NoHasKidsPref": {
+                                    "type": "boolean"
+                                },
+                                "WantsKids": {
+                                    "type": "boolean"
+                                },
+                                "WantsNoKids": {
+                                    "type": "boolean"
+                                },
+                                "NoWantsKidsPref": {
+                                    "type": "boolean"
+                                }
+                            },
+                            "required": [
+                                "HasKids",
+                                "HasNoKids",
+                                "NoHasKidsPref"
+                            ]
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Failed to retrieve data."
+                        }
+                    }
+                }
+            }
+        },
         "/getHasKids.php": {
             "get": {
                 "operationId": "GET_getHasKids-php",
@@ -2901,6 +2958,143 @@
                         "description": "",
                         "schema": {
                             "type": "integer"
+                        }
+                    }
+                }
+            }
+        },
+        "/signup.php": {
+            "get": {
+                "operationId": "GET_signup-php",
+                "summary": "Signup",
+                "parameters": [
+                    {
+                        "name": "FirstName",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "LastName",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Username",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Email",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Password",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "User signed up successfully."
+                        }
+                    },
+                    "400": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "User input bad."
+                        }
+                    },
+                    "406": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Username already exists."
+                        }
+                    },
+                    "409": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Account already exists."
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Sign up failed."
+                        }
+                    }
+                }
+            }
+        },
+        "/getRacePref.php": {
+            "get": {
+                "operationId": "GET_getRacePref-php",
+                "summary": "GetRacePref",
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "White": {
+                                    "type": "boolean"
+                                },
+                                "Black": {
+                                    "type": "boolean"
+                                },
+                                "Hispanic": {
+                                    "type": "boolean"
+                                },
+                                "MiddleEastern": {
+                                    "type": "boolean"
+                                },
+                                "Indian": {
+                                    "type": "boolean"
+                                },
+                                "NativeAmerican": {
+                                    "type": "boolean"
+                                },
+                                "Asian": {
+                                    "type": "boolean"
+                                },
+                                "RaceOther": {
+                                    "type": "boolean"
+                                },
+                                "NoRacePref": {
+                                    "type": "boolean"
+                                }
+                            },
+                            "required": [
+                                "White",
+                                "Black",
+                                "Hispanic"
+                            ]
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Failed to retrieve data."
                         }
                     }
                 }
@@ -3107,54 +3301,57 @@
                 }
             }
         },
-        "/getKidsPref.php": {
+        "/objective.php": {
             "get": {
-                "operationId": "GET_getKidsPref-php",
-                "summary": "GetKidsPref",
+                "operationId": "GET_objective-php",
+                "summary": "Objective",
                 "parameters": [
                     {
                         "name": "ID",
                         "in": "query",
                         "type": "integer"
+                    },
+                    {
+                        "name": "Dating",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Friends",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Networking",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "UseInterests",
+                        "in": "query",
+                        "type": "string"
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object",
-                            "properties": {
-                                "HasKids": {
-                                    "type": "boolean"
-                                },
-                                "HasNoKids": {
-                                    "type": "boolean"
-                                },
-                                "NoHasKidsPref": {
-                                    "type": "boolean"
-                                },
-                                "WantsKids": {
-                                    "type": "boolean"
-                                },
-                                "WantsNoKids": {
-                                    "type": "boolean"
-                                },
-                                "NoWantsKidsPref": {
-                                    "type": "boolean"
-                                }
-                            },
-                            "required": [
-                                "HasKids",
-                                "HasNoKids",
-                                "NoHasKidsPref"
-                            ]
+                            "type": "integer",
+                            "description": "Successful"
+                        }
+                    },
+                    "400": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Invalid data."
                         }
                     },
                     "500": {
                         "description": "",
                         "schema": {
                             "type": "integer",
-                            "description": "Failed to retrieve data."
+                            "description": "Server error."
                         }
                     }
                 }
@@ -3289,137 +3486,6 @@
                         "schema": {
                             "type": "integer",
                             "description": "Save failed."
-                        }
-                    }
-                }
-            }
-        },
-        "/objective.php": {
-            "get": {
-                "operationId": "GET_objective-php",
-                "summary": "Objective",
-                "parameters": [
-                    {
-                        "name": "ID",
-                        "in": "query",
-                        "type": "integer"
-                    },
-                    {
-                        "name": "Dating",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "Friends",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "Networking",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "UseInterests",
-                        "in": "query",
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "Successful"
-                        }
-                    },
-                    "400": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "Invalid data."
-                        }
-                    },
-                    "500": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "Server error."
-                        }
-                    }
-                }
-            }
-        },
-        "/signup.php": {
-            "get": {
-                "operationId": "GET_signup-php",
-                "summary": "Signup",
-                "parameters": [
-                    {
-                        "name": "FirstName",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "LastName",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "Username",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "Email",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "Password",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "User signed up successfully."
-                        }
-                    },
-                    "400": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "User input bad."
-                        }
-                    },
-                    "406": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "Username already exists."
-                        }
-                    },
-                    "409": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "Account already exists."
-                        }
-                    },
-                    "500": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "Sign up failed."
                         }
                     }
                 }

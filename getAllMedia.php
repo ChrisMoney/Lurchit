@@ -13,10 +13,9 @@ require 'helpers.php';
 $count = $_GET['Count'];
 
 $sql = "SELECT * FROM MediaLibrary WHERE Member_ID = $id Order by ID DESC ";
-$result = mysqli_query($conn, $sql);
 $myArray = array();
 
-if (mysqli_query($conn, $sql)) {
+if ($result = mysqli_query($conn, $sql)) {
     if (mysqli_num_rows($result) > 0) {
         while ($media = mysqli_fetch_assoc($result)) {
             $mediaName = $media['MediaName'];

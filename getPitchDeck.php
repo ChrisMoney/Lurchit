@@ -7,17 +7,31 @@
  */
 
 header("Content-Type: application/json;charset=utf-8");
-require 'connect.php';
+require_once 'connect.php';
 include_once 'helpers.php';
 
 $id = $_GET['ID'];
+$long = $_GET['Long'];
+$lat = $_GET['Lat'];
 
-$sql = "SELECT pm.MediaName as MediaName, m.ID as MemberID, m.Username as Username, (SELECT PitchDate FROM PitchDeck WHERE Member_ID = m.ID Limit 1) as PitchDate
-FROM Members m, ProfileMedia pm, MemberPref mp
+/*$sql1 = "SELECT Distance FROM MemberPref WHERE Member_ID = $id ";
+        $result1 = mysqli_query($conn, $sql1);
+        $row = mysqli_fetch_assoc($result1);
+        $distance = $row['Distance']; */
+$distance = getDistance($id);
+
+$sql = "SELECT pm.MediaName as MediaName, m.ID as MemberID, m.Username as Username, 
+(SELECT PitchDate FROM PitchDeck WHERE Member_ID = m.ID Limit 1) as PitchDate,
+( 3959 * acos( cos( radians($lat) ) * cos( radians( pd.Latitude ) ) 
+   * cos( radians(pd.Longitude) - radians($long)) + sin(radians($lat)) 
+   * sin( radians(pd.Latitude)))) AS Distance
+FROM Members m, ProfileMedia pm, MemberPref mp, PitchDeck pd
+
 WHERE m.ID IN (SELECT Member_ID FROM PitchDeck)
 
 And mp.Member_ID = $id 
 And pm.Member_ID = m.ID
+And pd.Member_ID = m.ID
 
 And 
 (
@@ -89,4 +103,83 @@ Or (mp.Male = (CASE m.Gender WHEN 'male' THEN 'true' ELSE 'false' END))
 Or (mp.Female = (CASE m.Gender WHEN 'female' THEN 'true' ELSE 'false' END))
 )
 
-"
+And
+(
+(CASE WHEN mp.NoEyesPref = 'true' THEN m.Eyes = 'Black' Or m.Eyes = 'Brown'
+Or m.Eyes = 'Hazel' Or m.Eyes = 'Green' Or m.Eyes = 'Blue' END)
+Or (mp.EyesBlack = (CASE m.Eyes WHEN 'Black' THEN 'true' ELSE 'false' END))
+Or (mp.EyesBrown = (CASE m.Eyes WHEN 'Brown' THEN 'true' ELSE 'false' END))
+Or (mp.EyesHazel = (CASE m.Eyes WHEN 'Hazel' THEN 'true' ELSE 'false' END))
+Or (mp.EyesGreen = (CASE m.Eyes WHEN 'Green' THEN 'true' ELSE 'false' END))
+Or (mp.EyesBlue = (CASE m.Eyes WHEN 'Blue' THEN 'true' ELSE 'false' END))
+)
+
+And
+(
+(CASE WHEN mp.NoEducationPref = 'true' THEN m.Education = 'HighSchool'
+Or m.Education = 'SomeCollege' Or m.Education = 'Bachelor' Or m.Education = 'Master'
+Or m.Education = 'Doctorate' END)
+Or (mp.HighSchool = (CASE m.Education WHEN 'HighSchool' THEN 'true' ELSE 'false' END))
+Or (mp.SomeCollege = (CASE m.Education WHEN 'SomeCollege' THEN 'true' ELSE 'false' END))
+Or (mp.Bachelor = (CASE m.Education WHEN 'Bachelor' THEN 'true' ELSE 'false' END))
+Or (mp.Master = (CASE m.Education WHEN 'Master' THEN 'true' ELSE 'false' END))
+Or (mp.Doctorate = (CASE m.Education WHEN 'Doctorate' THEN 'true' ELSE 'false' END))
+)
+
+And
+(
+(CASE WHEN mp.NoHasKidsPref = 'true' THEN m.HasKids = 'true' Or m.HasKids = 'false' END)
+Or (mp.HasKids = (CASE m.HasKids WHEN 'Yes' THEN 'true' ELSE 'false' END))
+Or (mp.HasNoKids = (CASE m.HasKids WHEN 'No' THEN 'true' ELSE 'false' END))
+)
+
+And 
+(
+(CASE WHEN mp.NoWantsKidsPref = 'true' THEN m.WantsKids = 'true' Or m.WantsKids = 'false' END)
+Or (mp.WantsKids = (CASE m.WantsKids WHEN 'Yes' THEN 'true' ELSE 'false' END))
+Or (mp.WantsNoKids = (CASE m.WantsKids WHEN 'No' THEN 'true' ELSE 'false' END))
+)
+
+And
+(
+(CASE WHEN mp.NoSmokingPref = 'true' THEN m.Smoke = 'true' Or m.Smoke = 'false' END)
+Or (mp.NoSmoking = (CASE m.Smoke WHEN 'No' THEN 'true' ELSE 'false' END))
+Or (mp.SocialSmoker = (CASE m.Smoke WHEN 'Socially' THEN 'true' ELSE 'false' END))
+Or (mp.DailySmoker = (CASE m.Smoke WHEN 'Daily' THEN 'true' ELSE 'false' END))
+)
+
+And
+(
+(CASE WHEN mp.NoDrinkingPref = 'true' THEN m.Drink = 'true' Or m.Drink = 'false' END)
+Or (mp.NoDrinking = (CASE m.Drink WHEN 'No' THEN 'true' ELSE 'false' END))
+Or (mp.SocialDrinker = (CASE m.Drink WHEN 'Socially' THEN 'true' ELSE 'false' END))
+Or (mp.DailyDrinker = (CASE m.Drink WHEN 'Daily' THEN 'true' ELSE 'false' END))
+)
+
+HAVING Distance <= $distance
+";
+
+if (mysqli_query($conn, $sql)) {
+    if (mysqli_num_rows($result) > 0) {
+    while ($pitchDeck = mysqli_fetch_assoc($result)) {
+        
+        // format profile photo
+        $mediaName = $pitchDeck['MediaName'];
+        $pitchDeck['MediaName'] = "http://api.flickpitch.com/media/$mediaName";
+        
+       // format flickpitch age text from date
+            $flickPitchDate = $pitchDeck['PitchDate'];
+            $timeSinceLastPitch = calculate_time_span($flickPitchDate);
+            $pitchDeck['PitchDate'] = $timeSinceLastPitch;
+            
+            $myArray[] = $pitchDeck;
+            }
+    echo json_encode($myArray, JSON_NUMERIC_CHECK);
+        }
+else {
+    echo http_response_code(400);
+    }
+}
+else {
+    echo http_response_code(500);
+}

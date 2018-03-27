@@ -26,7 +26,8 @@ if (mysqli_query($conn, $sql)) {
        // format flickpitch age text from date
             $messagesDate = $messages['MessageDate'];
             $timeSinceLastMessage = calculate_time_span($messageDate);
-            $messageDate['MessageDate'] = $timeSinceLastMessage;
+            $messages['MessageDate'] = $timeSinceLastMessage;
+            $messages['New'] = filter_var($messages['New'], FILTER_VALIDATE_BOOLEAN);
             $myArray[] = $messages;
             }
     echo json_encode($myArray, JSON_NUMERIC_CHECK);
