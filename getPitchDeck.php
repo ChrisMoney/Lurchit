@@ -11,8 +11,8 @@ require_once 'connect.php';
 include_once 'helpers.php';
 
 $id = $_GET['ID'];
-$long = $_GET['Long'];
-$lat = $_GET['Lat'];
+$long = $_REQUEST['Long'];
+$lat = $_REQUEST['Lat'];
 
 $distance = getDistance($id);
 
@@ -153,8 +153,15 @@ Or (mp.SocialDrinker = (CASE m.Drink WHEN 'Socially' THEN 'true' ELSE 'false' EN
 Or (mp.DailyDrinker = (CASE m.Drink WHEN 'Daily' THEN 'true' ELSE 'false' END))
 )
 
+And 
+(
+(m.Dating = (SELECT Dating FROM Members WHERE ID = $id And Dating = 'true'))
+Or (m.Friends = (SELECT Friends FROM Members WHERE ID = $id And Friends = 'true'))
+Or (m.Networking = (SELECT Networking FROM Members WHERE ID = $id And Networking = 'true'))
+)
+
 Group By MemberID
-HAVING distance < $distance
+HAVING distance <= $distance
 
 ";
 
