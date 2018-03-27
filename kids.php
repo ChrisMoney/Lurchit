@@ -20,7 +20,9 @@ if (strlen($hasKids) <= 0 || strlen($wantsKids) <= 0) {
     exit;
 }
 
-$sql = "Update Members Set HasKids = '$hasKids', WantsKids = '$wantsKids' WHERE ID = $id ";
+$sql = "Update Members Set 
+HasKids = '$hasKids', 
+WantsKids = '$wantsKids' WHERE ID = $id ";
 
 if (mysqli_query($conn, $sql)) {
     // successful

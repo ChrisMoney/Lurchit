@@ -13,15 +13,15 @@ require 'helpers.php';
 $id = $_GET['ID'];
 $noKids = $_GET['HasNoKids'];
 $hasKids = $_GET['HasKids'];
-$noHasKidsPref = $_GET['NoHasKidsPref'];
+$noHasKidsPref = $_GET['HasKidsNoPref'];
 $wantsKids = $_GET['WantsKids'];
 $noWantsKids = $_GET['WantsNoKids'];
-$noWantsKidsPref = $_GET['NoWantsKidsPref'];
+$noWantsKidsPref = $_GET['WantsKidsNoPref'];
 
 $sql = "Update MemberPref Set 
 HasNoKids = '$noKids', 
 HasKids = '$hasKids',
-NoHasKidsPref = '$noKidsPref', 
+NoHasKidsPref = '$noHasKidsPref', 
 WantsKids = '$wantsKids', 
 WantsNoKids = '$noWantsKids', 
 NoWantsKidsPref = '$noWantsKidsPref' 

@@ -20,7 +20,15 @@ $socialDrinker = $_GET['SocialDrinker'];
 $dailyDrinker = $_GET['DailyDrinker'];
 $noDrinkingPref = $_GET['NoDrinkingPref'];
 
-$sql = "Update MemberPref Set NoSmoking = '$noSmoking', SocialSmoker = '$socialSmoker', DailySmoker = '$dailySmoker', NoSmokingPref = '$noSmokingPref', SocialDrinker = '$socialDrinker', DailyDrinker = '$dailyDrinker', NoDrinkingPref = '$noDrinkingPref' WHERE Member_ID = $id ";
+$sql = "Update MemberPref Set 
+NoSmoking = '$noSmoking', 
+SocialSmoker = '$socialSmoker', 
+DailySmoker = '$dailySmoker', 
+NoSmokingPref = '$noSmokingPref', 
+NoDrinking = '$noDrinking',
+SocialDrinker = '$socialDrinker', 
+DailyDrinker = '$dailyDrinker', 
+NoDrinkingPref = '$noDrinkingPref' WHERE Member_ID = $id ";
 
 if (mysqli_query($conn, $sql)) {
     // successful

@@ -14,17 +14,14 @@ $id = $_GET['ID'];
 $long = $_GET['Long'];
 $lat = $_GET['Lat'];
 
-/*$sql1 = "SELECT Distance FROM MemberPref WHERE Member_ID = $id ";
-        $result1 = mysqli_query($conn, $sql1);
-        $row = mysqli_fetch_assoc($result1);
-        $distance = $row['Distance']; */
 $distance = getDistance($id);
 
 $sql = "SELECT pm.MediaName as MediaName, m.ID as MemberID, m.Username as Username, 
 (SELECT PitchDate FROM PitchDeck WHERE Member_ID = m.ID Limit 1) as PitchDate,
-( 3959 * acos( cos( radians($lat) ) * cos( radians( pd.Latitude ) ) 
-   * cos( radians(pd.Longitude) - radians($long)) + sin(radians($lat)) 
-   * sin( radians(pd.Latitude)))) AS Distance
+( 3959 * acos ( cos ( radians($lat) ) * cos( radians( pd.Latitude ) ) * 
+cos( radians( pd.Longitude ) - radians($long) ) + sin ( radians($lat) ) * 
+sin( radians( pd.Latitude ) ) ) ) AS `distance` 
+
 FROM Members m, ProfileMedia pm, MemberPref mp, PitchDeck pd
 
 WHERE m.ID IN (SELECT Member_ID FROM PitchDeck)
@@ -156,10 +153,12 @@ Or (mp.SocialDrinker = (CASE m.Drink WHEN 'Socially' THEN 'true' ELSE 'false' EN
 Or (mp.DailyDrinker = (CASE m.Drink WHEN 'Daily' THEN 'true' ELSE 'false' END))
 )
 
-HAVING Distance <= $distance
+Group By MemberID
+HAVING distance < $distance
+
 ";
 
-if (mysqli_query($conn, $sql)) {
+if ($result = mysqli_query($conn, $sql)) {
     if (mysqli_num_rows($result) > 0) {
     while ($pitchDeck = mysqli_fetch_assoc($result)) {
         

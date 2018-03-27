@@ -58,12 +58,12 @@
                     {
                         "name": "Long",
                         "in": "query",
-                        "type": "number"
+                        "type": "string"
                     },
                     {
                         "name": "Lat",
                         "in": "query",
-                        "type": "number"
+                        "type": "string"
                     }
                 ],
                 "responses": {
@@ -1161,6 +1161,11 @@
                     },
                     {
                         "name": "NoDrinkingPref",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "SocialSmoker",
                         "in": "query",
                         "type": "string"
                     }
