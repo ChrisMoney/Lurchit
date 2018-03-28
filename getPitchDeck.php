@@ -34,19 +34,19 @@ And
 (
 (CASE WHEN mp.NoReligiousPref = 'true' THEN m.Religion = 'Christian' or m.Religion = 'Muslim'
 Or m.Religion = 'Spiritual' Or m.Religion = 'Agnostic' Or m.Religion = 'Atheist' END)
-Or (mp.Christian = (CASE m.Religion WHEN 'Christian' THEN 'true' ELSE 'false' END))
-Or (mp.Muslim = (CASE m.Religion WHEN 'Muslim' THEN 'true' ELSE 'false' END))
-Or (mp.Spiritual = (CASE m.Religion WHEN 'Spiritual' THEN 'true' ELSE 'false' END))
-Or (mp.Agnostic = (CASE m.Religion WHEN 'Agnostic' THEN 'true' ELSE 'false' END))
-Or (mp.Atheist = (CASE m.Religion WHEN 'Atheist' THEN 'true' ELSE 'false' END))
+Or (mp.Christian = (CASE m.Religion WHEN 'Christian' THEN 'true' END))
+Or (mp.Muslim = (CASE m.Religion WHEN 'Muslim' THEN 'true' END))
+Or (mp.Spiritual = (CASE m.Religion WHEN 'Spiritual' THEN 'true' END))
+Or (mp.Agnostic = (CASE m.Religion WHEN 'Agnostic' THEN 'true' END))
+Or (mp.Atheist = (CASE m.Religion WHEN 'Atheist' THEN 'true' END))
 )
 
 And
 (
 (CASE WHEN mp.NoPoliticalPref = 'true' THEN m.Politics = 'Liberal' Or m.Politics = 'Conservative' Or m.Politics = 'Moderate' END)
-Or (mp.Liberal = (CASE m.Politics WHEN 'Liberal' THEN 'true' ELSE 'false' END))
-Or (mp.Conservative = (CASE m.Politics WHEN 'Conservative' THEN 'true' ELSE 'false' END))
-Or (mp.Moderate = (CASE m.Politics WHEN 'Moderate' THEN 'true' ELSE 'false' END))
+Or (mp.Liberal = (CASE m.Politics WHEN 'Liberal' THEN 'true' END))
+Or (mp.Conservative = (CASE m.Politics WHEN 'Conservative' THEN 'true' END))
+Or (mp.Moderate = (CASE m.Politics WHEN 'Moderate' THEN 'true' END))
 )
 
 And
@@ -59,12 +59,12 @@ And
 (CASE WHEN mp.NoAppearancePref = 'true' THEN m.Build = 'Slim' Or m.Build = 'Average' Or m.Build = 'Athletic' 
 Or m.Build = 'Plump' Or m.Build = 'Heavy' Or m.Build = 'Heavy' Or m.Build = 'Overweight' 
 And ((m.HeightFeet >= mp.MinHeightFeet And m.HeightInches >= mp.MinHeightInches) And (m.HeightFeet <= mp.MaxHeightFeet And m.HeightInches <= mp.MaxHeightInches)) END)
-Or (mp.Slim = (CASE m.Build WHEN 'Slim' THEN 'true' ELSE 'false' END))
-Or (mp.Average = (CASE m.Build WHEN 'Average' THEN 'true' ELSE 'false' END))
-Or (mp.Athletic = (CASE m.Build WHEN 'Athletic' THEN 'true' ELSE 'false' END))
-Or (mp.Plump = (CASE m.Build WHEN 'Plump' THEN 'true' ELSE 'false' END))
-Or (mp.Heavy = (CASE m.Build WHEN 'Heavy' THEN 'true' ELSE 'false' END))
-Or (mp.Overweight = (CASE m.Build WHEN 'Overweight' THEN 'true' ELSE 'false' END))
+Or (mp.Slim = (CASE m.Build WHEN 'Slim' THEN 'true' END))
+Or (mp.Average = (CASE m.Build WHEN 'Average' THEN 'true' END))
+Or (mp.Athletic = (CASE m.Build WHEN 'Athletic' THEN 'true' END))
+Or (mp.Plump = (CASE m.Build WHEN 'Plump' THEN 'true' END))
+Or (mp.Heavy = (CASE m.Build WHEN 'Heavy' THEN 'true' END))
+Or (mp.Overweight = (CASE m.Build WHEN 'Overweight' THEN 'true' END))
 And ((m.HeightFeet >= mp.MinHeightFeet And m.HeightInches >= mp.MinHeightInches) And (m.HeightFeet <= mp.MaxHeightFeet And m.HeightInches <= mp.MaxHeightInches))
 )  
 
@@ -73,42 +73,42 @@ And
 (CASE WHEN mp.NoRacePref = 'true' THEN m.Ethnicity = 'White' Or m.Ethnicity = 'Black'
 Or m.Ethnicity = 'Hispanic' Or m.Ethnicity = 'MiddleEastern' Or m.Ethnicity = 'Indian'
 Or m.Ethnicity = 'NativeAmerican' END)
-Or (mp.White = (CASE m.Ethnicity WHEN 'White' THEN 'true' ELSE 'false' END))
-Or (mp.Black = (CASE m.Ethnicity WHEN 'Black' THEN 'true' ELSE 'false' END))
-Or (mp.Hispanic = (CASE m.Ethnicity WHEN 'Hispanic' THEN 'true' ELSE 'false' END))
-Or (mp.MiddleEastern = (CASE m.Ethnicity WHEN 'MiddleEastern' THEN 'true' ELSE 'false' END))
-Or (mp.Indian = (CASE m.Ethnicity WHEN 'Indian' THEN 'true' ELSE 'false' END))
-Or (mp.NativeAmerican = (CASE m.Ethnicity WHEN 'NativeAmerican' THEN 'true' ELSE 'false' END))
-Or (mp.Asian = (CASE m.Ethnicity WHEN 'Asian' THEN 'true' ELSE 'false' END))
+Or (mp.White = (CASE m.Ethnicity WHEN 'White' THEN 'true' END))
+Or (mp.Black = (CASE m.Ethnicity WHEN 'Black' THEN 'true' END))
+Or (mp.Hispanic = (CASE m.Ethnicity WHEN 'Hispanic' THEN 'true' END))
+Or (mp.MiddleEastern = (CASE m.Ethnicity WHEN 'MiddleEastern' THEN 'true' END))
+Or (mp.Indian = (CASE m.Ethnicity WHEN 'Indian' THEN 'true' END))
+Or (mp.NativeAmerican = (CASE m.Ethnicity WHEN 'NativeAmerican' THEN 'true' END))
+Or (mp.Asian = (CASE m.Ethnicity WHEN 'Asian' THEN 'true' END))
 )
 
 And
 (
 (CASE WHEN mp.NoHairPref = 'true' THEN m.Hair = 'Black' Or m.Hair = 'Brown' Or m.Hair = 'Blonde'
 Or m.Hair = 'White' Or m.Hair = 'Gray' END)
-Or (mp.HairBlack = (CASE m.Hair WHEN 'Black' THEN 'true' ELSE 'false' END))
-Or (mp.HairBrown = (CASE m.Hair WHEN 'Brown' THEN 'true' ELSE 'false' END))
-Or (mp.HairBlonde = (CASE m.Hair WHEN 'Blonde' THEN 'true' ELSE 'false' END))
-Or (mp.HairWhite = (CASE m.Hair WHEN 'White' THEN 'true' ELSE 'false' END))
-Or (mp.HairGray = (CASE m.Hair WHEN 'Gray' THEN 'true' ELSE 'false' END))
+Or (mp.HairBlack = (CASE m.Hair WHEN 'Black' THEN 'true' END))
+Or (mp.HairBrown = (CASE m.Hair WHEN 'Brown' THEN 'true' END))
+Or (mp.HairBlonde = (CASE m.Hair WHEN 'Blonde' THEN 'true' END))
+Or (mp.HairWhite = (CASE m.Hair WHEN 'White' THEN 'true' END))
+Or (mp.HairGray = (CASE m.Hair WHEN 'Gray' THEN 'true' END))
 )
 
 And 
 (
 (CASE WHEN mp.NoGenderPref = 'true' THEN m.Gender = 'Male' Or m.Gender = 'Female' END)
-Or (mp.Male = (CASE m.Gender WHEN 'male' THEN 'true' ELSE 'false' END))
-Or (mp.Female = (CASE m.Gender WHEN 'female' THEN 'true' ELSE 'false' END))
+Or (mp.Male = (CASE m.Gender WHEN 'male' THEN 'true' END))
+Or (mp.Female = (CASE m.Gender WHEN 'female' THEN 'true' END))
 )
 
 And
 (
 (CASE WHEN mp.NoEyesPref = 'true' THEN m.Eyes = 'Black' Or m.Eyes = 'Brown'
 Or m.Eyes = 'Hazel' Or m.Eyes = 'Green' Or m.Eyes = 'Blue' END)
-Or (mp.EyesBlack = (CASE m.Eyes WHEN 'Black' THEN 'true' ELSE 'false' END))
-Or (mp.EyesBrown = (CASE m.Eyes WHEN 'Brown' THEN 'true' ELSE 'false' END))
-Or (mp.EyesHazel = (CASE m.Eyes WHEN 'Hazel' THEN 'true' ELSE 'false' END))
-Or (mp.EyesGreen = (CASE m.Eyes WHEN 'Green' THEN 'true' ELSE 'false' END))
-Or (mp.EyesBlue = (CASE m.Eyes WHEN 'Blue' THEN 'true' ELSE 'false' END))
+Or (mp.EyesBlack = (CASE m.Eyes WHEN 'Black' THEN 'true' END))
+Or (mp.EyesBrown = (CASE m.Eyes WHEN 'Brown' THEN 'true' END))
+Or (mp.EyesHazel = (CASE m.Eyes WHEN 'Hazel' THEN 'true' END))
+Or (mp.EyesGreen = (CASE m.Eyes WHEN 'Green' THEN 'true' END))
+Or (mp.EyesBlue = (CASE m.Eyes WHEN 'Blue' THEN 'true' END))
 )
 
 And
@@ -116,41 +116,41 @@ And
 (CASE WHEN mp.NoEducationPref = 'true' THEN m.Education = 'HighSchool'
 Or m.Education = 'SomeCollege' Or m.Education = 'Bachelor' Or m.Education = 'Master'
 Or m.Education = 'Doctorate' END)
-Or (mp.HighSchool = (CASE m.Education WHEN 'HighSchool' THEN 'true' ELSE 'false' END))
-Or (mp.SomeCollege = (CASE m.Education WHEN 'SomeCollege' THEN 'true' ELSE 'false' END))
-Or (mp.Bachelor = (CASE m.Education WHEN 'Bachelor' THEN 'true' ELSE 'false' END))
-Or (mp.Master = (CASE m.Education WHEN 'Master' THEN 'true' ELSE 'false' END))
-Or (mp.Doctorate = (CASE m.Education WHEN 'Doctorate' THEN 'true' ELSE 'false' END))
+Or (mp.HighSchool = (CASE m.Education WHEN 'HighSchool' THEN 'true' END))
+Or (mp.SomeCollege = (CASE m.Education WHEN 'SomeCollege' THEN 'true' END))
+Or (mp.Bachelor = (CASE m.Education WHEN 'Bachelor' THEN 'true' END))
+Or (mp.Master = (CASE m.Education WHEN 'Master' THEN 'true' END))
+Or (mp.Doctorate = (CASE m.Education WHEN 'Doctorate' THEN 'true' END))
 )
 
 And
 (
-(CASE WHEN mp.NoHasKidsPref = 'true' THEN m.HasKids = 'true' Or m.HasKids = 'false' END)
-Or (mp.HasKids = (CASE m.HasKids WHEN 'Yes' THEN 'true' ELSE 'false' END))
-Or (mp.HasNoKids = (CASE m.HasKids WHEN 'No' THEN 'true' ELSE 'false' END))
+(CASE WHEN mp.NoHasKidsPref = 'true' THEN m.HasKids = 'Yes' Or m.HasKids = 'No' END)
+Or (mp.HasKids = (CASE m.HasKids WHEN 'Yes' THEN 'true' END))
+Or (mp.HasNoKids = (CASE m.HasKids WHEN 'No' THEN 'true' END))
 )
 
 And 
 (
-(CASE WHEN mp.NoWantsKidsPref = 'true' THEN m.WantsKids = 'true' Or m.WantsKids = 'false' END)
-Or (mp.WantsKids = (CASE m.WantsKids WHEN 'Yes' THEN 'true' ELSE 'false' END))
-Or (mp.WantsNoKids = (CASE m.WantsKids WHEN 'No' THEN 'true' ELSE 'false' END))
+(CASE WHEN mp.NoWantsKidsPref = 'true' THEN m.WantsKids = 'Yes' Or m.WantsKids = 'No' Or m.WantsKids = 'Not Sure' END)
+Or (mp.WantsKids = (CASE m.WantsKids WHEN 'Yes' THEN 'true' END))
+Or (mp.WantsNoKids = (CASE m.WantsKids WHEN 'No' THEN 'true' END))
 )
 
 And
 (
-(CASE WHEN mp.NoSmokingPref = 'true' THEN m.Smoke = 'true' Or m.Smoke = 'false' END)
-Or (mp.NoSmoking = (CASE m.Smoke WHEN 'No' THEN 'true' ELSE 'false' END))
-Or (mp.SocialSmoker = (CASE m.Smoke WHEN 'Socially' THEN 'true' ELSE 'false' END))
-Or (mp.DailySmoker = (CASE m.Smoke WHEN 'Daily' THEN 'true' ELSE 'false' END))
+(CASE WHEN mp.NoSmokingPref = 'true' THEN m.Smoke = 'Yes' Or m.Smoke = 'No' Or m.Smoke = 'Socially' Or m.Smoke = 'Daily' END)
+Or (mp.NoSmoking = (CASE m.Smoke WHEN 'No' THEN 'true' END))
+Or (mp.SocialSmoker = (CASE m.Smoke WHEN 'Socially' THEN 'true' END))
+Or (mp.DailySmoker = (CASE m.Smoke WHEN 'Daily' THEN 'true' END))
 )
 
 And
 (
-(CASE WHEN mp.NoDrinkingPref = 'true' THEN m.Drink = 'true' Or m.Drink = 'false' END)
-Or (mp.NoDrinking = (CASE m.Drink WHEN 'No' THEN 'true' ELSE 'false' END))
-Or (mp.SocialDrinker = (CASE m.Drink WHEN 'Socially' THEN 'true' ELSE 'false' END))
-Or (mp.DailyDrinker = (CASE m.Drink WHEN 'Daily' THEN 'true' ELSE 'false' END))
+(CASE WHEN mp.NoDrinkingPref = 'true' THEN m.Drink = 'Yes' Or m.Drink = 'No' Or m.Drink = 'Socially' Or m.Drink = 'Daily' END)
+Or (mp.NoDrinking = (CASE m.Drink WHEN 'No' THEN 'true' END))
+Or (mp.SocialDrinker = (CASE m.Drink WHEN 'Socially' THEN 'true' END))
+Or (mp.DailyDrinker = (CASE m.Drink WHEN 'Daily' THEN 'true' END))
 )
 
 And 
