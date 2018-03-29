@@ -13,6 +13,11 @@ require 'helpers.php';
 $id = $_GET['ID'];
 $about = $_GET['About'];
 
+if (strlen($about) > 250) {
+    echo http_response_code(400);
+    exit;
+}
+
 $sql = "Update Members Set About = '$about' WHERE ID = $id ";
 
 if (mysqli_query($conn, $sql)) {
