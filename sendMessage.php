@@ -22,7 +22,7 @@ if (isset($flick) && !empty($flick)) {
 
 
 // determine if this is the first message between users for receiver
-$sql3 = "SELECT ID FROM Messages WHERE (Sender_ID = $senderID Or Receiver_ID = $sender) 
+$sql3 = "SELECT ID FROM Messages WHERE (Sender_ID = $senderID Or Receiver_ID = $senderID) 
 And (Sender_ID = $receiverID Or Receiver_ID = $receiverID) And (Owner_ID = $receiverID) ";
 $result3 = mysqli_query($conn, $sql3);
 
@@ -34,7 +34,7 @@ else {
 }
 
 // determine if this is the first message between users for sender
-$sql4 = "SELECT ID FROM Messages WHERE (Sender_ID = $senderID Or Receiver_ID = $sender) 
+$sql4 = "SELECT ID FROM Messages WHERE (Sender_ID = $senderID Or Receiver_ID = $senderID) 
 And (Sender_ID = $receiverID Or Receiver_ID = $receiverID) And (Owner_ID = $senderID) ";
 $result4 = mysqli_query($conn, $sql4);
 
