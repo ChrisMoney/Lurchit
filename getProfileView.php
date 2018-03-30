@@ -20,7 +20,9 @@ CASE WHEN mp.Indian = 'true' THEN 'Indian' ELSE '' END As Indian,
 CASE WHEN mp.NativeAmerican = 'true' THEN 'Native American' ELSE '' END As NativeAmerican,
 CASE WHEN mp.Asian = 'true' THEN 'Asian' ELSE '' END As Asian,
 
-
+CASE WHEN m.Dating = 'true' THEN 'Dating' ELSE '' END As Dating,
+CASE WHEN m.Friends = 'true' THEN 'Friends' ELSE '' END As Friends,
+CASE WHEN m.Networking = 'true' THEN 'Networking' ELSE '' END As Networking,
 
 CASE WHEN m.Art = 'true' THEN (SELECT Art FROM Members WHERE ID = $visitorID And Art = 'true') ELSE '' END As Art,
 CASE WHEN m.Beauty = 'true' THEN (SELECT Beauty FROM Members WHERE ID = $visitorID And Beauty = 'true') ELSE '' END As Beauty,

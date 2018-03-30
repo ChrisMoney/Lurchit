@@ -133,11 +133,13 @@
                     {
                         "name": "VisitorID",
                         "in": "query",
+                        "required": true,
                         "type": "integer"
                     },
                     {
                         "name": "MemberID",
                         "in": "query",
+                        "required": true,
                         "type": "integer"
                     }
                 ],
@@ -268,6 +270,15 @@
                                     "type": "string"
                                 },
                                 "Ethnicity": {
+                                    "type": "string"
+                                },
+                                "Dating": {
+                                    "type": "string"
+                                },
+                                "Friends": {
+                                    "type": "string"
+                                },
+                                "Networking": {
                                     "type": "string"
                                 }
                             }
