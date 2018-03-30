@@ -22,7 +22,7 @@ if (isset($flick) && !empty($flick)) {
 
 
 // determine if this is the first message between users for receiver
-$sql3 = "SELECT ID FROM Messages WHERE (Sender_ID = $senderID Or Receiver_ID = $senderID) 
+$sql3 = "SELECT ID FROM Messages WHERE (Sender_ID = $senderID Or Receiver_ID = $sender) 
 And (Sender_ID = $receiverID Or Receiver_ID = $receiverID) And (Owner_ID = $receiverID) ";
 $result3 = mysqli_query($conn, $sql3);
 
@@ -34,7 +34,7 @@ else {
 }
 
 // determine if this is the first message between users for sender
-$sql4 = "SELECT ID FROM Messages WHERE (Sender_ID = $senderID Or Receiver_ID = $senderID) 
+$sql4 = "SELECT ID FROM Messages WHERE (Sender_ID = $senderID Or Receiver_ID = $sender) 
 And (Sender_ID = $receiverID Or Receiver_ID = $receiverID) And (Owner_ID = $senderID) ";
 $result4 = mysqli_query($conn, $sql4);
 
@@ -47,13 +47,17 @@ else {
 
 
 // assign thread ownership for receiver
-$sql = "INSERT INTO Messages (Sender_ID, Receiver_ID,     Owner_ID,      Pitch, Flick,        New, FirstMessage, MessageDate) 
-                    Values ('$senderID', '$receiverID', '$receiverID', '$pitch', '$flickName', '1', '$receiverFirstMessage', NOW()) ";
+$sql = "INSERT INTO Messages (Sender_ID, Receiver_ID,     Owner_ID, Other_ID,     Pitch, Flick,        New, FirstMessage, MessageDate) 
+                    Values ('$senderID', '$receiverID', '$receiverID', '$senderID', '$pitch', '$flickName', '1', '$receiverFirstMessage', NOW()) ";
 
 if (mysqli_query($conn, $sql)) {
     // assign thread ownership for sender
-    $sql1 = "INSERT INTO Messages (Sender_ID, Receiver_ID, Owner_ID, Pitch, Flick, New, FirstMessage, MessageDate) 
-Values ('$senderID', '$receiverID', '$senderID', '$pitch', '$flickName', '0', '$senderFirstMessage', NOW()) ";
+    $sql1 = "INSERT INTO Messages (Sender_ID, Receiver_ID, Owner_ID, Other_ID, Pitch, Flick, New, FirstMessage, MessageDate) 
+Values ('$senderID', '$receiverID', '$senderID', '$receiverID', '$pitch', '$flickName', '0', '$senderFirstMessage', NOW()) ";
+
+/*$sqlLog = "INSERT INTO Log (Log, Date) Values ('$pitch', NOW()) ";
+mysqli_query($conn, $sqlLog);
+*/
 
 if (mysqli_query($conn, $sql1)) {
         // send push notification
