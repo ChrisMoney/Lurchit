@@ -125,21 +125,19 @@
                 }
             }
         },
-        "/getProfileView.php": {
+        "/getMessageThread.php": {
             "get": {
-                "operationId": "GET_getProfileView-php",
-                "summary": "GetProfileView",
+                "operationId": "GET_getMessageThread-php",
+                "summary": "GetMessageThread",
                 "parameters": [
                     {
-                        "name": "VisitorID",
+                        "name": "ID",
                         "in": "query",
-                        "required": true,
                         "type": "integer"
                     },
                     {
-                        "name": "MemberID",
+                        "name": "OtherID",
                         "in": "query",
-                        "required": true,
                         "type": "integer"
                     }
                 ],
@@ -147,139 +145,32 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object",
-                            "properties": {
-                                "MediaName": {
-                                    "type": "string"
-                                },
-                                "Username": {
-                                    "type": "string"
-                                },
-                                "Height": {
-                                    "type": "string"
-                                },
-                                "Build": {
-                                    "type": "string"
-                                },
-                                "About": {
-                                    "type": "string"
-                                },
-                                "Gender": {
-                                    "type": "string"
-                                },
-                                "Age": {
-                                    "type": "string"
-                                },
-                                "Art": {
-                                    "type": "string"
-                                },
-                                "Beauty": {
-                                    "type": "string"
-                                },
-                                "BoardGames": {
-                                    "type": "string"
-                                },
-                                "Books": {
-                                    "type": "string"
-                                },
-                                "Business": {
-                                    "type": "string"
-                                },
-                                "Cooking": {
-                                    "type": "string"
-                                },
-                                "Dancing": {
-                                    "type": "string"
-                                },
-                                "Fashion": {
-                                    "type": "string"
-                                },
-                                "Outdoors": {
-                                    "type": "string"
-                                },
-                                "HomeRepair": {
-                                    "type": "string"
-                                },
-                                "Hiking": {
-                                    "type": "string"
-                                },
-                                "LiveEvents": {
-                                    "type": "string"
-                                },
-                                "MartialArts": {
-                                    "type": "string"
-                                },
-                                "Meditation": {
-                                    "type": "string"
-                                },
-                                "Movies": {
-                                    "type": "string"
-                                },
-                                "Music": {
-                                    "type": "string"
-                                },
-                                "NightLife": {
-                                    "type": "string"
-                                },
-                                "Peforming": {
-                                    "type": "string"
-                                },
-                                "Photography": {
-                                    "type": "string"
-                                },
-                                "Sports": {
-                                    "type": "string"
-                                },
-                                "Technology": {
-                                    "type": "string"
-                                },
-                                "VideoGames": {
-                                    "type": "string"
-                                },
-                                "WorkingOut": {
-                                    "type": "string"
-                                },
-                                "Writing": {
-                                    "type": "string"
-                                },
-                                "Yoga": {
-                                    "type": "string"
-                                },
-                                "NoRacePref": {
-                                    "type": "string"
-                                },
-                                "White": {
-                                    "type": "string"
-                                },
-                                "Black": {
-                                    "type": "string"
-                                },
-                                "Hispanic": {
-                                    "type": "string"
-                                },
-                                "MiddleEastern": {
-                                    "type": "string"
-                                },
-                                "Indian": {
-                                    "type": "string"
-                                },
-                                "NativeAmerican": {
-                                    "type": "string"
-                                },
-                                "Asian": {
-                                    "type": "string"
-                                },
-                                "Ethnicity": {
-                                    "type": "string"
-                                },
-                                "Dating": {
-                                    "type": "string"
-                                },
-                                "Friends": {
-                                    "type": "string"
-                                },
-                                "Networking": {
-                                    "type": "string"
+                            "type": "array",
+                            "description": "Messages Returned",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "OtherID": {
+                                        "type": "integer"
+                                    },
+                                    "MediaName": {
+                                        "type": "string"
+                                    },
+                                    "MessageDate": {
+                                        "type": "string"
+                                    },
+                                    "Username": {
+                                        "type": "string"
+                                    },
+                                    "Flick": {
+                                        "type": "string"
+                                    },
+                                    "Pitch": {
+                                        "type": "string"
+                                    },
+                                    "New": {
+                                        "type": "boolean"
+                                    }
                                 }
                             }
                         }
@@ -288,14 +179,14 @@
                         "description": "",
                         "schema": {
                             "type": "integer",
-                            "description": "Bad Request."
+                            "description": "No messages returned."
                         }
                     },
                     "500": {
                         "description": "",
                         "schema": {
                             "type": "integer",
-                            "description": "Could not retrieve data."
+                            "description": "Failed to return messages."
                         }
                     }
                 }
@@ -3165,6 +3056,65 @@
                 }
             }
         },
+        "/getHabitsPref.php": {
+            "get": {
+                "operationId": "GET_getHabitsPref-php",
+                "summary": "GetHabitsPref",
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "NoSmoking": {
+                                    "type": "boolean"
+                                },
+                                "SocialSmoker": {
+                                    "type": "boolean"
+                                },
+                                "DailySmoker": {
+                                    "type": "boolean"
+                                },
+                                "NoSmokingPref": {
+                                    "type": "boolean"
+                                },
+                                "NoDrinking": {
+                                    "type": "boolean"
+                                },
+                                "SocialDrinker": {
+                                    "type": "boolean"
+                                },
+                                "DailyDrinker": {
+                                    "type": "boolean"
+                                },
+                                "NoDrinkingPref": {
+                                    "type": "boolean"
+                                }
+                            },
+                            "required": [
+                                "NoSmoking",
+                                "SocialSmoker",
+                                "DailySmoker"
+                            ]
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Failed to retrieve data."
+                        }
+                    }
+                }
+            }
+        },
         "/getReligion.php": {
             "get": {
                 "operationId": "GET_getReligion-php",
@@ -3187,6 +3137,262 @@
                         "description": "",
                         "schema": {
                             "type": "integer"
+                        }
+                    }
+                }
+            }
+        },
+        "/appearance.php": {
+            "get": {
+                "operationId": "GET_appearance-php",
+                "summary": "Appearance",
+                "parameters": [
+                    {
+                        "name": "Build",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "HeightFeet",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "HeightInches",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Hair",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Eyes",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Ethnicity",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Appearance data updated successfully."
+                        }
+                    },
+                    "400": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Invalid user data provided."
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Error saving data."
+                        }
+                    }
+                }
+            }
+        },
+        "/getProfileView.php": {
+            "get": {
+                "operationId": "GET_getProfileView-php",
+                "summary": "GetProfileView",
+                "parameters": [
+                    {
+                        "name": "VisitorID",
+                        "in": "query",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "MemberID",
+                        "in": "query",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "MediaName": {
+                                    "type": "string"
+                                },
+                                "Username": {
+                                    "type": "string"
+                                },
+                                "Height": {
+                                    "type": "string"
+                                },
+                                "Build": {
+                                    "type": "string"
+                                },
+                                "About": {
+                                    "type": "string"
+                                },
+                                "Gender": {
+                                    "type": "string"
+                                },
+                                "Age": {
+                                    "type": "string"
+                                },
+                                "Art": {
+                                    "type": "string"
+                                },
+                                "Beauty": {
+                                    "type": "string"
+                                },
+                                "BoardGames": {
+                                    "type": "string"
+                                },
+                                "Books": {
+                                    "type": "string"
+                                },
+                                "Business": {
+                                    "type": "string"
+                                },
+                                "Cooking": {
+                                    "type": "string"
+                                },
+                                "Dancing": {
+                                    "type": "string"
+                                },
+                                "Fashion": {
+                                    "type": "string"
+                                },
+                                "Outdoors": {
+                                    "type": "string"
+                                },
+                                "HomeRepair": {
+                                    "type": "string"
+                                },
+                                "Hiking": {
+                                    "type": "string"
+                                },
+                                "LiveEvents": {
+                                    "type": "string"
+                                },
+                                "MartialArts": {
+                                    "type": "string"
+                                },
+                                "Meditation": {
+                                    "type": "string"
+                                },
+                                "Movies": {
+                                    "type": "string"
+                                },
+                                "Music": {
+                                    "type": "string"
+                                },
+                                "NightLife": {
+                                    "type": "string"
+                                },
+                                "Peforming": {
+                                    "type": "string"
+                                },
+                                "Photography": {
+                                    "type": "string"
+                                },
+                                "Sports": {
+                                    "type": "string"
+                                },
+                                "Technology": {
+                                    "type": "string"
+                                },
+                                "VideoGames": {
+                                    "type": "string"
+                                },
+                                "WorkingOut": {
+                                    "type": "string"
+                                },
+                                "Writing": {
+                                    "type": "string"
+                                },
+                                "Yoga": {
+                                    "type": "string"
+                                },
+                                "NoRacePref": {
+                                    "type": "string"
+                                },
+                                "White": {
+                                    "type": "string"
+                                },
+                                "Black": {
+                                    "type": "string"
+                                },
+                                "Hispanic": {
+                                    "type": "string"
+                                },
+                                "MiddleEastern": {
+                                    "type": "string"
+                                },
+                                "Indian": {
+                                    "type": "string"
+                                },
+                                "NativeAmerican": {
+                                    "type": "string"
+                                },
+                                "Asian": {
+                                    "type": "string"
+                                },
+                                "Ethnicity": {
+                                    "type": "string"
+                                },
+                                "Dating": {
+                                    "type": "string"
+                                },
+                                "Friends": {
+                                    "type": "string"
+                                },
+                                "Networking": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Bad Request."
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Could not retrieve data."
                         }
                     }
                 }
@@ -3412,60 +3618,44 @@
                 }
             }
         },
-        "/getHabitsPref.php": {
+        "/agePref.php": {
             "get": {
-                "operationId": "GET_getHabitsPref-php",
-                "summary": "GetHabitsPref",
+                "operationId": "GET_agePref-php",
+                "summary": "AgePref",
                 "parameters": [
                     {
                         "name": "ID",
                         "in": "query",
                         "type": "integer"
+                    },
+                    {
+                        "name": "AgeMin",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "AgeMax",
+                        "in": "query",
+                        "type": "string"
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object",
-                            "properties": {
-                                "NoSmoking": {
-                                    "type": "boolean"
-                                },
-                                "SocialSmoker": {
-                                    "type": "boolean"
-                                },
-                                "DailySmoker": {
-                                    "type": "boolean"
-                                },
-                                "NoSmokingPref": {
-                                    "type": "boolean"
-                                },
-                                "NoDrinking": {
-                                    "type": "boolean"
-                                },
-                                "SocialDrinker": {
-                                    "type": "boolean"
-                                },
-                                "DailyDrinker": {
-                                    "type": "boolean"
-                                },
-                                "NoDrinkingPref": {
-                                    "type": "boolean"
-                                }
-                            },
-                            "required": [
-                                "NoSmoking",
-                                "SocialSmoker",
-                                "DailySmoker"
-                            ]
+                            "type": "integer"
+                        }
+                    },
+                    "400": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer"
                         }
                     },
                     "500": {
                         "description": "",
                         "schema": {
-                            "type": "integer",
-                            "description": "Failed to retrieve data."
+                            "type": "integer"
                         }
                     }
                 }
@@ -3562,129 +3752,6 @@
                         "schema": {
                             "type": "integer",
                             "description": "Server error."
-                        }
-                    }
-                }
-            }
-        },
-        "/agePref.php": {
-            "get": {
-                "operationId": "GET_agePref-php",
-                "summary": "AgePref",
-                "parameters": [
-                    {
-                        "name": "ID",
-                        "in": "query",
-                        "type": "integer"
-                    },
-                    {
-                        "name": "AgeMin",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "AgeMax",
-                        "in": "query",
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer"
-                        }
-                    },
-                    "400": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer"
-                        }
-                    },
-                    "500": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                }
-            }
-        },
-        "/appearance.php": {
-            "get": {
-                "operationId": "GET_appearance-php",
-                "summary": "Appearance",
-                "parameters": [
-                    {
-                        "name": "Build",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "HeightFeet",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "HeightInches",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "Hair",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "Eyes",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "Ethnicity",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "ID",
-                        "in": "query",
-                        "required": false,
-                        "type": "integer"
-                    },
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "Appearance data updated successfully."
-                        }
-                    },
-                    "400": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "Invalid user data provided."
-                        }
-                    },
-                    "500": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "Error saving data."
                         }
                     }
                 }
