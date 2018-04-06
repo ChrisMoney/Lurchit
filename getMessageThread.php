@@ -21,10 +21,10 @@ if ($result = mysqli_query($conn, $sql)) {
     if (mysqli_num_rows($result) > 0) {
         while ($message = mysqli_fetch_assoc($result)) {
             $mediaName = $message['MediaName'];
-            $message['MediaName'] = 'http://api.flickpitch.com/media/'.$mediaName;
+            $message['MediaName'] = 'http://flickpitch.com/api/media/'.$mediaName;
             
             $flickName = $message['Flick'];
-            $message['Flick'] = 'http://api.flickpitch.com/messages/'.$flickName;
+            $message['Flick'] = 'http://flickpitch.com/api/messages/'.$flickName;
             
             // format flickpitch age text from date
             $date = date('D M d', strtotime( $row['MessageDate'] ));

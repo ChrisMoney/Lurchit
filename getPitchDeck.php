@@ -201,7 +201,7 @@ if ($result = mysqli_query($conn, $sql)) {
         
         // format profile photo
         $mediaName = $pitchDeck['MediaName'];
-        $pitchDeck['MediaName'] = "http://api.flickpitch.com/media/$mediaName";
+        $pitchDeck['MediaName'] = "http://flickpitch.com/api/media/$mediaName";
         
        // format flickpitch age text from date
             $flickPitchDate = $pitchDeck['PitchDate'];

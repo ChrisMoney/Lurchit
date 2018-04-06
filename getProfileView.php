@@ -64,7 +64,7 @@ if ($result = mysqli_query($conn, $sql)) {
         $profileView = mysqli_fetch_assoc($result);
         // format profile photo
         $mediaName = $profileView['MediaName'];
-        $profileView['MediaName'] = "http://api.flickpitch.com/media/$mediaName";
+        $profileView['MediaName'] = "http://flickpitch.com/api/media/$mediaName";
 
     echo json_encode($profileView);
         }

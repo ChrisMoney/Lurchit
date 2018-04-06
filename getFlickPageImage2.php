@@ -18,12 +18,12 @@ $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
     $row = mysqli_fetch_assoc($result);
     $mediaName = $row['MediaName'];
-    $mediaUrl = "http://api.flickpitch.com/media/$mediaName";
+    $mediaUrl = "http://flickpitch.com/api/media/$mediaName";
 
     echo $mediaUrl;
 }
 else {
-    $mediaUrl = "http://api.flickpitch.com/images/noimage.png";
+    $mediaUrl = "http://flickpitch.com/api/images/noimage.png";
 
     echo $mediaUrl;
 }
