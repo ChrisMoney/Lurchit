@@ -10,7 +10,7 @@ header("Content-Type: application/json;charset=utf-8");
 require 'connect.php';
 require 'helpers.php';
 
-$count = $_GET['Count'];
+$id = $_GET['ID'];
 
 $sql = "SELECT * FROM MediaLibrary WHERE Member_ID = $id Order by ID DESC ";
 $myArray = array();
@@ -19,7 +19,7 @@ if ($result = mysqli_query($conn, $sql)) {
     if (mysqli_num_rows($result) > 0) {
         while ($media = mysqli_fetch_assoc($result)) {
             $mediaName = $media['MediaName'];
-            $media['MediaName'] = 'http://api.flickpitch.com/media/'.$mediaName;
+            $media['MediaName'] = 'http://api.flickpitch.com/api/media/'.$mediaName;
             $myArray[] = $media;
         }
         echo json_encode($myArray, JSON_NUMERIC_CHECK);
