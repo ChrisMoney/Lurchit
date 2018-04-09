@@ -1,0 +1,14 @@
+
+*.ini
+*.xml
+.metadata/.plugins/org.eclipse.ui.intro/introstate
+*.dat
+*.properties
+*.ser
+*.xmi
+*.prefs
+*.setup
+*.resources
+*.zip
+.metadata/.log
+.metadata/.lock

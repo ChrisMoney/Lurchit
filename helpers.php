@@ -54,25 +54,23 @@ function pushNotification($appId, $content, $key, $tag, $title){
 
 function calculate_time_span($date){
         $seconds  = strtotime(date('Y-m-d H:i:s')) - strtotime($date);
-        /* divide seconds by 10 because when php subtracts using strtotime
-         it comes back with way more seconds than it should */
-        $seconds = $seconds / 10;
-        // round seconds to remove any decimals
-        $seconds = floor($seconds);
         
+        $months = floor($seconds / (3600*24*30));
         $day = floor($seconds / (3600*24));
-        $hours = floor(($seconds / 3600)/2);
+        $hours = floor($seconds / 3600);
+        $mins = floor(($seconds - ($hours*3600)) / 60);
+        $secs = floor($seconds % 60);
         
-        $mins = floor(($seconds - ($hours*3600)) / 60) / 10;
-        $mins = floor($mins);
-
-if($seconds < 3600)
-            $time = $mins." min ago";
-        else if($seconds < 86400)
-            $time = $hours." hours ago";
-        else 
-            $time = $day." day ago";
-
+        if($seconds < 60)
+            $time = $secs." seconds ago";
+            else if($seconds < 60*60 )
+                $time = $mins." min ago";
+                else if($seconds < 24*60*60)
+                    $time = $hours." hours ago";
+                    else if($seconds < 24*60*60)
+                        $time = $day." day ago";
+                        else
+                            $time = $months." month ago";
         return $time;
 } 
     

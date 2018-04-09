@@ -9,9 +9,10 @@ $sql = "SELECT fpv.Member_ID, m.Username as Username, pm.MediaName as MediaName
 FROM FlickpitchViews fpv, ProfileMedia pm, Members m
 WHERE fpv.ID = $id And pm.Member_ID = fpv.Member_ID And m.ID = fpv.Member_ID";
 
+$result = mysqli_query($conn, $sql);
 $myArray = array();
 
-if ($result = mysqli_query($conn, $sql)) {
+if (mysqli_query($conn, $sql)) {
     if (mysqli_num_rows($result) > 0) {
         while ($fpViewer = mysqli_fetch_assoc($result)) {
             $mediaName = $fpViewer['MediaName'];
@@ -25,7 +26,7 @@ if ($result = mysqli_query($conn, $sql)) {
         
     }
     else {
-        echo http_response_code(400);
+        echo http_response_code(500);
     }
 }
 else {
