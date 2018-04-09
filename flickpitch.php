@@ -8,7 +8,7 @@
 
 header("Content-Type: application/json;charset=utf-8");
 require 'connect.php';
-require 'helpers.php';
+include_once 'helpers.php';
 
 $data = json_decode(file_get_contents('php://input'), true);
 

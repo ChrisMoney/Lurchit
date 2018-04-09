@@ -62,7 +62,9 @@ function calculate_time_span($date){
         
         $day = floor($seconds / (3600*24));
         $hours = floor(($seconds / 3600)/2);
-        $mins = floor(($seconds - ($hours*3600)) / 60);
+        
+        $mins = floor(($seconds - ($hours*3600)) / 60) / 10;
+        $mins = floor($mins);
 
 if($seconds < 3600)
             $time = $mins." min ago";
