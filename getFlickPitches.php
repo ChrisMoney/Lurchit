@@ -22,11 +22,11 @@ if (mysqli_query($conn, $sql)) {
             
             // build profile image url
             $profilePic = $flickPitch['ProfilePic'];
-            $flickPitch['ProfilePic'] = 'http://flickpitch.com/api/media/'.$profilePic;
+            $flickPitch['ProfilePic'] = 'http://api.flickpitch.com/api/media/'.$profilePic;
             
             // build flick image url
             $flick = $flickPitch['Flick'];
-            $flickPitch['Flick'] = 'http://flickpitch.com/api/flicks/'.$flick;
+            $flickPitch['Flick'] = 'http://api.flickpitch.com/api/flicks/'.$flick;
             
             // format flickpitch age text from date
             $flickPostDate = $flickPitch['PitchDate'];

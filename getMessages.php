@@ -22,12 +22,12 @@ if ($result = mysqli_query($conn, $sql)) {
     if (mysqli_num_rows($result) > 0) {
         while ($message = mysqli_fetch_assoc($result)) {
             $mediaName = $message['MediaName'];
-            $message['MediaName'] = 'http://flickpitch.com/api/media/'.$mediaName;
+            $message['MediaName'] = 'http://api.flickpitch.com/api/media/'.$mediaName;
             
             // format flickpitch age text from date
             $messagePostDate = $message['MessageDate'];
             $timeSinceLastMessage = calculate_time_span($messagePostDate);
-            $message['MessageDate'] = $timeSinceLastPost;
+            $message['MessageDate'] = $timeSinceLastMessage;
             
             $myArray[] = $message;
         }

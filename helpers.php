@@ -54,7 +54,12 @@ function pushNotification($appId, $content, $key, $tag, $title){
 
 function calculate_time_span($date){
         $seconds  = strtotime(date('Y-m-d H:i:s')) - strtotime($date);
-
+        /* divide seconds by 10 because when php subtracts using strtotime
+         it comes back with way more seconds than it should */
+        $seconds = $seconds / 10;
+        // round seconds to remove any decimals
+        $seconds = floor($seconds);
+        
         $day = floor($seconds / (3600*24));
         $hours = floor(($seconds / 3600)/2);
         $mins = floor(($seconds - ($hours*3600)) / 60);
@@ -65,9 +70,6 @@ if($seconds < 3600)
             $time = $hours." hours ago";
         else 
             $time = $day." day ago";
-
-
-       
 
         return $time;
 } 

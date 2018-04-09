@@ -190,10 +190,17 @@ Or (m.Friends = (SELECT Friends FROM Members WHERE ID = $id And Friends = 'true'
 Or (m.Networking = (SELECT Networking FROM Members WHERE ID = $id And Networking = 'true'))
 )
 
+And
+(
+m.ID NOT IN (SELECT Blocked_ID FROM Block WHERE Blocker_ID = $id)
+)
+
 Group By MemberID
 HAVING distance <= $distance
 
 ";
+
+$myArray = array();
 
 if ($result = mysqli_query($conn, $sql)) {
     if (mysqli_num_rows($result) > 0) {
@@ -201,20 +208,21 @@ if ($result = mysqli_query($conn, $sql)) {
         
         // format profile photo
         $mediaName = $pitchDeck['MediaName'];
-        $pitchDeck['MediaName'] = "http://flickpitch.com/api/media/$mediaName";
+        $pitchDeck['MediaName'] = "http://api.flickpitch.com/api/media/$mediaName";
         
        // format flickpitch age text from date
             $flickPitchDate = $pitchDeck['PitchDate'];
             $timeSinceLastPitch = calculate_time_span($flickPitchDate);
-            $pitchDeck['PitchDate'] = $timeSinceLastPitch;
+            $pitchDeck['PitchDate'] = $timeSinceLastPitch; 
             
             $myArray[] = $pitchDeck;
             }
     echo json_encode($myArray, JSON_NUMERIC_CHECK);
-        }
+    
+}
 else {
     echo http_response_code(400);
-    }
+}
 }
 else {
     echo http_response_code(500);
