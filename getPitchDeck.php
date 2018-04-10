@@ -212,8 +212,16 @@ if ($result = mysqli_query($conn, $sql)) {
         
        // format flickpitch age text from date
             $flickPitchDate = $pitchDeck['PitchDate'];
-            $timeSinceLastPitch = calculate_time_span($flickPitchDate);
-            $pitchDeck['PitchDate'] = $timeSinceLastPitch; 
+            
+            if (date('Ymd') == date('Ymd', strtotime($flickPitchDate))) {
+                $timePosted = 'Today';
+            }
+            else {
+                $timePosted = 'Yesterday';
+            }
+            
+            $time = date("H:i A",strtotime($flickPitchDate));
+            $pitchDeck['PitchDate'] = $timePosted . ' '. $time;
             
             $myArray[] = $pitchDeck;
             }

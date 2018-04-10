@@ -53,7 +53,7 @@ function pushNotification($appId, $content, $key, $tag, $title){
 	}
 
 function calculate_time_span($date){
-        $seconds  = strtotime(date('Y-m-d H:i:s')) - strtotime($date);
+        $seconds  = strtotime(date('Y-m-d H:i:s')) - strtotime(date($date));
         
         $months = floor($seconds / (3600*24*30));
         $day = floor($seconds / (3600*24));

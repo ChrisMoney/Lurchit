@@ -30,8 +30,16 @@ if (mysqli_query($conn, $sql)) {
             
             // format flickpitch age text from date
             $flickPostDate = $flickPitch['PitchDate'];
-            $timeSinceLastPost = calculate_time_span($flickPostDate);
-            $flickPitch['PitchDate'] = $timeSinceLastPost;
+            
+            if (date('Ymd') == date('Ymd', strtotime($flickPostDate))) {
+                $timePosted = 'Today';
+            }
+            else {
+                $timePosted = 'Yesterday';
+            }
+            
+            $time = date("H:i A",strtotime($flickPostDate));
+            $flickPitch['PitchDate'] = $timePosted . ' '. $time;
             
             //$count = mysqli_num_rows($result);
             

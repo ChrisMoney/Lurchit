@@ -25,9 +25,16 @@ if ($result = mysqli_query($conn, $sql)) {
             $message['MediaName'] = 'http://api.flickpitch.com/api/media/'.$mediaName;
             
             // format flickpitch age text from date
-            $messagePostDate = $message['MessageDate'];
-            $timeSinceLastMessage = calculate_time_span($messagePostDate);
-            $message['MessageDate'] = $timeSinceLastMessage;
+            $messageDate = $message['MessageDate'];
+            if (date('Ymd') == date('Ymd', strtotime($messageDate))) {
+                $timePosted = 'Today';
+            }
+            else {
+                $timePosted = 'Yesterday';
+            }
+            
+            $time = date("H:i A",strtotime($messageDate));
+            $message['MessageDate'] = $timePosted . ' '. $time;
             
             $myArray[] = $message;
         }
