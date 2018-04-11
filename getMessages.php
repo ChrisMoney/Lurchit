@@ -26,15 +26,26 @@ if ($result = mysqli_query($conn, $sql)) {
             
             // format flickpitch age text from date
             $messageDate = $message['MessageDate'];
-            if (date('Ymd') == date('Ymd', strtotime($messageDate))) {
+            // format flickpitch date for comparison month/day
+            $date = strtotime($messageDate);
+            $dbDate = date('F j', $date);
+            
+            // format flickpitch date for display
+            $displayDate = date('g:i a', $date);
+            
+            // format flickpitch date for comparison month/day
+            $today = strtotime('now');
+            $todayDate = date('F j', $today);
+            
+            if ($todayDate == $dbDate) {
                 $timePosted = 'Today';
             }
             else {
                 $timePosted = 'Yesterday';
             }
             
-            $time = date("H:i A",strtotime($messageDate));
-            $message['MessageDate'] = $timePosted . ' '. $time;
+            //$time = date("g:i a",$flickPitchDate);
+            $message['MessageDate'] = $timePosted . ' '. $displayDate;
             
             $myArray[] = $message;
         }
