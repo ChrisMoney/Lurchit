@@ -210,14 +210,16 @@ if ($result = mysqli_query($conn, $sql)) {
         $mediaName = $pitchDeck['MediaName'];
         $pitchDeck['MediaName'] = "http://api.flickpitch.com/api/media/$mediaName";
         
-       // format flickpitch age text from date
             $flickPitchDate = $pitchDeck['PitchDate'];
             
+            // format flickpitch date for comparison month/day
             $date = strtotime($flickPitchDate);
-            $displayDate = date('g:i a', $date);
-            
             $dbDate = date('F j', $date);
             
+            // format flickpitch date for display
+            $displayDate = date('g:i a', $date);
+
+            // format flickpitch date for comparison month/day
             $today = strtotime('now');
             $todayDate = date('F j', $today);
             
