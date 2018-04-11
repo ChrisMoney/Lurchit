@@ -5,7 +5,6 @@
  * Date: 3/11/18
  * Time: 4:33 PM
  */
-
 header("Content-Type: application/json;charset=utf-8");
 require_once 'connect.php';
 include_once 'helpers.php';
@@ -201,6 +200,7 @@ HAVING distance <= $distance
 ";
 
 $myArray = array();
+date_default_timezone_set('America/Chicago');
 
 if ($result = mysqli_query($conn, $sql)) {
     if (mysqli_num_rows($result) > 0) {
@@ -213,15 +213,23 @@ if ($result = mysqli_query($conn, $sql)) {
        // format flickpitch age text from date
             $flickPitchDate = $pitchDeck['PitchDate'];
             
-            if (date('Ymd') == date('Ymd', strtotime($flickPitchDate))) {
+            $date = strtotime($flickPitchDate);
+            $displayDate = date('g:i a', $date);
+            
+            $dbDate = date('F j', $date);
+            
+            $today = strtotime('now');
+            $todayDate = date('F j', $today);
+            
+            if ($todayDate == $dbDate) {
                 $timePosted = 'Today';
             }
             else {
                 $timePosted = 'Yesterday';
             }
             
-            $time = date("H:i A",strtotime($flickPitchDate));
-            $pitchDeck['PitchDate'] = $timePosted . ' '. $time;
+            //$time = date("g:i a",$flickPitchDate);
+            $pitchDeck['PitchDate'] = $timePosted . ' '. $displayDate;
             
             $myArray[] = $pitchDeck;
             }
