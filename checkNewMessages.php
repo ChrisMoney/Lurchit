@@ -6,12 +6,12 @@ include_once 'helpers.php';
 
 $id = $_GET['ID'];
 
-$sql = "SELECT FROM Messages WHERE New = 1 And Owner_ID = $id ";
+$sql = "SELECT ID FROM Messages WHERE New = 1 And Owner_ID = $id ";
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
-    return true;
+    echo true;
 }
 else {
-    return false;
+    echo false;
 }
