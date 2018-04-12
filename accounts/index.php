@@ -20,7 +20,7 @@
 				<nav class="left">
 					<a href="#menu"><span>Menu</span></a>
 				</nav>
-				<a href="index.html" class="logo">intensify</a>
+				<a href="index.php" class="logo">Flickpitch</a>
 				<!--  <nav class="right">
 					<a href="#" class="button alt">Log in</a>
 				</nav>-->
@@ -29,9 +29,8 @@
 		<!-- Menu -->
 			<nav id="menu">
 				<ul class="links">
-					<li><a href="index.html">Home</a></li>
-					<li><a href="generic.html">Generic</a></li>
-					<li><a href="elements.html">Elements</a></li>
+					<li><a href="index.php">Home</a></li>
+					<li><a href="password-reset.php">Recover password</a></li>
 				</ul>
 				<!--  <ul class="actions vertical">
 					<li><a href="#" class="button fit">Login</a></li>
@@ -39,13 +38,13 @@
 			</nav>
 
 		<!-- Banner -->
-			<section id="banner">
+			  <section id="banner">
 				<div class="content">
-					<h1>Ipsum sed lorem</h1>
+					<!--  <h1>Ipsum sed lorem</h1>
 					<p>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod<br />sed arcu cras consecuat lorem ipsum dolor sit amet.</p>
 					<ul class="actions">
 						<li><a href="#one" class="button scrolly">Get Started</a></li>
-					</ul>
+					</ul>-->
 				</div>
 			</section>
 
@@ -54,32 +53,28 @@
 				<div class="inner flex flex-3">
 					<div class="flex-item left">
 						<div>
-							<h3>Magna ultricies</h3>
-							<p>Morbi in sem quis dui plalorem ipsum<br /> euismod in, pharetra sed ultricies.</p>
+							<h3><a href='password-reset.php'>Password Recovery</a></h3>
+							
 						</div>
 						<div>
-							<h3>Ipsum adipiscing lorem</h3>
-							<p>Tristique yonve cursus jam nulla quam<br /> loreipsu gravida adipiscing lorem</p>
-						</div>
+							<h3></h3>
 					</div>
 					<div class="flex-item image fit round">
 						<img src="images/pic01.jpg" alt="" />
 					</div>
 					<div class="flex-item right">
 						<div>
-							<h3>Tempus nullam</h3>
-							<p>Sed adipiscing ornare risus. Morbi estes<br /> blandit sit et amet, sagittis magna.</p>
+							<h3></h3>
 						</div>
 						<div>
-							<h3>Suscipit nibh dolore</h3>
-							<p>Pellentesque egestas sem. Suspendisse<br /> modo ullamcorper feugiat lorem.</p>
+							<h3></h3>
 						</div>
 					</div>
 				</div>
 			</section>
 
 		<!-- Two -->
-			<section id="two" class="wrapper style1 special">
+			<!--  <section id="two" class="wrapper style1 special">
 				<div class="inner">
 					<h2>Feugiat lorem</h2>
 					<figure>
@@ -95,7 +90,7 @@
 			</section>
 
 		<!-- Three -->
-			<section id="three" class="wrapper">
+			<!--  <section id="three" class="wrapper">
 				<div class="inner flex flex-3">
 					<div class="flex-item box">
 						<div class="image fit">
@@ -125,20 +120,19 @@
 						</div>
 					</div>
 				</div>
-			</section>
+			</section>-->
 
 		<!-- Footer -->
 			<footer id="footer">
 				<div class="inner">
 					<h2>Get In Touch</h2>
 					<ul class="actions">
-						<li><span class="icon fa-phone"></span> <a href="#">(000) 000-0000</a></li>
-						<li><span class="icon fa-envelope"></span> <a href="#">information@untitled.tld</a></li>
-						<li><span class="icon fa-map-marker"></span> 123 Somewhere Road, Nashville, TN 00000</li>
+						<li><span class=""></span> <a href="mailto:info@flickpitch.com">info@flickpitch.com</a></li>
+						<li><span class=""></span> 911 Washington Avenue, Suite 501, St. Louis, MO 63101</li>
 					</ul>
 				</div>
 				<div class="copyright">
-					&copy; Untitled. Design <a href="https://templated.co">TEMPLATED</a>. Images <a href="https://unsplash.com">Unsplash</a>.
+					&copy; 2018
 				</div>
 			</footer>
 
