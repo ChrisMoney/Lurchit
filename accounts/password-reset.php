@@ -65,7 +65,7 @@
 
                     <br/>
                      
-                    <input style="background:#ff0000" type = "submit" name = "submit" id = "submit" value = "Reset Password" />
+                    <input style="background:#ff0000;padding-left:10px;padding-right:10px;" type = "submit" name = "submit" id = "submit" value = "Reset Password" />
                      
               </form>
               
