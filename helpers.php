@@ -22,6 +22,7 @@ function pushNotification($appId, $content, $key, $tag, $title){
       "app_id" => $appId,
       "filters" => $filters,
       "contents" => $content,
+	  "icon" => "http://api.flickpitch.com/logo.png",
       "title" => $title
     );
 		
