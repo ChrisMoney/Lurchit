@@ -1,7 +1,7 @@
 <?php
 
 
-$dir = "/home/pblhrakl19bs/public_html/api/messages"; /** define the directory **/
+$dir = "home/pblhrakl19bs/public_html/api/messages"; /** define the directory **/
 $now   = time();
 
 // check if file type is a photo

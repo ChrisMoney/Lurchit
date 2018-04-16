@@ -2921,7 +2921,7 @@
 	#banner {
 		padding: 14em 0 12em 0;
 		background-image: url(../../images/banner.jpg);
-		background-size: cover;
+		background-size: 100% 100%;
 		background-position: center top;
 		background-repeat: no-repeat;
 		text-align: center;

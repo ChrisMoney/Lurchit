@@ -1,6 +1,6 @@
 <?php
 
-$dir = "/home/pblhrakl19bs/public_html/api/flicks/"; /** define the directory **/
+$dir = "home/pblhrakl19bs/public_html/api/flicks/"; /** define the directory **/
 $now   = time();
 
 $videoFileTypes = array("mpeg", "mpg", "ogg", "mp4");
