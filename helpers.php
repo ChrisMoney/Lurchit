@@ -58,31 +58,56 @@ function pushNotification($appId, $content, $key, $tag, $title){
 
         $months = floor($seconds / (3600*24*30));
         $day = floor($seconds / (3600*24));
+        
+        if ($day == "1") {
+            $dayText = " day ago";
+        }
+        else {
+            $dayText = " days ago";
+        }
+        
         $hours = floor($seconds / 3600);
+        
+        if ($hours == "1") {
+            $hourText = " hour ago";
+        }
+        else {
+            $hourText = " hours ago";
+        }
+        
         $mins = floor(($seconds - ($hours*3600)) / 60);
+        
+        if ($mins == "1") {
+            $minText = " minute ago";
+        }
+        else {
+            $minText = " minutes ago";
+        }
+        
         $secs = floor($seconds % 60);
-
+        if ($secs == "1") {
+            $secText = " second ago";
+        }
+        else {
+            $secText = " seconds ago";
+        }
+        
+        /* -----------------------
+        Display Intervals
+        ----------------------*/
+        
         if($seconds < 60)
-            $time = $secs." seconds ago";
+            $time = $secs. $secText;
         
         else if($seconds < 60*60 )
-            $time = $mins." min ago";
-            if ($mins != '1') {
-                $time = $mins." mins ago";
-            }
+            $time = $mins. $minText;
             
             else if($seconds < 24*60*60) {
-                $time = $hours." hours ago";
-                if ($hours == '1') {
-                    $time = $hours." hour ago";
-                }
+                $time = $hours. $hourText;
             }
            
         else if($seconds < 24*60*60)
-            $time = $day." day ago";
-            if ($day != '1') {
-                $time = $day." days ago";
-            }
+            $time = $day. $dayText;
             
         else
             $time = $months." month ago";
