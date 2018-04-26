@@ -21,10 +21,8 @@ $long = $data['Long'];
 $lat = $data['Lat'];
 $time = $data['Time'];
 
-$time = date('Y-m-d', $time);
-if ($time > date('Y-m-d','now')) {
-   $time = date('Y-m-d',(strtotime ( '-1 day' , strtotime ( $time) ) )); 
-}
+$time = date('Y-m-d H:i', $time);
+$time = date('Y-m-d H:i',(strtotime ( '-5 hour' , strtotime ( $time) ) )); 
 
 // save media to file server
 file_put_contents('../api/flicks/'.$flickName, base64_decode($flick));

@@ -211,17 +211,18 @@ if ($result = mysqli_query($conn, $sql)) {
         $pitchDeck['MediaName'] = "http://api.flickpitch.com/api/media/$mediaName";
         
             $flickPitchDate = $pitchDeck['PitchDate'];
+            $pitchDeck['PitchDate'] = calculate_time_span($flickPitchDate);
             
             // format flickpitch date for comparison month/day
-            $date = strtotime($flickPitchDate);
+            /*$date = strtotime($flickPitchDate);
             $dbDate = date('F j', $date);
             
             // format flickpitch date for display
-            $displayDate = date('l', $date);
+            $displayDate = date('D g:i a', $date);
             
       
             //$time = date("g:i a",$flickPitchDate);
-            $pitchDeck['PitchDate'] = "Added to Pitchdeck $displayDate";
+            $pitchDeck['PitchDate'] = "Added to Pitchdeck $displayDate"; */
             
             $myArray[] = $pitchDeck;
             }

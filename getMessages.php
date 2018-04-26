@@ -26,8 +26,10 @@ if ($result = mysqli_query($conn, $sql)) {
             
             // format flickpitch age text from date
             $messageDate = $message['MessageDate'];
+            $message['MessageDate'] = calculate_time_span($messageDate);
+            
             // format flickpitch date for comparison month/day
-            $date = strtotime($messageDate);
+            /*$date = strtotime($messageDate);
             $dbDate = date('F j', $date);
             
             // format flickpitch date for display
@@ -35,7 +37,7 @@ if ($result = mysqli_query($conn, $sql)) {
 
             
             //$time = date("g:i a",$flickPitchDate);
-            $message['MessageDate'] = $displayDate;
+            $message['MessageDate'] = $displayDate; */
             
             $myArray[] = $message;
         }
