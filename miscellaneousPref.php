@@ -11,7 +11,7 @@ $hairBlonde = $_GET['HairBlonde'];
 $hairWhite = $_GET['HairWhite'];
 $hairGray = $_GET['HairGray'];
 $hairOther = $_GET['HairOther'];
-$hairNoPref = $_GET['HairNoPref'];
+$hairNoPref = $_GET['NoHairPref'];
 
 $eyesBlack = $_GET['EyesBlack'];
 $eyesBrown = $_GET['EyesBrown'];
@@ -19,7 +19,7 @@ $eyesHazel = $_GET['EyesHazel'];
 $eyesGreen = $_GET['EyesGreen'];
 $eyesBlue = $_GET['EyesBlue'];
 $eyesOther = $_GET['EyesOther'];
-$eyesNoPref = $_GET['EyesNoPref'];
+$eyesNoPref = $_GET['NoEyesPref'];
 
 $sql = "Update MemberPref Set 
 HairBlack = '$hairBlack',
