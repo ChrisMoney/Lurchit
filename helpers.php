@@ -64,15 +64,29 @@ function pushNotification($appId, $content, $key, $tag, $title){
 
         if($seconds < 60)
             $time = $secs." seconds ago";
+        
         else if($seconds < 60*60 )
             $time = $mins." min ago";
-        else if($seconds < 24*60*60)
-            $time = $hours." hours ago";
+            if ($mins != '1') {
+                $time = $mins." mins ago";
+            }
+            
+            else if($seconds < 24*60*60) {
+                $time = $hours." hours ago";
+                if ($hours == '1') {
+                    $time = $hours." hour ago";
+                }
+            }
+           
         else if($seconds < 24*60*60)
             $time = $day." day ago";
+            if ($day != '1') {
+                $time = $day." days ago";
+            }
+            
         else
             $time = $months." month ago";
-
+            
         return $time;
 }
     
