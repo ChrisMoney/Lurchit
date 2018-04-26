@@ -22,7 +22,6 @@ function sendIntroMail($email) {
           $message .= "<tr><td style = 'background-color:red;color:white'>If you received this email in error contact us at <mailto:info@flickpitch.com>info@flickpitch.com</a>";
           $message .= "<br/>Flickpitch, 911 Washington Ave, St.Louis,MO 63101 USA </td></tr>";
           $message .= "</table></body></html>"; 
-          $message = "test";
 
           $header = "From: Flickpitch <no-reply@flickpitch.com.com> \r\n";
           $header .= "Content-type: text/html";
