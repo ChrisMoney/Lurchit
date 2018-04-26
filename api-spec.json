@@ -1264,6 +1264,9 @@
                                 },
                                 "Lat": {
                                     "type": "number"
+                                },
+                                "Time": {
+                                    "type": "string"
                                 }
                             }
                         }
@@ -1663,6 +1666,9 @@
                                     "type": "string"
                                 },
                                 "Flick": {
+                                    "type": "string"
+                                },
+                                "Time": {
                                     "type": "string"
                                 }
                             }

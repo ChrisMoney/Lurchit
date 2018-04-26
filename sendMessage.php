@@ -11,8 +11,13 @@ $receiverID = $data['ReceiverID'];
 $pitch = $data['Pitch'];
 $flick = $data['Flick'];
 $flickName = uniqid().'img.png';
+$time = $data['Time'];
 //$type = $data['FlickType'];
 
+$time = date('Y-m-d', $time);
+if ($time > date('Y-m-d','now')) {
+   $time = date('Y-m-d',(strtotime ( '-1 day' , strtotime ( $time) ) )); 
+}
 
 // save media to file server
 if (isset($flick) && !empty($flick)) {
@@ -48,12 +53,12 @@ else {
 
 // assign thread ownership for receiver
 $sql = "INSERT INTO Messages (Sender_ID, Receiver_ID,     Owner_ID, Other_ID,     Pitch, Flick,        New, FirstMessage, MessageDate) 
-                    Values ('$senderID', '$receiverID', '$receiverID', '$senderID', '$pitch', '$flickName', '1', '$receiverFirstMessage', NOW()) ";
+                    Values ('$senderID', '$receiverID', '$receiverID', '$senderID', '$pitch', '$flickName', '1', '$receiverFirstMessage', '$time') ";
 
 if (mysqli_query($conn, $sql)) {
     // assign thread ownership for sender
     $sql1 = "INSERT INTO Messages (Sender_ID, Receiver_ID, Owner_ID, Other_ID, Pitch, Flick, New, FirstMessage, MessageDate) 
-Values ('$senderID', '$receiverID', '$senderID', '$receiverID', '$pitch', '$flickName', '0', '$senderFirstMessage', NOW()) ";
+Values ('$senderID', '$receiverID', '$senderID', '$receiverID', '$pitch', '$flickName', '0', '$senderFirstMessage', '$time') ";
 
 /*$sqlLog = "INSERT INTO Log (Log, Date) Values ('$pitch', NOW()) ";
 mysqli_query($conn, $sqlLog);
@@ -67,7 +72,6 @@ if (mysqli_query($conn, $sql1)) {
             $row = mysqli_fetch_assoc($result2);
             $name = $row['Username'];
             
-            $appId = "fa4f6cac-2cac-423f-8274-7e502725aaf8";
             $content = "Message from $name";
             $tag = $receiverID;
             $key = "ID";

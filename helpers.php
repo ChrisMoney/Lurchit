@@ -11,15 +11,15 @@ function getDistance($id) {
 }
 
 function pushNotification($appId, $content, $key, $tag, $title){
-		/*$content = array(
-			"en" => 'English Message'
+		$content = array(
+			"en" => $content
 			);
-		*/
+		
         
         $filters = array("field" => "tag", "key" => $key, "relation" => "=", "value" => $tag);
     
 		$fields = array(
-      "app_id" => $appId,
+      "app_id" => '02681849-4f61-41ba-ad44-9dddca4f2172',
       "filters" => $filters,
       "contents" => $content,
 	  "icon" => "http://api.flickpitch.com/logo.png",
@@ -53,4 +53,26 @@ function pushNotification($appId, $content, $key, $tag, $title){
      */
 	}
     
+    function calculate_time_span($date){
+    $seconds  = strtotime(date('Y-m-d H:i:s')) - strtotime($date);
+
+        $months = floor($seconds / (3600*24*30));
+        $day = floor($seconds / (3600*24));
+        $hours = floor($seconds / 3600);
+        $mins = floor(($seconds - ($hours*3600)) / 60);
+        $secs = floor($seconds % 60);
+
+        if($seconds < 60)
+            $time = $secs." seconds ago";
+        else if($seconds < 60*60 )
+            $time = $mins." min ago";
+        else if($seconds < 24*60*60)
+            $time = $hours." hours ago";
+        else if($seconds < 24*60*60)
+            $time = $day." day ago";
+        else
+            $time = $months." month ago";
+
+        return $time;
+}
     

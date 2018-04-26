@@ -19,12 +19,18 @@ $flickName = uniqid().'img.png';
 $source = $data['Source'];
 $long = $data['Long'];
 $lat = $data['Lat'];
+$time = $data['Time'];
+
+$time = date('Y-m-d', $time);
+if ($time > date('Y-m-d','now')) {
+   $time = date('Y-m-d',(strtotime ( '-1 day' , strtotime ( $time) ) )); 
+}
 
 // save media to file server
 file_put_contents('../api/flicks/'.$flickName, base64_decode($flick));
 
 $sql = "INSERT INTO PitchDeck (Member_ID, Flick, Pitch, Source, Longitude, Latitude, PitchDate) VALUES"; 
-$sql .= "('$memberID', '$flickName', '$pitch', '$source', '$long', '$lat', NOW())";
+$sql .= "('$memberID', '$flickName', '$pitch', '$source', '$long', '$lat', '$time')";
 
 if (mysqli_query($conn, $sql)) {
     return http_response_code(200);

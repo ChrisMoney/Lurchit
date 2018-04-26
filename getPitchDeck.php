@@ -16,7 +16,7 @@ $lat = $_REQUEST['Lat'];
 $distance = getDistance($id);
 
 $sql = "SELECT pm.MediaName as MediaName, m.ID as MemberID, m.Username as Username, 
-(SELECT PitchDate FROM PitchDeck WHERE Member_ID = m.ID Limit 1) as PitchDate,
+(SELECT PitchDate FROM PitchDeck WHERE Member_ID = m.ID Order By ID DESC Limit 1) as PitchDate,
 ( 3959 * acos ( cos ( radians($lat) ) * cos( radians( pd.Latitude ) ) * 
 cos( radians( pd.Longitude ) - radians($long) ) + sin ( radians($lat) ) * 
 sin( radians( pd.Latitude ) ) ) ) AS `distance` 
@@ -217,21 +217,11 @@ if ($result = mysqli_query($conn, $sql)) {
             $dbDate = date('F j', $date);
             
             // format flickpitch date for display
-            $displayDate = date('g:i a', $date);
-
-            // format flickpitch date for comparison month/day
-            $today = strtotime('now');
-            $todayDate = date('F j', $today);
+            $displayDate = date('l', $date);
             
-            if ($todayDate == $dbDate) {
-                $timePosted = 'Today';
-            }
-            else {
-                $timePosted = 'Yesterday';
-            }
-            
+      
             //$time = date("g:i a",$flickPitchDate);
-            $pitchDeck['PitchDate'] = $timePosted . ' '. $displayDate;
+            $pitchDeck['PitchDate'] = "Added to Pitchdeck $displayDate";
             
             $myArray[] = $pitchDeck;
             }
