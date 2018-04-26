@@ -14,8 +14,8 @@ $id = $_GET['ID'];
 $ageMin = $_GET['AgeMin'];
 $ageMax = $_GET['AgeMax'];
 
-$sql = "Update MemberPref Set AgeMin = '$ageMin', AgeMax = '$ageMax' 
-WHERE Member_ID = $id ";
+$sql = "INSERT INTO MemberPref (Member_ID, AgeMin, AgeMax)
+Values ('$id', '$ageMin', '$ageMax') ";
 
 
 if (mysqli_query($conn, $sql)) {
