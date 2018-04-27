@@ -106,7 +106,7 @@ function pushNotification($appId, $content, $key, $tag, $title){
                 $time = $hours. $hourText;
             }
            
-        else if($seconds < 24*60*60)
+        else if($seconds > 24*60*60)
             $time = $day. $dayText;
             
         else
