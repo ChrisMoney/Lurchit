@@ -20,7 +20,8 @@ if (strlen($drink) <= 0 || strlen($smoke) <= 0) {
     exit;
 }
 
-$sql = "Update Members Set Drink = '$drink', Smoke = '$smoke' WHERE ID = $id ";
+$sql = "Update Members 
+Set Drink = '$drink', Smoke = '$smoke' WHERE ID = $id ";
 
 if (mysqli_query($conn, $sql)) {
     // successful
