@@ -13,6 +13,7 @@ require 'helpers.php';
 $id = $_GET['ID'];
 $email = $_GET['Email'];
 $password = $_GET['Password'];
+$username = $_GET['Username'];
 
 if (strlen($password) > 1) {
     // invalid email
@@ -20,6 +21,17 @@ if (strlen($password) > 1) {
 }
 else {
     $query = "";
+}
+
+if (strlen($username) > 1) {
+    $sql1 = "SELECT Username FROM Members WHERE Username = '$username' And ID != $id ";
+    $result = mysqli_query($conn, $sql1);
+    $count = mysqli_num_rows($result);
+    
+    if ($count > 0) {
+        echo http_response_code(400);
+        exit;
+    }
 }
 
 $sql = "Update Members Set Email = '$email' $query WHERE ID = $id";
