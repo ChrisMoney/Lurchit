@@ -3676,7 +3676,7 @@
                     "500": {
                         "description": "",
                         "schema": {
-                            "type": "integer",
+                            "type": "null",
                             "description": "Could not fetch blocked users."
                         }
                     }
