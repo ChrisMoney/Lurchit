@@ -3673,7 +3673,7 @@
                             }
                         }
                     },
-                    "400": {
+                    "500": {
                         "description": "",
                         "schema": {
                             "type": "integer",
