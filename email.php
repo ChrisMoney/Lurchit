@@ -12,14 +12,14 @@ else
 function sendIntroMail($email) {
     
      // send email
-          $subject = "Thank you for signing up to Flickpitch. Start building rapport in real time with the type of people you want to date and network with using photos and videos.";
+          $subject = "Thank you for signing up to Flickpitch. Start building rapport in real time with the type of people you want to date and network by sharing moments from your daily life.";
           $toEmail = $email;
          
           $message = "<html><body>";
-          $message .= "<table style = 'background:red;height:400px;width:600px;border-radius:10px;border:2px solid black;'><tr style = 'color:white;border-radius:10px;'><td>";
-          $message .= "<tr><td><img src = 'http://api.flickpitch.com/logo.png' height = '200' width = '200' style = 'border:2px solid black' /></td></tr>";
+          $message .= "<table style = 'background:white;height:400px;width:600px;border-radius:10px;border:2px solid black;'><tr style = 'color:background:white;border-radius:10px;'><td>";
+          $message .= "<tr><td><img src = 'http://api.flickpitch.com/logo.png' height = '200' width = '200' /></td></tr>";
           $message .= "<tr><td style = 'background:silver;padding:20px;border:2px solid black;'>$subject<br/><br/></td></tr>";
-          $message .= "<tr><td style = 'background-color:red;color:white'>If you received this email in error contact us at <mailto:info@flickpitch.com>info@flickpitch.com</a>";
+          $message .= "<tr><td style = 'background-color:red;padding-left:20px;padding-right:10px;color:white'>If you received this email in error contact us at <mailto:info@flickpitch.com>info@flickpitch.com</a>";
           $message .= "<br/>Flickpitch, 911 Washington Ave, St.Louis,MO 63101 USA </td></tr>";
           $message .= "</table></body></html>"; 
 
