@@ -12,7 +12,7 @@ else
 function sendIntroMail($email) {
     
      // send email
-          $subject = "Thank you for signing up to Flickpitch. Start building rapport in real time with the type of people you want to date and network by sharing moments from your daily life.";
+          $subject = "Thank you for signing up to Flickpitch. Start building rapport in real time with the type of people you want to date and network with by sharing moments from your daily life.";
           $toEmail = $email;
          
           $message = "<html><body>";
