@@ -12,7 +12,7 @@ require 'helpers.php';
 
 $id = $_GET['ID'];
 
-$sql = "SELECT Email FROM Members WHERE ID = $id";
+$sql = "SELECT Email, Username FROM Members WHERE ID = $id";
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
