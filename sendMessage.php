@@ -12,15 +12,23 @@ $pitch = $data['Pitch'];
 $flick = $data['Flick'];
 $flickName = uniqid().'img.png';
 $time = $data['Time'];
+$mediaAdded = $data['MediaAdded'];
 //$type = $data['FlickType'];
 
 $time = date('Y-m-d H:i', $time);
 $time = date('Y-m-d H:i',(strtotime ( '-5 hour' , strtotime ( $time) ) )); 
 
 // save media to file server
-if (isset($flick) && !empty($flick)) {
+if ($mediaAdded == true || $mediaAdded == 'true' || $mediaAdded == 1) {
+   if (isset($flick) && !empty($flick)) {
     file_put_contents('../api/messages/'.$flickName, base64_decode($flick));
+} 
 }
+else {
+    $flick = "";
+    $flickName = "";
+}
+
 
 
 

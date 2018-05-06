@@ -7,10 +7,9 @@ include_once 'helpers.php';
 $id = $_GET['ID'];
 $otherID = $_GET['OtherID'];
 
-$sql = "SELECT msg.ID as MessageID, p.MediaName as MediaName, msg.New as New, msg.Other_ID, msg.Pitch as Pitch, msg.Flick as Flick,
-(SELECT MessageDate FROM Messages WHERE Owner_ID = $id And Other_ID = msg.Other_ID
-Order By ID DESC Limit 1) as MessageDate,
-(Select Username FROM Members WHERE ID = msg.Other_ID) as Username
+$sql = "SELECT msg.ID as MessageID, p.MediaName as MediaName, msg.New as New, msg.Sender_ID, msg.Other_ID, msg.Pitch as Pitch, msg.Flick as Flick,
+msg.MessageDate,
+(Select Username FROM Members WHERE ID = msg.Sender_ID) as Username
 
 FROM Members m, ProfileMedia p, Messages msg 
 WHERE (m.ID = msg.Sender_ID) And (p.Member_ID = msg.Sender_ID) And (Owner_ID = $id) And (msg.Receiver_ID = $otherID Or msg.Sender_ID = $otherID) 
@@ -26,12 +25,18 @@ if ($result = mysqli_query($conn, $sql)) {
             $message['MediaName'] = 'http://api.flickpitch.com/api/media/'.$mediaName;
             
             $flickName = $message['Flick'];
-            $message['Flick'] = 'http://api.flickpitch.com/api/messages/'.$flickName;
+            if (strlen($flickName) > 1) {
+                $message['Flick'] = 'http://api.flickpitch.com/api/messages/'.$flickName;
+            }
+            
             
             // format flickpitch age text from date
             $date = date('D M d', strtotime( $message['MessageDate'] ));
             $message['MessageDate'] = $date;
             
+            if ($message['Sender_ID'] == $id) {
+                $message['Username'] = 'Me';
+            }
             $myArray[] = $message;
         }
         echo json_encode($myArray, JSON_NUMERIC_CHECK);

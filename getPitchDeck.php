@@ -23,9 +23,8 @@ sin( radians( pd.Latitude ) ) ) ) AS `distance`
 
 FROM Members m, ProfileMedia pm, MemberPref mp, PitchDeck pd
 
-WHERE m.ID IN (SELECT Member_ID FROM PitchDeck)
-
-And mp.Member_ID = $id 
+WHERE 
+mp.Member_ID = m.ID
 And pm.Member_ID = m.ID
 And pd.Member_ID = m.ID
 
