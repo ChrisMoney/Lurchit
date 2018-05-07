@@ -18,96 +18,6 @@
         "application/json"
     ],
     "paths": {
-        "/updateAccountSettings.php": {
-            "get": {
-                "operationId": "GET_updateAccountSettings-php",
-                "summary": "UpdateAccountSettings",
-                "parameters": [
-                    {
-                        "name": "ID",
-                        "in": "query",
-                        "type": "integer"
-                    },
-                    {
-                        "name": "Email",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "Password",
-                        "in": "query",
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "Update Successful!"
-                        }
-                    },
-                    "400": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "Username already exists!"
-                        }
-                    },
-                    "500": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "Update Failed!"
-                        }
-                    }
-                }
-            }
-        },
-        "/getLocation.php": {
-            "get": {
-                "operationId": "GET_getLocation-php",
-                "summary": "GetLocation",
-                "parameters": [
-                    {
-                        "name": "Lat",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "Long",
-                        "in": "query",
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "City": {
-                                    "type": "string"
-                                },
-                                "State": {
-                                    "type": "string"
-                                },
-                                "Country": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "Failed to return location."
-                        }
-                    }
-                }
-            }
-        },
         "/uploadProfileMedia.php": {
             "post": {
                 "operationId": "POST_uploadProfileMedia-php",
@@ -143,6 +53,85 @@
                         "description": "",
                         "schema": {
                             "type": "integer"
+                        }
+                    }
+                }
+            }
+        },
+        "/updateLocation.php": {
+            "get": {
+                "operationId": "GET_updateLocation-php",
+                "summary": "UpdateLocation",
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "City",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "State",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Country",
+                        "in": "query",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Location updated."
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Could not update location."
+                        }
+                    }
+                }
+            }
+        },
+        "/getFlickPageImage1.php": {
+            "get": {
+                "operationId": "GET_getFlickPageImage1-php",
+                "summary": "GetFlickPageImage1",
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "No record returned."
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "There was an error retrieving data."
                         }
                     }
                 }
@@ -189,10 +178,10 @@
                 }
             }
         },
-        "/getFlickPageImage1.php": {
+        "/getFlickPageImage2.php": {
             "get": {
-                "operationId": "GET_getFlickPageImage1-php",
-                "summary": "GetFlickPageImage1",
+                "operationId": "GET_getFlickPageImage2-php",
+                "summary": "GetFlickPageImage2",
                 "parameters": [
                     {
                         "name": "ID",
@@ -279,10 +268,10 @@
                 }
             }
         },
-        "/getFlickPageImage2.php": {
+        "/getFlickPageImage3.php": {
             "get": {
-                "operationId": "GET_getFlickPageImage2-php",
-                "summary": "GetFlickPageImage2",
+                "operationId": "GET_getFlickPageImage3-php",
+                "summary": "GetFlickPageImage3",
                 "parameters": [
                     {
                         "name": "ID",
@@ -356,10 +345,10 @@
                 }
             }
         },
-        "/getFlickPageImage3.php": {
+        "/getFlickPageImage4.php": {
             "get": {
-                "operationId": "GET_getFlickPageImage3-php",
-                "summary": "GetFlickPageImage3",
+                "operationId": "GET_getFlickPageImage4-php",
+                "summary": "GetFlickPageImage4",
                 "parameters": [
                     {
                         "name": "ID",
@@ -440,10 +429,10 @@
                 }
             }
         },
-        "/getFlickPageImage4.php": {
+        "/getAllMedia.php": {
             "get": {
-                "operationId": "GET_getFlickPageImage4-php",
-                "summary": "GetFlickPageImage4",
+                "operationId": "GET_getAllMedia-php",
+                "summary": "GetAllMedia",
                 "parameters": [
                     {
                         "name": "ID",
@@ -455,21 +444,41 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "string"
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "MediaName": {
+                                        "type": "string"
+                                    },
+                                    "ID": {
+                                        "type": "integer"
+                                    },
+                                    "Member_ID": {
+                                        "type": "integer"
+                                    },
+                                    "UploadDate": {
+                                        "type": "string"
+                                    },
+                                    "MediaDescription": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
                         }
                     },
                     "400": {
                         "description": "",
                         "schema": {
                             "type": "integer",
-                            "description": "No record returned."
+                            "description": "No media found."
                         }
                     },
                     "500": {
                         "description": "",
                         "schema": {
                             "type": "integer",
-                            "description": "There was an error retrieving data."
+                            "description": "There was an error returning data."
                         }
                     }
                 }
@@ -524,13 +533,13 @@
                 }
             }
         },
-        "/getAllMedia.php": {
+        "/deleteMedia.php": {
             "get": {
-                "operationId": "GET_getAllMedia-php",
-                "summary": "GetAllMedia",
+                "operationId": "GET_deleteMedia-php",
+                "summary": "DeleteMedia",
                 "parameters": [
                     {
-                        "name": "ID",
+                        "name": "MediaID",
                         "in": "query",
                         "type": "integer"
                     }
@@ -539,41 +548,15 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "array",
-                            "items": {
-                                "type": "object",
-                                "properties": {
-                                    "MediaName": {
-                                        "type": "string"
-                                    },
-                                    "ID": {
-                                        "type": "integer"
-                                    },
-                                    "Member_ID": {
-                                        "type": "integer"
-                                    },
-                                    "UploadDate": {
-                                        "type": "string"
-                                    },
-                                    "MediaDescription": {
-                                        "type": "string"
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "",
-                        "schema": {
                             "type": "integer",
-                            "description": "No media found."
+                            "description": "Deletion Successful!"
                         }
                     },
                     "500": {
                         "description": "",
                         "schema": {
                             "type": "integer",
-                            "description": "There was an error returning data."
+                            "description": "Deletion Failed!"
                         }
                     }
                 }
@@ -745,15 +728,20 @@
                 }
             }
         },
-        "/deleteMedia.php": {
+        "/updateMediaDesc.php": {
             "get": {
-                "operationId": "GET_deleteMedia-php",
-                "summary": "DeleteMedia",
+                "operationId": "GET_updateMediaDesc-php",
+                "summary": "UpdateMediaDesc",
                 "parameters": [
                     {
                         "name": "MediaID",
                         "in": "query",
                         "type": "integer"
+                    },
+                    {
+                        "name": "MediaDesc",
+                        "in": "query",
+                        "type": "string"
                     }
                 ],
                 "responses": {
@@ -761,14 +749,14 @@
                         "description": "",
                         "schema": {
                             "type": "integer",
-                            "description": "Deletion Successful!"
+                            "description": "Update successful."
                         }
                     },
                     "500": {
                         "description": "",
                         "schema": {
                             "type": "integer",
-                            "description": "Deletion Failed!"
+                            "description": "Update Failed"
                         }
                     }
                 }
@@ -865,35 +853,41 @@
                 }
             }
         },
-        "/updateMediaDesc.php": {
-            "get": {
-                "operationId": "GET_updateMediaDesc-php",
-                "summary": "UpdateMediaDesc",
+        "/uploadLibraryMedia.php": {
+            "post": {
+                "operationId": "POST_uploadLibraryMedia-php",
+                "summary": "UploadLibraryMedia",
                 "parameters": [
                     {
-                        "name": "MediaID",
-                        "in": "query",
-                        "type": "integer"
-                    },
-                    {
-                        "name": "MediaDesc",
-                        "in": "query",
-                        "type": "string"
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "ID": {
+                                    "type": "integer"
+                                },
+                                "Media": {
+                                    "type": "string"
+                                },
+                                "MediaType": {
+                                    "type": "string"
+                                }
+                            }
+                        }
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "integer",
-                            "description": "Update successful."
+                            "type": "integer"
                         }
                     },
                     "500": {
                         "description": "",
                         "schema": {
-                            "type": "integer",
-                            "description": "Update Failed"
+                            "type": "integer"
                         }
                     }
                 }
@@ -949,28 +943,15 @@
                 }
             }
         },
-        "/uploadLibraryMedia.php": {
-            "post": {
-                "operationId": "POST_uploadLibraryMedia-php",
-                "summary": "UploadLibraryMedia",
+        "/getLastMedia.php": {
+            "get": {
+                "operationId": "GET_getLastMedia-php",
+                "summary": "GetLastMedia",
                 "parameters": [
                     {
-                        "name": "body",
-                        "in": "body",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "ID": {
-                                    "type": "integer"
-                                },
-                                "Media": {
-                                    "type": "string"
-                                },
-                                "MediaType": {
-                                    "type": "string"
-                                }
-                            }
-                        }
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
                     }
                 ],
                 "responses": {
@@ -1048,28 +1029,55 @@
                 }
             }
         },
-        "/getLastMedia.php": {
-            "get": {
-                "operationId": "GET_getLastMedia-php",
-                "summary": "GetLastMedia",
+        "/flickpitch.php": {
+            "post": {
+                "operationId": "POST_flickpitch-php",
+                "summary": "Flickpitch",
                 "parameters": [
                     {
-                        "name": "ID",
-                        "in": "query",
-                        "type": "integer"
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "MemberID": {
+                                    "type": "integer"
+                                },
+                                "Flick": {
+                                    "type": "string"
+                                },
+                                "Pitch": {
+                                    "type": "string"
+                                },
+                                "Source": {
+                                    "type": "string"
+                                },
+                                "Long": {
+                                    "type": "number"
+                                },
+                                "Lat": {
+                                    "type": "number"
+                                },
+                                "Time": {
+                                    "type": "string"
+                                }
+                            }
+                        }
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "integer"
+                            "type": "integer",
+                            "description": "Successful"
                         }
                     },
                     "500": {
                         "description": "",
                         "schema": {
-                            "type": "integer"
+                            "type": "integer",
+                            "description": "Insert Failed!"
                         }
                     }
                 }
@@ -1143,88 +1151,6 @@
                 }
             }
         },
-        "/flickpitch.php": {
-            "post": {
-                "operationId": "POST_flickpitch-php",
-                "summary": "Flickpitch",
-                "parameters": [
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "MemberID": {
-                                    "type": "integer"
-                                },
-                                "Flick": {
-                                    "type": "string"
-                                },
-                                "Pitch": {
-                                    "type": "string"
-                                },
-                                "Source": {
-                                    "type": "string"
-                                },
-                                "Long": {
-                                    "type": "number"
-                                },
-                                "Lat": {
-                                    "type": "number"
-                                },
-                                "Time": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "Successful"
-                        }
-                    },
-                    "500": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "Insert Failed!"
-                        }
-                    }
-                }
-            }
-        },
-        "/getBuild.php": {
-            "get": {
-                "operationId": "GET_getBuild-php",
-                "summary": "GetBuild",
-                "parameters": [
-                    {
-                        "name": "ID",
-                        "in": "query",
-                        "type": "integer"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "500": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "There was an error retrieving data."
-                        }
-                    }
-                }
-            }
-        },
         "/distance.php": {
             "get": {
                 "operationId": "GET_distance-php",
@@ -1265,10 +1191,10 @@
                 }
             }
         },
-        "/getHeightInches.php": {
+        "/getBuild.php": {
             "get": {
-                "operationId": "GET_getHeightInches-php",
-                "summary": "GetHeightInches",
+                "operationId": "GET_getBuild-php",
+                "summary": "GetBuild",
                 "parameters": [
                     {
                         "name": "ID",
@@ -1321,10 +1247,10 @@
                 }
             }
         },
-        "/getEthnicity.php": {
+        "/getHeightInches.php": {
             "get": {
-                "operationId": "GET_getEthnicity-php",
-                "summary": "GetEthnicity",
+                "operationId": "GET_getHeightInches-php",
+                "summary": "GetHeightInches",
                 "parameters": [
                     {
                         "name": "ID",
@@ -1376,10 +1302,10 @@
                 }
             }
         },
-        "/getName.php": {
+        "/getEthnicity.php": {
             "get": {
-                "operationId": "GET_getName-php",
-                "summary": "GetName",
+                "operationId": "GET_getEthnicity-php",
+                "summary": "GetEthnicity",
                 "parameters": [
                     {
                         "name": "ID",
@@ -1394,10 +1320,11 @@
                             "type": "string"
                         }
                     },
-                    "400": {
+                    "500": {
                         "description": "",
                         "schema": {
-                            "type": "integer"
+                            "type": "integer",
+                            "description": "There was an error retrieving data."
                         }
                     }
                 }
@@ -1470,10 +1397,10 @@
                 }
             }
         },
-        "/getGender.php": {
+        "/getName.php": {
             "get": {
-                "operationId": "GET_getGender-php",
-                "summary": "GetGender",
+                "operationId": "GET_getName-php",
+                "summary": "GetName",
                 "parameters": [
                     {
                         "name": "ID",
@@ -1488,11 +1415,10 @@
                             "type": "string"
                         }
                     },
-                    "500": {
+                    "400": {
                         "description": "",
                         "schema": {
-                            "type": "integer",
-                            "description": "There was an error retrieving data."
+                            "type": "integer"
                         }
                     }
                 }
@@ -1527,10 +1453,10 @@
                 }
             }
         },
-        "/getWantsKids.php": {
+        "/getGender.php": {
             "get": {
-                "operationId": "GET_getWantsKids-php",
-                "summary": "GetWantsKids",
+                "operationId": "GET_getGender-php",
+                "summary": "GetGender",
                 "parameters": [
                     {
                         "name": "ID",
@@ -1548,7 +1474,8 @@
                     "500": {
                         "description": "",
                         "schema": {
-                            "type": "integer"
+                            "type": "integer",
+                            "description": "There was an error retrieving data."
                         }
                     }
                 }
@@ -1609,10 +1536,10 @@
                 }
             }
         },
-        "/getPolitics.php": {
+        "/getWantsKids.php": {
             "get": {
-                "operationId": "GET_getPolitics-php",
-                "summary": "GetPolitics",
+                "operationId": "GET_getWantsKids-php",
+                "summary": "GetWantsKids",
                 "parameters": [
                     {
                         "name": "ID",
@@ -1695,10 +1622,10 @@
                 }
             }
         },
-        "/getDrink.php": {
+        "/getPolitics.php": {
             "get": {
-                "operationId": "GET_getDrink-php",
-                "summary": "GetDrink",
+                "operationId": "GET_getPolitics-php",
+                "summary": "GetPolitics",
                 "parameters": [
                     {
                         "name": "ID",
@@ -1750,10 +1677,10 @@
                 }
             }
         },
-        "/getFriends.php": {
+        "/getDrink.php": {
             "get": {
-                "operationId": "GET_getFriends-php",
-                "summary": "GetFriends",
+                "operationId": "GET_getDrink-php",
+                "summary": "GetDrink",
                 "parameters": [
                     {
                         "name": "ID",
@@ -1765,7 +1692,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "boolean"
+                            "type": "string"
                         }
                     },
                     "500": {
@@ -1856,6 +1783,107 @@
                         "name": "ID",
                         "in": "query",
                         "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Update Successful"
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Update Failed"
+                        }
+                    }
+                }
+            }
+        },
+        "/getFriends.php": {
+            "get": {
+                "operationId": "GET_getFriends-php",
+                "summary": "GetFriends",
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        },
+        "/race.php": {
+            "get": {
+                "operationId": "GET_race-php",
+                "summary": "Race",
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "White",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Black",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Hispanic",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Indian",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "MiddleEastern",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "NativeAmerican",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Asian",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "RaceOther",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "RaceNoPref",
+                        "in": "query",
+                        "type": "string"
                     }
                 ],
                 "responses": {
@@ -1984,108 +2012,6 @@
                 }
             }
         },
-        "/race.php": {
-            "get": {
-                "operationId": "GET_race-php",
-                "summary": "Race",
-                "parameters": [
-                    {
-                        "name": "ID",
-                        "in": "query",
-                        "type": "integer"
-                    },
-                    {
-                        "name": "White",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "Black",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "Hispanic",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "Indian",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "MiddleEastern",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "NativeAmerican",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "Asian",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "RaceOther",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "RaceNoPref",
-                        "in": "query",
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "Update Successful"
-                        }
-                    },
-                    "500": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "Update Failed"
-                        }
-                    }
-                }
-            }
-        },
-        "/createInviteMessage.php": {
-            "get": {
-                "operationId": "GET_createInviteMessage-php",
-                "summary": "CreateInviteMessage",
-                "parameters": [
-                    {
-                        "name": "ID",
-                        "in": "query",
-                        "type": "integer"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "500": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "Could not get invite message."
-                        }
-                    }
-                }
-            }
-        },
         "/deleteMessages.php": {
             "get": {
                 "operationId": "GET_deleteMessages-php",
@@ -2120,76 +2046,29 @@
                 }
             }
         },
-        "/signup.php": {
+        "/createInviteMessage.php": {
             "get": {
-                "operationId": "GET_signup-php",
-                "summary": "Signup",
+                "operationId": "GET_createInviteMessage-php",
+                "summary": "CreateInviteMessage",
                 "parameters": [
                     {
-                        "name": "FirstName",
+                        "name": "ID",
                         "in": "query",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "LastName",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "Username",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "Email",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "Password",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
+                        "type": "integer"
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "integer",
-                            "description": "User signed up successfully."
-                        }
-                    },
-                    "400": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "User input bad."
-                        }
-                    },
-                    "406": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "Username already exists."
-                        }
-                    },
-                    "409": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "Account already exists."
+                            "type": "string"
                         }
                     },
                     "500": {
                         "description": "",
                         "schema": {
                             "type": "integer",
-                            "description": "Sign up failed."
+                            "description": "Could not get invite message."
                         }
                     }
                 }
@@ -2231,21 +2110,24 @@
                 }
             }
         },
-        "/gender.php": {
+        "/updateAccountSettings.php": {
             "get": {
-                "operationId": "GET_gender-php",
-                "summary": "Gender",
+                "operationId": "GET_updateAccountSettings-php",
+                "summary": "UpdateAccountSettings",
                 "parameters": [
                     {
                         "name": "ID",
                         "in": "query",
-                        "required": true,
                         "type": "integer"
                     },
                     {
-                        "name": "Gender",
+                        "name": "Email",
                         "in": "query",
-                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Password",
+                        "in": "query",
                         "type": "string"
                     }
                 ],
@@ -2253,22 +2135,22 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "string",
-                            "description": "Successful."
+                            "type": "integer",
+                            "description": "Update Successful!"
                         }
                     },
                     "400": {
                         "description": "",
                         "schema": {
                             "type": "integer",
-                            "description": "Client error."
+                            "description": "Username already exists!"
                         }
                     },
                     "500": {
                         "description": "",
                         "schema": {
                             "type": "integer",
-                            "description": "Error saving data."
+                            "description": "Update Failed!"
                         }
                     }
                 }
@@ -2337,35 +2219,59 @@
                 }
             }
         },
-        "/objective.php": {
+        "/appearance.php": {
             "get": {
-                "operationId": "GET_objective-php",
-                "summary": "Objective",
+                "operationId": "GET_appearance-php",
+                "summary": "Appearance",
                 "parameters": [
+                    {
+                        "name": "Build",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "HeightFeet",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "HeightInches",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Hair",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Eyes",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Ethnicity",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
                     {
                         "name": "ID",
                         "in": "query",
+                        "required": false,
                         "type": "integer"
                     },
                     {
-                        "name": "Dating",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "Friends",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "Networking",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "UseInterests",
-                        "in": "query",
-                        "type": "string"
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "integer"
+                        }
                     }
                 ],
                 "responses": {
@@ -2373,21 +2279,21 @@
                         "description": "",
                         "schema": {
                             "type": "integer",
-                            "description": "Successful"
+                            "description": "Appearance data updated successfully."
                         }
                     },
                     "400": {
                         "description": "",
                         "schema": {
                             "type": "integer",
-                            "description": "Invalid data."
+                            "description": "Invalid user data provided."
                         }
                     },
                     "500": {
                         "description": "",
                         "schema": {
                             "type": "integer",
-                            "description": "Server error."
+                            "description": "Error saving data."
                         }
                     }
                 }
@@ -2449,44 +2355,27 @@
                 }
             }
         },
-        "/educationPref.php": {
+        "/social.php": {
             "get": {
-                "operationId": "GET_educationPref-php",
-                "summary": "EducationPref",
+                "operationId": "GET_social-php",
+                "summary": "Social",
                 "parameters": [
                     {
                         "name": "ID",
                         "in": "query",
+                        "required": true,
                         "type": "integer"
                     },
                     {
-                        "name": "HighSchool",
+                        "name": "Religion",
                         "in": "query",
+                        "required": true,
                         "type": "string"
                     },
                     {
-                        "name": "SomeCollege",
+                        "name": "Politics",
                         "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "Bachelor",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "Master",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "Doctorate",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "NoEducationPref",
-                        "in": "query",
+                        "required": true,
                         "type": "string"
                     }
                 ],
@@ -2502,14 +2391,14 @@
                         "description": "",
                         "schema": {
                             "type": "integer",
-                            "description": "User error."
+                            "description": "Client error."
                         }
                     },
                     "500": {
                         "description": "",
                         "schema": {
                             "type": "integer",
-                            "description": "Server error."
+                            "description": "Error saving data."
                         }
                     }
                 }
@@ -2559,10 +2448,10 @@
                 }
             }
         },
-        "/socialPref.php": {
+        "/agePref.php": {
             "get": {
-                "operationId": "GET_socialPref-php",
-                "summary": "SocialPref",
+                "operationId": "GET_agePref-php",
+                "summary": "AgePref",
                 "parameters": [
                     {
                         "name": "ID",
@@ -2570,52 +2459,12 @@
                         "type": "integer"
                     },
                     {
-                        "name": "Conservative",
+                        "name": "AgeMin",
                         "in": "query",
                         "type": "string"
                     },
                     {
-                        "name": "Liberal",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "Moderate",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "NoPoliticalPref",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "Christian",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "Muslim",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "Spiritual",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "Agnostic",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "Atheist",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "NoReligiousPref",
+                        "name": "AgeMax",
                         "in": "query",
                         "type": "string"
                     }
@@ -2624,15 +2473,19 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "integer",
-                            "description": "Fail to save data."
+                            "type": "integer"
+                        }
+                    },
+                    "400": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer"
                         }
                     },
                     "500": {
                         "description": "",
                         "schema": {
-                            "type": "integer",
-                            "description": "Save failed."
+                            "type": "integer"
                         }
                     }
                 }
@@ -2691,10 +2544,10 @@
                 }
             }
         },
-        "/getHeightFeet.php": {
+        "/getProfileMedia.php": {
             "get": {
-                "operationId": "GET_getHeightFeet-php",
-                "summary": "GetHeightFeet",
+                "operationId": "GET_getProfileMedia-php",
+                "summary": "GetProfileMedia",
                 "parameters": [
                     {
                         "name": "ID",
@@ -2706,14 +2559,15 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "string"
+                            "type": "string",
+                            "description": "Successful."
                         }
                     },
-                    "500": {
+                    "400": {
                         "description": "",
                         "schema": {
                             "type": "integer",
-                            "description": "There was an error retrieving data."
+                            "description": "No media found."
                         }
                     }
                 }
@@ -2784,29 +2638,41 @@
                 }
             }
         },
-        "/getEyes.php": {
+        "/about.php": {
             "get": {
-                "operationId": "GET_getEyes-php",
-                "summary": "GetEyes",
+                "operationId": "GET_about-php",
+                "summary": "About",
                 "parameters": [
                     {
                         "name": "ID",
                         "in": "query",
                         "type": "integer"
+                    },
+                    {
+                        "name": "About",
+                        "in": "query",
+                        "type": "string"
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "string"
+                            "type": "integer"
+                        }
+                    },
+                    "400": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Client error."
                         }
                     },
                     "500": {
                         "description": "",
                         "schema": {
                             "type": "integer",
-                            "description": "There was an error retrieving data."
+                            "description": "Server error."
                         }
                     }
                 }
@@ -2871,10 +2737,10 @@
                 }
             }
         },
-        "/getHasKids.php": {
+        "/getHair.php": {
             "get": {
-                "operationId": "GET_getHasKids-php",
-                "summary": "GetHasKids",
+                "operationId": "GET_getHair-php",
+                "summary": "GetHair",
                 "parameters": [
                     {
                         "name": "ID",
@@ -2892,7 +2758,8 @@
                     "500": {
                         "description": "",
                         "schema": {
-                            "type": "integer"
+                            "type": "integer",
+                            "description": "There was an error retrieving data."
                         }
                     }
                 }
@@ -2975,10 +2842,10 @@
                 }
             }
         },
-        "/getSmoke.php": {
+        "/getEducation.php": {
             "get": {
-                "operationId": "GET_getSmoke-php",
-                "summary": "GetSmoke",
+                "operationId": "GET_getEducation-php",
+                "summary": "GetEducation",
                 "parameters": [
                     {
                         "name": "ID",
@@ -2996,7 +2863,8 @@
                     "500": {
                         "description": "",
                         "schema": {
-                            "type": "integer"
+                            "type": "integer",
+                            "description": "Error retrieving data."
                         }
                     }
                 }
@@ -3064,10 +2932,10 @@
                 }
             }
         },
-        "/getNetworking.php": {
+        "/getReligion.php": {
             "get": {
-                "operationId": "GET_getNetworking-php",
-                "summary": "GetNetworking",
+                "operationId": "GET_getReligion-php",
+                "summary": "GetReligion",
                 "parameters": [
                     {
                         "name": "ID",
@@ -3079,14 +2947,13 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "boolean"
+                            "type": "string"
                         }
                     },
                     "500": {
                         "description": "",
                         "schema": {
-                            "type": "integer",
-                            "description": "There was an error saving data."
+                            "type": "integer"
                         }
                     }
                 }
@@ -3173,10 +3040,10 @@
                 }
             }
         },
-        "/getAccountSettings.php": {
+        "/getDating.php": {
             "get": {
-                "operationId": "GET_getAccountSettings-php",
-                "summary": "GetAccountSettings",
+                "operationId": "GET_getDating-php",
+                "summary": "GetDating",
                 "parameters": [
                     {
                         "name": "ID",
@@ -3188,15 +3055,14 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object",
-                            "properties": {
-                                "Email": {
-                                    "type": "string"
-                                },
-                                "Username": {
-                                    "type": "string"
-                                }
-                            }
+                            "type": "boolean"
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Failed to retrieve data."
                         }
                     }
                 }
@@ -3378,50 +3244,29 @@
                 }
             }
         },
-        "/social.php": {
+        "/getAbout.php": {
             "get": {
-                "operationId": "GET_social-php",
-                "summary": "Social",
+                "operationId": "GET_getAbout-php",
+                "summary": "GetAbout",
                 "parameters": [
                     {
                         "name": "ID",
                         "in": "query",
-                        "required": true,
                         "type": "integer"
-                    },
-                    {
-                        "name": "Religion",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "Politics",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "string",
-                            "description": "Successful."
-                        }
-                    },
-                    "400": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "Client error."
+                            "type": "string"
                         }
                     },
                     "500": {
                         "description": "",
                         "schema": {
                             "type": "integer",
-                            "description": "Error saving data."
+                            "description": "Unable to retrieve data."
                         }
                     }
                 }
@@ -3500,30 +3345,76 @@
                 }
             }
         },
-        "/getProfileMedia.php": {
+        "/signup.php": {
             "get": {
-                "operationId": "GET_getProfileMedia-php",
-                "summary": "GetProfileMedia",
+                "operationId": "GET_signup-php",
+                "summary": "Signup",
                 "parameters": [
                     {
-                        "name": "ID",
+                        "name": "FirstName",
                         "in": "query",
-                        "type": "integer"
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "LastName",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Username",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Email",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Password",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "string",
-                            "description": "Successful."
+                            "type": "integer",
+                            "description": "User signed up successfully."
                         }
                     },
                     "400": {
                         "description": "",
                         "schema": {
                             "type": "integer",
-                            "description": "No media found."
+                            "description": "User input bad."
+                        }
+                    },
+                    "406": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Username already exists."
+                        }
+                    },
+                    "409": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Account already exists."
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Sign up failed."
                         }
                     }
                 }
@@ -3558,29 +3449,57 @@
                 }
             }
         },
-        "/getHair.php": {
+        "/objective.php": {
             "get": {
-                "operationId": "GET_getHair-php",
-                "summary": "GetHair",
+                "operationId": "GET_objective-php",
+                "summary": "Objective",
                 "parameters": [
                     {
                         "name": "ID",
                         "in": "query",
                         "type": "integer"
+                    },
+                    {
+                        "name": "Dating",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Friends",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Networking",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "UseInterests",
+                        "in": "query",
+                        "type": "string"
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "string"
+                            "type": "integer",
+                            "description": "Successful"
+                        }
+                    },
+                    "400": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Invalid data."
                         }
                     },
                     "500": {
                         "description": "",
                         "schema": {
                             "type": "integer",
-                            "description": "There was an error retrieving data."
+                            "description": "Server error."
                         }
                     }
                 }
@@ -3620,28 +3539,80 @@
                 }
             }
         },
-        "/getReligion.php": {
+        "/socialPref.php": {
             "get": {
-                "operationId": "GET_getReligion-php",
-                "summary": "GetReligion",
+                "operationId": "GET_socialPref-php",
+                "summary": "SocialPref",
                 "parameters": [
                     {
                         "name": "ID",
                         "in": "query",
                         "type": "integer"
+                    },
+                    {
+                        "name": "Conservative",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Liberal",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Moderate",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "NoPoliticalPref",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Christian",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Muslim",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Spiritual",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Agnostic",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Atheist",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "NoReligiousPref",
+                        "in": "query",
+                        "type": "string"
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "string"
+                            "type": "integer",
+                            "description": "Fail to save data."
                         }
                     },
                     "500": {
                         "description": "",
                         "schema": {
-                            "type": "integer"
+                            "type": "integer",
+                            "description": "Save failed."
                         }
                     }
                 }
@@ -3688,10 +3659,10 @@
                 }
             }
         },
-        "/getAbout.php": {
+        "/getEyes.php": {
             "get": {
-                "operationId": "GET_getAbout-php",
-                "summary": "GetAbout",
+                "operationId": "GET_getEyes-php",
+                "summary": "GetEyes",
                 "parameters": [
                     {
                         "name": "ID",
@@ -3710,16 +3681,16 @@
                         "description": "",
                         "schema": {
                             "type": "integer",
-                            "description": "Unable to retrieve data."
+                            "description": "There was an error retrieving data."
                         }
                     }
                 }
             }
         },
-        "/agePref.php": {
+        "/block.php": {
             "get": {
-                "operationId": "GET_agePref-php",
-                "summary": "AgePref",
+                "operationId": "GET_block-php",
+                "summary": "Block",
                 "parameters": [
                     {
                         "name": "ID",
@@ -3727,12 +3698,97 @@
                         "type": "integer"
                     },
                     {
-                        "name": "AgeMin",
+                        "name": "MemberID",
+                        "in": "query",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Block successful"
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Block failed"
+                        }
+                    }
+                }
+            }
+        },
+        "/getSmoke.php": {
+            "get": {
+                "operationId": "GET_getSmoke-php",
+                "summary": "GetSmoke",
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        },
+        "/getAccountSettings.php": {
+            "get": {
+                "operationId": "GET_getAccountSettings-php",
+                "summary": "GetAccountSettings",
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Email": {
+                                    "type": "string"
+                                },
+                                "Username": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/getLocation.php": {
+            "get": {
+                "operationId": "GET_getLocation-php",
+                "summary": "GetLocation",
+                "parameters": [
+                    {
+                        "name": "Lat",
                         "in": "query",
                         "type": "string"
                     },
                     {
-                        "name": "AgeMax",
+                        "name": "Long",
                         "in": "query",
                         "type": "string"
                     }
@@ -3741,19 +3797,25 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "integer"
-                        }
-                    },
-                    "400": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer"
+                            "type": "object",
+                            "properties": {
+                                "City": {
+                                    "type": "string"
+                                },
+                                "State": {
+                                    "type": "string"
+                                },
+                                "Country": {
+                                    "type": "string"
+                                }
+                            }
                         }
                     },
                     "500": {
                         "description": "",
                         "schema": {
-                            "type": "integer"
+                            "type": "integer",
+                            "description": "Failed to return location."
                         }
                     }
                 }
@@ -3862,53 +3924,21 @@
                 }
             }
         },
-        "/block.php": {
+        "/gender.php": {
             "get": {
-                "operationId": "GET_block-php",
-                "summary": "Block",
+                "operationId": "GET_gender-php",
+                "summary": "Gender",
                 "parameters": [
                     {
                         "name": "ID",
                         "in": "query",
+                        "required": true,
                         "type": "integer"
                     },
                     {
-                        "name": "MemberID",
+                        "name": "Gender",
                         "in": "query",
-                        "type": "integer"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "Block successful"
-                        }
-                    },
-                    "500": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "Block failed"
-                        }
-                    }
-                }
-            }
-        },
-        "/about.php": {
-            "get": {
-                "operationId": "GET_about-php",
-                "summary": "About",
-                "parameters": [
-                    {
-                        "name": "ID",
-                        "in": "query",
-                        "type": "integer"
-                    },
-                    {
-                        "name": "About",
-                        "in": "query",
+                        "required": true,
                         "type": "string"
                     }
                 ],
@@ -3916,7 +3946,8 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "integer"
+                            "type": "string",
+                            "description": "Successful."
                         }
                     },
                     "400": {
@@ -3930,96 +3961,16 @@
                         "description": "",
                         "schema": {
                             "type": "integer",
-                            "description": "Server error."
-                        }
-                    }
-                }
-            }
-        },
-        "/appearance.php": {
-            "get": {
-                "operationId": "GET_appearance-php",
-                "summary": "Appearance",
-                "parameters": [
-                    {
-                        "name": "Build",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "HeightFeet",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "HeightInches",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "Hair",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "Eyes",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "Ethnicity",
-                        "in": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "ID",
-                        "in": "query",
-                        "required": false,
-                        "type": "integer"
-                    },
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "Appearance data updated successfully."
-                        }
-                    },
-                    "400": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "Invalid user data provided."
-                        }
-                    },
-                    "500": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
                             "description": "Error saving data."
                         }
                     }
                 }
             }
         },
-        "/getDating.php": {
+        "/getNetworking.php": {
             "get": {
-                "operationId": "GET_getDating-php",
-                "summary": "GetDating",
+                "operationId": "GET_getNetworking-php",
+                "summary": "GetNetworking",
                 "parameters": [
                     {
                         "name": "ID",
@@ -4038,16 +3989,43 @@
                         "description": "",
                         "schema": {
                             "type": "integer",
-                            "description": "Failed to retrieve data."
+                            "description": "There was an error saving data."
                         }
                     }
                 }
             }
         },
-        "/getEducation.php": {
+        "/getHasKids.php": {
             "get": {
-                "operationId": "GET_getEducation-php",
-                "summary": "GetEducation",
+                "operationId": "GET_getHasKids-php",
+                "summary": "GetHasKids",
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        },
+        "/getHeightFeet.php": {
+            "get": {
+                "operationId": "GET_getHeightFeet-php",
+                "summary": "GetHeightFeet",
                 "parameters": [
                     {
                         "name": "ID",
@@ -4066,7 +4044,73 @@
                         "description": "",
                         "schema": {
                             "type": "integer",
-                            "description": "Error retrieving data."
+                            "description": "There was an error retrieving data."
+                        }
+                    }
+                }
+            }
+        },
+        "/educationPref.php": {
+            "get": {
+                "operationId": "GET_educationPref-php",
+                "summary": "EducationPref",
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "HighSchool",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "SomeCollege",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Bachelor",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Master",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Doctorate",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "NoEducationPref",
+                        "in": "query",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "string",
+                            "description": "Successful."
+                        }
+                    },
+                    "400": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "User error."
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Server error."
                         }
                     }
                 }
