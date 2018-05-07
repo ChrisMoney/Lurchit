@@ -13,7 +13,12 @@ Order By ID DESC Limit 1) as MessageDate,
 (Select Username FROM Members WHERE ID = msg.Other_ID) as Username
 
 FROM Members m, ProfileMedia p, Messages msg 
-WHERE (m.ID = msg.Sender_ID) And (p.Member_ID = msg.Sender_ID) And (Owner_ID = $id) And (msg.Receiver_ID = $otherID Or msg.Sender_ID = $otherID) 
+WHERE 
+(m.ID = msg.Sender_ID) 
+And (p.Member_ID = msg.Sender_ID) 
+And (Owner_ID = $id) 
+And (msg.Receiver_ID = $otherID Or msg.Sender_ID = $otherID)
+And (msg.MessageDate > NOW() - INTERVAL 1 DAY)
 
 Order By MessageID DESC ";
 
