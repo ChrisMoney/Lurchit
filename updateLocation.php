@@ -16,7 +16,7 @@ Set City = '$city', State = '$state', Country = '$country' WHERE ID = $id ";
 
 if (mysqli_query($conn, $sql)) {
     // successful
-    echo http_response_code(200);
+    echo json_encode($city .', ' . $state .' ' .$country);
 }
 else {
     // error saving data

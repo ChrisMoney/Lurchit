@@ -8,6 +8,7 @@ require 'helpers.php';
  * 38.672287
  * -90.440702
  */
+$id = $_GET['ID'];
 $lat = $_GET['Lat'];
 $long = $_GET['Long'];
 $data = file_get_contents("https://maps.google.com/maps/api/geocode/json?latlng=$lat,$long&sensor=false&key=AIzaSyCoRTbekTZbeNP03VMkpyx-N9Lcfe2XGP0");
@@ -19,6 +20,7 @@ $country = "N/A";
 $state = "N/A";
 $city = "N/A";
 
+if (isset($lat) && !empty($lat)) {
 foreach ($add_array as $key) {
     if($key->types[0] == 'locality')
     {
@@ -37,6 +39,14 @@ $location = array();
 $location['City'] = $city;
 $location['State'] = $state;
 $location['Country'] = $country;
+}
+
+else {
+    $sql = "SELECT City, State, Country, CONCAT(City, ', ', State, ' ',Country) As FullLocation FROM Members WHERE ID = $id";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+    $location = $row;
+}
 $currentLocation = (object)$location;
 
 echo json_encode($currentLocation);

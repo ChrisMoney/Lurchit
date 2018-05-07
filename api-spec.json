@@ -88,7 +88,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "integer",
+                            "type": "string",
                             "description": "Location updated."
                         }
                     },
@@ -1506,6 +1506,9 @@
                                 },
                                 "Time": {
                                     "type": "string"
+                                },
+                                "MediaAdded": {
+                                    "type": "boolean"
                                 }
                             }
                         }
@@ -3429,6 +3432,11 @@
                         "name": "ID",
                         "in": "query",
                         "type": "integer"
+                    },
+                    {
+                        "name": "OtherID",
+                        "in": "query",
+                        "type": "integer"
                     }
                 ],
                 "responses": {
@@ -3791,6 +3799,11 @@
                         "name": "Long",
                         "in": "query",
                         "type": "string"
+                    },
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
                     }
                 ],
                 "responses": {
@@ -3806,6 +3819,9 @@
                                     "type": "string"
                                 },
                                 "Country": {
+                                    "type": "string"
+                                },
+                                "FullLocation": {
                                     "type": "string"
                                 }
                             }
