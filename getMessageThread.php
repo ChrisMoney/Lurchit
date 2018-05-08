@@ -7,7 +7,7 @@ include_once 'helpers.php';
 $id = $_GET['ID'];
 $otherID = $_GET['OtherID'];
 
-$sql = "SELECT msg.ID as MessageID, p.MediaName as MediaName, msg.New as New, msg.Sender_ID, msg.Other_ID, msg.Pitch as Pitch, msg.Flick as Flick,
+$sql = "SELECT msg.ID as MessageID, p.MediaName as MediaName, msg.New as New, msg.Sender_ID as SenderID, msg.Other_ID as OtherID, msg.Pitch as Pitch, msg.Flick as Flick,
 msg.MessageDate,
 (Select Username FROM Members WHERE ID = msg.Sender_ID) as Username
 

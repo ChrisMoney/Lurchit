@@ -80,9 +80,9 @@ if (mysqli_query($conn, $sql1)) {
             $tag = $receiverID;
             $key = "ID";
             $title = "New Message";
-            pushNotification($appId, $content, $key, $tag, $title);
+            pushNotification($content, $key, $tag, $title);
     }
-    catch(Execption $e) {
+    catch(Exception $e) {
         $error = $e->getMessage();
         $sqlLog = "INSERT INTO Log (Log, Date) Values ('$error', NOW())";
         mysqli_query($conn, $sqlLog);

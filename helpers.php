@@ -10,7 +10,7 @@ function getDistance($id) {
     return $distance;
 }
 
-function pushNotification($appId, $content, $key, $tag, $title){
+function pushNotification($content, $key, $tag, $title){
 		$content = array(
 			"en" => $content
 			);
