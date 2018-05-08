@@ -33,21 +33,11 @@ if (mysqli_query($conn, $sql)) {
             
             // format flickpitch date for comparison month/day
             $date = strtotime($flickPostDate);
-            $dbDate = date('F j', $date);
             
             // format flickpitch date for display
-            $displayDate = date('g:i a', $date);
+            $displayDate = date('D g:i a', $date);
             
-            // format flickpitch date for comparison month/day
-            $today = strtotime('now');
-            $todayDate = date('F j', $today);
-            
-            if ($todayDate == $dbDate) {
-                $timePosted = 'Today';
-            }
-            else {
-                $timePosted = 'Yesterday';
-            }
+           
             
             //$time = date("g:i a",$flickPitchDate);
             $flickPitch['PitchDate'] = $timePosted . ' '. $displayDate;
