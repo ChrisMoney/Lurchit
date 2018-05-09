@@ -46,6 +46,9 @@ else {
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
     $location = $row;
+    if (strlen($location) < 1) {
+        $location['FullLocation'] = "Location Unavailable";
+    }
 }
 $currentLocation = (object)$location;
 

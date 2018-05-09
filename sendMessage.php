@@ -33,7 +33,7 @@ else {
 
 
 // determine if this is the first message between users for receiver
-$sql3 = "SELECT ID FROM Messages WHERE Owner_ID = $receiverID And Other_ID = $id And FirstMessage = 1 ";
+$sql3 = "SELECT ID FROM Messages WHERE Owner_ID = $receiverID And Other_ID = $senderID And FirstMessage = 1 ";
 $result3 = mysqli_query($conn, $sql3);
 
 if (mysqli_num_rows($result3) > 0) {
@@ -44,7 +44,7 @@ else {
 }
 
 // determine if this is the first message between users for sender
-$sql4 = "SELECT ID FROM Messages WHERE Owner_ID = $id And Other_ID = $receiverID And FirstMessage = 1  ";
+$sql4 = "SELECT ID FROM Messages WHERE Owner_ID = $senderID And Other_ID = $receiverID And FirstMessage = 1  ";
 $result4 = mysqli_query($conn, $sql4);
 
 if (mysqli_num_rows($result4) > 0) {
