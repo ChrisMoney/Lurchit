@@ -6,7 +6,9 @@ include_once 'helpers.php';
 
 $id = $_GET['ID'];
 
-$sql = "SELECT p.MediaName as MediaName, msg.New as New, msg.Other_ID as OtherID,
+$sql = "SELECT p.MediaName as MediaName, 
+(SELECT New FROM Messages WHERE Owner_ID = $id And Other_ID = msg.Other_ID Order By New DESC Limit 1) As New,
+ msg.Other_ID as OtherID,
 (SELECT MessageDate FROM Messages WHERE Owner_ID = $id And Other_ID = msg.Other_ID
 Order By ID DESC Limit 1) as MessageDate,
 (Select Username FROM Members WHERE ID = msg.Other_ID) as Username
