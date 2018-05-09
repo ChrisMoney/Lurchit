@@ -1,14 +1,11 @@
 <?php
 
 
-$dir = "/home/pblhrakl19bs/public_html/api/messages/"; /** define the directory **/
-$now   = time();
-
-
-foreach (glob($dir."*") as $file) {
-    if (is_file($file)) {
-        if ($now - filemtime($file) >= 60 * 60 * 24 * 2) { // 2 days
-            unlink($file);
-        }
-    }
+$files = glob("/home/pblhrakl19bs/public_html/api/messages/"); /** define the directory **/
+foreach($files as $file){
+    $lastModifiedTime = filemtime($file);
+    $currentTime = time();
+    $timeDiff = abs($currentTime - $lastModifiedTime)/(60*60); //in hours
+    if(is_file($file) && $timeDiff > 48) //check if file is modified before 48 hours
+        unlink($file); //delete file
 }
