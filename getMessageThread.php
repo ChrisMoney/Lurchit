@@ -1,11 +1,14 @@
 <?php
 
-header("Content-Type: application/json;charset=utf-8");
+header("Content-Type: application/json;charset=iso-8859-1");
 require 'connect.php';
 include_once 'helpers.php';
+include_once 'Emoji.php';
 
 $id = $_GET['ID'];
 $otherID = $_GET['OtherID'];
+
+mysqli_query("SET character_set_client=utf8mb4", $conn);
 
 $sql = "SELECT msg.ID as MessageID, p.MediaName as MediaName, msg.New as New, msg.Sender_ID as SenderID, msg.Other_ID as OtherID, msg.Pitch as Pitch, msg.Flick as Flick,
 msg.MessageDate,
@@ -38,6 +41,10 @@ if ($result = mysqli_query($conn, $sql)) {
             // format flickpitch age text from date
             $date = date('D M d', strtotime( $message['MessageDate'] ));
             $message['MessageDate'] = $date;
+            
+            $message['Pitch'] = Emoji::Encode($message['Pitch']);
+
+            $message['Pitch'] = preg_replace("/\\\\u([0-9A-F]{2,5})/i", "&#x$1;", $message['Pitch']);
             
             if ($message['Sender_ID'] == $id) {
                 $message['Username'] = 'Me';

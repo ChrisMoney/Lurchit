@@ -3,6 +3,7 @@
 header("Content-Type: application/json;charset=utf-8");
 require 'connect.php';
 require 'helpers.php';
+include_once 'Emoji.php';
 
 $data = json_decode(file_get_contents('php://input'), true);
 
@@ -29,7 +30,15 @@ else {
     $flickName = "";
 }
 
-
+if (strlen($pitch) > 250) {
+    echo http_response_code(400);
+    exit;
+}
+if (strlen($pitch) == 0 || strlen($pitch) == '') {
+    echo http_response_code(401);
+    exit;
+}
+$pitch = Emoji::Decode($pitch);
 
 
 // determine if this is the first message between users for receiver
