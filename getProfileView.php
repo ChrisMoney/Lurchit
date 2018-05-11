@@ -10,6 +10,9 @@ $visitorID = $_GET['VisitorID'];
 $sql = "SELECT m.Username as Username, CONCAT(m.HeightFeet, '-', m.HeightInches) as Height,
 m.Gender as Gender, m.Build as Build, m.About as About, pm.MediaName As MediaName,
 (SELECT TIMESTAMPDIFF(YEAR, m.Birthdate, CURDATE())) as Age, m.Ethnicity As Ethnicity,
+m.Politics as Politics, m.Religion as Religion, m.Drink as Drink, m.Smoke as Smoke, 
+m.Education as Education, m.HasKids as HasKids,
+
 
 CASE WHEN mp.NoRacePref = 'true' THEN 'No Ethnic Preference' ELSE '' END As NoRacePref,
 CASE WHEN mp.White = 'true' THEN 'White' ELSE '' END As White,
