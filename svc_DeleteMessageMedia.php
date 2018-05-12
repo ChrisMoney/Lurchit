@@ -1,7 +1,7 @@
 <?php
 
 
-$files = glob("/home/pblhrakl19bs/public_html/api/messages/"); /** define the directory **/
+$files = glob('/home/pblhrakl19bs/public_html/api/messages/*'); /** define the directory **/
 foreach($files as $file){
     $lastModifiedTime = filemtime($file);
     $currentTime = time();

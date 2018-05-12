@@ -85,14 +85,12 @@ if (mysqli_query($conn, $sql1)) {
             $row = mysqli_fetch_assoc($result2);
             $name = $row['Username'];
             
-            $content = "Message from $name";
-            $tag = $receiverID;
-            $key = "ID";
-            $title = "New Message";
-            pushNotification($content, $key, $tag, $title);
+            $message = "Message from $name";
+            $userID = $receiverID;
+            pushNotification($message, $userID);
     }
     catch(Exception $e) {
-        $error = $e->getMessage();
+        $error = 'Push Notification Failed';
         $sqlLog = "INSERT INTO Log (Log, Date) Values ('$error', NOW())";
         mysqli_query($conn, $sqlLog);
     } 

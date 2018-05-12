@@ -18,7 +18,7 @@ $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
     $row = mysqli_fetch_assoc($result);
     $name = $row['FirstName'] . ' '. $row['LastName'];
-    echo $name . ' invited you to join Flickpitch. ';
+    echo $name . " invited you to join Flickpitch. flickpitch.com";
 }
 else {
     echo json_encode(http_response_code(500));

@@ -10,22 +10,18 @@ function getDistance($id) {
     return $distance;
 }
 
-function pushNotification($content, $key, $tag, $title){
+function pushNotification($message, $userID){
 		$content = array(
-			"en" => $content
+			"en" => $message
 			);
+    
+         $fields = array(
+            'app_id' => "02681849-4f61-41ba-ad44-9dddca4f2172",
+            'filters' => array(array("field" => "tag", "key" => "ID", "relation" => "=", "value" => "$userID")),
+            'contents' => $content
+        );
 		
         
-        $filters = array("field" => "tag", "key" => $key, "relation" => "=", "value" => $tag);
-    
-		$fields = array(
-      "app_id" => '02681849-4f61-41ba-ad44-9dddca4f2172',
-      "filters" => $filters,
-      "contents" => $content,
-	  "icon" => "http://api.flickpitch.com/logo.png",
-      "title" => $title
-    );
-		
 		$fields = json_encode($fields);
 		
 		$ch = curl_init();
@@ -42,15 +38,7 @@ function pushNotification($content, $key, $tag, $title){
 		curl_close($ch);
 		
 		return $response;
-        
-      /*$response = sendMessage();
-	$return["allresponses"] = $response;
-	$return = json_encode( $return);
-	
-	print("\n\nJSON received:\n");
-	print($return);
-	print("\n"); 
-     */
+
 	}
     
     function calculate_time_span($date){

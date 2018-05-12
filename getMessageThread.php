@@ -1,6 +1,6 @@
 <?php
 
-header("Content-Type: application/json;charset=iso-8859-1");
+header("Content-Type: application/json;charset=utf-8");
 require 'connect.php';
 include_once 'helpers.php';
 include_once 'Emoji.php';
@@ -44,8 +44,8 @@ if ($result = mysqli_query($conn, $sql)) {
             
             $message['Pitch'] = Emoji::Encode($message['Pitch']);
 
-            $message['Pitch'] = preg_replace("/\\\\u([0-9A-F]{2,5})/i", "&#x$1;", $message['Pitch']);
-            
+            $message['Pitch'] = preg_replace("/\\\\u([0-9A-F]{2,5})/i", "&#x1F601;", $message['Pitch']);
+
             if ($message['Sender_ID'] == $id) {
                 $message['Username'] = 'Me';
             }
