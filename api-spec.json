@@ -88,11 +88,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-<<<<<<< HEAD
-                            "type": "integer",
-=======
                             "type": "string",
->>>>>>> 39f8079eba7dd906ab599d657735470ba0955314
                             "description": "Location updated."
                         }
                     },
@@ -1531,6 +1527,13 @@
                         "schema": {
                             "type": "integer",
                             "description": "Message to long."
+                        }
+                    },
+                    "401": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Empty message with no media."
                         }
                     },
                     "500": {
@@ -3230,6 +3233,24 @@
                                 },
                                 "Networking": {
                                     "type": "string"
+                                },
+                                "HasKids": {
+                                    "type": "string"
+                                },
+                                "Politics": {
+                                    "type": "string"
+                                },
+                                "Drink": {
+                                    "type": "string"
+                                },
+                                "Smoke": {
+                                    "type": "string"
+                                },
+                                "Education": {
+                                    "type": "string"
+                                },
+                                "Religion": {
+                                    "type": "string"
                                 }
                             }
                         }
@@ -3711,7 +3732,6 @@
                     },
                     {
                         "name": "MemberID",
-<<<<<<< HEAD
                         "in": "query",
                         "type": "integer"
                     }
@@ -3741,8 +3761,6 @@
                 "parameters": [
                     {
                         "name": "ID",
-=======
->>>>>>> 39f8079eba7dd906ab599d657735470ba0955314
                         "in": "query",
                         "type": "integer"
                     }
@@ -3751,38 +3769,6 @@
                     "200": {
                         "description": "",
                         "schema": {
-<<<<<<< HEAD
-=======
-                            "type": "integer",
-                            "description": "Block successful"
-                        }
-                    },
-                    "500": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "Block failed"
-                        }
-                    }
-                }
-            }
-        },
-        "/getSmoke.php": {
-            "get": {
-                "operationId": "GET_getSmoke-php",
-                "summary": "GetSmoke",
-                "parameters": [
-                    {
-                        "name": "ID",
-                        "in": "query",
-                        "type": "integer"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
->>>>>>> 39f8079eba7dd906ab599d657735470ba0955314
                             "type": "string"
                         }
                     },
@@ -3800,10 +3786,6 @@
                 "operationId": "GET_getAccountSettings-php",
                 "summary": "GetAccountSettings",
                 "parameters": [
-<<<<<<< HEAD
-                    {
-                        "name": "ID",
-=======
                     {
                         "name": "ID",
                         "in": "query",
@@ -3835,53 +3817,18 @@
                 "parameters": [
                     {
                         "name": "Lat",
->>>>>>> 39f8079eba7dd906ab599d657735470ba0955314
-                        "in": "query",
-                        "type": "integer"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "Email": {
-                                    "type": "string"
-                                },
-                                "Username": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/getLocation.php": {
-            "get": {
-                "operationId": "GET_getLocation-php",
-                "summary": "GetLocation",
-                "parameters": [
-                    {
-<<<<<<< HEAD
-                        "name": "Lat",
-=======
-                        "name": "Long",
->>>>>>> 39f8079eba7dd906ab599d657735470ba0955314
                         "in": "query",
                         "type": "string"
                     },
                     {
-<<<<<<< HEAD
                         "name": "Long",
                         "in": "query",
                         "type": "string"
-=======
+                    },
+                    {
                         "name": "ID",
                         "in": "query",
                         "type": "integer"
->>>>>>> 39f8079eba7dd906ab599d657735470ba0955314
                     }
                 ],
                 "responses": {
@@ -3898,12 +3845,9 @@
                                 },
                                 "Country": {
                                     "type": "string"
-<<<<<<< HEAD
-=======
                                 },
                                 "FullLocation": {
                                     "type": "string"
->>>>>>> 39f8079eba7dd906ab599d657735470ba0955314
                                 }
                             }
                         }
