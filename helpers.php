@@ -10,6 +10,10 @@ function getDistance($id) {
     return $distance;
 }
 
+/*
+ * Test App ID: 02681849-4f61-41ba-ad44-9dddca4f2172
+ * Test Key: MjJkODVjZTEtM2JiMS00OGUyLWEyZDUtYWMzMzJhNDY5ZjQ2
+ */ 
 function pushNotification($message, $userID){
 		$content = array(
 			"en" => $message

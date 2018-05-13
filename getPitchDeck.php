@@ -31,7 +31,7 @@ And pd.Member_ID = m.ID
 And 
 (
 (CASE WHEN mp.NoReligiousPref = 'true' THEN m.Religion = 'Christian' or m.Religion = 'Muslim'
-Or m.Religion = 'Spiritual' Or m.Religion = 'Agnostic' Or m.Religion = 'Atheist' END)
+Or m.Religion = 'Spiritual' Or m.Religion = 'Agnostic' Or m.Religion = 'Atheist' Or m.Religion = 'None' END)
 Or (mp.Christian = (CASE m.Religion WHEN 'Christian' THEN 'true' END))
 Or (mp.Muslim = (CASE m.Religion WHEN 'Muslim' THEN 'true' END))
 Or (mp.Spiritual = (CASE m.Religion WHEN 'Spiritual' THEN 'true' END))
@@ -41,7 +41,8 @@ Or (mp.Atheist = (CASE m.Religion WHEN 'Atheist' THEN 'true' END))
 
 And
 (
-(CASE WHEN mp.NoPoliticalPref = 'true' THEN m.Politics = 'Liberal' Or m.Politics = 'Conservative' Or m.Politics = 'Moderate' END)
+(CASE WHEN mp.NoPoliticalPref = 'true' THEN m.Politics = 'Liberal' Or m.Politics = 'Conservative' Or m.Politics = 'Moderate' 
+or m.Politics = 'None' END)
 Or (mp.Liberal = (CASE m.Politics WHEN 'Liberal' THEN 'true' END))
 Or (mp.Conservative = (CASE m.Politics WHEN 'Conservative' THEN 'true' END))
 Or (mp.Moderate = (CASE m.Politics WHEN 'Moderate' THEN 'true' END))
