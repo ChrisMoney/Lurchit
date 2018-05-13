@@ -13,6 +13,9 @@ function getDistance($id) {
 /*
  * Test App ID: 02681849-4f61-41ba-ad44-9dddca4f2172
  * Test Key: MjJkODVjZTEtM2JiMS00OGUyLWEyZDUtYWMzMzJhNDY5ZjQ2
+ * 
+ * Production App ID: fc6a4020-ead9-45e2-bf54-de19d749f009
+ * Production Key: ZThlOTdhMmItMzA2OC00NmMwLWEzYTItY2FhYmM1NmVkZmRi
  */ 
 function pushNotification($message, $userID){
 		$content = array(
