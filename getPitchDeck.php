@@ -7,7 +7,6 @@
  */
 header("Content-Type: application/json;charset=utf-8");
 require_once 'connect.php';
-include_once 'helpers.php';
 
 $id = $_GET['ID'];
 $long = $_REQUEST['Long'];
@@ -212,17 +211,6 @@ if ($result = mysqli_query($conn, $sql)) {
         
             $flickPitchDate = $pitchDeck['PitchDate'];
             $pitchDeck['PitchDate'] = calculate_time_span($flickPitchDate);
-            
-            // format flickpitch date for comparison month/day
-            /*$date = strtotime($flickPitchDate);
-            $dbDate = date('F j', $date);
-            
-            // format flickpitch date for display
-            $displayDate = date('D g:i a', $date);
-            
-      
-            //$time = date("g:i a",$flickPitchDate);
-            $pitchDeck['PitchDate'] = "Added to Pitchdeck $displayDate"; */
             
             $myArray[] = $pitchDeck;
             }
