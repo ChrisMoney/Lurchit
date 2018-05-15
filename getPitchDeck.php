@@ -7,6 +7,7 @@
  */
 header("Content-Type: application/json;charset=utf-8");
 require_once 'connect.php';
+require 'helpers.php';
 
 $id = $_GET['ID'];
 $long = $_REQUEST['Long'];
@@ -199,7 +200,6 @@ HAVING distance <= $distance
 ";
 
 $myArray = array();
-date_default_timezone_set('America/Chicago');
 
 if ($result = mysqli_query($conn, $sql)) {
     if (mysqli_num_rows($result) > 0) {
