@@ -7,11 +7,11 @@
  */
 header("Content-Type: application/json;charset=utf-8");
 require_once 'connect.php';
-require 'helpers.php';
+include_once 'helpers.php';
 
 $id = $_GET['ID'];
-$long = $_REQUEST['Long'];
-$lat = $_REQUEST['Lat'];
+$long = $_GET['Long'];
+$lat = $_GET['Lat'];
 
 $distance = getDistance($id);
 
