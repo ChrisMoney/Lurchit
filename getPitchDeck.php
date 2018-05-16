@@ -213,17 +213,6 @@ if ($result = mysqli_query($conn, $sql)) {
             $flickPitchDate = $pitchDeck['PitchDate'];
             $pitchDeck['PitchDate'] = calculate_time_span($flickPitchDate);
             
-            // format flickpitch date for comparison month/day
-            /*$date = strtotime($flickPitchDate);
-            $dbDate = date('F j', $date);
-            
-            // format flickpitch date for display
-            $displayDate = date('D g:i a', $date);
-            
-      
-            //$time = date("g:i a",$flickPitchDate);
-            $pitchDeck['PitchDate'] = "Added to Pitchdeck $displayDate"; */
-            
             $myArray[] = $pitchDeck;
             }
     echo json_encode($myArray, JSON_NUMERIC_CHECK);
