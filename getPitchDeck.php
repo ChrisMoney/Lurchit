@@ -10,8 +10,8 @@ require_once 'connect.php';
 include_once 'helpers.php';
 
 $id = $_GET['ID'];
-$long = $_REQUEST['Long'];
-$lat = $_REQUEST['Lat'];
+$long = $_GET['Long'];
+$lat = $_GET['Lat'];
 
 $distance = getDistance($id);
 
@@ -200,7 +200,6 @@ HAVING distance <= $distance
 ";
 
 $myArray = array();
-date_default_timezone_set('America/Chicago');
 
 if ($result = mysqli_query($conn, $sql)) {
     if (mysqli_num_rows($result) > 0) {

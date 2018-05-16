@@ -87,6 +87,8 @@ function pushNotification($message, $userID){
             $secText = " seconds ago";
         }
         
+        $monthText;
+        
         /* -----------------------
         Display Intervals
         ----------------------*/
@@ -105,7 +107,13 @@ function pushNotification($message, $userID){
             $time = $day. $dayText;
             
         else
-            $time = $months." month ago";
+            if ($months == 1) {
+                $monthText = " month ago";
+            }
+            else {
+                $monthText = " months ago";
+            }
+            $time = $months. $monthText;
             
         return $time;
 }
