@@ -10,8 +10,8 @@ $otherID = $_GET['OtherID'];
 
 mysqli_query("SET character_set_client=utf8mb4", $conn);
 
-$sql = "SELECT msg.ID as MessageID, p.MediaName as MediaName, msg.New as New, msg.Sender_ID as SenderID, msg.Other_ID as OtherID, msg.Pitch as Pitch, msg.Flick as Flick,
-msg.MessageDate,
+$sql = "SELECT msg.ID as MessageID, p.MediaName as MediaName, msg.New as New, msg.Sender_ID as SenderID, 
+msg.Other_ID as OtherID, msg.Pitch as Pitch, msg.Flick as Flick, msg.MessageDate,
 (Select Username FROM Members WHERE ID = msg.Sender_ID) as Username
 
 FROM Members m, ProfileMedia p, Messages msg 
