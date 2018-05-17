@@ -8,10 +8,12 @@
 header("Content-Type: application/json;charset=utf-8");
 require 'connect.php';
 include_once 'helpers.php';
+date_default_timezone_set("UTC");
 
 $id = $_GET['ID'];
 $long = $_GET['Long'];
 $lat = $_GET['Lat'];
+$curtime = $_GET['Time'];
 
 $distance = getDistance($id);
 
@@ -209,8 +211,15 @@ if ($result = mysqli_query($conn, $sql)) {
         $pitchDeck['MediaName'] = "http://api.flickpitch.com/api/media/$mediaName";
         
             $flickPitchDate = $pitchDeck['PitchDate'];
+<<<<<<< HEAD
             $pitchDeck['PitchDate'] = calculate_time_span($flickPitchDate);
 
+=======
+            
+            $curtime = date('Y-m-d H:i', $curtime);
+            $curtime = date('Y-m-d H:i',(strtotime ( '-5 hour' , strtotime ( $curtime) ) )); 
+            $pitchDeck['PitchDate'] = calculate_time_span($flickPitchDate, $curtime);
+>>>>>>> 255b03f1c29dcdc17dc26ff828996382b9b78b15
             
             $myArray[] = $pitchDeck;
             }

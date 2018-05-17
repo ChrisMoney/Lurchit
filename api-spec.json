@@ -2988,6 +2988,14 @@
                         "name": "Lat",
                         "in": "query",
                         "type": "string"
+<<<<<<< HEAD
+=======
+                    },
+                    {
+                        "name": "Time",
+                        "in": "query",
+                        "type": "string"
+>>>>>>> 255b03f1c29dcdc17dc26ff828996382b9b78b15
                     }
                 ],
                 "responses": {
