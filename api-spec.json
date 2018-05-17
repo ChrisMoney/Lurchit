@@ -2982,30 +2982,17 @@
                     {
                         "name": "Long",
                         "in": "query",
-                        "type": "number"
+                        "type": "string"
                     },
                     {
                         "name": "Lat",
                         "in": "query",
-                        "type": "number"
+                        "type": "string"
                     },
                     {
-                        "name": "body",
-                        "in": "body",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "ID": {
-                                    "type": "integer"
-                                },
-                                "Long": {
-                                    "type": "number"
-                                },
-                                "Lat": {
-                                    "type": "number"
-                                }
-                            }
-                        }
+                        "name": "Time",
+                        "in": "query",
+                        "type": "string"
                     }
                 ],
                 "responses": {

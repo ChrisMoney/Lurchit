@@ -48,9 +48,9 @@ function pushNotification($message, $userID){
 
 	}
     
-    function calculate_time_span($date){
-    $seconds  = strtotime(date('Y-m-d H:i:s')) - strtotime($date);
-
+    function calculate_time_span($date, $curtime){
+    $seconds  = strtotime(date('Y-m-d H:i:s' )) - strtotime($date) ;
+    
         $months = floor($seconds / (3600*24*30));
         $day = floor($seconds / (3600*24));
         
@@ -70,6 +70,8 @@ function pushNotification($message, $userID){
             $hourText = " hours ago";
         }
         
+        
+        
         $mins = floor(($seconds - ($hours*3600)) / 60);
         
         if ($mins == "1") {
@@ -77,6 +79,14 @@ function pushNotification($message, $userID){
         }
         else {
             $minText = " minutes ago";
+        }
+        
+        if ($hours >= 5) {
+            $hours = $hours - 5;
+            if ($hours == 0) {
+                $hours = "";
+                $hourText = "Less than an hour ago";
+            }
         }
         
         $secs = floor($seconds % 60);
@@ -103,10 +113,10 @@ function pushNotification($message, $userID){
                 $time = $hours. $hourText;
             }
            
-        else if($seconds > 24*60*60)
+        else if($seconds > 24*60*60) {
             $time = $day. $dayText;
-            
-        else
+        }
+        else {
             if ($months == 1) {
                 $monthText = " month ago";
             }
@@ -114,7 +124,7 @@ function pushNotification($message, $userID){
                 $monthText = " months ago";
             }
             $time = $months. $monthText;
-            
+        }
         return $time;
 }
     
