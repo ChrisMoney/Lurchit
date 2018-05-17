@@ -58,6 +58,10 @@ if (strlen($firstName) > 0 && strlen($lastName) > 0 && strlen($username) > 0 && 
          $id = intval($id);
 
          echo $id;
+         
+         // create profile media instance
+         $sql1 = "Insert Into ProfileMedia (Member_ID, UploadDate) Values ('$id', NOW())";
+         mysqli_query($conn, $sql1);
       }
       else {
          // insert login failed
