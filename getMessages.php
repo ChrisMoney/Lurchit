@@ -2,6 +2,7 @@
 
 header("Content-Type: application/json;charset=utf-8");
 require 'connect.php';
+mysqli_set_charset($conn, "utf8");
 include_once 'helpers.php';
 
 $id = $_GET['ID'];
@@ -29,17 +30,6 @@ if ($result = mysqli_query($conn, $sql)) {
             // format flickpitch age text from date
             $messageDate = $message['MessageDate'];
             $message['MessageDate'] = calculate_time_span($messageDate);
-            
-            // format flickpitch date for comparison month/day
-            /*$date = strtotime($messageDate);
-            $dbDate = date('F j', $date);
-            
-            // format flickpitch date for display
-            $displayDate = date('l', $date);
-
-            
-            //$time = date("g:i a",$flickPitchDate);
-            $message['MessageDate'] = $displayDate; */
             
             $myArray[] = $message;
         }
