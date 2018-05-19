@@ -12,7 +12,8 @@ mysqli_query("SET character_set_client=utf8mb4", $conn);
 
 $sql = "SELECT msg.ID as MessageID, p.MediaName as MediaName, msg.New as New, msg.Sender_ID as SenderID, 
 msg.Other_ID as OtherID, msg.Pitch as Pitch, msg.Flick as Flick, msg.MessageDate,
-(Select Username FROM Members WHERE ID = msg.Sender_ID) as Username
+(Select Username FROM Members WHERE ID = msg.Sender_ID) as Username, msg.IsFlickPitch as IsFlickPitch,
+msg.OrigPitch as OrigPitch
 
 FROM Members m, ProfileMedia p, Messages msg 
 WHERE 
@@ -29,12 +30,15 @@ $myArray = array();
 if ($result = mysqli_query($conn, $sql)) {
     if (mysqli_num_rows($result) > 0) {
         while ($message = mysqli_fetch_assoc($result)) {
+            
             $mediaName = $message['MediaName'];
             $message['MediaName'] = 'http://api.flickpitch.com/api/media/'.$mediaName;
             
             $flickName = $message['Flick'];
             if (strlen($flickName) > 1) {
-                $message['Flick'] = 'http://api.flickpitch.com/api/messages/'.$flickName;
+                if ($message['IsFlickPitch'] == 0) {
+                    $message['Flick'] = 'http://api.flickpitch.com/api/messages/'.$flickName;
+                }
             }
             
             

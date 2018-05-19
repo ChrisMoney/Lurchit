@@ -1509,6 +1509,12 @@
                                 },
                                 "MediaAdded": {
                                     "type": "boolean"
+                                },
+                                "IsFlickPitch": {
+                                    "type": "integer"
+                                },
+                                "OrigPitch": {
+                                    "type": "string"
                                 }
                             }
                         }
@@ -2988,14 +2994,11 @@
                         "name": "Lat",
                         "in": "query",
                         "type": "string"
-<<<<<<< HEAD
-=======
                     },
                     {
                         "name": "Time",
                         "in": "query",
                         "type": "string"
->>>>>>> 255b03f1c29dcdc17dc26ff828996382b9b78b15
                     }
                 ],
                 "responses": {
@@ -3341,6 +3344,12 @@
                                     },
                                     "ID": {
                                         "type": "integer"
+                                    },
+                                    "OrigPitch": {
+                                        "type": "string"
+                                    },
+                                    "IsFlickPitch": {
+                                        "type": "integer"
                                     }
                                 }
                             }
@@ -3647,9 +3656,14 @@
                 "summary": "GetFlickpitchViews",
                 "parameters": [
                     {
-                        "name": "ID",
+                        "name": "FlickpitchID",
                         "in": "query",
                         "type": "integer"
+                    },
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "string"
                     }
                 ],
                 "responses": {

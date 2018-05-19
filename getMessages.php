@@ -18,7 +18,7 @@ Order By ID DESC Limit 1) as MessageDate,
 FROM Members m, ProfileMedia p, Messages msg 
 WHERE (m.ID = msg.Other_ID) And (p.Member_ID = msg.Other_ID) And (msg.Owner_ID = $id) 
 And (msg.FirstMessage = 1) 
-Group By msg.Other_ID Order By New DESC";
+Group By msg.Other_ID Order By New DESC MessageDate DESC";
 
 $myArray = array();
 

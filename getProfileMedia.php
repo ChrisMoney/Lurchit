@@ -21,7 +21,4 @@ if (mysqli_num_rows($result) > 0) {
     $mediaUrl = "http://api.flickpitch.com/api/media/$profileMedia";
     echo $mediaUrl;
 }
-else {
-    $mediaUrl = "http://api.flickpitch.com/api/images/default_profile_image.png";
-    echo $mediaUrl;
-}
+
