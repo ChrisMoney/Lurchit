@@ -118,8 +118,8 @@ And
 (CASE WHEN mp.NoEducationPref = 'true' THEN m.Education = 'High School'
 Or m.Education = 'Some College' Or m.Education = 'Bachelor' Or m.Education = 'Master'
 Or m.Education = 'Doctorate' END)
-Or (mp.HighSchool = (CASE m.Education WHEN 'HighSchool' THEN 'true' END))
-Or (mp.SomeCollege = (CASE m.Education WHEN 'SomeCollege' THEN 'true' END))
+Or (mp.HighSchool = (CASE m.Education WHEN 'High School' THEN 'true' END))
+Or (mp.SomeCollege = (CASE m.Education WHEN 'Some College' THEN 'true' END))
 Or (mp.Bachelor = (CASE m.Education WHEN 'Bachelor' THEN 'true' END))
 Or (mp.Master = (CASE m.Education WHEN 'Master' THEN 'true' END))
 Or (mp.Doctorate = (CASE m.Education WHEN 'Doctorate' THEN 'true' END))
