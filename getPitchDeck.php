@@ -30,10 +30,11 @@ mp.Member_ID = m.ID
 And pm.Member_ID = m.ID
 And pd.Member_ID = m.ID
 
+
 And 
 (
 (CASE WHEN mp.NoReligiousPref = 'true' THEN m.Religion = 'Christian' or m.Religion = 'Muslim'
-Or m.Religion = 'Spiritual' Or m.Religion = 'Agnostic' Or m.Religion = 'Atheist' END)
+Or m.Religion = 'Spiritual' Or m.Religion = 'Agnostic' Or m.Religion = 'Atheist' Or m.Religion = 'None' END)
 Or (mp.Christian = (CASE m.Religion WHEN 'Christian' THEN 'true' END))
 Or (mp.Muslim = (CASE m.Religion WHEN 'Muslim' THEN 'true' END))
 Or (mp.Spiritual = (CASE m.Religion WHEN 'Spiritual' THEN 'true' END))
@@ -43,7 +44,8 @@ Or (mp.Atheist = (CASE m.Religion WHEN 'Atheist' THEN 'true' END))
 
 And
 (
-(CASE WHEN mp.NoPoliticalPref = 'true' THEN m.Politics = 'Liberal' Or m.Politics = 'Conservative' Or m.Politics = 'Moderate' END)
+(CASE WHEN mp.NoPoliticalPref = 'true' THEN m.Politics = 'Liberal' Or m.Politics = 'Conservative' Or m.Politics = 'Moderate' 
+or m.Politics = 'None' END)
 Or (mp.Liberal = (CASE m.Politics WHEN 'Liberal' THEN 'true' END))
 Or (mp.Conservative = (CASE m.Politics WHEN 'Conservative' THEN 'true' END))
 Or (mp.Moderate = (CASE m.Politics WHEN 'Moderate' THEN 'true' END))
@@ -113,8 +115,8 @@ Or (mp.EyesBlue = (CASE m.Eyes WHEN 'Blue' THEN 'true' END))
 
 And
 (
-(CASE WHEN mp.NoEducationPref = 'true' THEN m.Education = 'HighSchool'
-Or m.Education = 'SomeCollege' Or m.Education = 'Bachelor' Or m.Education = 'Master'
+(CASE WHEN mp.NoEducationPref = 'true' THEN m.Education = 'High School'
+Or m.Education = 'Some College' Or m.Education = 'Bachelor' Or m.Education = 'Master'
 Or m.Education = 'Doctorate' END)
 Or (mp.HighSchool = (CASE m.Education WHEN 'HighSchool' THEN 'true' END))
 Or (mp.SomeCollege = (CASE m.Education WHEN 'SomeCollege' THEN 'true' END))
@@ -209,17 +211,13 @@ if ($result = mysqli_query($conn, $sql)) {
         // format profile photo
         $mediaName = $pitchDeck['MediaName'];
         $pitchDeck['MediaName'] = "http://api.flickpitch.com/api/media/$mediaName";
+        $flickPitchDate = $pitchDeck['PitchDate'];
         
-            $flickPitchDate = $pitchDeck['PitchDate'];
-<<<<<<< HEAD
-            $pitchDeck['PitchDate'] = calculate_time_span($flickPitchDate);
+        $curtime = date('Y-m-d H:i', $curtime);
+        $curtime = date('Y-m-d H:i',(strtotime ( '-5 hour' , strtotime ( $curtime) ) ));
+        $pitchDeck['PitchDate'] = calculate_time_span($flickPitchDate, $curtime);
 
-=======
-            
-            $curtime = date('Y-m-d H:i', $curtime);
-            $curtime = date('Y-m-d H:i',(strtotime ( '-5 hour' , strtotime ( $curtime) ) )); 
-            $pitchDeck['PitchDate'] = calculate_time_span($flickPitchDate, $curtime);
->>>>>>> 255b03f1c29dcdc17dc26ff828996382b9b78b15
+           
             
             $myArray[] = $pitchDeck;
             }
