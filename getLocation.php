@@ -20,6 +20,8 @@ $country = "N/A";
 $state = "N/A";
 $city = "N/A";
 
+$location = array();
+
 if (isset($lat) && !empty($lat)) {
 foreach ($add_array as $key) {
     if($key->types[0] == 'locality')
@@ -35,7 +37,7 @@ foreach ($add_array as $key) {
         $country = $key->short_name;
     }
 }
-$location = array();
+
 $location['City'] = $city;
 $location['State'] = $state;
 $location['Country'] = $country;
@@ -46,7 +48,7 @@ else {
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
     $location = $row;
-    if (strlen($location) < 1) {
+    if (!isset($location) || empty($location)) {
         $location['FullLocation'] = "Location Unavailable";
     }
 }
