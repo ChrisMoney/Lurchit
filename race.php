@@ -13,6 +13,7 @@ $indian = $_GET['Indian'];
 $middleEastern = $_GET['MiddleEastern'];
 $nativeAmerican = $_GET['NativeAmerican'];
 $asian = $_GET['Asian'];
+$pacificIslander = $_GET['PacificIslander'];
 $other = $_GET['RaceOther'];
 $noPref = $_GET['RaceNoPref'];
 
@@ -24,6 +25,7 @@ MiddleEastern = '$middleEastern',
 Indian = '$indian',
 NativeAmerican = '$nativeAmerican',
 Asian = '$asian',
+PacificIslander = '$pacificIslander',
 RaceOther = '$other',
 NoRacePref = '$noPref'
 WHERE Member_ID = '$id' ";

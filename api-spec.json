@@ -1900,6 +1900,11 @@
                         "name": "RaceNoPref",
                         "in": "query",
                         "type": "string"
+                    },
+                    {
+                        "name": "PacificIslander",
+                        "in": "query",
+                        "type": "string"
                     }
                 ],
                 "responses": {
@@ -2928,6 +2933,9 @@
                                     "type": "boolean"
                                 },
                                 "NoRacePref": {
+                                    "type": "boolean"
+                                },
+                                "PacificIslander": {
                                     "type": "boolean"
                                 }
                             },

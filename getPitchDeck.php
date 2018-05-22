@@ -59,7 +59,7 @@ And
 And
 (
 (CASE WHEN mp.NoAppearancePref = 'true' THEN m.Build = 'Slim' Or m.Build = 'Average' Or m.Build = 'Athletic' 
-Or m.Build = 'Plump' Or m.Build = 'Heavy' Or m.Build = 'Heavy' Or m.Build = 'Overweight' 
+Or m.Build = 'Plump' Or m.Build = 'Heavy' Or m.Build = 'Overweight' 
 And ((m.HeightFeet >= mp.MinHeightFeet And m.HeightInches >= mp.MinHeightInches) And (m.HeightFeet <= mp.MaxHeightFeet And m.HeightInches <= mp.MaxHeightInches)) END)
 Or (mp.Slim = (CASE m.Build WHEN 'Slim' THEN 'true' END))
 Or (mp.Average = (CASE m.Build WHEN 'Average' THEN 'true' END))
@@ -73,26 +73,29 @@ And ((m.HeightFeet >= mp.MinHeightFeet And m.HeightInches >= mp.MinHeightInches)
 And
 (
 (CASE WHEN mp.NoRacePref = 'true' THEN m.Ethnicity = 'White' Or m.Ethnicity = 'Black'
-Or m.Ethnicity = 'Hispanic' Or m.Ethnicity = 'MiddleEastern' Or m.Ethnicity = 'Indian'
-Or m.Ethnicity = 'NativeAmerican' END)
+Or m.Ethnicity = 'Hispanic' Or m.Ethnicity = 'Middle Eastern' Or m.Ethnicity = 'Indian'
+Or m.Ethnicity = 'Pacific Islander' Or m.Ethnicity = 'Asian' Or m.Ethnicity = 'Native American' Or m.Ethnicity = 'Other' END)
 Or (mp.White = (CASE m.Ethnicity WHEN 'White' THEN 'true' END))
 Or (mp.Black = (CASE m.Ethnicity WHEN 'Black' THEN 'true' END))
 Or (mp.Hispanic = (CASE m.Ethnicity WHEN 'Hispanic' THEN 'true' END))
-Or (mp.MiddleEastern = (CASE m.Ethnicity WHEN 'MiddleEastern' THEN 'true' END))
+Or (mp.MiddleEastern = (CASE m.Ethnicity WHEN 'Middle Eastern' THEN 'true' END))
 Or (mp.Indian = (CASE m.Ethnicity WHEN 'Indian' THEN 'true' END))
-Or (mp.NativeAmerican = (CASE m.Ethnicity WHEN 'NativeAmerican' THEN 'true' END))
+Or (mp.NativeAmerican = (CASE m.Ethnicity WHEN 'Native American' THEN 'true' END))
 Or (mp.Asian = (CASE m.Ethnicity WHEN 'Asian' THEN 'true' END))
+Or (mp.PacificIslander = (CASE m.Ethnicity WHEN 'Pacific Islander' THEN 'true' END))
+Or (mp.RaceOther = (CASE m.Ethnicity WHEN 'Other' THEN 'true' END))
 )
 
 And
 (
 (CASE WHEN mp.NoHairPref = 'true' THEN m.Hair = 'Black' Or m.Hair = 'Brown' Or m.Hair = 'Blonde'
-Or m.Hair = 'White' Or m.Hair = 'Gray' END)
+Or m.Hair = 'White' Or m.Hair = 'Gray' Or m.Hair = 'Other' END)
 Or (mp.HairBlack = (CASE m.Hair WHEN 'Black' THEN 'true' END))
 Or (mp.HairBrown = (CASE m.Hair WHEN 'Brown' THEN 'true' END))
 Or (mp.HairBlonde = (CASE m.Hair WHEN 'Blonde' THEN 'true' END))
 Or (mp.HairWhite = (CASE m.Hair WHEN 'White' THEN 'true' END))
 Or (mp.HairGray = (CASE m.Hair WHEN 'Gray' THEN 'true' END))
+Or (mp.HairOther = (CASE m.Hair WHEN 'Other' THEN 'true' END))
 )
 
 And 
@@ -105,12 +108,13 @@ Or (mp.Female = (CASE m.Gender WHEN 'female' THEN 'true' END))
 And
 (
 (CASE WHEN mp.NoEyesPref = 'true' THEN m.Eyes = 'Black' Or m.Eyes = 'Brown'
-Or m.Eyes = 'Hazel' Or m.Eyes = 'Green' Or m.Eyes = 'Blue' END)
+Or m.Eyes = 'Hazel' Or m.Eyes = 'Green' Or m.Eyes = 'Blue' Or m.Eyes = 'Other' END)
 Or (mp.EyesBlack = (CASE m.Eyes WHEN 'Black' THEN 'true' END))
 Or (mp.EyesBrown = (CASE m.Eyes WHEN 'Brown' THEN 'true' END))
 Or (mp.EyesHazel = (CASE m.Eyes WHEN 'Hazel' THEN 'true' END))
 Or (mp.EyesGreen = (CASE m.Eyes WHEN 'Green' THEN 'true' END))
 Or (mp.EyesBlue = (CASE m.Eyes WHEN 'Blue' THEN 'true' END))
+Or (mp.EyesOther = (CASE m.Eyes WHEN 'Other' THEN 'true' END))
 )
 
 And
@@ -141,7 +145,7 @@ Or (mp.WantsNoKids = (CASE m.WantsKids WHEN 'No' THEN 'true' END))
 
 And
 (
-(CASE WHEN mp.NoSmokingPref = 'true' THEN m.Smoke = 'Yes' Or m.Smoke = 'No' Or m.Smoke = 'Socially' Or m.Smoke = 'Daily' END)
+(CASE WHEN mp.NoSmokingPref = 'true' THEN m.Smoke = 'No' Or m.Smoke = 'Socially' Or m.Smoke = 'Daily' END)
 Or (mp.NoSmoking = (CASE m.Smoke WHEN 'No' THEN 'true' END))
 Or (mp.SocialSmoker = (CASE m.Smoke WHEN 'Socially' THEN 'true' END))
 Or (mp.DailySmoker = (CASE m.Smoke WHEN 'Daily' THEN 'true' END))
@@ -149,7 +153,7 @@ Or (mp.DailySmoker = (CASE m.Smoke WHEN 'Daily' THEN 'true' END))
 
 And
 (
-(CASE WHEN mp.NoDrinkingPref = 'true' THEN m.Drink = 'Yes' Or m.Drink = 'No' Or m.Drink = 'Socially' Or m.Drink = 'Daily' END)
+(CASE WHEN mp.NoDrinkingPref = 'true' THEN m.Drink = 'No' Or m.Drink = 'Socially' Or m.Drink = 'Daily' END)
 Or (mp.NoDrinking = (CASE m.Drink WHEN 'No' THEN 'true' END))
 Or (mp.SocialDrinker = (CASE m.Drink WHEN 'Socially' THEN 'true' END))
 Or (mp.DailyDrinker = (CASE m.Drink WHEN 'Daily' THEN 'true' END))

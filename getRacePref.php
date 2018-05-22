@@ -20,6 +20,7 @@ if (mysqli_num_rows($result) > 0) {
     $race['Indian'] = filter_var($race['Indian'], FILTER_VALIDATE_BOOLEAN);
     $race['NativeAmerican'] = filter_var($race['NativeAmerican'], FILTER_VALIDATE_BOOLEAN);
     $race['Asian'] = filter_var($race['Asian'], FILTER_VALIDATE_BOOLEAN);
+    $race['PacificIslander'] = filter_var($race['PacificIslander'], FILTER_VALIDATE_BOOLEAN);
     $race['RaceOther'] = filter_var($race['RaceOther'], FILTER_VALIDATE_BOOLEAN);
     $race['NoRacePref'] = filter_var($race['NoRacePref'], FILTER_VALIDATE_BOOLEAN);
 
