@@ -44,11 +44,11 @@ $location['Country'] = $country;
 }
 
 else {
-    $sql = "SELECT City, State, Country, CONCAT(City, ', ', State, ' ',Country) As FullLocation FROM Members WHERE ID = $id";
+    $sql = "SELECT CONCAT(City, ', ', State, ' ',Country) As FullLocation FROM Members WHERE ID = $id";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
     $location = $row;
-    if (!isset($location) || empty($location)) {
+    if (strlen($location) < 2) {
         $location['FullLocation'] = "Location Unavailable";
     }
 }
