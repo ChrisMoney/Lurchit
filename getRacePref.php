@@ -6,7 +6,8 @@ include_once 'helpers.php';
 
 $id = $_GET['ID'];
 
-$sql = "SELECT White, Black, Hispanic, MiddleEastern, Indian, NativeAmerican, Asian, RaceOther, NoRacePref
+$sql = "SELECT White, Black, Hispanic, MiddleEastern, Indian, NativeAmerican, Asian, 
+PacificIslander, RaceOther, NoRacePref
 FROM MemberPref WHERE Member_ID = $id ";
 
 $result = mysqli_query($conn, $sql);

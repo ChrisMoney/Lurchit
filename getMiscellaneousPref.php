@@ -25,6 +25,7 @@ if (mysqli_num_rows($result) > 0) {
     $misc['EyesBrown'] = filter_var($misc['EyesBrown'], FILTER_VALIDATE_BOOLEAN);
     $misc['EyesHazel'] = filter_var($misc['EyesHazel'], FILTER_VALIDATE_BOOLEAN);
     $misc['EyesGreen'] = filter_var($misc['EyesGreen'], FILTER_VALIDATE_BOOLEAN);
+    $misc['EyesBlue'] = filter_var($misc['EyesBlue'], FILTER_VALIDATE_BOOLEAN);
     $misc['EyesOther'] = filter_var($misc['EyesOther'], FILTER_VALIDATE_BOOLEAN);
     $misc['NoEyesPref'] = filter_var($misc['NoEyesPref'], FILTER_VALIDATE_BOOLEAN);
     echo json_encode($misc);
