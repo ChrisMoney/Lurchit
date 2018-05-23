@@ -52,42 +52,9 @@ function pushNotification($message, $userID){
     $seconds  = strtotime(date('Y-m-d H:i:s' )) - strtotime($date) ;
     
         $months = floor($seconds / (3600*24*30));
-        $day = floor($seconds / (3600*24));
-        
-        if ($day == "1") {
-            $dayText = " day ago";
-        }
-        else {
-            $dayText = " days ago";
-        }
-        
-        $hours = floor($seconds / 3600);
-        
-        if ($hours == "1") {
-            $hourText = " hour ago";
-        }
-        else {
-            $hourText = " hours ago";
-        }
-        
-        
-        
+        $day = floor($seconds / (3600*24));                
+        $hours = floor($seconds / 3600);           
         $mins = floor(($seconds - ($hours*3600)) / 60);
-        
-        if ($mins == "1") {
-            $minText = " minute ago";
-        }
-        else {
-            $minText = " minutes ago";
-        }
-        
-        if ($hours >= 5) {
-            $hours = $hours - 5;
-            if ($hours == 0) {
-                $hours = "";
-                $hourText = "New";
-            }
-        }
         
         $secs = floor($seconds % 60);
         if ($secs == "1") {
@@ -103,21 +70,53 @@ function pushNotification($message, $userID){
         Display Intervals
         ----------------------*/
         
+        // minutes
         if($seconds < 60)
             $time = $secs. $secText;
         
-        else if($seconds < 60*60 )
+            else if($seconds < 60*60 ) {
+                if ($mins == "1") {
+                    $minText = " minute ago";
+                }
+                else {
+                    $minText = " minutes ago";
+                }
             $time = $mins. $minText;
-            
-        else if($seconds < 24*60*60) {
-            $time = $hours. $hourText;
             }
            
+        // hours
+        else if($seconds < 24*60*60) {
+            
+            if ($hours >= 5) {
+                $hours = $hours - 5;
+                if ($hours == 0) {
+                    $hours = "";
+                    $hourText = "New";
+                }
+            }
+            
+            if ($hours == 1) {
+                $hourText = ' hour ago';
+            }
+            $time = $hours. $hourText;
+            
+            }
+           
+        
+        // days
         else if($seconds > 24*60*60) {
+            if ($day == "1") {
+                $dayText = " day ago";
+            }
+            else {
+                $dayText = " days ago";
+            }
             $time = $day. $dayText;
         }
         
-        else if ($months == 1) {
+        // month
+        else if ($seconds > (24*60*60) * 30) 
+            if ($months == 1) {
                 $monthText = " month ago";
             }
         else if ($months <= 12){
@@ -125,6 +124,8 @@ function pushNotification($message, $userID){
             
             $time = $months. $monthText;
         }
+        
+        // more than a year
         else {
             $time = date('D M j Y');
         }
