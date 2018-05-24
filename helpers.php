@@ -52,20 +52,20 @@ function pushNotification($message, $userID){
         $seconds  = strtotime(date('Y-m-d H:i:s' )) - strtotime($date) ;
         
         $months = floor($seconds / (3600*24*30));
-        $monthText = "m ago";
+        $monthText = "mo ago";
         
         $day = floor($seconds / (3600*24));
-        $dayText = " d ago";
+        $dayText = "d ago";
 
         
         $hours = floor($seconds / 3600);
-        $hourText = " h ago";
+        $hourText = "h ago";
 
         
         
         
         $mins = floor(($seconds - ($hours*3600)) / 60);
-        $minText = " m ago";
+        $minText = "min ago";
 
         
         if ($hours >= 5) {
@@ -77,7 +77,7 @@ function pushNotification($message, $userID){
         }
         
         $secs = floor($seconds % 60);
-        $secText = " s ago";
+        $secText = "s ago";
 
         
         
