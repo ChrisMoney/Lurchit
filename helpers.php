@@ -52,63 +52,46 @@ function pushNotification($message, $userID){
         $seconds  = strtotime(date('Y-m-d H:i:s' )) - strtotime($date) ;
         
         $months = floor($seconds / (3600*24*30));
-        $day = floor($seconds / (3600*24));
+        $monthText = "m ago";
         
-        if ($day == "1") {
-            $dayText = " day ago";
-        }
-        else {
-            $dayText = " days ago";
-        }
+        $day = floor($seconds / (3600*24));
+        $dayText = " d ago";
+
         
         $hours = floor($seconds / 3600);
-        
-        if ($hours < 2) {
-            $hourText = " hour ago";
-        }
-        else {
-            $hourText = " hours ago";
-        }
+        $hourText = " h ago";
+
         
         
         
         $mins = floor(($seconds - ($hours*3600)) / 60);
-        
-        if ($mins == "1") {
-            $minText = " minute ago";
-        }
-        else {
-            $minText = " minutes ago";
-        }
+        $minText = " m ago";
+
         
         if ($hours >= 5) {
             $hours = $hours - 5;
             if ($hours == 0) {
                 $hours = "";
-                $hourText = "Less than an hour ago";
+                $hourText = "New";
             }
         }
         
         $secs = floor($seconds % 60);
-        if ($secs == "1") {
-            $secText = " second ago";
-        }
-        else {
-            $secText = " seconds ago";
-        }
+        $secText = " s ago";
+
         
-        $monthText;
+        
         
         /* -----------------------
          Display Intervals
          ----------------------*/
         
-        if($seconds < 60)
+        if($seconds < 60) {
             $time = $secs. $secText;
-            
-            else if($seconds < 60*60 )
+        }
+            if($seconds < 60*60 ) {
                 $time = $mins. $minText;
-                
+            }
                 else if($seconds < 24*60*60) {
                     $time = $hours. $hourText;
                 }
@@ -116,15 +99,12 @@ function pushNotification($message, $userID){
                 else if($seconds > 24*60*60) {
                     $time = $day. $dayText;
                 }
-                else {
-                    if ($months == 1) {
-                        $monthText = " month ago";
-                    }
-                    else {
-                        $monthText = " months ago";
-                    }
+                else if ($seconds > (24*60*60)*(30)*12) {
                     $time = $months. $monthText;
                 }
+                else {
+                        $time = date('D M d Y', $date);
+                     }
                 return $time;
 }
     
