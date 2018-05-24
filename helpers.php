@@ -51,35 +51,35 @@ function pushNotification($message, $userID){
     function calculate_time_span($date, $curtime){
         $seconds  = strtotime(date('Y-m-d H:i:s' )) - strtotime($date) ;
         
-        $months = floor($seconds / (3600*24*30));
-        $monthText = "mo ago";
+        $secs = floor($seconds % 60);
+        $secText = "s ago";
         
         $day = floor($seconds / (3600*24));
-        $dayText = "d ago";
+        $dayText = "d";
 
         
         $hours = floor($seconds / 3600);
-        $hourText = "h ago";
+        $hourText = "h";
 
         
         
         
         $mins = floor(($seconds - ($hours*3600)) / 60);
-        $minText = "min ago";
+        $minText = "min";
 
         
         if ($hours >= 5) {
             $hours = $hours - 5;
             if ($hours == 0) {
                 $hours = "";
-                $hourText = "New";
+                $hourText = "New Flick";
             }
         }
         
-        $secs = floor($seconds % 60);
-        $secText = "s ago";
-
         
+
+        $months = floor($seconds / (3600*24*30));
+        $monthText = "mo";
         
         
         /* -----------------------
