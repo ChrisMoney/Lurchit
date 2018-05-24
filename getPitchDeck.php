@@ -56,19 +56,18 @@ And
 ((SELECT TIMESTAMPDIFF(YEAR, m.Birthdate, CURDATE())) >= mp.AgeMin And (SELECT TIMESTAMPDIFF(YEAR, m.Birthdate, CURDATE())) <= mp.AgeMax)
 )
 
-And
+And  
 (
 (CASE WHEN mp.NoAppearancePref = 'true' THEN m.Build = 'Slim' Or m.Build = 'Average' Or m.Build = 'Athletic' 
-Or m.Build = 'Plump' Or m.Build = 'Heavy' Or m.Build = 'Overweight' 
-And ((m.HeightFeet >= mp.MinHeightFeet And m.HeightInches >= mp.MinHeightInches) And (m.HeightFeet <= mp.MaxHeightFeet And m.HeightInches <= mp.MaxHeightInches)) END)
-Or (mp.Slim = (CASE m.Build WHEN 'Slim' THEN 'true' END))
-Or (mp.Average = (CASE m.Build WHEN 'Average' THEN 'true' END))
-Or (mp.Athletic = (CASE m.Build WHEN 'Athletic' THEN 'true' END))
-Or (mp.Plump = (CASE m.Build WHEN 'Plump' THEN 'true' END))
-Or (mp.Heavy = (CASE m.Build WHEN 'Heavy' THEN 'true' END))
-Or (mp.Overweight = (CASE m.Build WHEN 'Overweight' THEN 'true' END))
-And ((m.HeightFeet >= mp.MinHeightFeet And m.HeightInches >= mp.MinHeightInches) And (m.HeightFeet <= mp.MaxHeightFeet And m.HeightInches <= mp.MaxHeightInches))
-)  
+Or m.Build = 'Plump' Or m.Build = 'Heavy' Or m.Build = 'Overweight' END)
+
+Or 
+(CAST(m.HeightFeet AS UNSIGNED) >= CAST(mp.MinHeightFeet AS UNSIGNED) 
+And CAST(m.HeightInches AS UNSIGNED) >= CAST(mp.MinHeightInches AS UNSIGNED)) 
+And 
+(CAST(m.HeightFeet AS UNSIGNED) <= CAST(mp.MaxHeightFeet AS UNSIGNED)
+And CAST(m.HeightInches AS UNSIGNED) <= CAST(mp.MaxHeightInches AS UNSIGNED))
+)   
 
 And
 (

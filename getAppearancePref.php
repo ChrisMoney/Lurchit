@@ -18,7 +18,7 @@ if (mysqli_num_rows($result) > 0) {
     $appearance['Athletic'] = filter_var($appearance['Athletic'], FILTER_VALIDATE_BOOLEAN);
     $appearance['Plump'] = filter_var($appearance['Plump'], FILTER_VALIDATE_BOOLEAN);
     $appearance['Heavy'] = filter_var($appearance['Heavy'], FILTER_VALIDATE_BOOLEAN);
-    $appearance['Overweight'] = filter_var($appearance['Slim'], FILTER_VALIDATE_BOOLEAN);
+    $appearance['Overweight'] = filter_var($appearance['Overweight'], FILTER_VALIDATE_BOOLEAN);
     $appearance['NoAppearancePref'] = filter_var($appearance['NoAppearancePref'], FILTER_VALIDATE_BOOLEAN);
     echo json_encode($appearance);
 }

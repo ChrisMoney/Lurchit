@@ -49,12 +49,45 @@ function pushNotification($message, $userID){
 	}
     
     function calculate_time_span($date, $curtime){
-    $seconds  = strtotime(date('Y-m-d H:i:s' )) - strtotime($date) ;
-    
+        $seconds  = strtotime(date('Y-m-d H:i:s' )) - strtotime($date) ;
+        
         $months = floor($seconds / (3600*24*30));
-        $day = floor($seconds / (3600*24));                
-        $hours = floor($seconds / 3600);           
+        $day = floor($seconds / (3600*24));
+        
+        if ($day == "1") {
+            $dayText = " day ago";
+        }
+        else {
+            $dayText = " days ago";
+        }
+        
+        $hours = floor($seconds / 3600);
+        
+        if ($hours < 2) {
+            $hourText = " hour ago";
+        }
+        else {
+            $hourText = " hours ago";
+        }
+        
+        
+        
         $mins = floor(($seconds - ($hours*3600)) / 60);
+        
+        if ($mins == "1") {
+            $minText = " minute ago";
+        }
+        else {
+            $minText = " minutes ago";
+        }
+        
+        if ($hours >= 5) {
+            $hours = $hours - 5;
+            if ($hours == 0) {
+                $hours = "";
+                $hourText = "Less than an hour ago";
+            }
+        }
         
         $secs = floor($seconds % 60);
         if ($secs == "1") {
@@ -67,68 +100,31 @@ function pushNotification($message, $userID){
         $monthText;
         
         /* -----------------------
-        Display Intervals
-        ----------------------*/
+         Display Intervals
+         ----------------------*/
         
-        // minutes
         if($seconds < 60)
             $time = $secs. $secText;
-        
-            else if($seconds < 60*60 ) {
-                if ($mins == "1") {
-                    $minText = " minute ago";
+            
+            else if($seconds < 60*60 )
+                $time = $mins. $minText;
+                
+                else if($seconds < 24*60*60) {
+                    $time = $hours. $hourText;
+                }
+                
+                else if($seconds > 24*60*60) {
+                    $time = $day. $dayText;
                 }
                 else {
-                    $minText = " minutes ago";
+                    if ($months == 1) {
+                        $monthText = " month ago";
+                    }
+                    else {
+                        $monthText = " months ago";
+                    }
+                    $time = $months. $monthText;
                 }
-            $time = $mins. $minText;
-            }
-           
-        // hours
-        else if($seconds < 24*60*60) {
-            
-            if ($hours >= 5) {
-                $hours = $hours - 5;
-                if ($hours == 0) {
-                    $hours = "";
-                    $hourText = "New";
-                }
-            }
-            
-            if ($hours == 1) {
-                $hourText = ' hour ago';
-            }
-            $time = $hours. $hourText;
-            
-            }
-           
-        
-        // days
-        else if($seconds > 24*60*60) {
-            if ($day == "1") {
-                $dayText = " day ago";
-            }
-            else {
-                $dayText = " days ago";
-            }
-            $time = $day. $dayText;
-        }
-        
-        // month
-        else if ($seconds > (24*60*60) * 30) 
-            if ($months == 1) {
-                $monthText = " month ago";
-            }
-        else if ($months <= 12){
-            $monthText = " months ago";
-            
-            $time = $months. $monthText;
-        }
-        
-        // more than a year
-        else {
-            $time = date('D M j Y');
-        }
-        return $time;
+                return $time;
 }
     
