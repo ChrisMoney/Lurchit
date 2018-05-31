@@ -32,6 +32,16 @@ if (strlen($username) > 1) {
         echo http_response_code(400);
         exit;
     }
+    else {
+        $sql2 = "SELECT Username FROM Members WHERE Username = '$username' And ID = $id ";
+        $result2 = mysqli_query($conn, $sql2);
+        $count = mysqli_num_rows($result2);
+        
+        if ($count == 0) {
+            $sql3 = "Update Members Set Username = '$username' WHERE ID = $id ";
+            mysqli_query($conn, $sql3);
+        }
+    }
 }
 
 $sql = "Update Members Set Email = '$email' $query WHERE ID = $id";

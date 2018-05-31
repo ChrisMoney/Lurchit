@@ -3846,6 +3846,11 @@
                         "name": "ID",
                         "in": "query",
                         "type": "integer"
+                    },
+                    {
+                        "name": "UpdateLocation",
+                        "in": "query",
+                        "type": "string"
                     }
                 ],
                 "responses": {

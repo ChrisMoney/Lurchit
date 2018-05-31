@@ -11,6 +11,8 @@ require 'helpers.php';
 $id = $_GET['ID'];
 $lat = $_GET['Lat'];
 $long = $_GET['Long'];
+$updateLocation = $_GET['UpdateLocation'];
+
 $data = file_get_contents("https://maps.google.com/maps/api/geocode/json?latlng=$lat,$long&sensor=false&key=AIzaSyCoRTbekTZbeNP03VMkpyx-N9Lcfe2XGP0");
 $data = json_decode($data);
 $add_array  = $data->results;
@@ -20,38 +22,48 @@ $country = "N/A";
 $state = "N/A";
 $city = "N/A";
 
-$location = array();
+$sql = "SELECT City, State ,Country FROM Members WHERE ID = $id";
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($result);
+$location = $row;
+//$location = array();
 
-if (isset($lat) && !empty($lat)) {
-foreach ($add_array as $key) {
-    if($key->types[0] == 'locality')
-    {
-        $city = $key->short_name;
-    }
-    if($key->types[0] == 'administrative_area_level_1')
-    {
-        $state = $key->short_name;
-    }
-    if($key->types[0] == 'country')
-    {
-        $country = $key->short_name;
-    }
+if ($updateLocation == 'false') {
+    // do nothing no current location is to be fetched
+    $location = $row['City'] . ',' . $row['State'] .' '. $row['Country'];
+    echo json_encode($location);
+    exit;
 }
-
-$location['City'] = $city;
-$location['State'] = $state;
-$location['Country'] = $country;
-}
-
 else {
-    $sql = "SELECT CONCAT(City, ', ', State, ' ',Country) As FullLocation FROM Members WHERE ID = $id";
-    $result = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_assoc($result);
-    $location = $row;
-    if (strlen($location) < 2) {
-        $location['FullLocation'] = "Location Unavailable";
+    
+    
+    if (isset($lat) && !empty($lat)) {
+        foreach ($add_array as $key) {
+            if($key->types[0] == 'locality')
+            {
+                $city = $key->short_name;
+            }
+            if($key->types[0] == 'administrative_area_level_1')
+            {
+                $state = $key->short_name;
+            }
+            if($key->types[0] == 'country')
+            {
+                $country = $key->short_name;
+            }
+        }
+        
+        $location['City'] = $city;
+        $location['State'] = $state;
+        $location['Country'] = $country;
     }
+    
+    if (strlen($location['City']) == 0 ) {
+        $location = "Location Unavailable";
+    }
+    
+    echo json_encode($location);
 }
-$currentLocation = (object)$location;
 
-echo json_encode($currentLocation);
+
+
