@@ -16,7 +16,12 @@ Set City = '$city', State = '$state', Country = '$country' WHERE ID = $id ";
 
 if (mysqli_query($conn, $sql)) {
     // successful
-    echo json_encode($city .', ' . $state .' ' .$country);
+    if (strlen($city) > 0) {
+        echo json_encode($city .', ' . $state .' ' .$country);
+    }
+    else {
+        echo 'Location Unavailable';
+    }
 }
 else {
     // error saving data

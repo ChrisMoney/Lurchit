@@ -72,7 +72,7 @@ function pushNotification($message, $userID){
             $hours = $hours - 5;
             if ($hours == 0) {
                 $hours = "";
-                $hourText = "New Flick";
+                $hourText = "New";
             }
         }
         

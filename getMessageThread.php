@@ -2,13 +2,12 @@
 
 header("Content-Type: application/json;charset=utf-8");
 require 'connect.php';
+mysqli_set_charset($conn, "utf8mb4");
 include_once 'helpers.php';
-include_once 'Emoji.php';
+
 
 $id = $_GET['ID'];
 $otherID = $_GET['OtherID'];
-
-mysqli_query("SET character_set_client=utf8mb4", $conn);
 
 $sql = "SELECT msg.ID as MessageID, p.MediaName as MediaName, msg.New as New, msg.Sender_ID as SenderID, 
 msg.Other_ID as OtherID, msg.Pitch as Pitch, msg.Flick as Flick, msg.MessageDate,
@@ -41,14 +40,15 @@ if ($result = mysqli_query($conn, $sql)) {
                 }
             }
             
+           
+           // call function to replace all unicode values
+            $message['Pitch'] = json_encode($message['Pitch']); 
+            $message['Pitch'] = str_replace( '\ud83d\ude0d' , '&#128525;' , $message['Pitch']);
+
             
             // format flickpitch age text from date
-            $date = date('D M d', strtotime( $message['MessageDate'] ));
+            $date = date('D M d g:i a', strtotime( $message['MessageDate'] ));
             $message['MessageDate'] = $date;
-            
-            $message['Pitch'] = Emoji::Encode($message['Pitch']);
-
-            $message['Pitch'] = preg_replace("/\\\\u([0-9A-F]{2,5})/i", "&#x1F601;", $message['Pitch']);
 
             if ($message['Sender_ID'] == $id) {
                 $message['Username'] = 'Me';
@@ -56,7 +56,7 @@ if ($result = mysqli_query($conn, $sql)) {
             $myArray[] = $message;
         }
         echo json_encode($myArray, JSON_NUMERIC_CHECK);
-
+       
     }
     else {
         echo http_response_code(400);

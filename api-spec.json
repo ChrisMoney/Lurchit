@@ -2150,6 +2150,11 @@
                         "name": "Password",
                         "in": "query",
                         "type": "string"
+                    },
+                    {
+                        "name": "Username",
+                        "in": "query",
+                        "type": "string"
                     }
                 ],
                 "responses": {
