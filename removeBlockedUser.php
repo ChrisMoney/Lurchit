@@ -11,9 +11,8 @@ $sql = "DELETE FROM Block
 WHERE Blocked_ID = $blockedID 
 And Blocker_ID = $blockerID ";
 
-$result = mysqli_query($conn, $sql);
 
-if (mysqli_num_rows($result) > 0) {
+if (mysqli_query($conn, $sql)) {
     
     echo http_response_code(200);
 }
