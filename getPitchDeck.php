@@ -199,7 +199,10 @@ And
 (
 m.ID NOT IN (SELECT Blocked_ID FROM Block WHERE Blocker_ID = $id)
 )
-
+And
+(
+$id NOT IN (SELECT Blocked_ID FROM Block WHERE Blocker_ID = m.ID)
+)
 Group By MemberID
 HAVING distance <= $distance
 
