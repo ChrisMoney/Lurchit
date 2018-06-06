@@ -3,6 +3,8 @@
 function detectEmojis($string) {
     $newString = $string;
     
+    $string = trim($string);
+    
     // encode emoji from database to find out what emoji we have
     $string = json_encode($string);
     
@@ -336,7 +338,7 @@ function detectEmojis($string) {
     $string = str_replace('\u2757', '&#10071;', $string);
     
     // heart
-    $string = str_replace('&#10084;', '&#10084;', $string);
+    $string = str_replace('\u2764', '&#10084;', $string);
     
     // heavy plus sign
     $string = str_replace('\u2795', '&#10133;', $string);
@@ -444,7 +446,7 @@ function detectEmojis($string) {
     $string = str_replace('\uD83C\uDDE9', '&#127465;', $string);
     
     // es flag
-    $string = str_replace('\uD83C\uDDEA', '&#127466;', $string);
+    $string = str_replace('\uD83C\uDDEA', '&#x1f1f8;', $string);
     
     // fr flag
     $string = str_replace('\uD83C\uDDEB', '&#127467;', $string);
@@ -477,10 +479,10 @@ function detectEmojis($string) {
     $string = str_replace('\uD83C\uDDF7', '&#127479;', $string);
     
     // US flag
-    $string = str_replace('\uD83C\uDDFA', '&#127482;', $string);
-    
+    $string = str_replace('\ud83c\uddfa\ud83c\uddf8', '&#x1f1f8;', $string);
+    //&#127480&#127482;
     // US/Es Flag
-    $string = str_replace('\uD83C\uDDF8', '&#127480;', $string);
+    $string = str_replace('\uD83C\uDDF8', '&#x1f1f8;', $string);
     
     // koko
     $string = str_replace('\uD83C\uDE01', '&#127489;', $string);
@@ -558,7 +560,165 @@ function detectEmojis($string) {
     $string = str_replace('\uD83C\uDF09', '&#127753;', $string);
     
     // water wave/ocean
-    $string = str_replace('\uD83C\uDF0A', '&#127754;', $string);
+    $string = str_replace('\ud83C\udf0A', '&#127754;', $string);
+    
+    // volcano
+    $string = str_replace('\uD83C\uDF0B', '&#127755;', $string);
+    
+    // milky way
+    $string = str_replace('\uD83C\uDF0C', '&#127756;', $string);
+    
+    // earth asia
+    $string = str_replace('\uD83C\uDF0F', '&#127759;', $string);
+    
+    // new moon
+    $string = str_replace('\uD83C\uDF11', '&#127761;', $string);
+    
+    // first quarter moon
+    $string = str_replace('\uD83C\uDF13', '&#127763;', $string);
+    
+    // waxing gibbous moon
+    $string = str_replace('\uD83C\uDF14', '&#127764;', $string);
+    
+    // full moon
+    $string = str_replace('\uD83C\uDF15', '&#127765;', $string);
+    
+    // cresent moon
+    $string = str_replace('\uD83C\uDF19', '&#127769;', $string);
+    
+    // first quarter moon with face
+    $string = str_replace('\uD83C\uDF1B', '&#127771;', $string);
+    
+    // star2
+    $string = str_replace('\uD83C\uDF1F', '&#127775;', $string);
+    
+    // shooting star
+    $string = str_replace('\uD83C\uDF20', '&#127776;', $string);
+    
+    // chestnut
+    $string = str_replace('\uD83C\uDF30', '&#127792;', $string);
+    
+    // seedling
+    $string = str_replace('\uD83C\uDF31', '&#127793;', $string);
+    
+    // palm tree
+    $string = str_replace('\uD83C\uDF34', '&#127796;', $string);
+    
+    // cactus
+    $string = str_replace('\uD83C\uDF35', '&#127797;', $string);
+    
+    // tulip
+    $string = str_replace('\uD83C\uDF37', '&#127799;', $string);
+    
+    // cherry blossom
+    $string = str_replace('\uD83C\uDF38', '&#127800;', $string);
+    
+    // rose
+    $string = str_replace('\uD83C\uDF39', '&#127801;', $string);
+    
+    // hisbiscus
+    $string = str_replace('\uD83C\uDF3A', '&#127802;', $string);
+    
+    // sunflower
+    $string = str_replace('\uD83C\uDF3B', '&#127803;', $string);
+    
+    // blossom
+    $string = str_replace('\uD83C\uDF3C', '&#127804;', $string);
+    
+    // corn
+    $string = str_replace('\uD83C\uDF3D', '&#127805;', $string);
+    
+    // ear of rice
+    $string = str_replace('\uD83C\uDF3E', '&#127806;', $string);
+    
+    // herb
+    $string = str_replace('\uD83C\uDF3F', '&#127807;', $string);
+    
+    // four leaf clover
+    $string = str_replace('\uD83C\uDF40', '&#127808;', $string);
+    
+    // maple leaf
+    $string = str_replace('\uD83C\uDF41', '&#127809;', $string);
+    
+    // fallen leaf
+    $string = str_replace('\uD83C\uDF42', '&#127810;', $string);
+    
+    // leaves
+    $string = str_replace('\uD83C\uDF43', '&#127811;', $string);
+    
+    // mushroom
+    $string = str_replace('\uD83C\uDF44','&#127812;', $string);
+    
+    // tomato
+    $string = str_replace('\uD83C\uDF45', '&#127813;', $string);
+    
+    // eggplant
+    $string = str_replace('\uD83C\uDF46', '&#127814;', $string);
+    
+    // grapes
+    $string = str_replace('\uD83C\uDF47', '&#127815;', $string);
+    
+    // melon
+    $string = str_replace('\uD83C\uDF48', '&#127816;', $string);
+    
+    // watermelon
+    $string = str_replace('\uD83C\uDF49', '&#127817;', $string);
+    
+    // tangerine
+    $string = str_replace('\uD83C\uDF4A', '&#127818;', $string);
+    
+    // banana
+    $string = str_replace('\uD83C\uDF4C', '	&#127820;', $string);
+    
+    // pineapple
+    $string = str_replace('\uD83C\uDF4D', '&#127821;', $string);
+    
+    // red apple
+    $string = str_replace('\uD83C\uDF4E', '&#127822;', $string);
+    
+    // green apple
+    $string = str_replace('\uD83C\uDF4', '&#127823;', $string);
+    
+    // peach
+    $string = str_replace('\uD83C\uDF51', '&#127825;', $string);
+    
+    // cherries
+    $string = str_replace('\uD83C\uDF52', '&#127826;', $string);
+    
+    // strawberries
+    $string = str_replace('\uD83C\uDF53', '&#127827;', $string);
+    
+    // hamburger
+    $string = str_replace('\uD83C\uDF54', '&#127828;', $string);
+    
+    // pizza
+    $string = str_replace('\uD83C\uDF55', '&#127829;', $string);
+    
+    // meat on the bone
+    $string = str_replace('\uD83C\uDF56', '&#127830;', $string);
+    
+    // poultry (chicken) leg
+    $string = str_replace('\uD83C\uDF57', '&#127831;', $string);
+    
+    // rice cracker
+    $string = str_replace('\uD83C\uDF58', '&#127832;', $string);
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     // clean up quotes from emoji created by json encoding
     $string = stripslashes($string);
