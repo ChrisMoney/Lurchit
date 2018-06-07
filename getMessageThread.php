@@ -4,7 +4,6 @@ header("Content-Type: application/json;charset=utf-8");
 require 'connect.php';
 mysqli_set_charset($conn, "utf8mb4");
 include_once 'helpers.php';
-include_once 'detectEmojis.php';
 
 $id = $_GET['ID'];
 $otherID = $_GET['OtherID'];
@@ -40,11 +39,6 @@ if ($result = mysqli_query($conn, $sql)) {
                 }
             }
                        
-            if (preg_match('/[\x{1F600}-\x{1F64F}]/u', $message['Pitch'])) {
-                // call function to replace all unicode values with hex values
-                $message['Pitch'] = detectEmojis($message['Pitch']);
-            }
-          
             
             // format flickpitch age text from date
             $date = date('D M d g:i a', strtotime( $message['MessageDate'] ));
