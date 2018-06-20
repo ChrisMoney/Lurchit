@@ -8,6 +8,7 @@ function getDistance($id) {
     $row = mysqli_fetch_assoc($result);
     $distance = $row['Distance'];
     if ($distance == 'Anywhere') {
+        // total distance of the earth
         $distance = '24902';
     }
     return $distance;
