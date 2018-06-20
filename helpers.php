@@ -7,6 +7,9 @@ function getDistance($id) {
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
     $distance = $row['Distance'];
+    if ($distance == 'Anywhere') {
+        $distance = '24902';
+    }
     return $distance;
 }
 

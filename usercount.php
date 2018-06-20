@@ -1,14 +1,10 @@
 <?php 
 require 'connect.php';
 
-$sql = "Select Count(ID) FROM Members ";
-
-if ($result = mysqli_query($conn, $sql)) {
-    $count = mysqli_num_rows($result);
-    // successful
-    echo '<h1>User count: '. $count. '</h1>';
-}
-
-
+$query = "SELECT count(*) AS total FROM Members";
+$result = mysqli_query($conn, $query);
+$values = mysqli_fetch_assoc($result);
+$num_rows = $values['total'];
+echo '<h1>User count: <b>'. $num_rows.'</b></h1>';
 
 ?>
