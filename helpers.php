@@ -3,7 +3,7 @@
 function getDistance($id) {
     $conn = connection();
     
-    $sql = "SELECT Distance FROM MemberPref WHERE Member_ID = $id ";
+    $sql = "SELECT Distance FROM Members WHERE ID = $id ";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
     $distance = $row['Distance'];

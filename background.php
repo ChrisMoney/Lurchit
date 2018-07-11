@@ -10,15 +10,10 @@ header("Content-Type: application/json;charset=utf-8");
 require 'connect.php';
 require 'helpers.php';
 
-$build = $_GET['Build'];
-$heightFeet = $_GET['HeightFeet'];
-$heightInches = $_GET['HeightInches'];
-$hair = $_GET['Hair'];
-$eyes = $_GET['Eyes'];
 $ethnicity = $_GET['Ethnicity'];
 $id = $_GET['ID'];
 
-    $sql = "Update Members Set Build = '$build', HeightFeet = '$heightFeet', HeightInches = '$heightInches', Hair = '$hair', Eyes = '$eyes', Ethnicity = '$ethnicity'
+    $sql = "Update Members Set Ethnicity = '$ethnicity'
     WHERE ID = $id";
 
     if (mysqli_query($conn, $sql)) {
