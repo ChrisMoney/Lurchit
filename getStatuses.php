@@ -20,25 +20,50 @@ sin( radians( s.Latitude ) ) ) ) AS `distance`
 FROM Members m, ProfileMedia p, Statuses s
 
 WHERE 
-
 p.Member_ID = m.ID 
 And s.Member_ID = m.ID 
 
+And (
+(CASE WHEN (SELECT GenderFollow = 'Both' FROM Members WHERE ID = $id) THEN m.Gender = 'Male' Or m.Gender = 'Female' END)
+Or m.Gender = (SELECT GenderFollow FROM Members WHERE ID = $id)
+)
+
+
 And
 (
-((SELECT TIMESTAMPDIFF(YEAR, m.Birthdate, CURDATE())) >= m.AgeMinFollow 
-And (SELECT TIMESTAMPDIFF(YEAR, m.Birthdate, CURDATE())) <= m.AgeMaxFollow)
+(SELECT TIMESTAMPDIFF(YEAR, m.Birthdate, CURDATE())) >= (SELECT CAST(AgeMinFollow AS UNSIGNED) FROM Members WHERE ID = $id) 
+And (SELECT TIMESTAMPDIFF(YEAR, m.Birthdate, CURDATE())) <= (SELECT CAST(AgeMaxFollow AS UNSIGNED) FROM Members WHERE ID = $id)
 )
 
 And (
-m.Ethnicity = (SELECT Ethnicity FROM Members WHERE Ethnicity = 'White' And ID = $id)
-Or m.Ethnicity = (SELECT Ethnicity FROM Members WHERE Ethnicity = 'Black' And ID = $id)
-Or m.Ethnicity = (SELECT Ethnicity FROM Members WHERE Ethnicity = 'Hispanic' And ID = $id)
-Or m.Ethnicity = (SELECT Ethnicity FROM Members WHERE Ethnicity = 'Indian' And ID = $id)
-Or m.Ethnicity = (SELECT Ethnicity FROM Members WHERE Ethnicity = 'Middle Eastern' And ID = $id)
-Or m.Ethnicity = (SELECT Ethnicity FROM Members WHERE Ethnicity = 'Native American' And ID = $id)
-Or m.Ethnicity = (SELECT Ethnicity FROM Members WHERE Ethnicity = 'Asian' And ID = $id)
-Or m.Ethnicity = (SELECT Ethnicity FROM Members WHERE Ethnicity = 'Pacific Islander' And ID = $id)
+m.Ethnicity = (SELECT WhiteFollow FROM Members WHERE ID = $id)
+Or m.Ethnicity = (SELECT BlackFollow FROM Members WHERE ID = $id)
+Or m.Ethnicity = (SELECT HispanicFollow FROM Members WHERE ID = $id)
+Or m.Ethnicity = (SELECT NativeAmericanFollow FROM Members WHERE ID = $id)
+Or m.Ethnicity = (SELECT MiddleEasternFollow FROM Members WHERE ID = $id)
+Or m.Ethnicity = (SELECT AsianFollow FROM Members WHERE ID = $id)
+Or m.Ethnicity = (SELECT PacificIslanderFollow FROM Members WHERE ID = $id)
+)
+
+And (
+(CASE WHEN m.GenderFollower = 'Both' THEN '' END)
+Or m.GenderFollower = (SELECT Gender FROM Members WHERE ID = $id)
+)
+
+And
+(
+(SELECT TIMESTAMPDIFF(YEAR, (SELECT CAST(Birthdate As UNSIGNED) FROM Members WHERE ID = $id), CURDATE())) >= CAST(m.AgeMinFollower AS UNSIGNED) 
+And (SELECT TIMESTAMPDIFF(YEAR, (SELECT CAST(Birthdate As UNSIGNED) FROM Members WHERE ID = $id), CURDATE())) <= CAST(m.AgeMaxFollower AS UNSIGNED)
+)
+
+And (
+m.WhiteFollower = (Select Ethnicity FROM Members WHERE ID = $id)
+Or m.BlackFollower = (SELECT Ethnicity FROM Members WHERE ID = $id)
+Or m.HispanicFollower = (SELECT Ethnicity FROM Members WHERE ID = $id)
+Or m.NativeAmericanFollower = (SELECT Ethnicity FROM Members WHERE ID = $id)
+Or m.MiddleEasternFollower = (SELECT Ethnicity FROM Members WHERE ID = $id)
+Or m.AsianFollower = (SELECT Ethnicity FROM Members WHERE ID = $id)
+Or m.PacificIslanderFollower = (SELECT Ethnicity FROM Members WHERE ID = $id)
 )
 
 And
