@@ -52,63 +52,26 @@ function pushNotification($message, $userID){
 
 	}
     
-    function calculate_time_span($date, $curtime){
-        $seconds  = strtotime(date('Y-m-d H:i:s' )) - strtotime($date) ;
+    function calculate_time_span($date){
+        $seconds  = strtotime(date('Y-m-d H:i:s')) - strtotime($date);
         
-        $secs = floor($seconds % 60);
-        $secText = "s ago";
-        
-        $day = floor($seconds / (3600*24));
-        $dayText = "d";
-
-        
-        $hours = floor($seconds / 3600);
-        $hourText = "h";
-
-        
-        
-        
-        $mins = floor(($seconds - ($hours*3600)) / 60);
-        $minText = "min";
-
-        
-        if ($hours >= 5) {
-            $hours = $hours - 5;
-            if ($hours == 0) {
-                $hours = "";
-                $hourText = "New";
-            }
-        }
-        
-        
-
         $months = floor($seconds / (3600*24*30));
-        $monthText = "mo";
+        $day = floor($seconds / (3600*24));
+        $hours = floor($seconds / 3600);
+        $mins = floor(($seconds - ($hours*3600)) / 60);
+        $secs = floor($seconds % 60);
         
-        
-        /* -----------------------
-         Display Intervals
-         ----------------------*/
-        
-        if($seconds < 60) {
-            $time = $secs. $secText;
-        }
-            if($seconds < 60*60 ) {
-                $time = $mins. $minText;
-            }
-                else if($seconds < 24*60*60) {
-                    $time = $hours. $hourText;
-                }
-                
-                else if($seconds > 24*60*60) {
-                    $time = $day. $dayText;
-                }
-                else if ($seconds > (24*60*60)*(30)*12) {
-                    $time = $months. $monthText;
-                }
-                else {
-                        $time = date('D M d Y', $date);
-                     }
-                return $time;
+        if($seconds < 60)
+            $time = $secs." seconds ago";
+            else if($seconds < 60*60 )
+                $time = $mins." min ago";
+                else if($seconds < 24*60*60)
+                    $time = $hours." hours ago";
+                    else if($seconds < 24*60*60)
+                        $time = $day." day ago";
+                        else
+                            $time = date('D M d Y g:i a', $date);
+                            
+                            return $time;
 }
     

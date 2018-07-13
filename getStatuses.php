@@ -13,7 +13,8 @@ $curtime = $_GET['Time'];
 $distance = getDistance($id);
 
 $sql = "SELECT p.MediaName as ProfilePic, m.ID as MemberID, m.Username as Username,
-s.Media as Media, s.Status as Status, s.StatusDate as StatusDate,
+s.ID as StatusID, s.Media as Media, s.Status as Status, s.StatusDate as StatusDate,
+(SELECT Count(ID) FROM Comments WHERE Status_ID = s.ID) As CommentCount,
 ( 3959 * acos ( cos ( radians($lat) ) * cos( radians( s.Latitude ) ) *
 cos( radians( s.Longitude ) - radians($long) ) + sin ( radians($lat) ) *
 sin( radians( s.Latitude ) ) ) ) AS `distance`
@@ -78,7 +79,8 @@ $id NOT IN (SELECT Blocked_ID FROM Block WHERE Blocker_ID = m.ID)
 UNION ALL
 
 SELECT p.MediaName as ProfilePic, m.ID as MemberID, m.Username as Username,
-s.Media as Media, s.Status as Status, s.StatusDate as StatusDate,
+s.ID as StatusID, s.Media as Media, s.Status as Status, s.StatusDate as StatusDate,
+(SELECT Count(ID) FROM Comments WHERE Status_ID = s.ID) As CommentCount,
 ( 3959 * acos ( cos ( radians($lat) ) * cos( radians( s.Latitude ) ) *
 cos( radians( s.Longitude ) - radians($long) ) + sin ( radians($lat) ) *
 sin( radians( s.Latitude ) ) ) ) AS `distance`
@@ -99,7 +101,7 @@ $result = mysqli_query($conn, $sql);
 $myArray = array();
 
 if (mysqli_query($conn, $sql)) {
-    echo "test";
+
     if (mysqli_num_rows($result) > 0) {
         while ($status = mysqli_fetch_assoc($result)) {
             
@@ -117,11 +119,7 @@ if (mysqli_query($conn, $sql)) {
             // format date for comparison month/day
             $date = strtotime($statusPostDate);
             
-            // format date for display
-            $displayDate = date('D g:i a', $date);
-            
-            //$time = date("g:i a",$flickPitchDate);
-            $status['StatusDate'] = $timePosted . ' '. $displayDate;
+            $status['StatusDate'] = calculate_time_span($date);
             
             $myArray[] = $status;
         }
