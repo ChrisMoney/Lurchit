@@ -13,7 +13,8 @@ FROM Members m, ProfileMedia p, Comments c
 WHERE
 c.Status_ID = $statusID
 And p.Member_ID = m.ID
-And c.Member_ID = m.ID ";
+And c.Member_ID = m.ID 
+Order By c.ID DESC ";
 
 $result = mysqli_query($conn, $sql);
 $myArray = array();
