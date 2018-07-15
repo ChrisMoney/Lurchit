@@ -15,6 +15,8 @@ $distance = getDistance($id);
 $sql = "SELECT p.MediaName as ProfilePic, m.ID as MemberID, m.Username as Username,
 s.ID as StatusID, s.Media as Media, s.Status as Status, s.StatusDate as StatusDate,
 (SELECT Count(ID) FROM Comments WHERE Status_ID = s.ID) As CommentCount,
+(SELECT Count(ID) FROM Likes WHERE Status_ID = StatusID) As LikeCount,
+(SELECT Count(ID) FROM Likes WHERE (Member_ID = MemberID And Status_ID = StatusID)) As HasLiked,
 ( 3959 * acos ( cos ( radians($lat) ) * cos( radians( s.Latitude ) ) *
 cos( radians( s.Longitude ) - radians($long) ) + sin ( radians($lat) ) *
 sin( radians( s.Latitude ) ) ) ) AS `distance`
@@ -81,6 +83,8 @@ UNION ALL
 SELECT p.MediaName as ProfilePic, m.ID as MemberID, m.Username as Username,
 s.ID as StatusID, s.Media as Media, s.Status as Status, s.StatusDate as StatusDate,
 (SELECT Count(ID) FROM Comments WHERE Status_ID = s.ID) As CommentCount,
+(SELECT Count(ID) FROM Likes WHERE Status_ID = s.ID) As LikeCount,
+(SELECT Count(ID) FROM Likes WHERE (Member_ID = MemberID And Status_ID = StatusID)) As HasLiked,
 ( 3959 * acos ( cos ( radians($lat) ) * cos( radians( s.Latitude ) ) *
 cos( radians( s.Longitude ) - radians($long) ) + sin ( radians($lat) ) *
 sin( radians( s.Latitude ) ) ) ) AS `distance`
@@ -91,9 +95,9 @@ m.ID = $id
 And p.Member_ID = $id
 And s.Member_ID = $id
 
-Group By MemberID 
+Group By StatusID 
 HAVING distance <= $distance
-Order By StatusDate
+Order By StatusID DESC 
 
 ";
 
@@ -105,13 +109,17 @@ if (mysqli_query($conn, $sql)) {
     if (mysqli_num_rows($result) > 0) {
         while ($status = mysqli_fetch_assoc($result)) {
             
+            
             // build profile image url
             $profilePic = $status['ProfilePic'];
             $status['ProfilePic'] = 'http://api.flickpitch.com/api/media/'.$profilePic;
             
             // build image url
             $flick = $status['Media'];
-            $status['Media'] = 'http://api.flickpitch.com/api/flicks/'.$flick;
+            if (strlen($flick) > 1) {
+                $status['Media'] = 'http://api.flickpitch.com/api/flicks/'.$flick;
+            }
+            
             
             // format flickpitch age text from date
             $statusPostDate = $status['StatusDate'];

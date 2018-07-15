@@ -38,8 +38,7 @@ if (mysqli_query($conn, $sql)) {
             // format date for comparison month/day
             $date = strtotime($statusPostDate);
             
-            $status['CommentDate'] = calculate_time_span($date);
-            
+            $status['CommentDate'] = date('D M d Y', $date);
             $myArray[] = $status;
         }
         echo json_encode($myArray, JSON_NUMERIC_CHECK);
