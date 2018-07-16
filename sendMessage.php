@@ -5,36 +5,35 @@ header("Content-Type: application/json;charset=utf-8");
 require 'connect.php';
 mysqli_set_charset($conn, "utf8mb4");
 require 'helpers.php';
-include_once 'Emoji.php';
+
 
 $data = json_decode(file_get_contents('php://input'), true);
 
 $senderID = $data['SenderID'];
 $receiverID = $data['ReceiverID'];
-$pitch = $data['Pitch'];
-$flick = $data['Flick'];
-$isFlickPitch = $data['IsFlickPitch'];
-$origPitch = $data['OrigPitch'];
+$message = $data['Message'];
+
+$time = $data['Time'];
+$time = date('Y-m-d H:i', $time);
+$time = date('Y-m-d H:i',(strtotime ( '-5 hour' , strtotime ( $time) ) )); 
 
 // if message is from message page
-if ($isFlickPitch == 0 || $isFlickPitch == '0') {
+/*if ($isFlickPitch == 0 || $isFlickPitch == '0') {
 
     $flickName = uniqid().'img.png';
 }
 else {
     // if message is from a Flickpitch
     $flickName = $flick;
-}
+}*/
 
-$time = $data['Time'];
-$mediaAdded = $data['MediaAdded'];
+
+//$mediaAdded = $data['MediaAdded'];
 //$type = $data['FlickType'];
 
-$time = date('Y-m-d H:i', $time);
-$time = date('Y-m-d H:i',(strtotime ( '-5 hour' , strtotime ( $time) ) )); 
 
 // save media to file server
-if ($isFlickPitch == 0) {
+/*if ($isFlickPitch == 0) {
 if ($mediaAdded == true || $mediaAdded == 'true' || $mediaAdded == 1) {
    if (isset($flick) && !empty($flick)) {
     file_put_contents('../api/messages/'.$flickName, base64_decode($flick));
@@ -44,13 +43,13 @@ else {
     $flick = "";
     $flickName = "";
 }
-}
+}*/
 
-if (strlen($pitch) > 250) {
+if (strlen($message) > 250) {
     echo http_response_code(400);
     exit;
 }
-if (strlen($pitch) == 0 || strlen($pitch) == '') {
+if (strlen($message) == 0 || strlen($message) == '') {
     echo http_response_code(401);
     exit;
 }
@@ -81,13 +80,13 @@ else {
 
 
 // assign thread ownership for receiver
-$sql = "INSERT INTO Messages (Sender_ID, Receiver_ID,     Owner_ID,     Other_ID,     Pitch,    Flick,       IsFlickPitch,   OrigPitch,    New,  FirstMessage,           MessageDate) 
-                    Values ('$senderID', '$receiverID', '$receiverID', '$senderID', '$pitch', '$flickName', '$isFlickPitch',  '$origPitch', '1',   '$receiverFirstMessage', '$time') ";
+$sql = "INSERT INTO Messages (Sender_ID, Receiver_ID,     Owner_ID,     Other_ID,     Message,     New,  FirstMessage,           MessageDate) 
+                    Values ('$senderID', '$receiverID', '$receiverID', '$senderID', '$message',  '1',   '$receiverFirstMessage', '$time') ";
 
 if (mysqli_query($conn, $sql)) {
     // assign thread ownership for sender
-    $sql1 = "INSERT INTO Messages (Sender_ID,   Receiver_ID,   Owner_ID,    Other_ID,      Pitch,     Flick,       IsFlickPitch,    OrigPitch,    New,  FirstMessage,          MessageDate) 
-                           Values ('$senderID', '$receiverID', '$senderID', '$receiverID', '$pitch', '$flickName', '$isFlickPitch', '$origPitch', '0', '$senderFirstMessage', '$time') ";
+    $sql1 = "INSERT INTO Messages (Sender_ID,   Receiver_ID,   Owner_ID,    Other_ID,      Message,   New,  FirstMessage,          MessageDate) 
+                           Values ('$senderID', '$receiverID', '$senderID', '$receiverID', '$message',  '0', '$senderFirstMessage', '$time') ";
 
 
 if (mysqli_query($conn, $sql1)) {

@@ -306,10 +306,7 @@
                                     "Username": {
                                         "type": "string"
                                     },
-                                    "Flick": {
-                                        "type": "string"
-                                    },
-                                    "Pitch": {
+                                    "Message": {
                                         "type": "string"
                                     },
                                     "New": {
@@ -319,12 +316,6 @@
                                         "type": "integer"
                                     },
                                     "ID": {
-                                        "type": "integer"
-                                    },
-                                    "OrigPitch": {
-                                        "type": "string"
-                                    },
-                                    "IsFlickPitch": {
                                         "type": "integer"
                                     }
                                 }
@@ -1239,6 +1230,9 @@
                                 },
                                 "HasMedia": {
                                     "type": "string"
+                                },
+                                "Time": {
+                                    "type": "string"
                                 }
                             }
                         }
@@ -1286,6 +1280,11 @@
                     },
                     {
                         "name": "Comment",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Time",
                         "in": "query",
                         "type": "string"
                     }
@@ -1599,22 +1598,10 @@
                                 "ReceiverID": {
                                     "type": "integer"
                                 },
-                                "Pitch": {
-                                    "type": "string"
-                                },
-                                "Flick": {
+                                "Message": {
                                     "type": "string"
                                 },
                                 "Time": {
-                                    "type": "string"
-                                },
-                                "MediaAdded": {
-                                    "type": "boolean"
-                                },
-                                "IsFlickPitch": {
-                                    "type": "integer"
-                                },
-                                "OrigPitch": {
                                     "type": "string"
                                 }
                             }

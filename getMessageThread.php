@@ -9,10 +9,8 @@ $id = $_GET['ID'];
 $otherID = $_GET['OtherID'];
 
 $sql = "SELECT msg.ID as MessageID, p.MediaName as MediaName, msg.New as New, msg.Sender_ID as SenderID, 
-msg.Other_ID as OtherID, msg.Pitch as Pitch, msg.Flick as Flick, msg.MessageDate,
-(Select Username FROM Members WHERE ID = msg.Sender_ID) as Username, msg.IsFlickPitch as IsFlickPitch,
-msg.OrigPitch as OrigPitch
-
+msg.Other_ID as OtherID, msg.Message as Message, msg.MessageDate,
+(Select Username FROM Members WHERE ID = msg.Sender_ID) as Username
 FROM Members m, ProfileMedia p, Messages msg 
 WHERE 
 (m.ID = msg.Sender_ID) 
@@ -29,7 +27,7 @@ if ($result = mysqli_query($conn, $sql)) {
     if (mysqli_num_rows($result) > 0) {
         while ($message = mysqli_fetch_assoc($result)) {
             
-            $mediaName = $message['MediaName'];
+            /*$mediaName = $message['MediaName'];
             $message['MediaName'] = 'http://api.flickpitch.com/api/media/'.$mediaName;
             
             $flickName = $message['Flick'];
@@ -37,14 +35,14 @@ if ($result = mysqli_query($conn, $sql)) {
                 if ($message['IsFlickPitch'] == 0) {
                     $message['Flick'] = 'http://api.flickpitch.com/api/messages/'.$flickName;
                 }
-            }
+            }*/
                        
             
             // format flickpitch age text from date
             $date = date('D M d g:i a', strtotime( $message['MessageDate'] ));
             $message['MessageDate'] = $date;
 
-            if ($message['Sender_ID'] == $id) {
+            if ($message['SenderID'] == $id) {
                 $message['Username'] = 'Me';
             }
             $myArray[] = $message;
