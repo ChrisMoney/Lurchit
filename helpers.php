@@ -70,6 +70,8 @@ function pushNotification($message, $userID){
                     $time = $hours."h ago";
                     else if($seconds > 24*60*60 && $seconds < (24*60*60) * 30)
                         $time = $day."d ago";
+                        else if ($secounds > (24*60*60) * 30 && $seconds < ((24*60*60) * 30) * 11)
+                        $time = $month."mo ago";
                         else
                             $time = date('D M d Y', $date);
                             
