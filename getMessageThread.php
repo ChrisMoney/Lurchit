@@ -27,10 +27,10 @@ if ($result = mysqli_query($conn, $sql)) {
     if (mysqli_num_rows($result) > 0) {
         while ($message = mysqli_fetch_assoc($result)) {
             
-            /*$mediaName = $message['MediaName'];
+            $mediaName = $message['MediaName'];
             $message['MediaName'] = 'http://api.flickpitch.com/api/media/'.$mediaName;
             
-            $flickName = $message['Flick'];
+            /*$flickName = $message['Flick'];
             if (strlen($flickName) > 1) {
                 if ($message['IsFlickPitch'] == 0) {
                     $message['Flick'] = 'http://api.flickpitch.com/api/messages/'.$flickName;
@@ -39,8 +39,9 @@ if ($result = mysqli_query($conn, $sql)) {
                        
             
             // format flickpitch age text from date
-            $date = date('D M d g:i a', strtotime( $message['MessageDate'] ));
-            $message['MessageDate'] = $date;
+            $messageDate = $message['MessageDate'];
+            $date = strtotime($messageDate);
+            $message['MessageDate'] = calculate_time_span($date);
 
             if ($message['SenderID'] == $id) {
                 $message['Username'] = 'Me';

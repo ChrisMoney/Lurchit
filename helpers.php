@@ -18,8 +18,8 @@ function getDistance($id) {
  * Test App ID: 02681849-4f61-41ba-ad44-9dddca4f2172
  * Test Key: MjJkODVjZTEtM2JiMS00OGUyLWEyZDUtYWMzMzJhNDY5ZjQ2
  * 
- * Production App ID: fc6a4020-ead9-45e2-bf54-de19d749f009
- * Production Key: ZThlOTdhMmItMzA2OC00NmMwLWEzYTItY2FhYmM1NmVkZmRi
+ * Production App ID: 
+ * Production Key: 
  */ 
 function pushNotification($message, $userID){
 		$content = array(
@@ -27,7 +27,7 @@ function pushNotification($message, $userID){
 			);
     
          $fields = array(
-            'app_id' => "fc6a4020-ead9-45e2-bf54-de19d749f00902681849-4f61-41ba-ad44-9dddca4f2172",
+            'app_id' => "02681849-4f61-41ba-ad44-9dddca4f2172",
             'filters' => array(array("field" => "tag", "key" => "ID", "relation" => "=", "value" => "$userID")),
             'contents' => $content
         );
@@ -38,7 +38,7 @@ function pushNotification($message, $userID){
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, "https://onesignal.com/api/v1/notifications");
 		curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json; charset=utf-8',
-												   'Authorization: Basic ZThlOTdhMmItMzA2OC00NmMwLWEzYTItY2FhYmM1NmVkZmRi'));
+												   'Authorization: Basic MjJkODVjZTEtM2JiMS00OGUyLWEyZDUtYWMzMzJhNDY5ZjQ2'));
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 		curl_setopt($ch, CURLOPT_HEADER, FALSE);
 		curl_setopt($ch, CURLOPT_POST, TRUE);
@@ -53,7 +53,8 @@ function pushNotification($message, $userID){
 	}
     
     function calculate_time_span($date){
-        $seconds  = strtotime(date('Y-m-d H:i:s')) - strtotime($date);
+        
+        $seconds  = strtotime(date('Y-m-d H:i:s')) - strtotime(date('Y-m-d H:i:s', $date));
         
         $months = floor($seconds / (3600*24*30));
         $day = floor($seconds / (3600*24));
@@ -62,13 +63,13 @@ function pushNotification($message, $userID){
         $secs = floor($seconds % 60);
         
         if($seconds < 60)
-            $time = $secs." seconds ago";
+            $time = $secs." s ago";
             else if($seconds < 60*60 )
-                $time = $mins." min ago";
+                $time = $mins."m ago";
                 else if($seconds < 24*60*60)
-                    $time = $hours." hours ago";
-                    else if($seconds < 24*60*60)
-                        $time = $day." day ago";
+                    $time = $hours."h ago";
+                    else if($seconds > 24*60*60 && $seconds < (24*60*60) * 30)
+                        $time = $day."d ago";
                         else
                             $time = date('D M d Y', $date);
                             

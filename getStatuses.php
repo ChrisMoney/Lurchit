@@ -13,6 +13,7 @@ $curtime = $_GET['Time'];
 $distance = getDistance($id);
 
 $sql = "SELECT p.MediaName as ProfilePic, m.ID as MemberID, m.Username as Username,
+m.AllowComments as AllowComments, m.AllowLikes as AllowLikes, m.AllowDMs as AllowDMs,
 s.ID as StatusID, s.Media as Media, s.Status as Status, s.StatusDate as StatusDate,
 (SELECT Count(ID) FROM Comments WHERE Status_ID = s.ID) As CommentCount,
 (SELECT Count(ID) FROM Likes WHERE Status_ID = StatusID) As LikeCount,
@@ -81,6 +82,7 @@ $id NOT IN (SELECT Blocked_ID FROM Block WHERE Blocker_ID = m.ID)
 UNION ALL
 
 SELECT p.MediaName as ProfilePic, m.ID as MemberID, m.Username as Username,
+m.AllowComments as AllowComments, m.AllowLikes as AllowLikes, m.AllowDMs as AllowDMs,
 s.ID as StatusID, s.Media as Media, s.Status as Status, s.StatusDate as StatusDate,
 (SELECT Count(ID) FROM Comments WHERE Status_ID = s.ID) As CommentCount,
 (SELECT Count(ID) FROM Likes WHERE Status_ID = s.ID) As LikeCount,
