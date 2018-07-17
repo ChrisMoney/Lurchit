@@ -73,6 +73,9 @@ function pushNotification($message, $userID){
                         else
                             $time = date('D M d Y', $date);
                             
+                            if ($hours <= 5) {
+                                $time = 'New';
+                            }
                             return $time;
 }
     

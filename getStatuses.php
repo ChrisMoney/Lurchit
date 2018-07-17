@@ -131,6 +131,10 @@ if (mysqli_query($conn, $sql)) {
             
             $status['StatusDate'] = calculate_time_span($date);
             
+            $status['AllowComments'] = filter_var($status['AllowComments'], FILTER_VALIDATE_BOOLEAN);
+            $status['AllowLikes'] = filter_var($status['AllowLikes'], FILTER_VALIDATE_BOOLEAN);
+            $status['AllowDMs'] = filter_var($status['AllowDMs'], FILTER_VALIDATE_BOOLEAN);
+            
             $myArray[] = $status;
         }
         echo json_encode($myArray, JSON_NUMERIC_CHECK);

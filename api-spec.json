@@ -1204,6 +1204,15 @@
                                     },
                                     "LikeCount": {
                                         "type": "integer"
+                                    },
+                                    "AllowComments": {
+                                        "type": "boolean"
+                                    },
+                                    "AllowLikes": {
+                                        "type": "boolean"
+                                    },
+                                    "AllowDMs": {
+                                        "type": "boolean"
                                     }
                                 }
                             }
