@@ -19,7 +19,8 @@ $time = $data['Time'];
 $time = date('Y-m-d H:i', $time);
 $time = date('Y-m-d H:i',(strtotime ( '-5 hour' , strtotime ( $time) ) )); 
 
-if ($hasMedia == 'true' || $hasMedia == 1 || $hasMedia == '1' || $hasMedia == true) {
+if (($hasMedia == 'true' || $hasMedia == 1 || $hasMedia == '1' || $hasMedia == true)
+    && strlen($source) > 0) {
     // save media to file server
     $mediaName = uniqid().'img.png';
     file_put_contents('../api/flicks/'.$mediaName, base64_decode($media));   
