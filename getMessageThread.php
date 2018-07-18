@@ -17,7 +17,6 @@ WHERE
 And (p.Member_ID = msg.Sender_ID) 
 And (Owner_ID = $id) 
 And (msg.Receiver_ID = $otherID Or msg.Sender_ID = $otherID)
-And (msg.MessageDate > NOW() - INTERVAL 1 DAY)
 And ($otherID NOT in (Select Blocked_ID FROM Block WHERE Blocker_ID = $id))
 Order By MessageID DESC ";
 

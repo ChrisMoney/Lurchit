@@ -40,6 +40,8 @@ if ($result = mysqli_query($conn, $sql)) {
             $messageDate = $message['MessageDate'];
             $message['MessageDate'] = calculate_time_span($messageDate);
             
+            $message['New'] = filter_var($message['New'], FILTER_VALIDATE_BOOLEAN);
+            
             $myArray[] = $message;
         }
         echo json_encode($myArray, JSON_NUMERIC_CHECK);
