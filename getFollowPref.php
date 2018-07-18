@@ -12,16 +12,24 @@ require 'helpers.php';
 
 $id = $_GET['ID'];
 
-$sql = "SELECT GenderFollow, AgeMinFollow, AgeMaxFollow, WhiteFollow, BlackFollow
+$sql = "SELECT GenderFollow, AgeMinFollow, AgeMaxFollow, WhiteFollow, BlackFollow,
                 HispanicFollow, NativeAmericanFollow, MiddleEasternFollow, AsianFollow,
                 PacificIslanderFollow, Distance FROM Members WHERE ID = $id ";
 
-if (mysqli_num_rows($result) > 0) {
+
+if ($result = mysqli_query($conn, $sql)) {
+
     $followPref = mysqli_fetch_assoc($result);
     
     $followPref['WhiteFollow'] = filter_var($followPref['WhiteFollow'], FILTER_VALIDATE_BOOLEAN);
+    $followPref['BlackFollow'] = filter_var($followPref['BlackFollow'], FILTER_VALIDATE_BOOLEAN);
+    $followPref['HispanicFollow'] = filter_var($followPref['HispanicFollow'], FILTER_VALIDATE_BOOLEAN);
+    $followPref['NativeAmericanFollow'] = filter_var($followPref['NativeAmericanFollow'], FILTER_VALIDATE_BOOLEAN);
+    $followPref['MiddleEasternFollow'] = filter_var($followPref['MiddleEasternFollow'], FILTER_VALIDATE_BOOLEAN);
+    $followPref['AsianFollow'] = filter_var($followPref['AsianFollow'], FILTER_VALIDATE_BOOLEAN);
+    $followPref['PacificIslanderFollow'] = filter_var($followPref['PacificIslanderFollow'], FILTER_VALIDATE_BOOLEAN);
     
-    echo $followPref;
+    echo json_encode($followPref);
 }
 else {
     echo json_encode(http_response_code(500));
