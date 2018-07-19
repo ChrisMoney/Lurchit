@@ -9,7 +9,7 @@ function getDistance($id) {
     $distance = $row['Distance'];
     if ($distance == 'Anywhere') {
         // total distance of the earth
-        $distance = '24902';
+        $distance = '0';
     }
     return $distance;
 }
