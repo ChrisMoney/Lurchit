@@ -52,10 +52,10 @@
                 }
             }
         },
-        "/getBirthdate.php": {
+        "/getBackground.php": {
             "get": {
-                "operationId": "GET_getBirthdate-php",
-                "summary": "GetBirthdate",
+                "operationId": "GET_getBackground-php",
+                "summary": "GetBackground",
                 "parameters": [
                     {
                         "name": "ID",
@@ -67,25 +67,8 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object",
-                            "properties": {
-                                "Month": {
-                                    "type": "string"
-                                },
-                                "Day": {
-                                    "type": "string"
-                                },
-                                "Year": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "Server Error"
+                            "type": "string",
+                            "description": "Ok"
                         }
                     }
                 }
@@ -1541,6 +1524,62 @@
                 }
             }
         },
+        "/getFollowPref.php": {
+            "get": {
+                "operationId": "GET_getFollowPref-php",
+                "summary": "GetFollowPref",
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "AgeMinFollow": {
+                                    "type": "string"
+                                },
+                                "AgeMaxFollow": {
+                                    "type": "string"
+                                },
+                                "Distance": {
+                                    "type": "string"
+                                },
+                                "WhiteFollow": {
+                                    "type": "boolean"
+                                },
+                                "BlackFollow": {
+                                    "type": "boolean"
+                                },
+                                "AsianFollow": {
+                                    "type": "boolean"
+                                },
+                                "HispanicFollow": {
+                                    "type": "boolean"
+                                },
+                                "MiddleEasternFollow": {
+                                    "type": "boolean"
+                                },
+                                "NativeAmericanFollow": {
+                                    "type": "boolean"
+                                },
+                                "PacificIslanderFollow": {
+                                    "type": "boolean"
+                                },
+                                "GenderFollow": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/getMessageThread.php": {
             "get": {
                 "operationId": "GET_getMessageThread-php",
@@ -1606,6 +1645,74 @@
                         "schema": {
                             "type": "integer",
                             "description": "Failed to return messages."
+                        }
+                    }
+                }
+            }
+        },
+        "/getAccountSettings.php": {
+            "get": {
+                "operationId": "GET_getAccountSettings-php",
+                "summary": "GetAccountSettings",
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Email": {
+                                    "type": "string"
+                                },
+                                "Username": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/getBirthdate.php": {
+            "get": {
+                "operationId": "GET_getBirthdate-php",
+                "summary": "GetBirthdate",
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Month": {
+                                    "type": "string"
+                                },
+                                "Day": {
+                                    "type": "string"
+                                },
+                                "Year": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Server Error"
                         }
                     }
                 }
@@ -1745,13 +1852,13 @@
                 }
             }
         },
-        "/getFollowPref.php": {
+        "/deleteComment.php": {
             "get": {
-                "operationId": "GET_getFollowPref-php",
-                "summary": "GetFollowPref",
+                "operationId": "GET_deleteComment-php",
+                "summary": "DeleteComment",
                 "parameters": [
                     {
-                        "name": "ID",
+                        "name": "CommentID",
                         "in": "query",
                         "type": "integer"
                     }
@@ -1760,42 +1867,15 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object",
-                            "properties": {
-                                "AgeMinFollow": {
-                                    "type": "string"
-                                },
-                                "AgeMaxFollow": {
-                                    "type": "string"
-                                },
-                                "Distance": {
-                                    "type": "string"
-                                },
-                                "WhiteFollow": {
-                                    "type": "boolean"
-                                },
-                                "BlackFollow": {
-                                    "type": "boolean"
-                                },
-                                "AsianFollow": {
-                                    "type": "boolean"
-                                },
-                                "HispanicFollow": {
-                                    "type": "boolean"
-                                },
-                                "MiddleEasternFollow": {
-                                    "type": "boolean"
-                                },
-                                "NativeAmericanFollow": {
-                                    "type": "boolean"
-                                },
-                                "PacificIslanderFollow": {
-                                    "type": "boolean"
-                                },
-                                "GenderFollow": {
-                                    "type": "string"
-                                }
-                            }
+                            "type": "integer",
+                            "description": "Deletion Successful!"
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Deletion Failed!"
                         }
                     }
                 }
@@ -1900,64 +1980,6 @@
                         "schema": {
                             "type": "integer",
                             "description": "Unable to retrieve data."
-                        }
-                    }
-                }
-            }
-        },
-        "/deleteComment.php": {
-            "get": {
-                "operationId": "GET_deleteComment-php",
-                "summary": "DeleteComment",
-                "parameters": [
-                    {
-                        "name": "CommentID",
-                        "in": "query",
-                        "type": "integer"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "Deletion Successful!"
-                        }
-                    },
-                    "500": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "Deletion Failed!"
-                        }
-                    }
-                }
-            }
-        },
-        "/getAccountSettings.php": {
-            "get": {
-                "operationId": "GET_getAccountSettings-php",
-                "summary": "GetAccountSettings",
-                "parameters": [
-                    {
-                        "name": "ID",
-                        "in": "query",
-                        "type": "integer"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "Email": {
-                                    "type": "string"
-                                },
-                                "Username": {
-                                    "type": "string"
-                                }
-                            }
                         }
                     }
                 }
