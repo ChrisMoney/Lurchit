@@ -3,16 +3,17 @@
 header("Content-Type: application/json;charset=utf-8");
 require 'connect.php';
 require 'helpers.php';
-
-$gender = $_GET['Gender'];
-$ageMin = $_GET['AgeMin'];
-$ageMax = $_GET['AgeMax'];
-$white = $_GET['White'];
-$black = $_GET['Black'];
-$hispanic = $_GET['Hispanic'];
-$nativeAmerican = $_GET['NativeAmerican'];
-$asian = $_GET['Asian'];
-$pacificIslander = $_GET['PacificIslsander'];
+$id = $_GET['ID'];
+$gender = $_GET['GenderFollower'];
+$ageMin = $_GET['AgeMinFollower'];
+$ageMax = $_GET['AgeMaxFollower'];
+$white = $_GET['WhiteFollower'];
+$black = $_GET['BlackFollower'];
+$hispanic = $_GET['HispanicFollower'];
+$nativeAmerican = $_GET['NativeAmericanFollower'];
+$asian = $_GET['AsianFollower'];
+$pacificIslander = $_GET['PacificIslanderFollower'];
+$middleEastern = $_GET['MiddleEasternFollower'];
 
 $sql = "Update Members Set 
         GenderFollower = '$gender',
@@ -23,7 +24,8 @@ $sql = "Update Members Set
         HispanicFollower = '$hispanic',
         NativeAmericanFollower = '$nativeAmerican',
         AsianFollower = '$asian',
-        PacificIslsanderFollower = '$pacificIslander'
+        PacificIslanderFollower = '$pacificIslander',
+        MiddleEasternFollower = '$middleEastern'
         WHERE ID = $id ";
 
 if (mysqli_query($conn, $sql)) {

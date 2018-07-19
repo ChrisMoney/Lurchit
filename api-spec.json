@@ -52,10 +52,10 @@
                 }
             }
         },
-        "/getFollowPref.php": {
+        "/getFollowerPref.php": {
             "get": {
-                "operationId": "GET_getFollowPref-php",
-                "summary": "GetFollowPref",
+                "operationId": "GET_getFollowerPref-php",
+                "summary": "GetFollowerPref",
                 "parameters": [
                     {
                         "name": "ID",
@@ -69,40 +69,34 @@
                         "schema": {
                             "type": "object",
                             "properties": {
-                                "AgeMinFollow": {
+                                "AgeMinFollower": {
                                     "type": "string"
                                 },
-                                "AgeMaxFollow": {
+                                "AgeMaxFollower": {
                                     "type": "string"
                                 },
-                                "Distance": {
-                                    "type": "string"
-                                },
-                                "WhiteFollow": {
+                                "WhiteFollower": {
                                     "type": "boolean"
                                 },
-                                "BlackFollow": {
+                                "BlackFollower": {
                                     "type": "boolean"
                                 },
-                                "AsianFollow": {
+                                "AsianFollower": {
                                     "type": "boolean"
                                 },
-                                "HispanicFollow": {
+                                "HispanicFollower": {
                                     "type": "boolean"
                                 },
-                                "MiddleEasternFollow": {
+                                "MiddleEasternFollower": {
                                     "type": "boolean"
                                 },
-                                "NativeAmericanFollow": {
+                                "NativeAmericanFollower": {
                                     "type": "boolean"
                                 },
-                                "PacificIslanderFollow": {
+                                "PacificIslanderFollower": {
                                     "type": "boolean"
                                 },
-                                "ID": {
-                                    "type": "integer"
-                                },
-                                "GenderFollow": {
+                                "GenderFollower": {
                                     "type": "string"
                                 }
                             }
@@ -862,50 +856,55 @@
                     {
                         "name": "ID",
                         "in": "query",
-                        "type": "string"
+                        "type": "integer"
                     },
                     {
-                        "name": "Gender",
+                        "name": "GenderFollower",
                         "in": "query",
                         "type": "string"
                     },
                     {
-                        "name": "AgeMin",
+                        "name": "AgeMinFollower",
                         "in": "query",
                         "type": "string"
                     },
                     {
-                        "name": "AgeMax",
+                        "name": "AgeMaxFollower",
                         "in": "query",
                         "type": "string"
                     },
                     {
-                        "name": "White",
+                        "name": "WhiteFollower",
                         "in": "query",
                         "type": "string"
                     },
                     {
-                        "name": "Black",
+                        "name": "BlackFollower",
                         "in": "query",
                         "type": "string"
                     },
                     {
-                        "name": "Hispanic",
+                        "name": "HispanicFollower",
                         "in": "query",
                         "type": "string"
                     },
                     {
-                        "name": "NativeAmerican",
+                        "name": "NativeAmericanFollower",
                         "in": "query",
                         "type": "string"
                     },
                     {
-                        "name": "Asian",
+                        "name": "AsianFollower",
                         "in": "query",
                         "type": "string"
                     },
                     {
-                        "name": "PacificIslander",
+                        "name": "PacificIslanderFollower",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "MiddleEasternFollower",
                         "in": "query",
                         "type": "string"
                     }
@@ -1463,6 +1462,40 @@
                 }
             }
         },
+        "/like.php": {
+            "get": {
+                "operationId": "GET_like-php",
+                "summary": "Like",
+                "parameters": [
+                    {
+                        "name": "MemberID",
+                        "in": "query",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "StatusID",
+                        "in": "query",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Successful."
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "description": "Failed!"
+                        }
+                    }
+                }
+            }
+        },
         "/sendMessage.php": {
             "post": {
                 "operationId": "POST_sendMessage-php",
@@ -1517,6 +1550,110 @@
                         "schema": {
                             "type": "integer",
                             "description": "Message Failed"
+                        }
+                    }
+                }
+            }
+        },
+        "/background.php": {
+            "get": {
+                "operationId": "GET_background-php",
+                "summary": "Background",
+                "parameters": [
+                    {
+                        "name": "Ethnicity",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Appearance data updated successfully."
+                        }
+                    },
+                    "400": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Invalid user data provided."
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Error saving data."
+                        }
+                    }
+                }
+            }
+        },
+        "/getFollowPref.php": {
+            "get": {
+                "operationId": "GET_getFollowPref-php",
+                "summary": "GetFollowPref",
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "AgeMinFollow": {
+                                    "type": "string"
+                                },
+                                "AgeMaxFollow": {
+                                    "type": "string"
+                                },
+                                "Distance": {
+                                    "type": "string"
+                                },
+                                "WhiteFollow": {
+                                    "type": "boolean"
+                                },
+                                "BlackFollow": {
+                                    "type": "boolean"
+                                },
+                                "AsianFollow": {
+                                    "type": "boolean"
+                                },
+                                "HispanicFollow": {
+                                    "type": "boolean"
+                                },
+                                "MiddleEasternFollow": {
+                                    "type": "boolean"
+                                },
+                                "NativeAmericanFollow": {
+                                    "type": "boolean"
+                                },
+                                "PacificIslanderFollow": {
+                                    "type": "boolean"
+                                },
+                                "GenderFollow": {
+                                    "type": "string"
+                                }
+                            }
                         }
                     }
                 }
@@ -1592,18 +1729,13 @@
                 }
             }
         },
-        "/like.php": {
+        "/getAccountSettings.php": {
             "get": {
-                "operationId": "GET_like-php",
-                "summary": "Like",
+                "operationId": "GET_getAccountSettings-php",
+                "summary": "GetAccountSettings",
                 "parameters": [
                     {
-                        "name": "MemberID",
-                        "in": "query",
-                        "type": "integer"
-                    },
-                    {
-                        "name": "StatusID",
+                        "name": "ID",
                         "in": "query",
                         "type": "integer"
                     }
@@ -1612,15 +1744,15 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "integer",
-                            "description": "Successful."
-                        }
-                    },
-                    "500": {
-                        "description": "",
-                        "schema": {
                             "type": "object",
-                            "description": "Failed!"
+                            "properties": {
+                                "Email": {
+                                    "type": "string"
+                                },
+                                "Username": {
+                                    "type": "string"
+                                }
+                            }
                         }
                     }
                 }
@@ -1682,13 +1814,13 @@
                 }
             }
         },
-        "/deleteMedia.php": {
+        "/deleteComment.php": {
             "get": {
-                "operationId": "GET_deleteMedia-php",
-                "summary": "DeleteMedia",
+                "operationId": "GET_deleteComment-php",
+                "summary": "DeleteComment",
                 "parameters": [
                     {
-                        "name": "MediaID",
+                        "name": "CommentID",
                         "in": "query",
                         "type": "integer"
                     }
@@ -1706,83 +1838,6 @@
                         "schema": {
                             "type": "integer",
                             "description": "Deletion Failed!"
-                        }
-                    }
-                }
-            }
-        },
-        "/getAccountSettings.php": {
-            "get": {
-                "operationId": "GET_getAccountSettings-php",
-                "summary": "GetAccountSettings",
-                "parameters": [
-                    {
-                        "name": "ID",
-                        "in": "query",
-                        "type": "integer"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "Email": {
-                                    "type": "string"
-                                },
-                                "Username": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/background.php": {
-            "get": {
-                "operationId": "GET_background-php",
-                "summary": "Background",
-                "parameters": [
-                    {
-                        "name": "Ethnicity",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "ID",
-                        "in": "query",
-                        "type": "integer"
-                    },
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "Appearance data updated successfully."
-                        }
-                    },
-                    "400": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "Invalid user data provided."
-                        }
-                    },
-                    "500": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "Error saving data."
                         }
                     }
                 }
