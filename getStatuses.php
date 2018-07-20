@@ -7,13 +7,9 @@ include_once 'helpers.php';
 date_default_timezone_set("UTC");
 $id = $_GET['ID'];
 $long = $_GET['Long'];
-$long = floatval($long);
-$lat = floatval($lat);
 $lat = $_GET['Lat'];
-$curtime = $_GET['Time'];
 
 $distance = getDistance($id);
-$distance = floatval($distance);
 
 $sql = "SELECT p.MediaName as ProfilePic, m.ID as MemberID, m.Username as Username,
 m.AllowComments as AllowComments, m.AllowLikes as AllowLikes, m.AllowDMs as AllowDMs,
@@ -23,7 +19,7 @@ s.ID as StatusID, s.Media as Media, s.Status as Status, s.StatusDate as StatusDa
 (SELECT Count(ID) FROM Likes WHERE (Member_ID = MemberID And Status_ID = StatusID)) As HasLiked,
 ( 3959 * acos ( cos ( radians($lat) ) * cos( radians( s.Latitude ) ) *
 cos( radians( s.Longitude ) - radians($long) ) + sin ( radians($lat) ) *
-sin( radians( s.Latitude ) ) ) ) AS `distance`
+sin( radians( s.Latitude ) ) ) ) AS distance
 FROM Members m, ProfileMedia p, Statuses s
 
 WHERE 
@@ -92,7 +88,7 @@ s.ID as StatusID, s.Media as Media, s.Status as Status, s.StatusDate as StatusDa
 (SELECT Count(ID) FROM Likes WHERE (Member_ID = MemberID And Status_ID = StatusID)) As HasLiked,
 ( 3959 * acos ( cos ( radians($lat) ) * cos( radians( s.Latitude ) ) *
 cos( radians( s.Longitude ) - radians($long) ) + sin ( radians($lat) ) *
-sin( radians( s.Latitude ) ) ) ) AS `distance`
+sin( radians( s.Latitude ) ) ) ) AS distance
 FROM Members m, ProfileMedia p, Statuses s
 
 WHERE 
@@ -101,7 +97,7 @@ And p.Member_ID = $id
 And s.Member_ID = $id
 
 Group By StatusID 
-HAVING distance >= $distance
+HAVING distance <= $distance
 Order By StatusID DESC 
 
 ";
