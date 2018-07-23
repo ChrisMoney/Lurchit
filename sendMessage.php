@@ -99,7 +99,7 @@ if (mysqli_query($conn, $sql1)) {
             
             $message = "Message from $name";
             $userID = $receiverID;
-            pushNotification($message, $userID);
+            pushNotification('Message', $message, $userID);
     }
     catch(Exception $e) {
         $error = 'Push Notification Failed';

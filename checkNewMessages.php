@@ -10,8 +10,8 @@ $sql = "SELECT ID FROM Messages WHERE New = 1 And Owner_ID = $id ";
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
-    echo true;
+    echo json_encode(true);
 }
 else {
-    echo false;
+    echo json_encode(false);
 }

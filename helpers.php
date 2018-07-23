@@ -21,15 +21,20 @@ function getDistance($id) {
  * Production App ID: 
  * Production Key: 
  */ 
-function pushNotification($message, $userID){
+function pushNotification($heading, $message, $userID){
 		$content = array(
 			"en" => $message
 			);
     
+		$heading = array(
+		    "en" => $heading
+		);
+		
          $fields = array(
             'app_id' => "02681849-4f61-41ba-ad44-9dddca4f2172",
             'filters' => array(array("field" => "tag", "key" => "ID", "relation" => "=", "value" => "$userID")),
-            'contents' => $content
+            'contents' => $content,
+             'headings' => $heading
         );
 		
         
@@ -51,7 +56,16 @@ function pushNotification($message, $userID){
 		return $response;
 
 	}
-    
+  
+	function notification($senderID, $memberID, $type, $typeID, $message) {
+	    $conn = connection();
+	    
+	    $sql = "INSERT INTO Notifications (Sender_ID, Member_ID, Type, Type_ID, Message, New) 
+                Values ('$senderID', '$memberID', '$type', '$typeID', '$message', 1) ";
+	    
+	    mysqli_query($conn, $sql);
+	}
+	
     function calculate_time_span($date){
         
         $seconds  = strtotime(date('Y-m-d H:i:s')) - strtotime(date('Y-m-d H:i:s', $date));
@@ -80,4 +94,5 @@ function pushNotification($message, $userID){
                             }
                             return $time;
 }
+
     

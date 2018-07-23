@@ -22,15 +22,17 @@ $country = "N/A";
 $state = "N/A";
 $city = "N/A";
 
-$sql = "SELECT City, State ,Country FROM Members WHERE ID = $id";
+$sql = "SELECT City, State ,Country, FullLocation FROM Members WHERE ID = $id";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
 $location = $row;
-//$location = array();
 
-if ($updateLocation == 'false') {
+
+
+if ($updateLocation == 'false' || $updateLocation == false || 
+    $updateLocation == 0 || $updateLocation == '0') {
     // do nothing no current location is to be fetched
-    $location = $row['City'] . ',' . $row['State'] .' '. $row['Country'];
+    $location['FullLocation'] = $row['City'] . ',' . $row['State'] .' '. $row['Country'];
     echo json_encode($location);
     exit;
 }
