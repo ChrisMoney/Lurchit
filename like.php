@@ -35,7 +35,10 @@ else {
     $message = "Status Like from $name";
     $userID = $receiverID;
     
+    if ($memberID == $userID) {} else {
     notification($memberID, $receiverID, 'Like', $statusID, $message);
+    }
+    
 }
 
 echo 200;

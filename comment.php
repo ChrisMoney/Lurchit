@@ -34,9 +34,10 @@ if (mysqli_query($conn, $sql)) {
     $message = "Status Comment from $name";
     $userID = $receiverID;
     
+    if ($memberID == $userID) {} else {
     notification($memberID, $receiverID, 'Comment', $statusID, $message);
     pushNotification($message, $receiverID);
-    
+    }
     
     
     echo http_response_code(200);

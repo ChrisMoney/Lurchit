@@ -76,6 +76,8 @@ function pushNotification($heading, $message, $userID){
         $mins = floor(($seconds - ($hours*3600)) / 60);
         $secs = floor($seconds % 60);
         
+        $hours = $hours - 5;
+        
         if($seconds < 60)
             $time = $secs." s ago";
             else if($seconds < 60*60 )
@@ -89,7 +91,7 @@ function pushNotification($heading, $message, $userID){
                         else
                             $time = date('D M d Y', $date);
                             
-                            if ($hours <= 5) {
+                            if ($hours <= 1) {
                                 $time = 'New';
                             }
                             return $time;

@@ -105,6 +105,12 @@ Order By StatusID DESC
 $result = mysqli_query($conn, $sql);
 $myArray = array();
 
+
+if (mysqli_num_rows($result) == 0) {
+    echo http_response_code(500);
+    exit();
+}
+
 if (mysqli_query($conn, $sql)) {
 
     if (mysqli_num_rows($result) > 0) {
