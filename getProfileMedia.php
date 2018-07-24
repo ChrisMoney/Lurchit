@@ -18,7 +18,7 @@ $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
     $row = mysqli_fetch_assoc($result);
     $profileMedia = $row['MediaName'];
-    $mediaUrl = "http://api.flickpitch.com/api/media/$profileMedia";
+    $mediaUrl = ProfileMediaPath.$profileMedia;
     echo $mediaUrl;
 }
 

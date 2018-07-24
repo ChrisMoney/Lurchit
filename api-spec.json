@@ -5,7 +5,7 @@
         "title": "Statuz",
         "description": "Status APIs"
     },
-    "host": "api.flickpitch.com",
+    "host": "api.statuz.net",
     "basePath": "/api",
     "schemes": [
         "http",

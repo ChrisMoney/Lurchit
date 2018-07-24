@@ -11,10 +11,7 @@ require 'connect.php';
 include_once 'helpers.php';
 include_once 'email.php';
 
-$firstName = $_GET['FirstName'];
-$firstName = ucfirst(strtolower($firstName));
-$lastName = $_GET['LastName'];
-$lastName = ucfirst(strtolower($lastName));
+
 $username = ucfirst($_GET['Username']);
 $email = $_GET['Email'];
 $password = $_GET['Password'];
@@ -43,11 +40,11 @@ if (mysqli_num_rows($result2)  > 0) {
    exit;
 }
 
-if (strlen($firstName) > 0 && strlen($lastName) > 0 && strlen($username) > 0 && strlen($email) > 0
+if (strlen($username) > 0 && strlen($email) > 0
        && strlen($password) >= 3) {
 
-      $sql = "Insert Into Members (FirstName, LastName, Username, Email, Password, SignupDate)
-                        Values ('$firstName', '$lastName', '$username', '$email', '$password', NOW())";
+      $sql = "Insert Into Members (Username, Email, Password, SignupDate)
+                        Values ('$username', '$email', '$password', NOW())";
 
 
       if (mysqli_query($conn, $sql)) {

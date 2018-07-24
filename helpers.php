@@ -1,4 +1,7 @@
 <?php
+define("ProfileMediaPath", "http://api.statuz.net/api/media/");
+define("StatusMediaPath", "http://api.flickpitch.com/api/flicks/");
+
 
 function getDistance($id) {
     $conn = connection();
