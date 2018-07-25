@@ -34,11 +34,13 @@ if ($result = mysqli_query($conn, $sql)) {
     if (mysqli_num_rows($result) > 0) {
         while ($message = mysqli_fetch_assoc($result)) {
             $mediaName = $message['MediaName'];
-            $message['MediaName'] = 'http://api.flickpitch.com/api/media/'.$mediaName;
+            $message['MediaName'] = ProfileMediaPath.$mediaName;
             
             // format flickpitch age text from date
             $messageDate = $message['MessageDate'];
-            $message['MessageDate'] = calculate_time_span($messageDate);
+            // format date for comparison month/day
+            $date = strtotime($messageDate);
+            $message['MessageDate'] = calculate_time_span($date);
             
             $message['New'] = filter_var($message['New'], FILTER_VALIDATE_BOOLEAN);
             

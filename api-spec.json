@@ -1098,9 +1098,6 @@
                                     "Username": {
                                         "type": "string"
                                     },
-                                    "PitchDate": {
-                                        "type": "string"
-                                    },
                                     "New": {
                                         "type": "boolean"
                                     }
