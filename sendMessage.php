@@ -85,6 +85,7 @@ $sql = "INSERT INTO Messages (Sender_ID, Receiver_ID,     Owner_ID,     Other_ID
 
 if (mysqli_query($conn, $sql)) {
     // assign thread ownership for sender
+    if ($senderID != $receiverID) {
     $sql1 = "INSERT INTO Messages (Sender_ID,   Receiver_ID,   Owner_ID,    Other_ID,      Message,   New,  FirstMessage,          MessageDate) 
                            Values ('$senderID', '$receiverID', '$senderID', '$receiverID', '$message',  '0', '$senderFirstMessage', '$time') ";
 
@@ -113,7 +114,6 @@ if (mysqli_query($conn, $sql1)) {
 else {
     echo http_response_code(500);
     }
+
 }
-else {
-    echo http_response_code(500);
 }

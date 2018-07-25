@@ -27,7 +27,7 @@ if ($result = mysqli_query($conn, $sql)) {
         while ($message = mysqli_fetch_assoc($result)) {
             
             $mediaName = $message['MediaName'];
-            $message['MediaName'] = 'http://api.flickpitch.com/api/media/'.$mediaName;
+            $message['MediaName'] = ProfileMediaPath.$mediaName;
             
             /*$flickName = $message['Flick'];
             if (strlen($flickName) > 1) {

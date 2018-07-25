@@ -38,12 +38,12 @@ if (mysqli_query($conn, $sql)) {
             
             // build profile image url
             $profilePic = $status['ProfilePic'];
-            $status['ProfilePic'] = 'http://api.flickpitch.com/api/media/'.$profilePic;
+            $status['ProfilePic'] = ProfileMediaPath.$profilePic;
             
             // build image url
             $flick = $status['Media'];
             if (strlen($flick) > 1) {
-                $status['Media'] = 'http://api.flickpitch.com/api/flicks/'.$flick;
+                $status['Media'] = StatusMediaPath.$flick;
             }
             
             
