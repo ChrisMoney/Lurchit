@@ -17,7 +17,7 @@ if ($result = mysqli_query($conn, $sql)) {
         while ($notifications = mysqli_fetch_assoc($result)) {
             
             $mediaName = $notifications['MediaName'];
-            $notifications['MediaName'] = 'http://api.flickpitch.com/api/media/'.$mediaName;
+            $notifications['MediaName'] = ProfileMediaPath.$mediaName;
             
             $notifications['New'] = filter_var($notifications['New'], FILTER_VALIDATE_BOOLEAN);
             

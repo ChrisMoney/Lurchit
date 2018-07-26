@@ -27,8 +27,8 @@ p.Member_ID = m.ID
 And s.Member_ID = m.ID 
 
 And (
-(CASE WHEN (SELECT GenderFollow = 'Both' FROM Members WHERE ID = $id) THEN m.Gender = 'Male' Or m.Gender = 'Female' END)
-Or m.Gender = (SELECT GenderFollow FROM Members WHERE ID = $id)
+    (m.Gender = (SELECT GenderFollow FROM Members WHERE ID = $id)) 
+Or (m.Gender = 'Male' Or m.Gender = 'Female') 
 )
 
 
@@ -38,21 +38,6 @@ And
 And (SELECT TIMESTAMPDIFF(YEAR, m.Birthdate, CURDATE())) <= (SELECT CAST(AgeMaxFollow AS UNSIGNED) FROM Members WHERE ID = $id)
 )
 
-And (
-m.Ethnicity = (SELECT WhiteFollow FROM Members WHERE ID = $id)
-Or m.Ethnicity = (SELECT BlackFollow FROM Members WHERE ID = $id)
-Or m.Ethnicity = (SELECT HispanicFollow FROM Members WHERE ID = $id)
-Or m.Ethnicity = (SELECT NativeAmericanFollow FROM Members WHERE ID = $id)
-Or m.Ethnicity = (SELECT MiddleEasternFollow FROM Members WHERE ID = $id)
-Or m.Ethnicity = (SELECT AsianFollow FROM Members WHERE ID = $id)
-Or m.Ethnicity = (SELECT PacificIslanderFollow FROM Members WHERE ID = $id)
-)
-
-And (
-(CASE WHEN m.GenderFollower = 'Both' THEN '' END)
-Or m.GenderFollower = (SELECT Gender FROM Members WHERE ID = $id)
-)
-
 And
 (
 (SELECT TIMESTAMPDIFF(YEAR, (SELECT CAST(Birthdate As UNSIGNED) FROM Members WHERE ID = $id), CURDATE())) >= CAST(m.AgeMinFollower AS UNSIGNED) 
@@ -60,13 +45,30 @@ And (SELECT TIMESTAMPDIFF(YEAR, (SELECT CAST(Birthdate As UNSIGNED) FROM Members
 )
 
 And (
-m.WhiteFollower = (Select Ethnicity FROM Members WHERE ID = $id)
-Or m.BlackFollower = (SELECT Ethnicity FROM Members WHERE ID = $id)
-Or m.HispanicFollower = (SELECT Ethnicity FROM Members WHERE ID = $id)
-Or m.NativeAmericanFollower = (SELECT Ethnicity FROM Members WHERE ID = $id)
-Or m.MiddleEasternFollower = (SELECT Ethnicity FROM Members WHERE ID = $id)
-Or m.AsianFollower = (SELECT Ethnicity FROM Members WHERE ID = $id)
-Or m.PacificIslanderFollower = (SELECT Ethnicity FROM Members WHERE ID = $id)
+((CASE m.Ethnicity WHEN 'White' THEN 'true' ELSE 'false' END) = (SELECT WhiteFollow FROM Members WHERE ID = $id))
+Or ((CASE m.Ethnicity WHEN 'Black' THEN 'true' ELSE 'false' END) = (SELECT BlackFollow FROM Members WHERE ID = $id))
+Or ((CASE m.Ethnicity WHEN 'Hispanic' THEN 'true' ELSE 'false' END) = (SELECT HispanicFollow FROM Members WHERE ID = $id))
+Or ((CASE m.Ethnicity WHEN 'Native American' THEN 'true' ELSE 'false' END) = (SELECT NativeAmericanFollow FROM Members WHERE ID = $id))
+Or ((CASE m.Ethnicity WHEN 'Middle Eastern' THEN 'true' ELSE 'false' END) = (SELECT MiddleEasternFollow FROM Members WHERE ID = $id))
+Or ((CASE m.Ethnicity WHEN 'Asian' THEN 'true' ELSE 'false' END) = (SELECT AsianFollow FROM Members WHERE ID = $id))
+Or ((CASE m.Ethnicity WHEN 'Pacific Islander' THEN 'true' ELSE 'false' END) = (SELECT PacificIslanderFollow FROM Members WHERE ID = $id))
+)
+
+
+And (
+(CASE m.GenderFollower WHEN 'Both' THEN '' END)
+Or (m.GenderFollower = (SELECT Gender FROM Members WHERE ID = $id))
+)
+
+
+And (
+((CASE m.WhiteFollower WHEN 'true' THEN 'White' ELSE '' END) = (Select Ethnicity FROM Members WHERE ID = $id))
+Or ((CASE m.BlackFollower WHEN 'true' THEN 'Black' ELSE '' END) = (Select Ethnicity FROM Members WHERE ID = $id))
+Or ((CASE m.HispanicFollower WHEN 'true' THEN 'Hispanic' ELSE '' END) = (Select Ethnicity FROM Members WHERE ID = $id))
+Or ((CASE m.NativeAmericanFollower WHEN 'true' THEN 'Native American' ELSE '' END) = (Select Ethnicity FROM Members WHERE ID = $id))
+Or ((CASE m.MiddleEasternFollower WHEN 'true' THEN 'Middle Eastern' ELSE '' END) = (Select Ethnicity FROM Members WHERE ID = $id))
+Or ((CASE m.AsianFollower WHEN 'true' THEN 'Asian' ELSE '' END) = (Select Ethnicity FROM Members WHERE ID = $id))
+Or ((CASE m.PacificIslanderFollower WHEN 'true' THEN 'PacificIslander' ELSE '' END) = (Select Ethnicity FROM Members WHERE ID = $id))
 )
 
 And
