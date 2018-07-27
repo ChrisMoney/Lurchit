@@ -25,4 +25,6 @@ if ($result = mysqli_query($conn, $sql)) {
         }
         echo json_encode($myArray, JSON_NUMERIC_CHECK);
     }
+    else { echo http_response_code(400); }
+    
 }
