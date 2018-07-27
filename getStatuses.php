@@ -38,14 +38,10 @@ And
 And (SELECT TIMESTAMPDIFF(YEAR, m.Birthdate, CURDATE())) <= (SELECT CAST(AgeMaxFollow AS UNSIGNED) FROM Members WHERE ID = $id)
 )
 
-And
-(
-(SELECT TIMESTAMPDIFF(YEAR, (SELECT CAST(Birthdate As UNSIGNED) FROM Members WHERE ID = $id), CURDATE())) >= CAST(m.AgeMinFollower AS UNSIGNED) 
-And (SELECT TIMESTAMPDIFF(YEAR, (SELECT CAST(Birthdate As UNSIGNED) FROM Members WHERE ID = $id), CURDATE())) <= CAST(m.AgeMaxFollower AS UNSIGNED)
-)
 
 And (
-((CASE m.Ethnicity WHEN 'White' THEN 'true' ELSE 'false' END) = (SELECT WhiteFollow FROM Members WHERE ID = $id))
+((CASE m.Ethnicity WHEN 'Other' THEN 'true' ELSE 'false' END) = (SELECT OtherFollow FROM Members WHERE ID = $id))
+Or ((CASE m.Ethnicity WHEN 'White' THEN 'true' ELSE 'false' END) = (SELECT WhiteFollow FROM Members WHERE ID = $id))
 Or ((CASE m.Ethnicity WHEN 'Black' THEN 'true' ELSE 'false' END) = (SELECT BlackFollow FROM Members WHERE ID = $id))
 Or ((CASE m.Ethnicity WHEN 'Hispanic' THEN 'true' ELSE 'false' END) = (SELECT HispanicFollow FROM Members WHERE ID = $id))
 Or ((CASE m.Ethnicity WHEN 'Native American' THEN 'true' ELSE 'false' END) = (SELECT NativeAmericanFollow FROM Members WHERE ID = $id))
@@ -54,15 +50,22 @@ Or ((CASE m.Ethnicity WHEN 'Asian' THEN 'true' ELSE 'false' END) = (SELECT Asian
 Or ((CASE m.Ethnicity WHEN 'Pacific Islander' THEN 'true' ELSE 'false' END) = (SELECT PacificIslanderFollow FROM Members WHERE ID = $id))
 )
 
-
 And (
-(CASE m.GenderFollower WHEN 'Both' THEN '' END)
+((CASE m.GenderFollower WHEN 'Both' THEN 'Male' END) = (SELECT Gender FROM Members WHERE ID = $id))
+Or ((CASE m.GenderFollower WHEN 'Both' THEN 'Female' END) = (SELECT Gender FROM Members WHERE ID = $id))
 Or (m.GenderFollower = (SELECT Gender FROM Members WHERE ID = $id))
+)
+
+And
+(
+(SELECT TIMESTAMPDIFF(YEAR, (SELECT CAST(Birthdate As UNSIGNED) FROM Members WHERE ID = $id), CURDATE())) >= CAST(m.AgeMinFollower AS UNSIGNED) 
+And (SELECT TIMESTAMPDIFF(YEAR, (SELECT CAST(Birthdate As UNSIGNED) FROM Members WHERE ID = $id), CURDATE())) <= CAST(m.AgeMaxFollower AS UNSIGNED)
 )
 
 
 And (
-((CASE m.WhiteFollower WHEN 'true' THEN 'White' ELSE '' END) = (Select Ethnicity FROM Members WHERE ID = $id))
+(Case m.Ethnicity WHEN 'Other' THEN '' END)
+Or ((CASE m.WhiteFollower WHEN 'true' THEN 'White' ELSE '' END) = (Select Ethnicity FROM Members WHERE ID = $id))
 Or ((CASE m.BlackFollower WHEN 'true' THEN 'Black' ELSE '' END) = (Select Ethnicity FROM Members WHERE ID = $id))
 Or ((CASE m.HispanicFollower WHEN 'true' THEN 'Hispanic' ELSE '' END) = (Select Ethnicity FROM Members WHERE ID = $id))
 Or ((CASE m.NativeAmericanFollower WHEN 'true' THEN 'Native American' ELSE '' END) = (Select Ethnicity FROM Members WHERE ID = $id))
