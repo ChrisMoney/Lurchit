@@ -33,7 +33,7 @@
 -->
 <html>
 	<head>
-		<title>Flickpitch - Reset Password</title>
+		<title>Statuz - Reset Password</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="css/main.css" />
@@ -42,7 +42,7 @@
 
 		<!-- Header -->
 			<header id="header">
-				<a href="index.php" class="logo">Flickpitch</a>
+				<a href="index.php" class="logo">Statuz</a>
 			</header>
 
 		<!-- Menu -->
