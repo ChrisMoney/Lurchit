@@ -12,7 +12,7 @@ require 'helpers.php';
 
 $id = $_GET['ID'];
 
-$sql = "SELECT GenderFollow, AgeMinFollow, AgeMaxFollow, WhiteFollow, BlackFollow,
+$sql = "SELECT GenderFollowMale, GenderFollowFemale, AgeMinFollow, AgeMaxFollow, WhiteFollow, BlackFollow,
                 HispanicFollow, NativeAmericanFollow, MiddleEasternFollow, AsianFollow,
                 PacificIslanderFollow, Distance FROM Members WHERE ID = $id ";
 
@@ -21,6 +21,8 @@ if ($result = mysqli_query($conn, $sql)) {
 
     $followPref = mysqli_fetch_assoc($result);
     
+    $followPref['GenderFollowMale'] = filter_var($followPref['GenderFollowMale'], FILTER_VALIDATE_BOOLEAN);
+    $followPref['GenderFollowFemale'] = filter_var($followPref['GenderFollowFemale'], FILTER_VALIDATE_BOOLEAN);
     $followPref['WhiteFollow'] = filter_var($followPref['WhiteFollow'], FILTER_VALIDATE_BOOLEAN);
     $followPref['BlackFollow'] = filter_var($followPref['BlackFollow'], FILTER_VALIDATE_BOOLEAN);
     $followPref['HispanicFollow'] = filter_var($followPref['HispanicFollow'], FILTER_VALIDATE_BOOLEAN);

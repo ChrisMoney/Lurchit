@@ -11,7 +11,7 @@ $lat = $_GET['Lat'];
 
 $distance = getDistance($id);
 
-$sql = "SELECT p.MediaName as ProfilePic, m.ID as MemberID, m.Username as Username,
+$sql = "SELECT DISTINCT p.MediaName as ProfilePic, m.ID as MemberID, m.Username as Username,
 m.AllowComments as AllowComments, m.AllowLikes as AllowLikes, m.AllowDMs as AllowDMs,
 s.ID as StatusID, s.Media as Media, s.Status as Status, s.StatusDate as StatusDate,
 (SELECT Count(ID) FROM Comments WHERE Status_ID = s.ID) As CommentCount,
@@ -26,9 +26,10 @@ WHERE
 p.Member_ID = m.ID 
 And s.Member_ID = m.ID 
 
+
 And (
-    (m.Gender = (SELECT GenderFollow FROM Members WHERE ID = $id)) 
-Or (m.Gender = 'Male' Or m.Gender = 'Female') 
+((CASE m.Gender WHEN 'Male' THEN 'true' END) = (Select GenderFollowMale FROM Members WHERE ID = $id))
+Or ((CASE m.Gender WHEN 'Female' THEN 'true' END) = (Select GenderFollowFemale FROM Members WHERE ID = $id))
 )
 
 
@@ -49,11 +50,6 @@ Or ((CASE m.Ethnicity WHEN 'Asian' THEN 'true' ELSE 'false' END) = (SELECT Asian
 Or ((CASE m.Ethnicity WHEN 'Pacific Islander' THEN 'true' ELSE 'false' END) = (SELECT PacificIslanderFollow FROM Members WHERE ID = $id))
 )
 
-And (
-((CASE m.GenderFollower WHEN 'Both' THEN 'Male' END) = (SELECT Gender FROM Members WHERE ID = $id))
-Or ((CASE m.GenderFollower WHEN 'Both' THEN 'Female' END) = (SELECT Gender FROM Members WHERE ID = $id))
-Or (m.GenderFollower = (SELECT Gender FROM Members WHERE ID = $id))
-)
 
 And
 (
@@ -61,6 +57,10 @@ And
 And (SELECT TIMESTAMPDIFF(YEAR, (SELECT CAST(Birthdate As UNSIGNED) FROM Members WHERE ID = $id), CURDATE())) <= CAST(m.AgeMaxFollower AS UNSIGNED)
 )
 
+And (
+((CASE m.GenderFollowerMale WHEN 'true' THEN 'Male' END) = (Select Gender FROM Members WHERE ID = $id))
+Or ((CASE m.GenderFollowerFemale WHEN 'true' THEN 'Female' END) = (Select Gender FROM Members WHERE ID = $id))
+)
 
 And (
 ((CASE m.WhiteFollower WHEN 'true' THEN 'White' ELSE '' END) = (Select Ethnicity FROM Members WHERE ID = $id))
@@ -81,7 +81,7 @@ And
 $id NOT IN (SELECT Blocked_ID FROM Block WHERE Blocker_ID = m.ID)
 )
 
-UNION ALL
+UNION
 
 SELECT p.MediaName as ProfilePic, m.ID as MemberID, m.Username as Username,
 m.AllowComments as AllowComments, m.AllowLikes as AllowLikes, m.AllowDMs as AllowDMs,

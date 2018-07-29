@@ -5,7 +5,8 @@ require 'connect.php';
 require 'helpers.php';
 
 $id = $_GET['ID'];
-$gender = $_GET['GenderFollow'];
+$genderMale = $_GET['GenderFollowMale'];
+$genderFemale = $_GET['GenderFollowFemale'];
 $ageMin = $_GET['AgeMinFollow'];
 $ageMax = $_GET['AgeMaxFollow'];
 $white = $_GET['WhiteFollow'];
@@ -18,7 +19,8 @@ $pacificIslander = $_GET['PacificIslanderFollow'];
 $distance = $_GET['Distance'];
 
 $sql = "Update Members Set 
-        GenderFollow = '$gender',
+        GenderFollowMale = '$genderMale',
+        GenderFollowFemale = '$genderFemale',
         AgeMinFollow = '$ageMin',
         AgeMaxFollow = '$ageMax',
         WhiteFollow = '$white',

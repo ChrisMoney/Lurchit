@@ -4,7 +4,8 @@ header("Content-Type: application/json;charset=utf-8");
 require 'connect.php';
 require 'helpers.php';
 $id = $_GET['ID'];
-$gender = $_GET['GenderFollower'];
+$genderMale = $_GET['GenderFollowerMale'];
+$genderFemale = $_GET['GenderFollowerFemale'];
 $ageMin = $_GET['AgeMinFollower'];
 $ageMax = $_GET['AgeMaxFollower'];
 $white = $_GET['WhiteFollower'];
@@ -16,7 +17,8 @@ $pacificIslander = $_GET['PacificIslanderFollower'];
 $middleEastern = $_GET['MiddleEasternFollower'];
 
 $sql = "Update Members Set 
-        GenderFollower = '$gender',
+        GenderFollowerMale = '$genderMale',
+        GenderFollowerFemale = '$genderFemale',
         AgeMinFollower = '$ageMin',
         AgeMaxFollower = '$ageMax',
         WhiteFollower = '$white',

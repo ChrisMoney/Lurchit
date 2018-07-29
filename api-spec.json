@@ -251,7 +251,7 @@
                         "type": "string"
                     },
                     {
-                        "name": "GenderFollow",
+                        "name": "GenderFollowMale",
                         "in": "query",
                         "type": "string"
                     },
@@ -302,6 +302,11 @@
                     },
                     {
                         "name": "Distance",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "GenderFollowFemale",
                         "in": "query",
                         "type": "string"
                     }
@@ -390,7 +395,7 @@
                         "type": "integer"
                     },
                     {
-                        "name": "GenderFollower",
+                        "name": "GenderFollowerMale",
                         "in": "query",
                         "type": "string"
                     },
@@ -436,6 +441,11 @@
                     },
                     {
                         "name": "MiddleEasternFollower",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "GenderFollowerFemale",
                         "in": "query",
                         "type": "string"
                     }
@@ -1286,8 +1296,11 @@
                                 "PacificIslanderFollow": {
                                     "type": "boolean"
                                 },
-                                "GenderFollow": {
-                                    "type": "string"
+                                "GenderFollowMale": {
+                                    "type": "boolean"
+                                },
+                                "GenderFollowFemale": {
+                                    "type": "boolean"
                                 }
                             }
                         }
@@ -1381,8 +1394,11 @@
                                 "PacificIslanderFollower": {
                                     "type": "boolean"
                                 },
-                                "GenderFollower": {
-                                    "type": "string"
+                                "GenderFollowerMale": {
+                                    "type": "boolean"
+                                },
+                                "GenderFollowerFemale": {
+                                    "type": "boolean"
                                 }
                             }
                         }
@@ -2099,6 +2115,12 @@
                                     }
                                 }
                             }
+                        }
+                    },
+                    "400": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer"
                         }
                     }
                 }
