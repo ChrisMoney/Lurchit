@@ -44,6 +44,10 @@ if ($result = mysqli_query($conn, $sql)) {
             
             $message['New'] = filter_var($message['New'], FILTER_VALIDATE_BOOLEAN);
             
+            if ($message['OtherID'] == $id) {
+                $message['Username'] = 'Me';
+            }
+            
             $myArray[] = $message;
         }
         echo json_encode($myArray, JSON_NUMERIC_CHECK);

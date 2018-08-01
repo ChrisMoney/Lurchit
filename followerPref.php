@@ -16,6 +16,22 @@ $asian = $_GET['AsianFollower'];
 $pacificIslander = $_GET['PacificIslanderFollower'];
 $middleEastern = $_GET['MiddleEasternFollower'];
 
+if ($genderMale == 'false' && $genderFemale == 'false') {
+    $genderMale = 'true';
+    $genderFemale = 'true';
+}
+
+if ($white == 'false' && $black == 'false' && $hispanic == 'false' && $nativeAmerican == 'false'
+    && $middleEastern == 'false' && $asian == 'false' && $pacificIslander == 'false') {
+        $white = 'true';
+        $black = 'true';
+        $hispanic = 'true';
+        $nativeAmerican = 'true';
+        $middleEastern = 'true';
+        $asian = 'true';
+        $pacificIslander = 'true';
+    }
+    
 $sql = "Update Members Set 
         GenderFollowerMale = '$genderMale',
         GenderFollowerFemale = '$genderFemale',

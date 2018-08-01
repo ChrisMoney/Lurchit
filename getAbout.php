@@ -17,8 +17,14 @@ $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
     $row = mysqli_fetch_assoc($result);
+    
+    if (strlen($about) == 0 || strlen($about) == '') {
+        $row['About'] == '';
+    }
+    
     $about = $row['About'];
     $about = trim($about);
+    
     echo $about;
 }
 else {

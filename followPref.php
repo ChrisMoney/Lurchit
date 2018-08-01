@@ -13,10 +13,26 @@ $white = $_GET['WhiteFollow'];
 $black = $_GET['BlackFollow'];
 $hispanic = $_GET['HispanicFollow'];
 $nativeAmerican = $_GET['NativeAmericanFollow'];
-$middleEasternFollow = $_GET['MiddleEasternFollow'];
+$middleEastern = $_GET['MiddleEasternFollow'];
 $asian = $_GET['AsianFollow'];
 $pacificIslander = $_GET['PacificIslanderFollow'];
 $distance = $_GET['Distance'];
+
+if ($genderMale == 'false' && $genderFemale == 'false') {
+    $genderMale = 'true';
+    $genderFemale = 'true';
+}
+
+if ($white == 'false' && $black == 'false' && $hispanic == 'false' && $nativeAmerican == 'false'
+    && $middleEastern == 'false' && $asian == 'false' && $pacificIslander == 'false') {
+        $white = 'true';
+        $black = 'true';
+        $hispanic = 'true';
+        $nativeAmerican = 'true';
+        $middleEastern = 'true';
+        $asian = 'true';
+        $pacificIslander = 'true';
+    }
 
 $sql = "Update Members Set 
         GenderFollowMale = '$genderMale',
@@ -27,7 +43,7 @@ $sql = "Update Members Set
         BlackFollow = '$black',
         HispanicFollow = '$hispanic',
         NativeAmericanFollow = '$nativeAmerican',
-        MiddleEasternFollow = '$middleEasternFollow',
+        MiddleEasternFollow = '$middleEastern',
         AsianFollow = '$asian',
         PacificIslanderFollow = '$pacificIslander',
         Distance = '$distance'
