@@ -10,6 +10,7 @@ $long = $_GET['Long'];
 $lat = $_GET['Lat'];
 
 $distance = getDistance($id);
+$filterQuery = checkFilter($id);
 
 $sql = "SELECT DISTINCT p.MediaName as ProfilePic, m.ID as MemberID, m.Username as Username,
 m.AllowComments as AllowComments, m.AllowLikes as AllowLikes, m.AllowDMs as AllowDMs,
@@ -82,15 +83,10 @@ And
 (
 $id NOT IN (SELECT Blocked_ID FROM Block WHERE Blocker_ID = m.ID)
 )
+".
+$filterQuery
+."
 
-And 
-(
-(CASE m.FilterStatuses WHEN 'true' 
-THEN m.ID NOT IN (SELECT ID FROM Statuses WHERE Status Like '%nigga%' Or Status Like '%nigger%' 
-Or Status Like '%shit%' Or Status Like '%fuck%' Or Status Like '%pussy%' Or Status Like '%suck my dick%' 
-Or Status Like '%big dick%' Or Status Like '%asshole%' Or Status Like '%bust a nut%' Or Status Like '%fuck%'
-Or Status Like '%bitch%') ELSE '' END)
-)
 
 UNION
 

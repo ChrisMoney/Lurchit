@@ -100,4 +100,27 @@ function pushNotification($heading, $message, $userID){
                             return $time;
 }
 
+function checkFilter($id) {
+    $conn = connection();
+    
+    $sql = "SELECT FilterStatuses FROM Members WHERE ID = $id ";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+    $isFiltered = $row['FilterStatuses'];
+    
+    if ($isFiltered == 'true') {
+        // total distance of the earth
+        $filterQuery = "
+        And ((s.Status NOT Like '%nigga%'))
+        And ((s.Status NOT Like '%fuck%'))
+        And ((s.Status NOT Like '%bitch%'))
+        And ((s.Status NOT Like '%suck my dick%'))
+        And ((s.Status NOT Like '%big dick%'))
+        And ((s.Status NOT Like '%pussy%'))
+        And ((s.Status NOT Like '%fucking%'))";
+    }
+    else { ""; }
+    
+    return $filterQuery;
+}
     
