@@ -12,12 +12,14 @@ require 'helpers.php';
 
 $id = $_GET['ID'];
 
-$sql = "SELECT Email, Username FROM Members WHERE ID = $id";
+$sql = "SELECT Email, Username, FilterStatuses FROM Members WHERE ID = $id";
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
     $accountSettings = mysqli_fetch_assoc($result);
 
+    $accountSettings['FilterStatuses'] = filter_var($accountSettings['FilterStatuses'], FILTER_VALIDATE_BOOLEAN);
+    
     echo json_encode($accountSettings);
 }
 else {

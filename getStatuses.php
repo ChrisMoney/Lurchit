@@ -83,6 +83,15 @@ And
 $id NOT IN (SELECT Blocked_ID FROM Block WHERE Blocker_ID = m.ID)
 )
 
+And 
+(
+(CASE m.FilterStatuses WHEN 'true' 
+THEN m.ID NOT IN (SELECT ID FROM Statuses WHERE Status Like '%nigga%' Or Status Like '%nigger%' 
+Or Status Like '%shit%' Or Status Like '%fuck%' Or Status Like '%pussy%' Or Status Like '%suck my dick%' 
+Or Status Like '%big dick%' Or Status Like '%asshole%' Or Status Like '%bust a nut%' Or Status Like '%fuck%'
+Or Status Like '%bitch%') ELSE '' END)
+)
+
 UNION
 
 SELECT p.MediaName as ProfilePic, m.ID as MemberID, m.Username as Username,
@@ -100,10 +109,6 @@ WHERE
 m.ID = $id
 And p.Member_ID = $id
 And s.Member_ID = $id
-
-And (
-NOT EXISTS (SELECT Status_ID FROM HiddenStatuses WHERE Member_ID = $id and Status_ID = s.ID)
-)
 
 
 Group By StatusID 

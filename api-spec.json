@@ -620,6 +620,11 @@
                         "name": "Username",
                         "in": "query",
                         "type": "string"
+                    },
+                    {
+                        "name": "FilterStatuses",
+                        "in": "query",
+                        "type": "string"
                     }
                 ],
                 "responses": {
@@ -635,6 +640,20 @@
                         "schema": {
                             "type": "integer",
                             "description": "Username already exists!"
+                        }
+                    },
+                    "401": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Email Exists"
+                        }
+                    },
+                    "402": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Invalid Email"
                         }
                     },
                     "500": {
@@ -1990,6 +2009,9 @@
                                 },
                                 "Username": {
                                     "type": "string"
+                                },
+                                "FilterStatuses": {
+                                    "type": "boolean"
                                 }
                             }
                         }
