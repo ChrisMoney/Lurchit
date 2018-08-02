@@ -78,18 +78,18 @@
                 }
             }
         },
-        "/getSingleStatus.php": {
+        "/hideStatus.php": {
             "get": {
-                "operationId": "GET_getSingleStatus-php",
-                "summary": "GetSingleStatus",
+                "operationId": "GET_hideStatus-php",
+                "summary": "HideStatus",
                 "parameters": [
                     {
-                        "name": "ID",
+                        "name": "StatusID",
                         "in": "query",
                         "type": "integer"
                     },
                     {
-                        "name": "StatusID",
+                        "name": "ID",
                         "in": "query",
                         "type": "integer"
                     }
@@ -98,58 +98,15 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "array",
-                            "items": {
-                                "type": "object",
-                                "properties": {
-                                    "MemberID": {
-                                        "type": "integer"
-                                    },
-                                    "Username": {
-                                        "type": "string"
-                                    },
-                                    "Status": {
-                                        "type": "string"
-                                    },
-                                    "Media": {
-                                        "type": "string"
-                                    },
-                                    "StatusDate": {
-                                        "type": "string"
-                                    },
-                                    "ProfilePic": {
-                                        "type": "string"
-                                    },
-                                    "CommentCount": {
-                                        "type": "integer"
-                                    },
-                                    "StatusID": {
-                                        "type": "integer"
-                                    },
-                                    "HasLiked": {
-                                        "type": "integer"
-                                    },
-                                    "LikeCount": {
-                                        "type": "integer"
-                                    },
-                                    "AllowComments": {
-                                        "type": "boolean"
-                                    },
-                                    "AllowLikes": {
-                                        "type": "boolean"
-                                    },
-                                    "AllowDMs": {
-                                        "type": "boolean"
-                                    }
-                                }
-                            }
+                            "type": "integer",
+                            "description": "Deletion Successful!"
                         }
                     },
                     "500": {
                         "description": "",
                         "schema": {
                             "type": "integer",
-                            "description": "Failed to load Statuses."
+                            "description": "Deletion Failed!"
                         }
                     }
                 }
@@ -1983,6 +1940,34 @@
                 }
             }
         },
+        "/checkNewNotifications.php": {
+            "get": {
+                "operationId": "GET_checkNewNotifications-php",
+                "summary": "CheckNewNotifications",
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                }
+            }
+        },
         "/getAccountSettings.php": {
             "get": {
                 "operationId": "GET_getAccountSettings-php",
@@ -2007,6 +1992,111 @@
                                     "type": "string"
                                 }
                             }
+                        }
+                    }
+                }
+            }
+        },
+        "/getDistance.php": {
+            "get": {
+                "operationId": "GET_getDistance-php",
+                "summary": "GetDistance",
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Unable to retrieve data."
+                        }
+                    }
+                }
+            }
+        },
+        "/getSingleStatus.php": {
+            "get": {
+                "operationId": "GET_getSingleStatus-php",
+                "summary": "GetSingleStatus",
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "StatusID",
+                        "in": "query",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "MemberID": {
+                                        "type": "integer"
+                                    },
+                                    "Username": {
+                                        "type": "string"
+                                    },
+                                    "Status": {
+                                        "type": "string"
+                                    },
+                                    "Media": {
+                                        "type": "string"
+                                    },
+                                    "StatusDate": {
+                                        "type": "string"
+                                    },
+                                    "ProfilePic": {
+                                        "type": "string"
+                                    },
+                                    "CommentCount": {
+                                        "type": "integer"
+                                    },
+                                    "StatusID": {
+                                        "type": "integer"
+                                    },
+                                    "HasLiked": {
+                                        "type": "integer"
+                                    },
+                                    "LikeCount": {
+                                        "type": "integer"
+                                    },
+                                    "AllowComments": {
+                                        "type": "boolean"
+                                    },
+                                    "AllowLikes": {
+                                        "type": "boolean"
+                                    },
+                                    "AllowDMs": {
+                                        "type": "boolean"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Failed to load Statuses."
                         }
                     }
                 }
@@ -2126,10 +2216,10 @@
                 }
             }
         },
-        "/checkNewNotifications.php": {
+        "/checkNewMessages.php": {
             "get": {
-                "operationId": "GET_checkNewNotifications-php",
-                "summary": "CheckNewNotifications",
+                "operationId": "GET_checkNewMessages-php",
+                "summary": "CheckNewMessages",
                 "parameters": [
                     {
                         "name": "ID",
@@ -2260,62 +2350,6 @@
                         "schema": {
                             "type": "integer",
                             "description": "Block failed"
-                        }
-                    }
-                }
-            }
-        },
-        "/checkNewMessages.php": {
-            "get": {
-                "operationId": "GET_checkNewMessages-php",
-                "summary": "CheckNewMessages",
-                "parameters": [
-                    {
-                        "name": "ID",
-                        "in": "query",
-                        "type": "integer"
-                    },
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "schema": {
-                            "type": "boolean"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "boolean"
-                        }
-                    }
-                }
-            }
-        },
-        "/getDistance.php": {
-            "get": {
-                "operationId": "GET_getDistance-php",
-                "summary": "GetDistance",
-                "parameters": [
-                    {
-                        "name": "ID",
-                        "in": "query",
-                        "type": "integer"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "500": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "Unable to retrieve data."
                         }
                     }
                 }

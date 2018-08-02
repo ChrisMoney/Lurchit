@@ -18,7 +18,7 @@ if ($result = mysqli_query($conn, $sql)) {
     if (mysqli_num_rows($result) > 0) {
         $blockedUsers = mysqli_fetch_assoc($result);
         $mediaName = $blockedUsers['MediaName'];
-        $blockedUsers['MediaName'] = "http://api.flickpitch.com/api/media/$mediaName";
+        $blockedUsers['MediaName'] = ProfileMediaPath.$mediaName;
         $myArray[] = $blockedUsers;
         echo json_encode($myArray, JSON_NUMERIC_CHECK);
     }
