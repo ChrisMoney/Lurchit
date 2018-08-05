@@ -22,19 +22,22 @@ $country = "N/A";
 $state = "N/A";
 $city = "N/A";
 
-$sql = "SELECT City, State ,Country, FullLocation FROM Members WHERE ID = $id";
-$result = mysqli_query($conn, $sql);
-$row = mysqli_fetch_assoc($result);
-$location = $row;
+
 
 
 
 if ($updateLocation == 'false' || $updateLocation == false || 
     $updateLocation == 0 || $updateLocation == '0') {
     // do nothing no current location is to be fetched
+    
+    $sql = "SELECT City, State ,Country, FullLocation FROM Members WHERE ID = $id";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+    $location = $row;
+        
     $location['FullLocation'] = $row['City'] . ',' . $row['State'] .' '. $row['Country'];
     echo json_encode($location);
-    exit;
+    exit();
 }
 else {
     
@@ -58,13 +61,17 @@ else {
         $location['City'] = $city;
         $location['State'] = $state;
         $location['Country'] = $country;
+        
+        if (strlen($location['City']) == 0 ) {
+            $location = "Location Unavailable";
+        }
+        
+        echo json_encode($location);
+        
+        
     }
     
-    if (strlen($location['City']) == 0 ) {
-        $location = "Location Unavailable";
-    }
     
-    echo json_encode($location);
 }
 
 

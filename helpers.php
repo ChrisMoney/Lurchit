@@ -21,8 +21,8 @@ function getDistance($id) {
  * Test App ID: 02681849-4f61-41ba-ad44-9dddca4f2172
  * Test Key: MjJkODVjZTEtM2JiMS00OGUyLWEyZDUtYWMzMzJhNDY5ZjQ2
  * 
- * Production App ID: 
- * Production Key: 
+ * Production App ID: aee090c8-a009-40fb-96ac-9ab277eedfdd
+ * Production Key: NmZkMTk4NWYtMDE0OC00YmZmLWIyNmEtNmY4NmQyOTM5MmU3
  */ 
 function pushNotification($heading, $message, $userID){
 		$content = array(
@@ -34,7 +34,7 @@ function pushNotification($heading, $message, $userID){
 		);
 		
          $fields = array(
-            'app_id' => "02681849-4f61-41ba-ad44-9dddca4f2172",
+            'app_id' => "aee090c8-a009-40fb-96ac-9ab277eedfdd",
             'filters' => array(array("field" => "tag", "key" => "ID", "relation" => "=", "value" => "$userID")),
             'contents' => $content,
              'headings' => $heading
@@ -46,7 +46,7 @@ function pushNotification($heading, $message, $userID){
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, "https://onesignal.com/api/v1/notifications");
 		curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json; charset=utf-8',
-												   'Authorization: Basic MjJkODVjZTEtM2JiMS00OGUyLWEyZDUtYWMzMzJhNDY5ZjQ2'));
+												   'Authorization: Basic NmZkMTk4NWYtMDE0OC00YmZmLWIyNmEtNmY4NmQyOTM5MmU3'));
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 		curl_setopt($ch, CURLOPT_HEADER, FALSE);
 		curl_setopt($ch, CURLOPT_POST, TRUE);
@@ -111,12 +111,34 @@ function checkFilter($id) {
     if ($isFiltered == 'true') {
         // total distance of the earth
         $filterQuery = "
-        And ((s.Status NOT Like '%nigga%'))
+        And ((s.Status NOT Like 'nigga%'))
+        And ((s.Status NOT Like 'nigger%'))
+        And ((s.Status NOT Like 'coon%'))
+        And ((s.Status NOT Like 'spic%'))
+        And ((s.Status NOT Like 'chink%'))
+        And ((s.Status NOT Like 'fag%'))
+        And ((s.Status NOT Like 'faggot%'))
+        And ((s.Status NOT Like '%piss%'))
+        And ((s.Status NOT Like 'shit%'))
+        And ((s.Status NOT Like '%bullshit%'))
+        And ((s.Status NOT Like 'cocksucker%'))
+        And ((s.Status NOT Like '%fucking%'))
+        And ((s.Status NOT Like '%bust a nut%'))
+        And ((s.Status NOT Like '%cum%'))
+        And ((s.Status NOT Like 'asshole%'))
         And ((s.Status NOT Like '%fuck%'))
         And ((s.Status NOT Like '%bitch%'))
-        And ((s.Status NOT Like '%suck my dick%'))
-        And ((s.Status NOT Like '%big dick%'))
+        And ((s.Status NOT Like '%bitches%'))
+        And ((s.Status NOT Like BINARY '%dick%'))
+        And ((s.Status NOT Like 'dick%'))
+        And ((s.Status NOT Like '%cunt%'))
+        And ((s.Status NOT Like '%fingered%'))
+        And ((s.Status NOT Like '%clit%'))
+        And ((s.Status NOT Like '%fingering%'))
         And ((s.Status NOT Like '%pussy%'))
+        And ((s.Status NOT Like '%pussies%'))
+        And ((s.Status NOT Like 'hoe%'))
+        And ((s.Status NOT Like 'whore%'))
         And ((s.Status NOT Like '%fucking%'))";
     }
     else { ""; }
