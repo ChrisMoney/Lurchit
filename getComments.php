@@ -6,6 +6,7 @@ include_once 'helpers.php';
 
 date_default_timezone_set("UTC");
 $statusID = $_GET['StatusID'];
+$id = $_GET['ID'];
 
 $sql = "SELECT p.MediaName as ProfilePic, m.ID as MemberID, m.Username as Username,
 c.ID as CommentID, c.Status_ID as StatusID, c.Comment as Comment, c.CommentDate as CommentDate
@@ -14,6 +15,16 @@ WHERE
 c.Status_ID = $statusID
 And p.Member_ID = m.ID
 And c.Member_ID = m.ID 
+
+And
+(
+m.ID NOT IN (SELECT Blocked_ID FROM Block WHERE Blocker_ID = $id)
+)
+And
+(
+$id NOT IN (SELECT Blocked_ID FROM Block WHERE Blocker_ID = m.ID)
+)
+
 Order By c.ID DESC ";
 
 $result = mysqli_query($conn, $sql);

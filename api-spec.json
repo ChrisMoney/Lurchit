@@ -675,6 +675,11 @@
                         "name": "StatusID",
                         "in": "query",
                         "type": "integer"
+                    },
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
                     }
                 ],
                 "responses": {
