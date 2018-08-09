@@ -13,10 +13,11 @@ msg.Other_ID as OtherID, msg.Message as Message, msg.MessageDate,
 (Select Username FROM Members WHERE ID = msg.Sender_ID) as Username
 FROM Members m, ProfileMedia p, Messages msg 
 WHERE 
-(m.ID = msg.Sender_ID) 
+(msg.Owner_ID = $id) 
+And (msg.Other_ID = $otherID)
+And (m.ID = msg.Sender_ID) 
 And (p.Member_ID = msg.Sender_ID) 
-And (Owner_ID = $id) 
-And (msg.Receiver_ID = $otherID Or msg.Sender_ID = $otherID)
+
 And ($otherID NOT in (Select Blocked_ID FROM Block WHERE Blocker_ID = $id))
 Order By MessageID DESC ";
 

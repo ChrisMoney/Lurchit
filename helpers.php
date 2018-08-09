@@ -145,4 +145,50 @@ function checkFilter($id) {
     
     return $filterQuery;
 }
+
+function checkCommentFilter($id) {
+    $conn = connection();
+    
+    $sql = "SELECT FilterStatuses FROM Members WHERE ID = $id ";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+    $isFiltered = $row['FilterStatuses'];
+    
+    if ($isFiltered == 'true') {
+        // total distance of the earth
+        $filterQuery = "
+        And ((c.Comment NOT Like 'nigga%'))
+        And ((c.Comment NOT Like 'nigger%'))
+        And ((c.Comment NOT Like 'coon%'))
+        And ((c.Comment NOT Like 'spic%'))
+        And ((c.Comment NOT Like 'chink%'))
+        And ((c.Comment NOT Like 'fag%'))
+        And ((c.Comment NOT Like 'faggot%'))
+        And ((c.Comment NOT Like '%piss%'))
+        And ((c.Comment NOT Like 'shit%'))
+        And ((c.Comment NOT Like '%bullshit%'))
+        And ((c.Comment NOT Like 'cocksucker%'))
+        And ((c.Comment NOT Like '%fucking%'))
+        And ((c.Comment NOT Like '%bust a nut%'))
+        And ((c.Comment NOT Like '%cum%'))
+        And ((c.Comment NOT Like 'asshole%'))
+        And ((c.Comment NOT Like '%fuck%'))
+        And ((c.Comment NOT Like '%bitch%'))
+        And ((c.Comment NOT Like '%bitches%'))
+        And ((c.Comment NOT Like BINARY '%dick%'))
+        And ((c.Comment NOT Like 'dick%'))
+        And ((c.Comment NOT Like '%cunt%'))
+        And ((c.Comment NOT Like '%fingered%'))
+        And ((c.Comment NOT Like '%clit%'))
+        And ((c.Comment NOT Like '%fingering%'))
+        And ((c.Comment NOT Like '%pussy%'))
+        And ((c.Comment NOT Like '%pussies%'))
+        And ((c.Comment NOT Like 'hoe%'))
+        And ((c.Comment NOT Like 'whore%'))
+        And ((c.Comment NOT Like '%fucking%'))";
+    }
+    else { ""; }
+    
+    return $filterQuery;
+}
     

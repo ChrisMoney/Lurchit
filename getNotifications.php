@@ -8,7 +8,7 @@ $id = $_GET['ID'];
 
 $sql = "SELECT ID, Member_ID, Sender_ID, Type, Type_ID, Message, New,
 (SELECT MediaName FROM ProfileMedia WHERE Member_ID = Sender_ID) as MediaName
- FROM Notifications WHERE Member_ID = $id Order By New DESC ";
+ FROM Notifications WHERE Member_ID = $id Order By New DESC, ID DESC ";
 
 $myArray = array();
 

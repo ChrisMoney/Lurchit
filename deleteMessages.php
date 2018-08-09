@@ -8,7 +8,7 @@ $id = $_GET['ID'];
 $otherID = $_GET['OtherID'];
 
 $sql = "DELETE FROM Messages 
-WHERE Owner_ID = $id and (Receiver_ID = $otherID Or Sender_ID = $otherID) ";
+WHERE Owner_ID = $id and Other_ID = $otherID ";
 
  if (mysqli_query($conn, $sql)) {
         // successful

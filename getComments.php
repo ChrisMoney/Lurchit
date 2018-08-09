@@ -8,6 +8,8 @@ date_default_timezone_set("UTC");
 $statusID = $_GET['StatusID'];
 $id = $_GET['ID'];
 
+$filterQuery = checkCommentFilter($id);
+
 $sql = "SELECT p.MediaName as ProfilePic, m.ID as MemberID, m.Username as Username,
 c.ID as CommentID, c.Status_ID as StatusID, c.Comment as Comment, c.CommentDate as CommentDate
 FROM Members m, ProfileMedia p, Comments c
@@ -24,7 +26,9 @@ And
 (
 $id NOT IN (SELECT Blocked_ID FROM Block WHERE Blocker_ID = m.ID)
 )
-
+".
+$filterQuery
+."
 Order By c.ID DESC ";
 
 $result = mysqli_query($conn, $sql);
