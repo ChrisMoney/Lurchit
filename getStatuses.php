@@ -83,6 +83,10 @@ And
 (
 $id NOT IN (SELECT Blocked_ID FROM Block WHERE Blocker_ID = m.ID)
 )
+And 
+(
+m.ID NOT in (Select ID FROM Members WHERE IsDeactivated = 'true')
+)
 ".
 $filterQuery
 ."

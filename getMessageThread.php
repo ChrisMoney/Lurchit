@@ -19,6 +19,7 @@ And (m.ID = msg.Sender_ID)
 And (p.Member_ID = msg.Sender_ID) 
 
 And ($otherID NOT in (Select Blocked_ID FROM Block WHERE Blocker_ID = $id))
+And ($otherID NOT in (Select ID FROM Members WHERE IsDeactivated = 'true'))
 Order By MessageID DESC ";
 
 $myArray = array();

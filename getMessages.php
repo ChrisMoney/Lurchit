@@ -26,6 +26,10 @@ And
 (
 $id NOT IN (SELECT Blocked_ID FROM Block WHERE Blocker_ID = msg.Other_ID)
 )
+And 
+(
+msg.Other_ID NOT in (Select ID FROM Members WHERE IsDeactivated = 'true')
+)
 Group By msg.Other_ID Order By New DESC, MessageDate DESC";
 
 $myArray = array();
