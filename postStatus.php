@@ -30,6 +30,12 @@ else {
     $source = "";
 }
 
+if (strlen($status) == 0 && strlen($media) == 0) {
+    echo http_response_code(400);
+    // should be 500, change on next app update.
+    exit();
+}
+
 $sql = "INSERT INTO Statuses (Member_ID,    Status,   Media,       Source,    Latitude,   Longitude, StatusDate)
                     Values ('$memberID',  '$status', '$mediaName','$source', '$lat',     '$long',    '$time')";
 if (mysqli_query($conn, $sql)) {

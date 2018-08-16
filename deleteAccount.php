@@ -17,4 +17,9 @@ $sql3 = "DELETE FROM Messages WHERE Owner_ID = '$id' Or Other_ID = '$id' ";
 mysqli_query($conn, $sql3);
 
 $sql4 = "DELETE FROM Likes WHERE Member_ID = '$id' ";
-mysqli_query($conn, $sql4);
+if (mysqli_query($conn, $sql4)) {
+    echo http_response_code(200);
+}
+else {
+    echo http_response_code(500);
+}
