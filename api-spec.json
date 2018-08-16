@@ -581,7 +581,7 @@
         "/comment.php": {
             "get": {
                 "operationId": "GET_comment-php",
-                "summary": "Comments",
+                "summary": "Comment",
                 "parameters": [
                     {
                         "name": "StatusID",
@@ -617,6 +617,13 @@
                         "schema": {
                             "type": "integer",
                             "description": "Comment too long."
+                        }
+                    },
+                    "401": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Comment empty."
                         }
                     },
                     "500": {
@@ -751,6 +758,13 @@
                         "schema": {
                             "type": "integer",
                             "description": "Status too long."
+                        }
+                    },
+                    "401": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Status empty."
                         }
                     },
                     "500": {

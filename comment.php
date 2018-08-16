@@ -12,6 +12,12 @@ $time = $_GET['Time'];
 $time = date('Y-m-d H:i', $time);
 $time = date('Y-m-d H:i',(strtotime ( '-5 hour' , strtotime ( $time) ) )); 
 
+if (strlen($comment) == 0) {
+    // should be 401, update on next app release
+    echo http_response_code(500);
+    exit();
+}
+
 $sql = "INSERT INTO Comments (Status_ID, Member_ID, Comment, CommentDate) 
         Values ('$statusID', '$memberID', '$comment', '$time')";
 
