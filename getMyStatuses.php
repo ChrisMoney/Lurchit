@@ -6,13 +6,19 @@ include_once 'helpers.php';
 date_default_timezone_set("UTC");
 
 $id = $_GET['ID'];
+$visitorID = $_GET['VisitorID'];
+
+// TODO: remove once new app update is pushed.
+if (!isset($visitorID) || empty(($visitorID))) {
+    $visitorID = $id;
+}
 
 $sql = "SELECT p.MediaName as ProfilePic, m.ID as MemberID, m.Username as Username,
 m.AllowComments as AllowComments, m.AllowLikes as AllowLikes, m.AllowDMs as AllowDMs,
 s.ID as StatusID, s.Media as Media, s.Status as Status, s.StatusDate as StatusDate,
 (SELECT Count(ID) FROM Comments WHERE Status_ID = s.ID) As CommentCount,
 (SELECT Count(ID) FROM Likes WHERE Status_ID = s.ID) As LikeCount,
-(SELECT Count(ID) FROM Likes WHERE (Member_ID = MemberID And Status_ID = StatusID)) As HasLiked
+(SELECT Count(ID) FROM Likes WHERE (Member_ID = $visitorID And Status_ID = StatusID)) As HasLiked
 
     FROM Members m, ProfileMedia p, Statuses s
     

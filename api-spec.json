@@ -1605,6 +1605,11 @@
                         "name": "ID",
                         "in": "query",
                         "type": "integer"
+                    },
+                    {
+                        "name": "VisitorID",
+                        "in": "query",
+                        "type": "integer"
                     }
                 ],
                 "responses": {

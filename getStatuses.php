@@ -113,7 +113,7 @@ And s.Member_ID = $id
 
 Group By StatusID 
 HAVING distance <= $distance
-Order By StatusID DESC 
+Order By StatusID DESC, distance ASC 
 
 ";
 
