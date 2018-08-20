@@ -13,8 +13,12 @@ $time = date('Y-m-d H:i', $time);
 $time = date('Y-m-d H:i',(strtotime ( '-5 hour' , strtotime ( $time) ) )); 
 
 if (strlen($comment) == 0) {
-    // should be 401, update on next app release
-    echo http_response_code(500);
+    echo http_response_code(401);
+    exit();
+}
+
+if (strlen($comment) > 250) {
+    echo http_response_code(400);
     exit();
 }
 

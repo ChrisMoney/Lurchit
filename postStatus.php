@@ -1,4 +1,4 @@
-<?php
+                 <?php
 
 header("Content-Type: application/json;charset=utf-8");
 require 'connect.php';
@@ -31,8 +31,12 @@ else {
 }
 
 if (strlen($status) == 0 && strlen($media) == 0) {
+    echo http_response_code(401);
+    exit();
+}
+
+if (strlen($status) > 250) {
     echo http_response_code(400);
-    // should be 401, change on next app update.
     exit();
 }
 
