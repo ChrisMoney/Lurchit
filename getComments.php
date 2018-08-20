@@ -11,7 +11,7 @@ $id = $_GET['ID'];
 $filterQuery = checkCommentFilter($id);
 
 $sql = "SELECT p.MediaName as ProfilePic, m.ID as MemberID, m.Username as Username,
-c.ID as CommentID, c.Status_ID as StatusID, c.Comment as Comment, c.CommentDate as CommentDate
+c.ID as CommentID, c.Member_ID as CommentorID, c.Status_ID as StatusID, c.Comment as Comment, c.CommentDate as CommentDate
 FROM Members m, ProfileMedia p, Comments c
 WHERE
 c.Status_ID = $statusID

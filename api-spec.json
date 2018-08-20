@@ -382,6 +382,16 @@
                         "name": "Lat",
                         "in": "query",
                         "type": "string"
+                    },
+                    {
+                        "name": "Start",
+                        "in": "query",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "End",
+                        "in": "query",
+                        "type": "integer"
                     }
                 ],
                 "responses": {
@@ -430,6 +440,12 @@
                                     },
                                     "AllowDMs": {
                                         "type": "boolean"
+                                    },
+                                    "Start": {
+                                        "type": "integer"
+                                    },
+                                    "End": {
+                                        "type": "integer"
                                     }
                                 }
                             }
@@ -535,6 +551,9 @@
                                     },
                                     "MediaName": {
                                         "type": "string"
+                                    },
+                                    "CommentorID": {
+                                        "type": "integer"
                                     }
                                 }
                             }
@@ -1610,6 +1629,16 @@
                         "name": "VisitorID",
                         "in": "query",
                         "type": "integer"
+                    },
+                    {
+                        "name": "Start",
+                        "in": "query",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "End",
+                        "in": "query",
+                        "type": "integer"
                     }
                 ],
                 "responses": {
@@ -1658,6 +1687,12 @@
                                     },
                                     "AllowDMs": {
                                         "type": "boolean"
+                                    },
+                                    "Start": {
+                                        "type": "integer"
+                                    },
+                                    "End": {
+                                        "type": "integer"
                                     }
                                 }
                             }

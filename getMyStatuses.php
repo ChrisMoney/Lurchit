@@ -16,6 +16,7 @@ if (!isset($visitorID) || empty(($visitorID))) {
 $sql = "SELECT p.MediaName as ProfilePic, m.ID as MemberID, m.Username as Username,
 m.AllowComments as AllowComments, m.AllowLikes as AllowLikes, m.AllowDMs as AllowDMs,
 s.ID as StatusID, s.Media as Media, s.Status as Status, s.StatusDate as StatusDate,
+s.Start as Start, s.End as End,
 (SELECT Count(ID) FROM Comments WHERE Status_ID = s.ID) As CommentCount,
 (SELECT Count(ID) FROM Likes WHERE Status_ID = s.ID) As LikeCount,
 (SELECT Count(ID) FROM Likes WHERE (Member_ID = $visitorID And Status_ID = StatusID)) As HasLiked

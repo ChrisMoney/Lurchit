@@ -8,13 +8,30 @@ date_default_timezone_set("UTC");
 $id = $_GET['ID'];
 $long = $_GET['Long'];
 $lat = $_GET['Lat'];
-
+$start = $_GET['Start'];
+$end = $_GET['End'];
 $distance = getDistance($id);
 $filterQuery = checkFilter($id);
+
+// TODO : remove after update
+if (empty($start) || !isset($start)) {
+    $start = 0;
+    $end = 100;
+}
+else if ($end == 0) {
+    $end = 100;
+}
+
+if ($start > 0) {
+    // increment limit
+    $start = $start + 100;
+    $end = $end + 100;
+}
 
 $sql = "SELECT DISTINCT p.MediaName as ProfilePic, m.ID as MemberID, m.Username as Username,
 m.AllowComments as AllowComments, m.AllowLikes as AllowLikes, m.AllowDMs as AllowDMs,
 s.ID as StatusID, s.Media as Media, s.Status as Status, s.StatusDate as StatusDate,
+s.Start as Start, s.End as End,
 (SELECT Count(ID) FROM Comments WHERE Status_ID = s.ID) As CommentCount,
 (SELECT Count(ID) FROM Likes WHERE Status_ID = StatusID) As LikeCount,
 (SELECT Count(ID) FROM Likes WHERE (Member_ID = $id And Status_ID = StatusID)) As HasLiked,
@@ -97,6 +114,7 @@ UNION
 SELECT p.MediaName as ProfilePic, m.ID as MemberID, m.Username as Username,
 m.AllowComments as AllowComments, m.AllowLikes as AllowLikes, m.AllowDMs as AllowDMs,
 s.ID as StatusID, s.Media as Media, s.Status as Status, s.StatusDate as StatusDate,
+s.Start as Start, s.End as End,
 (SELECT Count(ID) FROM Comments WHERE Status_ID = s.ID) As CommentCount,
 (SELECT Count(ID) FROM Likes WHERE Status_ID = s.ID) As LikeCount,
 (SELECT Count(ID) FROM Likes WHERE (Member_ID = MemberID And Status_ID = StatusID)) As HasLiked,
@@ -114,7 +132,7 @@ And s.Member_ID = $id
 Group By StatusID 
 HAVING distance <= $distance
 Order By StatusID DESC, distance ASC 
-
+Limit $start, $end
 ";
 
 $result = mysqli_query($conn, $sql);
@@ -154,6 +172,9 @@ if (mysqli_query($conn, $sql)) {
             $status['AllowComments'] = filter_var($status['AllowComments'], FILTER_VALIDATE_BOOLEAN);
             $status['AllowLikes'] = filter_var($status['AllowLikes'], FILTER_VALIDATE_BOOLEAN);
             $status['AllowDMs'] = filter_var($status['AllowDMs'], FILTER_VALIDATE_BOOLEAN);
+            
+            $status['Start'] = $start;
+            $status['End'] = $end;
             
             $myArray[] = $status;
         }
