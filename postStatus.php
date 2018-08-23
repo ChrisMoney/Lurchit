@@ -28,9 +28,10 @@ if (($hasMedia == 'true' || $hasMedia == 1 || $hasMedia == '1' || $hasMedia == t
 else {
     $media = "";
     $source = "";
+    $mediaName = "";
 }
 
-if (strlen($status) == 0 && strlen($media) == 0) {
+if (strlen($status) == 0 && strlen($mediaName) == 0) {
     echo http_response_code(401);
     exit();
 }
