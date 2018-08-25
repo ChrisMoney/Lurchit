@@ -14,7 +14,17 @@ And
 (
 Member_ID NOT IN (SELECT Blocked_ID FROM Block WHERE Blocker_ID = $id)
 )
+And
+(
+Sender_ID NOT IN (SELECT Blocker_ID FROM Block WHERE Blocked_ID = $id)
+)
 Order By New DESC, ID DESC ";
+
+$sql2 = "Update Notifications Set New = 0 WHERE Member_ID = (SELECT Blocked_ID FROM Block WHERE Blocker_ID = $id) ";
+mysqli_query($conn, $sql2);
+
+$sql3 = "Update Notifications Set New = 0 WHERE Sender_ID = (SELECT Blocker_ID FROM Block WHERE Blocked_ID = $id) ";
+mysqli_query($conn, $sql3);
 
 $myArray = array();
 

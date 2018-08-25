@@ -6,7 +6,7 @@ $result = mysqli_query($conn, $query);
 $values = mysqli_fetch_assoc($result);
 $num_rows = $values['total'];
 
-$query2 = "SELECT count(*) AS total FROM Statuses";
+$query2 = "SELECT count(*) AS total FROM Statuses WHERE Member_ID != 1";
 $result2 = mysqli_query($conn, $query2);
 $values2 = mysqli_fetch_assoc($result2);
 $num_rows2 = $values2['total'];
