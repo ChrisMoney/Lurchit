@@ -5,7 +5,7 @@ header("Content-Type: application/json;charset=utf-8");
 require 'connect.php';
 mysqli_set_charset($conn, "utf8mb4");
 require 'helpers.php';
-
+include_once 'email.php';
 
 $data = json_decode(file_get_contents('php://input'), true);
 
@@ -97,6 +97,21 @@ if (mysqli_query($conn, $sql1)) {
             $result2 = mysqli_query($conn, $sql2);
             $row = mysqli_fetch_assoc($result2);
             $name = $row['Username'];
+            
+            $sql3 = "Select Email FROM Members WHERE ID = $receiverID ";
+            $result3 = mysqli_query($conn, $sql3);
+            $row3 = mysqli_fetch_assoc($result3);
+            $email = $row3['Email'];
+            
+            $sql4 = "Select MediaName FROM ProfileMedia WHERE Member_ID = $senderID ";
+            $result4 = mysqli_query($conn, $sql4);
+            $row4 = mysqli_fetch_assoc($result4);
+            $profilePhoto = $row4['MediaName'];
+            $profilePic = ProfileMediaPath.$profilePhoto;
+            
+            $device = "iPhone";
+            $subject = "New Message";
+            sendNewMessageMail($email, $name, $profilePic, $device);
             
             $message = "Message from $name";
             $userID = $receiverID;
