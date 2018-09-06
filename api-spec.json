@@ -653,6 +653,9 @@
                                 },
                                 "Media": {
                                     "type": "string"
+                                },
+                                "Source": {
+                                    "type": "string"
                                 }
                             }
                         }
@@ -1910,6 +1913,9 @@
                                     "type": "string"
                                 },
                                 "HasMedia": {
+                                    "type": "string"
+                                },
+                                "Source": {
                                     "type": "string"
                                 }
                             }

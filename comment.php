@@ -10,6 +10,7 @@ $memberID = $data['MemberID'];
 $comment = $data['Comment'];
 $media = $data['Media'];
 $hasMedia = $data['HasMedia'];
+$source = $data['Source'];
 $time = $data['Time'];
 $time = date('Y-m-d H:i', $time);
 $time = date('Y-m-d H:i',(strtotime ( '-5 hour' , strtotime ( $time) ) )); 
@@ -26,7 +27,7 @@ else {
     $mediaName = "";
 }
 
-if (strlen($comment) == 0) {
+if (strlen($comment) == 0 && strlen($mediaName) == 0) {
     echo http_response_code(401);
     exit();
 }
@@ -36,8 +37,8 @@ if (strlen($comment) > 250) {
     exit();
 }
 
-$sql = "INSERT INTO Comments (Status_ID, Member_ID, Comment, Media, CommentDate) 
-        Values              ('$statusID', '$memberID', '$comment', '$mediaName', '$time')";
+$sql = "INSERT INTO Comments (Status_ID,   Member_ID,   Comment,    Media,        Source,   CommentDate) 
+        Values              ('$statusID', '$memberID', '$comment', '$mediaName', '$source', '$time')";
 
 if (mysqli_query($conn, $sql)) {
     
