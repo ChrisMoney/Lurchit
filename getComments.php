@@ -11,7 +11,8 @@ $id = $_GET['ID'];
 $filterQuery = checkCommentFilter($id);
 
 $sql = "SELECT p.MediaName as ProfilePic, m.ID as MemberID, m.Username as Username,
-c.ID as CommentID, c.Member_ID as CommentorID, c.Status_ID as StatusID, c.Comment as Comment, c.CommentDate as CommentDate
+c.ID as CommentID, c.Member_ID as CommentorID, c.Status_ID as StatusID, c.Comment as Comment, c.Media as Media,
+ c.CommentDate as CommentDate
 FROM Members m, ProfileMedia p, Comments c
 WHERE
 c.Status_ID = $statusID
@@ -37,24 +38,26 @@ $myArray = array();
 if (mysqli_query($conn, $sql)) {
     
     if (mysqli_num_rows($result) > 0) {
-        while ($status = mysqli_fetch_assoc($result)) {
+        while ($comment = mysqli_fetch_assoc($result)) {
             
             // build profile image url
-            $profilePic = $status['ProfilePic'];
-            $status['ProfilePic'] = ProfileMediaPath.$profilePic;
+            $profilePic = $comment['ProfilePic'];
+            $comment['ProfilePic'] = ProfileMediaPath.$profilePic;
             
             // build image url
-            $flick = $status['Media'];
-            $status['Media'] = StatusMediaPath.$flick;
+            $media = $comment['Media'];
+            if (strlen($media) > 1) {
+            $comment['Media'] = CommentMediaPath.$media;
+            }
             
             // format flickpitch age text from date
-            $statusPostDate = $status['CommentDate'];
+            $commentPostDate = $comment['CommentDate'];
             
             // format date for comparison month/day
-            $date = strtotime($statusPostDate);
+            $date = strtotime($commentPostDate);
             
-            $status['CommentDate'] = calculate_time_span($date);
-            $myArray[] = $status;
+            $comment['CommentDate'] = calculate_time_span($date);
+            $myArray[] = $comment;
         }
         echo json_encode($myArray, JSON_NUMERIC_CHECK);
     }

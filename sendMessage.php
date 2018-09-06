@@ -12,38 +12,28 @@ $data = json_decode(file_get_contents('php://input'), true);
 $senderID = $data['SenderID'];
 $receiverID = $data['ReceiverID'];
 $message = $data['Message'];
-
+$device = $data['Device'];
+$media = $data['Media'];
 $time = $data['Time'];
+
 $time = date('Y-m-d H:i', $time);
 $time = date('Y-m-d H:i',(strtotime ( '-5 hour' , strtotime ( $time) ) )); 
 
-// if message is from message page
-/*if ($isFlickPitch == 0 || $isFlickPitch == '0') {
 
-    $flickName = uniqid().'img.png';
-}
-else {
-    // if message is from a Flickpitch
-    $flickName = $flick;
-}*/
+$mediaAdded = $data['MediaAdded'];
+$type = $data['MediaType'];
 
-
-//$mediaAdded = $data['MediaAdded'];
-//$type = $data['FlickType'];
-
-
-// save media to file server
-/*if ($isFlickPitch == 0) {
-if ($mediaAdded == true || $mediaAdded == 'true' || $mediaAdded == 1) {
-   if (isset($flick) && !empty($flick)) {
-    file_put_contents('../api/messages/'.$flickName, base64_decode($flick));
-} 
-}
-else {
-    $flick = "";
-    $flickName = "";
-}
-}*/
+if (($hasMedia == 'true' || $hasMedia == 1 || $hasMedia == '1' || $hasMedia == true)
+    && strlen($source) > 0) {
+        // save media to file server
+        $mediaName = uniqid().'img.png';
+        file_put_contents('../api/messages/'.$mediaName, base64_decode($media));
+    }
+    else {
+        $media = "";
+        $source = "";
+        $mediaName = "";
+    }
 
 if (strlen($message) > 250) {
     echo http_response_code(400);

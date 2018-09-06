@@ -4,13 +4,27 @@ header("Content-Type: application/json;charset=utf-8");
 require 'connect.php';
 require 'helpers.php';
 
-$statusID = $_GET['StatusID'];
-$memberID = $_GET['MemberID'];
-$comment = $_GET['Comment'];
-
-$time = $_GET['Time'];
+$data = json_decode(file_get_contents('php://input'), true);
+$statusID = $data['StatusID'];
+$memberID = $data['MemberID'];
+$comment = $data['Comment'];
+$media = $data['Media'];
+$hasMedia = $data['HasMedia'];
+$time = $data['Time'];
 $time = date('Y-m-d H:i', $time);
 $time = date('Y-m-d H:i',(strtotime ( '-5 hour' , strtotime ( $time) ) )); 
+$mediaName = "";
+
+if (($hasMedia == 'true' || $hasMedia == 1 || $hasMedia == '1' || $hasMedia == true)) {
+    // save media to file server
+    $mediaName = uniqid().'img.png';
+    file_put_contents('../api/comments/'.$mediaName, base64_decode($media));   
+}
+else {
+    $media = "";
+    $source = "";
+    $mediaName = "";
+}
 
 if (strlen($comment) == 0) {
     echo http_response_code(401);
@@ -22,8 +36,8 @@ if (strlen($comment) > 250) {
     exit();
 }
 
-$sql = "INSERT INTO Comments (Status_ID, Member_ID, Comment, CommentDate) 
-        Values ('$statusID', '$memberID', '$comment', '$time')";
+$sql = "INSERT INTO Comments (Status_ID, Member_ID, Comment, Media, CommentDate) 
+        Values              ('$statusID', '$memberID', '$comment', '$mediaName', '$time')";
 
 if (mysqli_query($conn, $sql)) {
     

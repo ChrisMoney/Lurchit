@@ -1,7 +1,7 @@
 <?php
 define("ProfileMediaPath", "http://api.statuz.net/api/media/");
 define("StatusMediaPath", "http://api.statuz.net/api/flicks/");
-
+define("CommentMediaPath", "http://api.statuz.net/api/comments/");
 
 function getDistance($id) {
     $conn = connection();
