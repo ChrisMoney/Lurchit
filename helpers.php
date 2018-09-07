@@ -2,6 +2,7 @@
 define("ProfileMediaPath", "http://api.statuz.net/api/media/");
 define("StatusMediaPath", "http://api.statuz.net/api/flicks/");
 define("CommentMediaPath", "http://api.statuz.net/api/comments/");
+define("MessageMediaPath", "http://api.statuz.net/api/messages/");
 
 function getDistance($id) {
     $conn = connection();

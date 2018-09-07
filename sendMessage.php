@@ -14,14 +14,14 @@ $receiverID = $data['ReceiverID'];
 $message = $data['Message'];
 $device = $data['Device'];
 $media = $data['Media'];
+$source = $data['Source'];
 $time = $data['Time'];
+$hasMedia = $data['HasMedia'];
 
+$mediaName = "";
 $time = date('Y-m-d H:i', $time);
 $time = date('Y-m-d H:i',(strtotime ( '-5 hour' , strtotime ( $time) ) )); 
 
-
-$mediaAdded = $data['MediaAdded'];
-$type = $data['MediaType'];
 
 if (($hasMedia == 'true' || $hasMedia == 1 || $hasMedia == '1' || $hasMedia == true)
     && strlen($source) > 0) {
@@ -39,7 +39,7 @@ if (strlen($message) > 250) {
     echo http_response_code(400);
     exit;
 }
-if (strlen($message) == 0 || strlen($message) == '') {
+if (strlen($message) == 0 && strlen($mediaName) == 0) {
     echo http_response_code(401);
     exit;
 }
@@ -70,14 +70,14 @@ else {
 
 
 // assign thread ownership for receiver
-$sql = "INSERT INTO Messages (Sender_ID, Receiver_ID,     Owner_ID,     Other_ID,     Message,     New,  FirstMessage,           MessageDate) 
-                    Values ('$senderID', '$receiverID', '$receiverID', '$senderID', '$message',  '1',   '$receiverFirstMessage', '$time') ";
+$sql = "INSERT INTO Messages (Sender_ID, Receiver_ID,     Owner_ID,     Other_ID,     Message,      Media,       Source,    New,    FirstMessage,           MessageDate) 
+                    Values ('$senderID', '$receiverID', '$receiverID', '$senderID', '$message', '$mediaName', '$source',   '1',   '$receiverFirstMessage', '$time') ";
 
 if (mysqli_query($conn, $sql)) {
     // assign thread ownership for sender
     if ($senderID != $receiverID) {
-    $sql1 = "INSERT INTO Messages (Sender_ID,   Receiver_ID,   Owner_ID,    Other_ID,      Message,   New,  FirstMessage,          MessageDate) 
-                           Values ('$senderID', '$receiverID', '$senderID', '$receiverID', '$message',  '0', '$senderFirstMessage', '$time') ";
+    $sql1 = "INSERT INTO Messages (Sender_ID,   Receiver_ID,   Owner_ID,    Other_ID,      Message,     Media,        Source,    New,  FirstMessage,          MessageDate) 
+                           Values ('$senderID', '$receiverID', '$senderID', '$receiverID', '$message', '$mediaName', '$source',  '0', '$senderFirstMessage', '$time') ";
 
 
 if (mysqli_query($conn, $sql1)) {
@@ -99,7 +99,7 @@ if (mysqli_query($conn, $sql1)) {
             $profilePhoto = $row4['MediaName'];
             $profilePic = ProfileMediaPath.$profilePhoto;
             
-            $device = "iPhone";
+
             $subject = "New Message";
             sendNewMessageMail($email, $name, $profilePic, $device);
             

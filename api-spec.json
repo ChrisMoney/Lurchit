@@ -2059,7 +2059,7 @@
                                     "ID": {
                                         "type": "integer"
                                     },
-                                    "Media": {
+                                    "MessageMedia": {
                                         "type": "string"
                                     }
                                 }

@@ -8,7 +8,7 @@ include_once 'helpers.php';
 $id = $_GET['ID'];
 $otherID = $_GET['OtherID'];
 
-$sql = "SELECT msg.ID as MessageID, p.MediaName as MediaName, msg.New as New, msg.Sender_ID as SenderID, 
+$sql = "SELECT msg.ID as MessageID, p.MediaName as MediaName, msg.Media as MessageMedia, msg.New as New, msg.Sender_ID as SenderID, 
 msg.Other_ID as OtherID, msg.Message as Message, msg.MessageDate,
 (Select Username FROM Members WHERE ID = msg.Sender_ID) as Username
 FROM Members m, ProfileMedia p, Messages msg 
@@ -31,12 +31,10 @@ if ($result = mysqli_query($conn, $sql)) {
             $mediaName = $message['MediaName'];
             $message['MediaName'] = ProfileMediaPath.$mediaName;
             
-            /*$flickName = $message['Flick'];
-            if (strlen($flickName) > 1) {
-                if ($message['IsFlickPitch'] == 0) {
-                    $message['Flick'] = 'http://api.flickpitch.com/api/messages/'.$flickName;
-                }
-            }*/
+            $messageMedia = $message['MessageMedia'];
+            if (strlen($messageMedia) > 1) {
+                    $message['MessageMedia'] = MessageMediaPath.$messageMedia;
+            }
                        
             
             // format flickpitch age text from date
