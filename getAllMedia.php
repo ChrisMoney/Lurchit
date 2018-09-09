@@ -19,7 +19,7 @@ if ($result = mysqli_query($conn, $sql)) {
     if (mysqli_num_rows($result) > 0) {
         while ($media = mysqli_fetch_assoc($result)) {
             $mediaName = $media['MediaName'];
-            $media['MediaName'] = 'http://api.flickpitch.com/api/media/'.$mediaName;
+            $media['MediaName'] = ProfileMediaPath.$mediaName;
             $myArray[] = $media;
         }
         echo json_encode($myArray, JSON_NUMERIC_CHECK);

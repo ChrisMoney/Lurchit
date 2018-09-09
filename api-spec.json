@@ -107,23 +107,13 @@
                 }
             }
         },
-        "/getNewLocation.php": {
+        "/deleteMedia.php": {
             "get": {
-                "operationId": "GET_getNewLocation-php",
-                "summary": "GetNewLocation",
+                "operationId": "GET_deleteMedia-php",
+                "summary": "DeleteMedia",
                 "parameters": [
                     {
-                        "name": "Lat",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "Long",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "ID",
+                        "name": "MediaID",
                         "in": "query",
                         "type": "integer"
                     }
@@ -132,31 +122,13 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": [
-                                "object",
-                                "string"
-                            ],
-                            "properties": {
-                                "City": {
-                                    "type": "string"
-                                },
-                                "State": {
-                                    "type": "string"
-                                },
-                                "Country": {
-                                    "type": "string"
-                                },
-                                "FullLocation": {
-                                    "type": "string"
-                                }
-                            }
+                            "type": "integer"
                         }
                     },
                     "500": {
                         "description": "",
                         "schema": {
-                            "type": "integer",
-                            "description": "Failed to return location."
+                            "type": "integer"
                         }
                     }
                 }
@@ -865,7 +837,7 @@
                                     "UploadDate": {
                                         "type": "string"
                                     },
-                                    "MediaDescription": {
+                                    "Caption": {
                                         "type": "string"
                                     }
                                 }
@@ -1832,7 +1804,13 @@
                                 "Media": {
                                     "type": "string"
                                 },
-                                "MediaType": {
+                                "Time": {
+                                    "type": "string"
+                                },
+                                "Source": {
+                                    "type": "string"
+                                },
+                                "Caption": {
                                     "type": "string"
                                 }
                             }
@@ -2223,6 +2201,83 @@
                 }
             }
         },
+        "/getSingleStatus.php": {
+            "get": {
+                "operationId": "GET_getSingleStatus-php",
+                "summary": "GetSingleStatus",
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "StatusID",
+                        "in": "query",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "MemberID": {
+                                        "type": "integer"
+                                    },
+                                    "Username": {
+                                        "type": "string"
+                                    },
+                                    "Status": {
+                                        "type": "string"
+                                    },
+                                    "Media": {
+                                        "type": "string"
+                                    },
+                                    "StatusDate": {
+                                        "type": "string"
+                                    },
+                                    "ProfilePic": {
+                                        "type": "string"
+                                    },
+                                    "CommentCount": {
+                                        "type": "integer"
+                                    },
+                                    "StatusID": {
+                                        "type": "integer"
+                                    },
+                                    "HasLiked": {
+                                        "type": "integer"
+                                    },
+                                    "LikeCount": {
+                                        "type": "integer"
+                                    },
+                                    "AllowComments": {
+                                        "type": "boolean"
+                                    },
+                                    "AllowLikes": {
+                                        "type": "boolean"
+                                    },
+                                    "AllowDMs": {
+                                        "type": "boolean"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Failed to load Statuses."
+                        }
+                    }
+                }
+            }
+        },
         "/deleteComment.php": {
             "get": {
                 "operationId": "GET_deleteComment-php",
@@ -2247,6 +2302,89 @@
                         "schema": {
                             "type": "integer",
                             "description": "Deletion Failed!"
+                        }
+                    }
+                }
+            }
+        },
+        "/checkNewMessages.php": {
+            "get": {
+                "operationId": "GET_checkNewMessages-php",
+                "summary": "CheckNewMessages",
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                }
+            }
+        },
+        "/getNewLocation.php": {
+            "get": {
+                "operationId": "GET_getNewLocation-php",
+                "summary": "GetNewLocation",
+                "parameters": [
+                    {
+                        "name": "Lat",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Long",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": [
+                                "object",
+                                "string"
+                            ],
+                            "properties": {
+                                "City": {
+                                    "type": "string"
+                                },
+                                "State": {
+                                    "type": "string"
+                                },
+                                "Country": {
+                                    "type": "string"
+                                },
+                                "FullLocation": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Failed to return location."
                         }
                     }
                 }
@@ -2344,10 +2482,10 @@
                 }
             }
         },
-        "/getSingleStatus.php": {
+        "/block.php": {
             "get": {
-                "operationId": "GET_getSingleStatus-php",
-                "summary": "GetSingleStatus",
+                "operationId": "GET_block-php",
+                "summary": "Block",
                 "parameters": [
                     {
                         "name": "ID",
@@ -2355,7 +2493,7 @@
                         "type": "integer"
                     },
                     {
-                        "name": "StatusID",
+                        "name": "MemberID",
                         "in": "query",
                         "type": "integer"
                     }
@@ -2364,58 +2502,15 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "array",
-                            "items": {
-                                "type": "object",
-                                "properties": {
-                                    "MemberID": {
-                                        "type": "integer"
-                                    },
-                                    "Username": {
-                                        "type": "string"
-                                    },
-                                    "Status": {
-                                        "type": "string"
-                                    },
-                                    "Media": {
-                                        "type": "string"
-                                    },
-                                    "StatusDate": {
-                                        "type": "string"
-                                    },
-                                    "ProfilePic": {
-                                        "type": "string"
-                                    },
-                                    "CommentCount": {
-                                        "type": "integer"
-                                    },
-                                    "StatusID": {
-                                        "type": "integer"
-                                    },
-                                    "HasLiked": {
-                                        "type": "integer"
-                                    },
-                                    "LikeCount": {
-                                        "type": "integer"
-                                    },
-                                    "AllowComments": {
-                                        "type": "boolean"
-                                    },
-                                    "AllowLikes": {
-                                        "type": "boolean"
-                                    },
-                                    "AllowDMs": {
-                                        "type": "boolean"
-                                    }
-                                }
-                            }
+                            "type": "integer",
+                            "description": "Block successful"
                         }
                     },
                     "500": {
                         "description": "",
                         "schema": {
                             "type": "integer",
-                            "description": "Failed to load Statuses."
+                            "description": "Block failed"
                         }
                     }
                 }
@@ -2520,68 +2615,6 @@
                         "schema": {
                             "type": "integer",
                             "description": "Could not update location."
-                        }
-                    }
-                }
-            }
-        },
-        "/block.php": {
-            "get": {
-                "operationId": "GET_block-php",
-                "summary": "Block",
-                "parameters": [
-                    {
-                        "name": "ID",
-                        "in": "query",
-                        "type": "integer"
-                    },
-                    {
-                        "name": "MemberID",
-                        "in": "query",
-                        "type": "integer"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "Block successful"
-                        }
-                    },
-                    "500": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "Block failed"
-                        }
-                    }
-                }
-            }
-        },
-        "/checkNewMessages.php": {
-            "get": {
-                "operationId": "GET_checkNewMessages-php",
-                "summary": "CheckNewMessages",
-                "parameters": [
-                    {
-                        "name": "ID",
-                        "in": "query",
-                        "type": "integer"
-                    },
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "schema": {
-                            "type": "boolean"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "boolean"
                         }
                     }
                 }
