@@ -3,7 +3,6 @@
 header("Content-Type: application/json;charset=utf-8");
 
 require 'connect.php';
-mysqli_set_charset($conn, "utf8mb4");
 include_once 'helpers.php';
 
 $id = $_GET['ID'];
