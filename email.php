@@ -12,7 +12,7 @@ else
 function sendIntroMail($email) {
     
      // send email
-          $subject = "Thank you for signing up! Use Statuz to see what other people are doing and never be borded again... EVER!.";
+          $subject = "Thank you for signing up! Use Statuz to see what other people are doing and never be bord again... EVER!";
           $toEmail = $email;
          
           $message = "<html><body>";
@@ -41,6 +41,9 @@ function sendNewMessageMail($email, $senderName, $profilePhoto, $device) {
     
     if ($device == "iPhone") {
         $link = "https://itunes.apple.com/us/app/statuz/id1420098825?ls=1&mt=8";
+    }
+    else {
+        $link = "";
     }
     // send email
     $subject = "Click here to read $senderName message";

@@ -47,10 +47,10 @@ $sql = "Update Members Set
         WHERE ID = $id ";
 
 if (mysqli_query($conn, $sql)) {
-    return http_response_code(200);
+    echo http_response_code(200);
 }
 else {
     // error saving data
-    return http_response_code(500);
+    echo http_response_code(500);
 }
 ?>

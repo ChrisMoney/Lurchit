@@ -41,7 +41,7 @@ sin( radians( s.Latitude ) ) ) ) AS distance
 FROM Members m, ProfileMedia p, Statuses s
 
 WHERE 
-NOT EXISTS (SELECT Status_ID FROM HiddenStatuses WHERE Member_ID = $id and Status_ID = s.ID)
+NOT EXISTS (SELECT Status_ID FROM HiddenStatuses WHERE Reporter_ID = $id and Status_ID = s.ID)
 
 And p.Member_ID = m.ID 
 And s.Member_ID = m.ID 

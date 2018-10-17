@@ -14,6 +14,15 @@ $source = $data['Source'];
 $time = $data['Time'];
 $time = date('Y-m-d H:i', $time);
 $time = date('Y-m-d H:i',(strtotime ( '-5 hour' , strtotime ( $time) ) )); 
+
+$year = date('Y', $time);
+$currentYear = date('Y');
+
+if ($year != $currentYear) {
+    $year = $currentYear;
+    $time = date('Y-m-d H:i:s');
+}
+
 $mediaName = "";
 
 if (($hasMedia == 'true' || $hasMedia == 1 || $hasMedia == '1' || $hasMedia == true)) {

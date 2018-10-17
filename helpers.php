@@ -61,6 +61,44 @@ function pushNotification($heading, $message, $userID){
 
 	}
   
+	function pushNotificationAndroid($heading, $message, $userID) {
+	    
+	    $serverKey = "AAAAMt6yYGw:APA91bH3n1KNrRM6vQQfaN-ld0HVF5dM1qq-3Jt2Uo4xKkG-
+                    VG4YdGDWmg3qkF4wP2BpsBilBuhBhp-
+                    aZg0LRE1kmC60M0GrUFe3azbx1kx_U9PlxAdZKT1ZZQ_8Kus2XpIoHnfkOwvF";
+	    
+	    $msg = array
+	    (
+	        'body' 	=> $message,
+	        'title'	=> $heading,
+	        'icon'	=> 'myicon',/*Default Icon*/
+	        'sound' => 'mySound'/*Default sound*/
+	    );
+	    $fields = array
+	    (
+	        'to'		=> $userID,
+	        'notification'	=> $msg
+	    );
+	    
+	    
+	    $headers = array
+	    (
+	        'Authorization: key=' . $serverKey,
+	        'Content-Type: application/json'
+	    );
+	    #Send Reponse To FireBase Server
+	    $ch = curl_init();
+	    curl_setopt( $ch,CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send' );
+	    curl_setopt( $ch,CURLOPT_POST, true );
+	    curl_setopt( $ch,CURLOPT_HTTPHEADER, $headers );
+	    curl_setopt( $ch,CURLOPT_RETURNTRANSFER, true );
+	    curl_setopt( $ch,CURLOPT_SSL_VERIFYPEER, false );
+	    curl_setopt( $ch,CURLOPT_POSTFIELDS, json_encode( $fields ) );
+	    $result = curl_exec($ch );
+	    curl_close( $ch );
+	    
+	}
+	
 	function notification($senderID, $memberID, $type, $typeID, $message) {
 	    $conn = connection();
 	    

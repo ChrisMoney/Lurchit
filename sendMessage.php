@@ -22,6 +22,13 @@ $mediaName = "";
 $time = date('Y-m-d H:i', $time);
 $time = date('Y-m-d H:i',(strtotime ( '-5 hour' , strtotime ( $time) ) )); 
 
+$year = date('Y', $time);
+$currentYear = date('Y');
+
+if ($year != $currentYear) {
+    $year = $currentYear;
+    $time = date('Y-m-d H:i:s');
+}
 
 if (($hasMedia == 'true' || $hasMedia == 1 || $hasMedia == '1' || $hasMedia == true)
     && strlen($source) > 0) {
@@ -105,7 +112,14 @@ if (mysqli_query($conn, $sql1)) {
             
             $message = "Message from $name";
             $userID = $receiverID;
-            pushNotification('Message', $message, $userID);
+            
+            if ($device == 'iPhone') {
+                pushNotification('Message', $message, $userID);
+            }
+            else {
+                pushNotificationAndroid('Message', $message, $userID);
+            }
+            
     }
     catch(Exception $e) {
         $error = 'Push Notification Failed';
@@ -121,4 +135,5 @@ else {
     }
 
 }
+echo http_response_code(200);
 }
