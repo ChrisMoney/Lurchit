@@ -46,6 +46,11 @@ if (strlen($comment) > 250) {
     exit();
 }
 
+if (strlen($comment) > 0) {
+    $comment = mysqli_real_escape_string($conn, $comment);
+}
+
+
 $sql = "INSERT INTO Comments (Status_ID,   Member_ID,   Comment,    Media,        Source,   CommentDate) 
         Values              ('$statusID', '$memberID', '$comment', '$mediaName', '$source', '$time')";
 

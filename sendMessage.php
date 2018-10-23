@@ -75,6 +75,10 @@ else {
     $senderFirstMessage = 1;
 }
 
+if (strlen($message) > 0) {
+    $message = mysqli_real_escape_string($conn, $message);
+}
+
 
 // assign thread ownership for receiver
 $sql = "INSERT INTO Messages (Sender_ID, Receiver_ID,     Owner_ID,     Other_ID,     Message,      Media,       Source,    New,    FirstMessage,           MessageDate) 
@@ -89,7 +93,7 @@ if (mysqli_query($conn, $sql)) {
 
 if (mysqli_query($conn, $sql1)) {
         // send push notification
-       try { 
+
            $sql2 = "Select Username FROM Members WHERE ID = $senderID ";
             $result2 = mysqli_query($conn, $sql2);
             $row = mysqli_fetch_assoc($result2);
@@ -119,21 +123,13 @@ if (mysqli_query($conn, $sql1)) {
             else {
                 pushNotificationAndroid('Message', $message, $userID);
             }
-            
+            echo http_response_code(200);        
     }
-    catch(Exception $e) {
-        $error = 'Push Notification Failed';
-        $sqlLog = "INSERT INTO Log (Log, Date) Values ('$error', NOW())";
-        mysqli_query($conn, $sqlLog);
-    } 
-    finally {
         echo http_response_code(200);
     }
+    echo http_response_code(200);
 }
 else {
     echo http_response_code(500);
     }
 
-}
-echo http_response_code(200);
-}

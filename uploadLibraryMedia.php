@@ -22,6 +22,14 @@ $caption = $data['Caption'];
 $time = date('Y-m-d H:i', $time);
 $time = date('Y-m-d H:i',(strtotime ( '-5 hour' , strtotime ( $time) ) )); 
 
+$year = date('Y', $time);
+$currentYear = date('Y');
+
+if ($year != $currentYear) {
+    $year = $currentYear;
+    $time = date('Y-m-d H:i:s');
+}
+
 // save media to file server
 file_put_contents('../api/media/'.$mediaName, base64_decode($media));
 

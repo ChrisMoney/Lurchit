@@ -1,4 +1,4 @@
-                 <?php
+ <?php
 
 header("Content-Type: application/json;charset=utf-8");
 require 'connect.php';
@@ -47,6 +47,10 @@ if (strlen($status) == 0 && strlen($mediaName) == 0) {
 if (strlen($status) > 250) {
     echo http_response_code(400);
     exit();
+}
+
+if (strlen($status) > 0) {
+    $status = mysqli_real_escape_string($conn, $status);
 }
 
 $sql = "INSERT INTO Statuses (Member_ID,    Status,   Media,       Source,    Latitude,   Longitude, StatusDate)

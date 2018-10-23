@@ -27,10 +27,10 @@ $result1 = mysqli_query($conn, $sql1);
 
 if (mysqli_num_rows($result1) > 0) {
     // update
-    $sql = "Update ProfileMedia Set MediaName = '$mediaName', UploadDate = NOW() WHERE Member_ID = '$id' ";
+    $sql = "Update ProfileMedia Set MediaName = '$mediaName', Type = '$type', UploadDate = NOW() WHERE Member_ID = '$id' ";
     if (mysqli_query($conn, $sql)) {
         // successful
-        $sql1 = "Insert INTO MediaLibrary (Member_ID, MediaName, MediaType, UploadDate) Values ('$id','$mediaName', '$type', NOW()) ";
+        $sql1 = "Insert INTO MediaLibrary (Member_ID, MediaName, Source, UploadDate) Values ('$id','$mediaName', '$type', NOW()) ";
         if (mysqli_query($conn, $sql1)) {
             echo http_response_code(200);
         }
@@ -45,7 +45,7 @@ else {
     $sql = "Insert INTO ProfileMedia (Member_ID, MediaName, UploadDate) Values ('$id','$mediaName', NOW()) ";
     if (mysqli_query($conn, $sql)) {
         // successful
-        $sql1 = "Insert INTO MediaLibrary (Member_ID, MediaName, MediaType, UploadDate) Values ('$id','$mediaName', '$type', NOW()) ";
+        $sql1 = "Insert INTO MediaLibrary (Member_ID, MediaName, Source, UploadDate) Values ('$id','$mediaName', '$type', NOW()) ";
         if (mysqli_query($conn, $sql1)) {
             echo http_response_code(200);
         }

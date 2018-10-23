@@ -43,8 +43,8 @@ if (mysqli_num_rows($result2)  > 0) {
 if (strlen($username) > 0 && strlen($email) > 0
        && strlen($password) >= 3) {
 
-      $sql = "Insert Into Members (Username, Email, Password, SignupDate)
-                        Values ('$username', '$email', '$password', NOW())";
+      $sql = "Insert Into Members (Username, Email, Password, Birthdate, SignupDate)
+                        Values ('$username', '$email', '$password', '1930-01-01', NOW())";
 
 
       if (mysqli_query($conn, $sql)) {

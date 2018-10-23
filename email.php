@@ -12,7 +12,7 @@ else
 function sendIntroMail($email) {
     
      // send email
-          $subject = "Thank you for signing up! Use Statuz to see what other people are doing and never be bord again... EVER!";
+          $subject = "Thank you for signing up! Use Statuz to share your thoughts, information and what you are doing with other people in your local area, and never be bord again... EVER!";
           $toEmail = $email;
          
           $message = "<html><body>";
