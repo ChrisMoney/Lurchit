@@ -111,8 +111,10 @@ if (mysqli_query($conn, $sql1)) {
             $profilePic = ProfileMediaPath.$profilePhoto;
             
 
-            $subject = "New Message";
-            sendNewMessageMail($email, $name, $profilePic, $device);
+            $subject = "Click here to view the new message by $name";
+            $title = "$name sent you a message";
+            
+            sendNewMessageMail($email, $name, $profilePic, $device, $subject, $title);
             
             $message = "Message from $name";
             $userID = $receiverID;

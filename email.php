@@ -37,17 +37,21 @@ function sendIntroMail($email) {
           }
 }
 
-function sendNewMessageMail($email, $senderName, $profilePhoto, $device) {
+function sendNewMessageMail($email, $senderName, $profilePhoto, $device, $subject, $title) {
     
-    if ($device == "iPhone") {
+   /* if ($device == "iPhone") {
         $link = "https://itunes.apple.com/us/app/statuz/id1420098825?ls=1&mt=8";
+    }
+    else if ($device == "Android") {
+        $link = "https://play.google.com/store/apps/details?id=com.iam.statuz";
     }
     else {
         $link = "";
     }
+    */
+    $link = "";
+    
     // send email
-    $subject = "Click here to read $senderName message";
-    $title = "$senderName sent you a message";
     $toEmail = $email;
     
     $message = "<html><body>";

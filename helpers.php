@@ -63,9 +63,9 @@ function pushNotification($heading, $message, $userID){
   
 	function pushNotificationAndroid($heading, $message, $userID) {
 	    
-	    $serverKey = "AAAAMt6yYGw:APA91bH3n1KNrRM6vQQfaN-ld0HVF5dM1qq-3Jt2Uo4xKkG-
-                    VG4YdGDWmg3qkF4wP2BpsBilBuhBhp-
-                    aZg0LRE1kmC60M0GrUFe3azbx1kx_U9PlxAdZKT1ZZQ_8Kus2XpIoHnfkOwvF";
+	    $serverKey = "AAAAMt6yYGw:APA91bH3n1KNrRM6vQQfaN-ld0HVF5dM1qq-
+                      3Jt2Uo4xKkG-VG4YdGDWmg3qkF4wP2BpsBilBuhBhp-
+                      aZg0LRE1kmC60M0GrUFe3azbx1kx_U9PlxAdZKT1ZZQ_8Kus2XpIoHnfkOwvF";
 	    
 	    $msg = array
 	    (
@@ -102,8 +102,8 @@ function pushNotification($heading, $message, $userID){
 	function notification($senderID, $memberID, $type, $typeID, $message) {
 	    $conn = connection();
 	    
-	    $sql = "INSERT INTO Notifications (Sender_ID, Member_ID, Type, Type_ID, Message, New) 
-                Values ('$senderID', '$memberID', '$type', '$typeID', '$message', 1) ";
+	    $sql = "INSERT INTO Notifications (Sender_ID, Member_ID, Type, Type_ID, Message, New, NotificationDate) 
+                Values ('$senderID', '$memberID', '$type', '$typeID', '$message', 1, NOW()) ";
 	    
 	    mysqli_query($conn, $sql);
 	}
@@ -229,5 +229,24 @@ function checkCommentFilter($id) {
     else { ""; }
     
     return $filterQuery;
+}
+
+function checkActive($id) {
+    
+    $conn = connection();
+    $sql = "SELECT IsDeactivated FROM Members WHERE ID = $id ";
+    $result = mysqli_query($conn, $sql);
+    
+    $row = mysqli_fetch_assoc($result);
+    
+    $bool = filter_var($row['IsDeactivated'], FILTER_VALIDATE_BOOLEAN);
+
+    if ($bool == false) {
+        $isActive = true;
+    }
+    else {
+        $isActive = false;
+    }
+    return $isActive;
 }
     
