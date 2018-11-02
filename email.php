@@ -39,7 +39,7 @@ function sendIntroMail($email) {
 
 function sendNewMessageMail($email, $senderName, $profilePhoto, $device, $subject, $title) {
     
-   /* if ($device == "iPhone") {
+    if ($device == "iPhone") {
         $link = "https://itunes.apple.com/us/app/statuz/id1420098825?ls=1&mt=8";
     }
     else if ($device == "Android") {
@@ -48,7 +48,7 @@ function sendNewMessageMail($email, $senderName, $profilePhoto, $device, $subjec
     else {
         $link = "";
     }
-    */
+    
     $link = "";
     
     // send email
