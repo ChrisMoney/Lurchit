@@ -54,8 +54,14 @@ if (strlen($comment) > 0) {
 }
 
 
-$sql = "INSERT INTO Comments (Status_ID,   Member_ID,   Comment,    Media,        Source,   CommentDate) 
-        Values              ('$statusID', '$memberID', '$comment', '$mediaName', '$source', '$time')";
+// get Username of person commenting on status
+$sqlStatusOwner = "Select Member_ID FROM Statuses WHERE ID = $statusID ";
+$resultStatusOwner = mysqli_query($conn, $sqlStatusOwner);
+$rowStatusOwner = mysqli_fetch_assoc($resultStatusOwner);
+$statusOwnerID = $rowStatusOwner['Member_ID'];
+
+$sql = "INSERT INTO Comments (Status_ID,   Member_ID,  Status_Owner_ID,   Comment,    Media,        Source,   CommentDate) 
+        Values              ('$statusID', '$memberID', '$statusOwnerID', '$comment', '$mediaName', '$source', '$time')";
 
 if (mysqli_query($conn, $sql)) {
     

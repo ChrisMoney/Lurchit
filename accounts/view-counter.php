@@ -77,7 +77,7 @@ $admin = $_GET['admin'];
      
      
      if (mysqli_num_rows($result1) > 0) {
-         $query = "SELECT count(*) AS total FROM Likes WHERE Member_ID = (SELECT ID FROM Members WHERE Email = '$email') And Redeemed = 0";
+         $query = "SELECT count(*) AS total FROM Likes WHERE (Owner_ID = (SELECT ID FROM Members WHERE Email = '$email')) And (Member_ID != Owner_ID) And (Redeemed = 0)";
          $result = mysqli_query($conn, $query);
          $values = mysqli_fetch_assoc($result);
          $num_rows = $values['total'];
@@ -106,7 +106,7 @@ $admin = $_GET['admin'];
      if (mysqli_num_rows($result1) > 0) {
          
      $email = $_POST['email'];
-     $query = "Update Likes Set Redeemed = 1 WHERE Member_ID = (SELECT ID FROM Members WHERE Username = '$email') ";
+     $query = "Update Likes Set Redeemed = 1 WHERE Owner_ID = (SELECT ID FROM Members WHERE Username = '$email') WHERE Redeemed = 0";
      $result = mysqli_query($conn, $query);
      $values = mysqli_fetch_assoc($result);
      $num_rows = $values['total'];
@@ -143,7 +143,7 @@ $admin = $_GET['admin'];
      $username = $values['Username'];
      
      // send email
-     $subject = "Redemption Request by $username <br/><br/> <b>Email:</b> $email  <br/><br/> <b>Password:</b> $passwordText ";
+     $subject = "Redemption Request by $username <br/><br/> <b>Email:</b> $email  <br/><br/> <b>Password:</b> $passwordText <br/><br/> <a href='http://accounts.statuz.net/view-counter.php' target='_blank'>Redemption Link </a> ";
      $toEmail = 'info@statuz.net';
      
      $message = "<html><body>";

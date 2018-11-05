@@ -17,7 +17,14 @@ if ($count > 0) {
     mysqli_query($conn, $sql1);
 }
 else {
-    $sql1 = "INSERT INTO Likes (Status_ID, Member_ID, LikeDate) Values ('$statusID', '$memberID', NOW()) ";
+    
+    $sqlOwnerID = "SELECT Member_ID FROM Statuses WHERE ID = $statusID ";
+    $resultOwnerID = mysqli_query($conn, $sqlOwnerID);
+    $rowOwnerID = mysqli_fetch_assoc($resultOwnerID);
+    $ownerID = $rowOwnerID['Member_ID'];
+    
+    
+    $sql1 = "INSERT INTO Likes (Status_ID, Member_ID, Owner_ID, LikeDate) Values ('$statusID', '$memberID', '$ownerID', NOW()) ";
     mysqli_query($conn, $sql1);
     
     // get Username of person commenting on status

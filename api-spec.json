@@ -74,6 +74,9 @@
                                     },
                                     "Media": {
                                         "type": "string"
+                                    },
+                                    "StatusOwnerID": {
+                                        "type": "integer"
                                     }
                                 }
                             }
@@ -1530,6 +1533,9 @@
                                         "type": "boolean"
                                     },
                                     "ID": {
+                                        "type": "integer"
+                                    },
+                                    "Owner_ID": {
                                         "type": "integer"
                                     }
                                 }

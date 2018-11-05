@@ -102,8 +102,13 @@ function pushNotification($heading, $message, $userID){
 	function notification($senderID, $memberID, $type, $typeID, $message) {
 	    $conn = connection();
 	    
-	    $sql = "INSERT INTO Notifications (Sender_ID, Member_ID, Type, Type_ID, Message, New, NotificationDate) 
-                Values ('$senderID', '$memberID', '$type', '$typeID', '$message', 1, NOW()) ";
+	    $sqlOwnerID = "SELECT Member_ID FROM Statuses WHERE ID = $typeID ";
+	    $resultOwnerID = mysqli_query($conn, $sqlOwnerID);
+	    $rowOwnerID = mysqli_fetch_assoc($resultOwnerID);
+	    $ownerID = $rowOwnerID['Member_ID'];
+	    
+	    $sql = "INSERT INTO Notifications (Sender_ID,    Member_ID,    Owner_ID,  Type, Type_ID, Message, New, NotificationDate) 
+                                    Values ('$senderID', '$memberID', '$ownerID', '$type', '$typeID', '$message', 1, NOW()) ";
 	    
 	    mysqli_query($conn, $sql);
 	}

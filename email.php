@@ -49,8 +49,6 @@ function sendNewMessageMail($email, $senderName, $profilePhoto, $device, $subjec
         $link = "";
     }
     
-    $link = "";
-    
     // send email
     $toEmail = $email;
     
