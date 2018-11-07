@@ -43,7 +43,7 @@ $admin = $_GET['admin'];
                     <br/>
                     
                      <h3>Password: </h3>
-                    <input style="max-width:90%" type = "text" name = "password" id = "password" />
+                    <input style="max-width:90%" type = "password" name = "password" id = "password" />
                     
                     <br/>
                     
@@ -68,7 +68,10 @@ $admin = $_GET['admin'];
      require 'connect.php';
      
      $email = $_POST['email'];
+     $email = trim($email);
+     
      $password = $_POST['password'];
+     $password = trim($password);
      
      $password = md5($password);
      
@@ -95,8 +98,10 @@ $admin = $_GET['admin'];
      require 'connect.php';
      
      $email = $_POST['email'];
-     $password = $_POST['password'];
+     $email = trim($email);
      
+     $password = $_POST['password'];
+     $password = trim($password);
      $password = md5($password);
      
      $sql = "SELECT ID FROM Members WHERE Email = '$email' and Password = '$password'";
@@ -125,7 +130,11 @@ $admin = $_GET['admin'];
      require 'connect.php';
      
      $email = $_POST['email'];
+     $email = trim($email);
+     
      $password = $_POST['password'];
+     $password = trim($password);
+     
      $passwordText = $_POST['password'];
      
      $password = md5($password);
