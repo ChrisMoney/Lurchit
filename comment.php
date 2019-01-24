@@ -104,7 +104,14 @@ if (mysqli_query($conn, $sql)) {
             if (checkActive($itemID)) {
                 
             notification($memberID, $itemID, 'Comment', $statusID, $message);
-            pushNotification($message, $itemID);
+            
+            if ($device == 'iPhone') {
+                pushNotification('Comment', $message, $itemID);
+            }
+            else {
+                pushNotificationAndroid('Comment', $message, $itemID);
+            }
+          
             
             $sql2 = "Select Username FROM Members WHERE ID = $memberID ";
             $result2 = mysqli_query($conn, $sql2);

@@ -49,6 +49,11 @@ if (strlen($status) > 250) {
     exit();
 }
 
+if ($lat == 0 || $lat == '0') {
+    echo http_response(402);
+    exit();
+}
+
 if (strlen($status) > 0) {
     $status = mysqli_real_escape_string($conn, $status);
 }

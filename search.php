@@ -7,13 +7,14 @@ include_once 'helpers.php';
 date_default_timezone_set("UTC");
 
 $searchTerm = $_GET['SearchTerm'];
+$searchTerm = trim($searchTerm);
+
 $id = $_GET['ID'];
 
 $sql = "SELECT m.ID as MemberID, m.Username as Username, p.MediaName as ProfilePic
 FROM Members m, ProfileMedia p 
 WHERE 
-(Username Like '%$searchTerm'  
-Or Username Like '$searchTerm%')
+(Username Like '%$searchTerm%')
 And (p.Member_ID = m.ID) 
 
 

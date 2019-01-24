@@ -10,7 +10,7 @@
     $localhost = 'localhost';
     $username = 'flickpitch';
     $pass = 'Manager@10';
-    $db = 'Statuz';
+    $db = 'Lurchit';
 
     $conn = mysqli_connect ($localhost, $username, $pass, $db);
 
@@ -19,7 +19,7 @@ function connection () {
     $localhost = 'localhost';
     $username = 'flickpitch';
     $pass = 'Manager@10';
-    $db = 'Statuz';
+    $db = 'Lurchit';
 
     static $conn;
     if ($conn===NULL){
