@@ -13,9 +13,9 @@ $apt = $_GET['Apt'];
 $id = $_GET['ID'];
 
 
-$currentYear = date("Y");
+// $currentYear = date("Y");
 
-$age = $currentYear - $year;
+//$age = $currentYear - $year;
 
 $birthDate = $year ."-". $month."-". $day;
 $birthDate = trim($birthDate);

@@ -1,6 +1,0 @@
-Or (mp.Slim = (CASE m.Build WHEN 'Slim' THEN 'true' END))
-Or (mp.Average = (CASE m.Build WHEN 'Average' THEN 'true' END))
-Or (mp.Athletic = (CASE m.Build WHEN 'Athletic' THEN 'true' END))
-Or (mp.Plump = (CASE m.Build WHEN 'Plump' THEN 'true' END))
-Or (mp.Heavy = (CASE m.Build WHEN 'Heavy' THEN 'true' END))
-Or (mp.Overweight = (CASE m.Build WHEN 'Overweight' THEN 'true' END))
