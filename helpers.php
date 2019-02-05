@@ -1,8 +1,8 @@
 <?php
-define("ProfileMediaPath", "http://api.statuz.net/api/media/");
-define("StatusMediaPath", "http://api.statuz.net/api/flicks/");
-define("CommentMediaPath", "http://api.statuz.net/api/comments/");
-define("MessageMediaPath", "http://api.statuz.net/api/messages/");
+define("ProfileMediaPath", "http://api.lurchit.com/api/media/");
+define("CarMediaPath", "http://api.lurchit.com/api/cars/");
+define("CommentMediaPath", "http://api.statuz.com/api/comments/");
+define("MessageMediaPath", "http://api.statuz.com/api/messages/");
 
 function getDistance($id) {
     $conn = connection();
@@ -164,5 +164,21 @@ function checkActive($id) {
         $isActive = false;
     }
     return $isActive;
+}
+
+function phone_number_format($number) {
+    // Allow only Digits, remove all other characters.
+    $number = preg_replace("/[^\d]/","",$number);
+    
+    // get number length.
+    $length = strlen($number);
+    
+    // if number = 10
+    if($length == 10) {
+        $number = preg_replace("/^1?(\d{3})(\d{3})(\d{4})$/", "$1-$2-$3", $number);
+    }
+    
+    return $number;
+    
 }
     

@@ -15,6 +15,7 @@ $firstName = ucfirst($_GET['FirstName']);
 $lastName = ucfirst($_GET['LastName']);
 $username = ucfirst($_GET['Username']);
 $email = $_GET['Email'];
+$phone = $_GET['Phone'];
 $password = $_GET['Password'];
 $password = md5($password);
 
@@ -44,8 +45,8 @@ if (mysqli_num_rows($result2)  > 0) {
 if (strlen($username) > 0 && strlen($email) > 0
        && strlen($password) >= 3) {
 
-      $sql = "Insert Into Members (FirstName, LastName,    Username, Email, Password, Birthdate, SignupDate)
-                        Values ('$firstName', '$lastName', $username', '$email', '$password', '1930-01-01', NOW())";
+      $sql = "Insert Into Members (FirstName, LastName,    Username, Email, Password, Phone, SignupDate)
+                        Values ('$firstName', '$lastName', $username', '$email', '$password', '$phone', NOW())";
 
 
       if (mysqli_query($conn, $sql)) {
