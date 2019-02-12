@@ -96,10 +96,10 @@
                 }
             }
         },
-        "/getVehicle.php": {
+        "/getProfile.php": {
             "get": {
-                "operationId": "GET_getVehicle-php",
-                "summary": "GetVehicle",
+                "operationId": "GET_getProfile-php",
+                "summary": "GetProfile",
                 "parameters": [
                     {
                         "name": "ID",
@@ -113,16 +113,25 @@
                         "schema": {
                             "type": "object",
                             "properties": {
-                                "Make": {
+                                "FirstName": {
                                     "type": "string"
                                 },
-                                "Model": {
+                                "LastName": {
                                     "type": "string"
                                 },
-                                "Year": {
+                                "Username": {
                                     "type": "string"
                                 },
-                                "CarPhoto": {
+                                "Email": {
+                                    "type": "string"
+                                },
+                                "Phone": {
+                                    "type": "string"
+                                },
+                                "Password": {
+                                    "type": "string"
+                                },
+                                "ProfilePhoto": {
                                     "type": "string"
                                 }
                             }
@@ -1379,68 +1388,6 @@
                 }
             }
         },
-        "/getProfileMediaAndroid.php": {
-            "get": {
-                "operationId": "GET_getProfileMediaAndroid-php",
-                "summary": "GetProfileMediaAndroid",
-                "parameters": [
-                    {
-                        "name": "ID",
-                        "in": "query",
-                        "type": "integer"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            }
-        },
-        "/background.php": {
-            "get": {
-                "operationId": "GET_background-php",
-                "summary": "Background",
-                "parameters": [
-                    {
-                        "name": "Ethnicity",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "ID",
-                        "in": "query",
-                        "type": "integer"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "Appearance data updated successfully."
-                        }
-                    },
-                    "400": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "Invalid user data provided."
-                        }
-                    },
-                    "500": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "Error saving data."
-                        }
-                    }
-                }
-            }
-        },
         "/getMessageThreadAndroid.php": {
             "get": {
                 "operationId": "GET_getMessageThreadAndroid-php",
@@ -1514,6 +1461,75 @@
                 }
             }
         },
+        "/background.php": {
+            "get": {
+                "operationId": "GET_background-php",
+                "summary": "Background",
+                "parameters": [
+                    {
+                        "name": "Ethnicity",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Appearance data updated successfully."
+                        }
+                    },
+                    "400": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Invalid user data provided."
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Error saving data."
+                        }
+                    }
+                }
+            }
+        },
+        "/getAboutAndroid.php": {
+            "get": {
+                "operationId": "GET_getAboutAndroid-php",
+                "summary": "GetAboutAndroid",
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Unable to retrieve data."
+                        }
+                    }
+                }
+            }
+        },
         "/getAccountSettings.php": {
             "get": {
                 "operationId": "GET_getAccountSettings-php",
@@ -1546,10 +1562,10 @@
                 }
             }
         },
-        "/getAboutAndroid.php": {
+        "/getAgeAndroid.php": {
             "get": {
-                "operationId": "GET_getAboutAndroid-php",
-                "summary": "GetAboutAndroid",
+                "operationId": "GET_getAgeAndroid-php",
+                "summary": "GetAgeAndroid",
                 "parameters": [
                     {
                         "name": "ID",
@@ -1562,13 +1578,6 @@
                         "description": "",
                         "schema": {
                             "type": "string"
-                        }
-                    },
-                    "500": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "Unable to retrieve data."
                         }
                     }
                 }
@@ -1603,10 +1612,10 @@
                 }
             }
         },
-        "/getAgeAndroid.php": {
+        "/getUsernameAndroid.php": {
             "get": {
-                "operationId": "GET_getAgeAndroid-php",
-                "summary": "GetAgeAndroid",
+                "operationId": "GET_getUsernameAndroid-php",
+                "summary": "GetUserNameAndroid",
                 "parameters": [
                     {
                         "name": "ID",
@@ -1619,6 +1628,12 @@
                         "description": "",
                         "schema": {
                             "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer"
                         }
                     }
                 }
@@ -1652,10 +1667,10 @@
                 }
             }
         },
-        "/getUsernameAndroid.php": {
+        "/getGenderAndroid.php": {
             "get": {
-                "operationId": "GET_getUsernameAndroid-php",
-                "summary": "GetUserNameAndroid",
+                "operationId": "GET_getGenderAndroid-php",
+                "summary": "GetGenderAndroid",
                 "parameters": [
                     {
                         "name": "ID",
@@ -1667,13 +1682,8 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "400": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer"
+                            "type": "string",
+                            "description": "Ok"
                         }
                     }
                 }
@@ -1700,10 +1710,10 @@
                 }
             }
         },
-        "/getGenderAndroid.php": {
+        "/getBackgroundAndroid.php": {
             "get": {
-                "operationId": "GET_getGenderAndroid-php",
-                "summary": "GetGenderAndroid",
+                "operationId": "GET_getBackgroundAndroid-php",
+                "summary": "GetBackgroundAndroid",
                 "parameters": [
                     {
                         "name": "ID",
@@ -1717,6 +1727,12 @@
                         "schema": {
                             "type": "string",
                             "description": "Ok"
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer"
                         }
                     }
                 }
@@ -1756,26 +1772,30 @@
                 }
             }
         },
-        "/getBackgroundAndroid.php": {
+        "/getAddress.php": {
             "get": {
-                "operationId": "GET_getBackgroundAndroid-php",
-                "summary": "GetBackgroundAndroid",
+                "operationId": "GET_getAddress-php",
+                "summary": "GetAddress",
                 "parameters": [
                     {
-                        "name": "ID",
+                        "name": "Lat",
                         "in": "query",
-                        "type": "integer"
+                        "type": "string"
+                    },
+                    {
+                        "name": "Long",
+                        "in": "query",
+                        "type": "string"
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "string",
-                            "description": "Ok"
+                            "type": "string"
                         }
                     },
-                    "500": {
+                    "400": {
                         "description": "",
                         "schema": {
                             "type": "integer"
@@ -1828,10 +1848,10 @@
                 }
             }
         },
-        "/getAddress.php": {
+        "/getTemp.php": {
             "get": {
-                "operationId": "GET_getAddress-php",
-                "summary": "GetAddress",
+                "operationId": "GET_getTemp-php",
+                "summary": "GetTemp",
                 "parameters": [
                     {
                         "name": "Lat",
@@ -1851,7 +1871,7 @@
                             "type": "string"
                         }
                     },
-                    "400": {
+                    "500": {
                         "description": "",
                         "schema": {
                             "type": "integer"
@@ -1941,18 +1961,13 @@
                 }
             }
         },
-        "/getTemp.php": {
+        "/getTime.php": {
             "get": {
-                "operationId": "GET_getTemp-php",
-                "summary": "GetTemp",
+                "operationId": "GET_getTime-php",
+                "summary": "GetTime",
                 "parameters": [
                     {
-                        "name": "Lat",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "Long",
+                        "name": "TimeStamp",
                         "in": "query",
                         "type": "string"
                     }
@@ -2008,6 +2023,77 @@
                         "description": "",
                         "schema": {
                             "type": "integer"
+                        }
+                    }
+                }
+            }
+        },
+        "/demographics.php": {
+            "get": {
+                "operationId": "GET_demographics-php",
+                "summary": "Demographics",
+                "parameters": [
+                    {
+                        "name": "Month",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Day",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Year",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "SSN",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Address",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Apt",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "Phone",
+                        "in": "query",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Appearance data updated successfully."
+                        }
+                    },
+                    "400": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Invalid user data provided."
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Error saving data."
                         }
                     }
                 }
@@ -2079,6 +2165,102 @@
                         "schema": {
                             "type": "integer",
                             "description": "Message Failed"
+                        }
+                    }
+                }
+            }
+        },
+        "/removeBlockedUser.php": {
+            "get": {
+                "operationId": "GET_removeBlockedUser-php",
+                "summary": "RemoveBlockedUser",
+                "parameters": [
+                    {
+                        "name": "BlockedID",
+                        "in": "query",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "BlockerID",
+                        "in": "query",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "User unblocked."
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Failed to unblock user."
+                        }
+                    }
+                }
+            }
+        },
+        "/checkStatus.php": {
+            "get": {
+                "operationId": "GET_checkStatus-php",
+                "summary": "CheckStatus",
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        },
+        "/getVehicle.php": {
+            "get": {
+                "operationId": "GET_getVehicle-php",
+                "summary": "GetVehicle",
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Make": {
+                                    "type": "string"
+                                },
+                                "Model": {
+                                    "type": "string"
+                                },
+                                "Year": {
+                                    "type": "string"
+                                },
+                                "CarPhoto": {
+                                    "type": "string"
+                                }
+                            }
                         }
                     }
                 }
@@ -2179,99 +2361,75 @@
                 }
             }
         },
-        "/demographics.php": {
+        "/getComments.php": {
             "get": {
-                "operationId": "GET_demographics-php",
-                "summary": "Demographics",
+                "operationId": "GET_getComments-php",
+                "summary": "GetComments",
                 "parameters": [
                     {
-                        "name": "Month",
+                        "name": "StatusID",
                         "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "Day",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "Year",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "SSN",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "Address",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "Apt",
-                        "in": "query",
-                        "type": "string"
+                        "type": "integer"
                     },
                     {
                         "name": "ID",
                         "in": "query",
                         "type": "integer"
-                    },
-                    {
-                        "name": "Phone",
-                        "in": "query",
-                        "type": "string"
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "integer",
-                            "description": "Appearance data updated successfully."
-                        }
-                    },
-                    "400": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "Invalid user data provided."
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "ID": {
+                                        "type": "integer"
+                                    },
+                                    "CommentID": {
+                                        "type": "integer"
+                                    },
+                                    "MemberID": {
+                                        "type": "integer"
+                                    },
+                                    "StatusID": {
+                                        "type": "integer"
+                                    },
+                                    "Comment": {
+                                        "type": "string"
+                                    },
+                                    "CommentDate": {
+                                        "type": "string"
+                                    },
+                                    "ProfilePic": {
+                                        "type": "string"
+                                    },
+                                    "Username": {
+                                        "type": "string"
+                                    },
+                                    "MediaName": {
+                                        "type": "string"
+                                    },
+                                    "CommentorID": {
+                                        "type": "integer"
+                                    },
+                                    "Media": {
+                                        "type": "string"
+                                    },
+                                    "StatusOwnerID": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
                         }
                     },
                     "500": {
                         "description": "",
                         "schema": {
                             "type": "integer",
-                            "description": "Error saving data."
-                        }
-                    }
-                }
-            }
-        },
-        "/getTime.php": {
-            "get": {
-                "operationId": "GET_getTime-php",
-                "summary": "GetTime",
-                "parameters": [
-                    {
-                        "name": "TimeStamp",
-                        "in": "query",
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "500": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer"
+                            "description": "Request failed!"
                         }
                     }
                 }
@@ -2419,114 +2577,6 @@
                         "schema": {
                             "type": "integer",
                             "description": "Unable to retrieve data."
-                        }
-                    }
-                }
-            }
-        },
-        "/getComments.php": {
-            "get": {
-                "operationId": "GET_getComments-php",
-                "summary": "GetComments",
-                "parameters": [
-                    {
-                        "name": "StatusID",
-                        "in": "query",
-                        "type": "integer"
-                    },
-                    {
-                        "name": "ID",
-                        "in": "query",
-                        "type": "integer"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "type": "object",
-                                "properties": {
-                                    "ID": {
-                                        "type": "integer"
-                                    },
-                                    "CommentID": {
-                                        "type": "integer"
-                                    },
-                                    "MemberID": {
-                                        "type": "integer"
-                                    },
-                                    "StatusID": {
-                                        "type": "integer"
-                                    },
-                                    "Comment": {
-                                        "type": "string"
-                                    },
-                                    "CommentDate": {
-                                        "type": "string"
-                                    },
-                                    "ProfilePic": {
-                                        "type": "string"
-                                    },
-                                    "Username": {
-                                        "type": "string"
-                                    },
-                                    "MediaName": {
-                                        "type": "string"
-                                    },
-                                    "CommentorID": {
-                                        "type": "integer"
-                                    },
-                                    "Media": {
-                                        "type": "string"
-                                    },
-                                    "StatusOwnerID": {
-                                        "type": "integer"
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "Request failed!"
-                        }
-                    }
-                }
-            }
-        },
-        "/removeBlockedUser.php": {
-            "get": {
-                "operationId": "GET_removeBlockedUser-php",
-                "summary": "RemoveBlockedUser",
-                "parameters": [
-                    {
-                        "name": "BlockedID",
-                        "in": "query",
-                        "type": "integer"
-                    },
-                    {
-                        "name": "BlockerID",
-                        "in": "query",
-                        "type": "integer"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "User unblocked."
-                        }
-                    },
-                    "500": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "Failed to unblock user."
                         }
                     }
                 }
