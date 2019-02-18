@@ -6,7 +6,7 @@ include_once 'helpers.php';
 
 $id = $_GET['ID'];
 
-$sql = "SELECT FirstName, LastName, Username, Email, Phone, ProfilePhoto, Password FROM Members WHERE ID = $id";
+$sql = "SELECT FirstName, LastName, Username, Email, Phone, ProfilePhoto FROM Members WHERE ID = $id";
 
 
 if ($result = mysqli_query($conn, $sql)) {
@@ -14,7 +14,7 @@ if ($result = mysqli_query($conn, $sql)) {
         $profileView = mysqli_fetch_assoc($result);
         // format profile photo
         $mediaName = $profileView['ProfilePhoto'];
-        $profileView['MediaName'] = ProfileMediaPath.$mediaName;
+        $profileView['ProfilePhoto'] = ProfileMediaPath.$mediaName;
 
     echo json_encode($profileView);
         }
