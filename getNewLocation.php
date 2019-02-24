@@ -12,45 +12,16 @@ require 'helpers.php';
 $id = $_GET['ID'];
 $lat = $_GET['Lat'];
 $long = $_GET['Long'];
+$city = $_GET['City'];
+$state = $_GET['State'];
+$country = $_GET['Country'];
 
+$sql = "Update Members Set City = '$city', State = '$state', Country = '$country', Longitude = '$long', Latitude = '$lat' WHERE ID = $id ";
 
-$data = file_get_contents("https://maps.google.com/maps/api/geocode/json?latlng=$lat,$long&sensor=false&key=AIzaSyCoRTbekTZbeNP03VMkpyx-N9Lcfe2XGP0");
-$data = json_decode($data);
-$add_array  = $data->results;
-$add_array = $add_array[0];
-$add_array = $add_array->address_components;
-$country = "N/A";
-$state = "N/A";
-$city = "N/A";
-
-
-if (isset($lat) && !empty($lat)) {
-    foreach ($add_array as $key) {
-        if($key->types[0] == 'locality')
-        {
-            $city = $key->short_name;
-        }
-        if($key->types[0] == 'administrative_area_level_1')
-        {
-            $state = $key->short_name;
-        }
-        if($key->types[0] == 'country')
-        {
-            $country = $key->short_name;
-        }
-    }
-    mysqli_query($conn, "INSERT INTO Log (Log, Date) Values ('$city', NOW()");
-    $location['City'] = $city;
-    $location['State'] = $state;
-    $location['Country'] = $country;
-    
-    
-    
-    if (strlen($location['City']) == 0 ) {
-        $location = "Location Unavailable";
-    }
-    
-    echo json_encode($location);
-    
-    
+if (mysqli_query($conn, $sql)) {
+    echo http_response_code(200);
 }
+else {
+    echo http_response_code(500);
+}
+    

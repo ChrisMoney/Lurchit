@@ -5,7 +5,7 @@ require 'connect.php';
 
 $id = $_GET['ID'];
 
-$sql = "SELECT IsLurch FROM Members WHERE ID = $id";
+$sql = "SELECT IsLurch, IsLurchActive FROM Members WHERE ID = $id";
 
 $result = mysqli_query($conn, $sql);
 
@@ -13,7 +13,13 @@ $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
     $status = mysqli_fetch_assoc($result);
     
-    $lurchStatus = filter_var($status['IsLurch'], FILTER_VALIDATE_BOOLEAN);
+    $isLurch = $status['IsLurch'];
+    $IsLurchActive = $status['IsLurchActive'];
+    $lurchStatus = false;
+    
+    if ($isLurch == 1 && $IsLurchActive == 1) {
+        $lurchStatus = true;
+    }
     
     echo json_encode($lurchStatus);
 }

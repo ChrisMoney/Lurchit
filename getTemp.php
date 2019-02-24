@@ -8,7 +8,7 @@ $json = file_get_contents($jsonurl);
 
 $weather = json_decode($json);
 $kelvin = $weather->main->temp;
-$celcius = $kelvin - 273.05;
+$celcius = $kelvin - 238.00;
 
 echo $celcius;
 
