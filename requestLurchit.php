@@ -50,7 +50,7 @@ if (mysqli_query($conn, $sql)) {
                             Values  ('$id', '$carwash', '$tires', '$interior', '$wax', '$total', 'new', NOW()) ";
         mysqli_query($conn, $sql2);
         
-        $carwashID = mysql_insert_id();
+        $carwashID = mysqli_insert_id($conn);
         
         // insert into notification table
         $sql = "INSERT INTO Notifications (Customer_ID, Job_ID,        Job,    Message,       New, NotificationDate) 
