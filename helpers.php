@@ -35,7 +35,7 @@ function pushNotification($heading, $message, $userID){
 		);
 		
          $fields = array(
-            'app_id' => "aee090c8-a009-40fb-96ac-9ab277eedfdd",
+            'app_id' => "292bf9f6-817b-468f-9245-4014644d4acd",
             'filters' => array(array("field" => "tag", "key" => "ID", "relation" => "=", "value" => "$userID")),
             'contents' => $content,
              'headings' => $heading
@@ -47,7 +47,7 @@ function pushNotification($heading, $message, $userID){
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, "https://onesignal.com/api/v1/notifications");
 		curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json; charset=utf-8',
-												   'Authorization: Basic NmZkMTk4NWYtMDE0OC00YmZmLWIyNmEtNmY4NmQyOTM5MmU3'));
+												   'Authorization: Basic NzBmMGQ2ZjYtZTQ2Yy00ZDk4LThjZmEtNDY4Mzc0MDA5M2Mx'));
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 		curl_setopt($ch, CURLOPT_HEADER, FALSE);
 		curl_setopt($ch, CURLOPT_POST, TRUE);
@@ -99,7 +99,7 @@ function pushNotification($heading, $message, $userID){
 	    
 	}
 	
-	function notification($senderID, $memberID, $type, $typeID, $message) {
+	function notification($lurchID, $customerID, $jobID, $job, $message) {
 	    $conn = connection();
 	    
 	    $sqlOwnerID = "SELECT Member_ID FROM Statuses WHERE ID = $typeID ";
@@ -107,8 +107,8 @@ function pushNotification($heading, $message, $userID){
 	    $rowOwnerID = mysqli_fetch_assoc($resultOwnerID);
 	    $ownerID = $rowOwnerID['Member_ID'];
 	    
-	    $sql = "INSERT INTO Notifications (Sender_ID,    Member_ID,    Owner_ID,  Type, Type_ID, Message, New, NotificationDate) 
-                                    Values ('$senderID', '$memberID', '$ownerID', '$type', '$typeID', '$message', 1, NOW()) ";
+	    $sql = "INSERT INTO Notifications (Lurch_ID,    Customer_ID,    Job_ID,  Job,    Message,  New, NotificationDate) 
+                                    Values ('$lurchID', '$customerID', '$jobID', '$job', '$message', 1, NOW()) ";
 	    
 	    mysqli_query($conn, $sql);
 	}
