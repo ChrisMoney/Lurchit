@@ -3,11 +3,9 @@ require 'connect.php';
 require 'helpers.php';
 include_once 'email.php';
 
-$id = $_GET['ID']
+$id = $_GET['ID'];
 $lat = $_GET['Lat'];
 $long = $_GET['Long'];
-$job = $_GET['Job'];
-$notification = $_GET['Notification'];
 $carwash = $_GET['Carwash'];
 $interior = $_GET['Interior'];
 $wax = $_GET['Wax'];
@@ -45,6 +43,8 @@ if (mysqli_query($conn, $sql)) {
             pushNotificationAndroid('Message', $message, $lurchitID);
         }
         
+        $notification = "Car Wash Request";
+        
         // insert into service table
         $sql2 = "INSERT INTO Carwash (Customer_ID, Carwash, Tires, Interior, Wax, Total, Status, WashDate) 
                             Values  ('$id', '$carwash', '$tires', '$interior', '$wax', '$total', 'new', NOW()) ";
@@ -54,7 +54,7 @@ if (mysqli_query($conn, $sql)) {
         
         // insert into notification table
         $sql = "INSERT INTO Notifications (Customer_ID, Job_ID,        Job,    Message,       New, NotificationDate) 
-                                    Values ('$id',      '$carwashID', '$job', '$notification', 1,       NOW()) ";
+                                    Values ('$id',      '$carwashID', 'Carwash', '$notification', 1,       NOW()) ";
     }
    
     
