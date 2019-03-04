@@ -1742,7 +1742,7 @@
                 "summary": "GetTime",
                 "parameters": [
                     {
-                        "name": "TimeStamp",
+                        "name": "State",
                         "in": "query",
                         "type": "string"
                     }

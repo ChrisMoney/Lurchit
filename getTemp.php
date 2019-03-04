@@ -10,6 +10,8 @@ $weather = json_decode($json);
 $kelvin = $weather->main->temp;
 $celcius = $kelvin - 240.00;
 
-echo round($celcius);
+$temp = round($celcius);
+
+echo json_encode($temp);
 
 ?>
