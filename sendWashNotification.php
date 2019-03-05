@@ -21,7 +21,7 @@ mysqli_query($conn, $sql);
 
 $carwashID = mysqli_insert_id($conn);
 
-$sql2 = "SELECT DISTINCT ID, ( 3959 * acos ( cos ( radians($lat) ) * cos( radians( Latitude ) ) *
+$sql2 = "SELECT ID, FirstName, Email, ProfilePhoto, ( 3959 * acos ( cos ( radians($lat) ) * cos( radians( Latitude ) ) *
 cos( radians( Longitude ) - radians($long) ) + sin ( radians($lat) ) *
 sin( radians( Latitude ) ) ) ) AS distance 
 FROM Members 
@@ -36,34 +36,38 @@ $notification = "Car Wash Request";
 if (mysqli_query($conn, $sql2)) {
     
     $result = mysqli_query($conn, $sql2);
-    $rows = mysqli_fetch_assoc($result);
    
     
-    foreach ($rows as $row) {
+    if (mysqli_num_rows($result) > 0) {
+        
+        while ($row = mysqli_fetch_assoc($result)) {
         
         $lurchID = $row['ID'];
+        $senderName = $row['FirstName'];
+        $email = $row['Email'];
+        $profilePhoto = $row['ProfilePhoto'];
+        $subject = "Car Wash Request";
+        $title = "Car Wash Request";
         
-        if ($lurchID > 0) {
-            
-            // echo $lurchitID;
-            
-            $device = 'iPhone';
-            if ($device == 'iPhone') {
-             pushNotification('Message', $message, $lurchID);
-             }
-             else {
-             pushNotificationAndroid('Message', $message, $lurchitID);
-             }
-            
-            //pushNotification('Message', $message, $lurchitID);
+        $profilePhoto = ProfileMediaPath.$profilePhoto;
             
             // insert into notification table
             $sql3 = "INSERT INTO Notifications (Customer_ID, Lurch_ID,      Job_ID,        Job,    Message,       New, NotificationDate)
-                                    Values ('$id',       '$lurchID', '$carwashID', 'Carwash', '$notification', 1,       NOW()) ";
+                                        Values ('$id',       '$lurchID', '$carwashID', 'Carwash', '$notification', 1,       NOW()) ";
             mysqli_query($conn, $sql3);
+            
+            $device = 'iPhone';
+            if ($device == 'iPhone') {
+             
+             sendNewMessageMail($email, $senderName, $profilePhoto, $device, $subject, $title);
+             pushNotification('Job', $notification, $lurchID); 
+             }
+             else {
+             pushNotificationAndroid('Message', $notification, $lurchID);
+             }
+           
+                 echo http_response_code(200);
         }
-        
-        echo http_response_code(200);
     }  
 }
 else {
