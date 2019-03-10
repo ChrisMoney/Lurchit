@@ -25,8 +25,10 @@ $sql2 = "SELECT ID, FirstName, Email, ProfilePhoto, ( 3959 * acos ( cos ( radian
 cos( radians( Longitude ) - radians($long) ) + sin ( radians($lat) ) *
 sin( radians( Latitude ) ) ) ) AS distance 
 FROM Members 
+WHERE IsLurch = 1
+And IsLurchActive = 1
 Group By ID
-HAVING distance <= 10
+HAVING distance <= 15
 
 ";
 
@@ -36,7 +38,7 @@ $notification = "Car Wash Request";
 if (mysqli_query($conn, $sql2)) {
     
     $result = mysqli_query($conn, $sql2);
-   
+
     
     if (mysqli_num_rows($result) > 0) {
         
@@ -51,6 +53,8 @@ if (mysqli_query($conn, $sql2)) {
         
         $profilePhoto = ProfileMediaPath.$profilePhoto;
             
+        //echo $lurchID;
+        
             // insert into notification table
             $sql3 = "INSERT INTO Notifications (Customer_ID, Lurch_ID,      Job_ID,        Job,    Message,       New, NotificationDate)
                                         Values ('$id',       '$lurchID', '$carwashID', 'Carwash', '$notification', 1,       NOW()) ";
@@ -66,7 +70,7 @@ if (mysqli_query($conn, $sql2)) {
              pushNotificationAndroid('Message', $notification, $lurchID);
              }
            
-                 echo http_response_code(200);
+                 echo json_encode($carwashID, JSON_NUMERIC_CHECK);
         }
     }  
 }
