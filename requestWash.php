@@ -19,6 +19,7 @@ $currentLurchID = $lurch['Lurch_ID'];
 $lurchID = 0;
 
 if ($currentLurchID == 0) {
+    // query again if job has not been accepted
     goto a;
 
 }

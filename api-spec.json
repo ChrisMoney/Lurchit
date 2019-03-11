@@ -574,13 +574,6 @@
             "get": {
                 "operationId": "GET_getNotifications-php",
                 "summary": "GetNotifications",
-                "parameters": [
-                    {
-                        "name": "ID",
-                        "in": "query",
-                        "type": "integer"
-                    }
-                ],
                 "responses": {
                     "200": {
                         "description": "",
@@ -589,32 +582,23 @@
                             "items": {
                                 "type": "object",
                                 "properties": {
-                                    "Member_ID": {
+                                    "JobID": {
                                         "type": "integer"
                                     },
-                                    "Sender_ID": {
+                                    "CustomerID": {
                                         "type": "integer"
                                     },
-                                    "Type": {
+                                    "Job": {
                                         "type": "string"
-                                    },
-                                    "Type_ID": {
-                                        "type": "integer"
                                     },
                                     "Message": {
                                         "type": "string"
                                     },
-                                    "MediaName": {
+                                    "New": {
                                         "type": "string"
                                     },
-                                    "New": {
-                                        "type": "boolean"
-                                    },
-                                    "ID": {
-                                        "type": "integer"
-                                    },
-                                    "Owner_ID": {
-                                        "type": "integer"
+                                    "Status": {
+                                        "type": "string"
                                     }
                                 }
                             }

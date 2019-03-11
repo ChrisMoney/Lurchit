@@ -15,8 +15,8 @@ $total= $_GET['Total'];
 $notification = "Car Wash Request";
 
 // insert into service table
-$sql = "INSERT INTO Carwash (Customer_ID, Carwash, Tires, Interior, Wax, Total, Status, WashDate)
-                            Values  ('$id', '$carwash', '$tires', '$interior', '$wax', '$total', 'new', NOW()) ";
+$sql = "INSERT INTO Carwash         (Customer_ID, Carwash,    Tires,   Interior,     Wax,    Total, Latitude, Longitude, Status, WashDate)
+                            Values  ('$id',      '$carwash', '$tires', '$interior', '$wax', '$total', '$lat', '$long',   'new', NOW()) ";
 mysqli_query($conn, $sql);
 
 $carwashID = mysqli_insert_id($conn);
