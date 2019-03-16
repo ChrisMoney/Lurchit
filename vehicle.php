@@ -21,13 +21,13 @@ if (($hasMedia == 'true' || $hasMedia == 1 || $hasMedia == '1' || $hasMedia == t
         // save media to file server
         $mediaName = uniqid().'img.png';
         file_put_contents('../api/cars/'.$mediaName, base64_decode($media));
+        $carPhotoUpdate = ", CarPhoto = '$mediaName' ";
     }
     else {
-        $media = "";
-        $mediaName = "";
+        $carPhotoUpdate = "";
     }
     
-$sql = "Update Members Set Make = '$make', Model = '$model', Year = '$year', CarPhoto = '$mediaName' 
+$sql = "Update Members Set Make = '$make', Model = '$model', Year = '$year' $carPhotoUpdate 
 WHERE ID = $id ";
 
 if (mysqli_query($conn, $sql)) {
