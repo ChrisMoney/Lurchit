@@ -18,7 +18,7 @@ if (mysqli_num_rows($result) > 0) {
     $notifications = mysqli_fetch_assoc($result);
     
     $myArray[] = $notifications;
-    echo json_encode($myArray);
+    echo json_encode($myArray, JSON_NUMERIC_CHECK);
 }
 else {
     echo http_response_code(400);
