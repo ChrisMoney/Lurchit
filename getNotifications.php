@@ -4,7 +4,7 @@ header("Content-Type: application/json;charset=utf-8");
 require 'connect.php';
 require 'helpers.php';
 
-$sql = "Select n.Job_ID as JobID, n.Customer_ID as CustomerID, n.Job as Job, n.Message as Message, n.New as New,
+$sql = "Select n.ID as NotificationID, n.Job_ID as JobID, n.Customer_ID as CustomerID, n.Job as Job, n.Message as Message, n.New as New,
 c.Status
 From Notifications n, Carwash c
 WHERE c.Status = 'new'

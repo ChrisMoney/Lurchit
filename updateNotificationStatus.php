@@ -9,7 +9,7 @@ $notificationID = $_GET['NotificationID'];
 $sql = "Update Notifications Set New = 0 WHERE ID = $notificationID ";
 
 
-if ($result = mysqli_query($conn, $sql)) {
+if (mysqli_query($conn, $sql)) {
     echo 200;
 }
 else {

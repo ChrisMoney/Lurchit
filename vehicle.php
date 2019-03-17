@@ -3,7 +3,6 @@
 header("Content-Type: application/json;charset=utf-8");
 
 require 'connect.php';
-mysqli_set_charset($conn, "utf8mb4");
 require 'helpers.php';
 include_once 'email.php';
 
