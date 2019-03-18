@@ -181,4 +181,3 @@ function phone_number_format($number) {
     return $number;
     
 }
-    

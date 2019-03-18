@@ -15,7 +15,7 @@ if (mysqli_num_rows($result) > 0) {
     
     $address = $row['Address'];
     
-    echo json_encode($address);
+    echo $address;
 }
 else {
     echo json_encode(http_response_code(500));

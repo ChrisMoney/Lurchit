@@ -21,5 +21,5 @@ else {
     $row['Status'] = filter_var($row['Status'], FILTER_VALIDATE_BOOLEAN);
     $row['ID'] = 0; 
 }
-    echo json_encode($row);
+    echo json_encode($row, JSON_NUMERIC_CHECK);
 
