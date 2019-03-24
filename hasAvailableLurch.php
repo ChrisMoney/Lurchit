@@ -9,7 +9,7 @@ $lurchCount = mysqli_num_rows($lurchResult);
 
 
 
-$sqlJobs = "SELECT Count(ID) FROM Carwash WHERE Status = 'accepted' Or 'arrived' ";
+$sqlJobs = "SELECT Count(ID) FROM Carwash WHERE Status = != 'complete' ";
 $jobResult = mysqli_query($conn, $sqlJobs);
 $jobCount = mysqli_num_rows($jobResult);
 
