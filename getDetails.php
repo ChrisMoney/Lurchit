@@ -6,16 +6,17 @@ require 'helpers.php';
 $jobID = $_GET['JobID'];
 $id = $_GET['ID'];
 
-$memberSql = "SELECT Latitude, Longitude FROM Members WHERE ID = $id ";
+$memberSql = "SELECT Latitude, Longitude, Phone FROM Members WHERE ID = $id ";
 $memberResult = mysqli_query($conn, $memberSql);
 $memberRow = mysqli_fetch_assoc($memberResult);
 
 $lat = $memberRow['Latitude'];
 $long = $memberRow['Longitude'];
-    
+$phone = $memberRow['Phone'];
+
 $sql = "SELECT ID, Customer_ID as CustomerID, Lurch_ID as LurchID,
         Carwash as Carwash, Tires as Tires, Interior as Interior,
-        Wax, Amount, Total as Total, Status, Address,
+        Wax, Total as Total, Status, Address, Phone,
         ( 3959 * acos ( cos ( radians($lat) ) * cos( radians( Latitude ) ) *
 cos( radians( Longitude ) - radians($long) ) + sin ( radians($lat) ) *
 sin( radians( Latitude ) ) ) ) AS Distance
@@ -32,6 +33,7 @@ if (mysqli_num_rows($result) > 0) {
     $distance = $jobDetail['Distance'];
     $distance = round($distance);
     $jobDetail['Distance'] = $distance . " miles (estimated)";
+    $jobDetail['Phone'] = $phone;
     
     echo json_encode($jobDetail);
 }
