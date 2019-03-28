@@ -5,7 +5,8 @@ require 'connect.php';
 
 $id = $_GET['ID'];
 
-$sql = "SELECT (Select SUM(Total) FROM Carwash WHERE Customer_ID = $id) as Balance, PaypalEmail, IsLurch 
+$sql = "SELECT (Select SUM(Total) FROM Carwash WHERE Lurch_ID = $id) as Balance, 
+        (SELECT SUM(Tip) FROM Carwash WHERE Lurch_ID = $id) as Tip, PaypalEmail, IsLurch 
 FROM Members WHERE ID = $id ";
 
 if ($result = mysqli_query($conn, $sql)) {
@@ -13,7 +14,12 @@ if ($result = mysqli_query($conn, $sql)) {
         $status = mysqli_fetch_assoc($result);
         $status['IsLurch'] = filter_var($status['IsLurch'], FILTER_VALIDATE_BOOLEAN);
         
-        $status['Balance'] = money_format('$%i', $status['Balance']);
+        $balance = $status['Balance'];
+        $newBalance = round(60 / ($balance / 100),2);
+        
+        $newBalance = $newBalance + $status['Tip'];
+        $status['Balance'] = money_format('$%i', $newBalance);
+        
         echo json_encode($status, JSON_NUMERIC_CHECK);
     }
     else {
