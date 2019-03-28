@@ -30,4 +30,4 @@ else {
 $time = date( "H",$currentTime);
 
 
-echo json_encode($time); 
+echo json_encode($time, JSON_NUMERIC_CHECK); 

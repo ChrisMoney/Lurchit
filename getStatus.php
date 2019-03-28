@@ -5,15 +5,15 @@ require 'connect.php';
 
 $id = $_GET['ID'];
 
-$sql = "SELECT City, State, IsLurch, IsBackgroundCheckConfirmed FROM Members WHERE ID = $id ";
+$sql = "SELECT (Select SUM(Total) FROM Carwash WHERE Customer_ID = $id) as Balance, PaypalEmail, IsLurch 
+FROM Members WHERE ID = $id ";
 
 if ($result = mysqli_query($conn, $sql)) {
     if (mysqli_num_rows($result) > 0) {
         $status = mysqli_fetch_assoc($result);
         $status['IsLurch'] = filter_var($status['IsLurch'], FILTER_VALIDATE_BOOLEAN);
-
-        $status['FullLocation'] = $status['City'] + ', ' + $status['State'];
         
+        $status['Balance'] = money_format('$%i', $status['Balance']);
         echo json_encode($status, JSON_NUMERIC_CHECK);
     }
     else {
