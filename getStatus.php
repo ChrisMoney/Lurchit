@@ -5,8 +5,21 @@ require 'connect.php';
 
 $id = $_GET['ID'];
 
+$sql1 = "SELECT PayStatus FROM Carwash WHERE Lurch_ID = $id AND PayStatus = 'processing' LIMIT 1 ";
+$result1 = mysqli_query($conn, $sql1);
+$row = mysqli_fetch_assoc($result1);
+
+$payStatus = $row['PayStatus'];
+
+if (strlen($payStatus) && !is_null($payStatus)) {
+    $payStatus = 'true';
+}
+else {
+    $payStatus = 'false';
+}
+
 $sql = "SELECT (Select SUM(Total) FROM Carwash WHERE Lurch_ID = $id) as Balance, 
-        (SELECT SUM(Tip) FROM Carwash WHERE Lurch_ID = $id) as Tip, PaypalEmail, IsLurch 
+        (SELECT SUM(Tip) FROM Carwash WHERE Lurch_ID = $id) as Tip, PaypalEmail, IsPayProcessing, IsLurch 
 FROM Members WHERE ID = $id ";
 
 if ($result = mysqli_query($conn, $sql)) {
@@ -19,6 +32,8 @@ if ($result = mysqli_query($conn, $sql)) {
         
         $newBalance = $newBalance + $status['Tip'];
         $status['Balance'] = money_format('$%i', $newBalance);
+        
+        $status['IsPayProcessing'] = $payStatus;
         
         echo json_encode($status, JSON_NUMERIC_CHECK);
     }

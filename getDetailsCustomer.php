@@ -24,7 +24,9 @@ if (mysqli_num_rows($result) > 0) {
     $date = date('M/d/Y', strtotime($date));
     $jobDetail['WashDate'] = $date;
     
-    echo json_encode($jobDetail, JSON_NUMERIC_CHECK);
+    $jobDetail['Carwash'] = strval($jobDetail['Carwash']);
+    
+    echo json_encode($jobDetail);
 }
 else {
     echo http_response_code(400);

@@ -8,7 +8,8 @@ $id = $_GET['ID'];
 
 $sql = "Select ID as NotificationID, Job_ID as JobID, Customer_ID as CustomerID, Job, Message, New, NotificationDate
 FROM Notifications 
-WHERE Customer_ID = $id ";
+WHERE Customer_ID = $id 
+Order By ID Desc ";
 
 $result = mysqli_query($conn, $sql);
 $myArray = array();

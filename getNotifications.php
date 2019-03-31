@@ -8,7 +8,8 @@ $sql = "Select n.ID as NotificationID, n.Job_ID as JobID, n.Customer_ID as Custo
 c.Status
 From Notifications n, Carwash c
 WHERE c.Status = 'new'
-And n.Job_ID = c.ID ";
+And n.Job_ID = c.ID 
+Order By ID Desc ";
 
 $result = mysqli_query($conn, $sql);
 $myArray = array();

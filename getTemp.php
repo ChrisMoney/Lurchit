@@ -15,6 +15,9 @@ $rain = $weather['rain']['1h'];
 if ($rain == null) {
     $rain = "";
 }
+else {
+    $rain = round($rain);
+}
 
 $temp = round($celcius);
 
