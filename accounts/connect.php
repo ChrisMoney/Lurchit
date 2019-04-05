@@ -7,20 +7,20 @@
  */
 
 // use this to call connection in non function calls
-    $localhost = 'localhost';
-    $username = 'flickpitch';
-    $pass = 'Manager@10';
-    $db = 'Statuz';
+$localhost = 'localhost';
+$username = 'flickpitch';
+$pass = 'Manager@10';
+$db = 'Lurchit';
 
-    $conn = mysqli_connect ($localhost, $username, $pass, $db);
+$conn = mysqli_connect ($localhost, $username, $pass, $db);
 
 // use this function to pass to other functions
 function connection () {
     $localhost = 'localhost';
     $username = 'flickpitch';
     $pass = 'Manager@10';
-    $db = 'Statuz';
-
+    $db = 'Lurchit';
+    
     static $conn;
     if ($conn===NULL){
         $conn = mysqli_connect ($localhost, $username, $pass, $db);

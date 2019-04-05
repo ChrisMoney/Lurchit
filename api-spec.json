@@ -1109,6 +1109,21 @@
                         "name": "Phone",
                         "in": "query",
                         "type": "string"
+                    },
+                    {
+                        "name": "City",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "State",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Zip",
+                        "in": "query",
+                        "type": "string"
                     }
                 ],
                 "responses": {
@@ -1217,6 +1232,15 @@
                                     "type": "string"
                                 },
                                 "Phone": {
+                                    "type": "string"
+                                },
+                                "MailCity": {
+                                    "type": "string"
+                                },
+                                "MailState": {
+                                    "type": "string"
+                                },
+                                "MailZip": {
                                     "type": "string"
                                 }
                             }

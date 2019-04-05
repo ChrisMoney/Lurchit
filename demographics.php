@@ -10,7 +10,10 @@ $year = $_GET['Year'];
 $ssn = $_GET['SSN'];
 $address = $_GET['Address'];
 $apt = $_GET['Apt'];
+$city = $_GET['City'];
+$state = $_GET['State'];
 $phone = $_GET['Phone'];
+$zip = $_GET['Zip'];
 $id = $_GET['ID'];
 
 if (strlen($address) == 0) {
@@ -42,7 +45,7 @@ if (strlen($birthDate) < 8) {
 
 
 $sql = "Update Members Set Birthdate = '$birthDate', Address = '$address', Apt = '$apt',
-SSN = '$foo', Phone = '$phone'
+SSN = '$foo', Phone = '$phone', MailCity = '$city', MailState = '$state', MailZip = '$zip'
 WHERE ID = $id ";
 
 if (mysqli_query($conn, $sql)) {

@@ -1,14 +1,10 @@
 <?php ?>
 
 <!DOCTYPE HTML>
-<!--
-	Intensify by TEMPLATED
-	templated.co @templatedco
-	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
--->
+
 <html>
 	<head>
-		<title>Statuz</title>
+		<title>Lurchit</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="css/main.css" />
@@ -20,7 +16,7 @@
 				<nav class="left">
 					<!-- <a href="#menu"><span>Menu</span></a>-->
 				</nav>
-				<a href="index.php" class="logo">Statuz</a>
+				<a href="index.php" class="logo">Lurchit</a>
 				<!--  <nav class="right">
 					<a href="#" class="button alt">Log in</a>
 				</nav>-->
@@ -127,12 +123,12 @@
 				<div class="inner">
 					<h2>Get In Touch</h2>
 					<ul class="actions">
-						<li><span class=""></span> <a href="mailto:info@statuz.net">info@statuz.net</a></li>
+						<li><span class=""></span> <a href="mailto:info@lurchit.com">info@lurchit.com</a></li>
 						<li><span class=""></span> 911 Washington Avenue, Suite 501, St. Louis, MO 63101</li>
 					</ul>
 				</div>
 				<div class="copyright">
-					&copy; 2018
+					&copy; 2019
 				</div>
 			</footer>
 

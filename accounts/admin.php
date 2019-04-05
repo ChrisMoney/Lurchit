@@ -1,5 +1,5 @@
 <?php 
-$admin = $_GET['admin'];
+$lurchID = $_GET['ID'];
 ?>
 
 <!DOCTYPE HTML>
@@ -10,7 +10,7 @@ $admin = $_GET['admin'];
 -->
 <html>
 	<head>
-		<title>Statuz - View Counter</title>
+		<title>Lurchit - Admin</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="css/main.css" />
@@ -19,109 +19,104 @@ $admin = $_GET['admin'];
 
 		<!-- Header -->
 			<header id="header">
-				<a href="index.php" class="logo">Statuz</a>
+				<a href="index.php" class="logo">Lurchit</a>
 			</header>
 
 		<!-- Menu -->
 			<nav id="menu">
 				<ul class="links">
-					<li><a href="index.php">View Counter</a></li>
+					<li><a href="index.php">Member Manager</a></li>
 				</ul>
 			</nav>
 			
 
 					<!-- Content -->
 					<div style="padding-left:10px">
-						<h2 id="content">Likes</h2>
+						<h2 id="content">Member Data</h2>
 						
 						 <form method = "post" action = "" >
                      
+                    <h3>First Name: </h3>
+
+                    <input style="max-width:50%" type = "text" name = "fName" id = "fName" />
+
+                    <br/>
+                    
+                    <h3>Last Name: </h3>
+
+                    <input style="max-width:50%" type = "text" name = "lName" id = "lName" />
+
+                    <br/>
+                    
                     <h3>Email: </h3>
 
-                    <input style="max-width:90%" type = "text" name = "email" id = "email" />
+                    <input style="max-width:50%" type = "text" name = "email" id = "email" />
 
                     <br/>
                     
-                     <h3>Password: </h3>
-                    <input style="max-width:90%" type = "password" name = "password" id = "password" />
-                    
+                    <!-- Address -->
+                    <h3>Address: </h3>
+
+                    <input style="max-width:50%" type = "text" name = "address" id = "address" />
+
                     <br/>
                     
-                    <input style="background:#ff0000;padding-left:10px;padding-right:10px;" type = "submit" name = "submit" id = "submit" value = "Get Likes" />
+                    <!-- Apt -->
+                    <h3>Apt: </h3>
+
+                    <input style="max-width:25%" type = "text" name = "apt" id = "apt" />
+
+                    <br/>
                     
-                    <br/><br/>                  
+                    <!-- City -->
+                    <h3>City: </h3>
+
+                    <input style="max-width:25%" type = "text" name = "city" id = "city" />
+
+                    <br/>
                     
-                     <input style="background:#ff0000;padding-left:10px;padding-right:10px;" type = "submit" name = "request" id = "request" value = "Request Redemption" />
-                     
-                    <?php 
-                    if ((isset($admin) && !empty($admin)) && ($admin == "1")) { ?>
-                     <input style="background:#ff0000;padding-left:10px;padding-right:10px;" type = "submit" name = "redeem" id = "redeem" value = "Redeem" />
-                    <?php } ?>
+                    <h3>State: </h3>
+
+                    <input style="max-width:25%" type = "text" name = "state" id = "state" />
+
+                    <br/>
+                    
+                    <h3>Zip: </h3>
+
+                    <input style="max-width:25%" type = "text" name = "zip" id = "zip" />
+
+					<br/>
+					<h3>Birthdate</h3>
+					
+					<input style="max-width:50%" type= "text" name = "birthdate" id = "birthdate" />
+					
+                    <br/>
+                    
+                    <h3>Lurch Status</h3>
+                   	<select class="form-control" style = "width:25%" name="lurchStatus" id="lurchStatus">
+                        <option value="one">Active</option>
+                        <option value="two">Inactive</option>
+                	</select>
+                    
+                     <br/>
+                    
+                    <input style="background:#ff0000;padding-left:10px;padding-right:10px;" type = "submit" name = "save" id = "save" value = "Save Data" />
+                   
+                   	 <hr/>
+                   	 <br/>
+                   	 
+                    <h3>Total: </h3>
+                    <input style="max-width:90%" type = "text" name = "total" id = "total" readonly />
+                    
+                   
+               		<br/><br/> 
+                    
+                     <input style="background:#ff0000;padding-left:10px;padding-right:10px;" type = "submit" name = "process" id = "process" value = "Process Payment" />
                     
               </form>
               
               </div>
 
- <?php 
- 
- if (isset($_POST['submit']) && $_POST['submit'] == "Get Likes") {
-     require 'connect.php';
-     
-     $email = $_POST['email'];
-     $email = trim($email);
-     
-     $password = $_POST['password'];
-     $password = trim($password);
-     
-     $password = md5($password);
-     
-     $sql = "SELECT ID FROM Members WHERE Email = '$email' and Password = '$password'";
-     $result1 = mysqli_query($conn, $sql);
-     
-     
-     if (mysqli_num_rows($result1) > 0) {
-         $query = "SELECT count(*) AS total FROM Likes WHERE (Owner_ID = (SELECT ID FROM Members WHERE Email = '$email')) And (Member_ID != Owner_ID) And (Redeemed = 0)";
-         $result = mysqli_query($conn, $query);
-         $values = mysqli_fetch_assoc($result);
-         $num_rows = $values['total'];
-         echo '<h2 style="margin-left:10px;">Total Likes: <b>'. $num_rows.'</b></h2>';
-     }
-     else {
-        echo '<h2 style="margin-left:10px;">Could not validate your credentials';
-    }
- }
- ?>
-
- <?php 
- 
- if (isset($_POST['redeem']) && $_POST['redeem'] == "Redeem") {
-     require 'connect.php';
-     
-     $email = $_POST['email'];
-     $email = trim($email);
-     
-     $password = $_POST['password'];
-     $password = trim($password);
-     $password = md5($password);
-     
-     $sql = "SELECT ID FROM Members WHERE Email = '$email' and Password = '$password'";
-     $result1 = mysqli_query($conn, $sql);
-     
-     
-     if (mysqli_num_rows($result1) > 0) {
-         
-     $email = $_POST['email'];
-     $query = "Update Likes Set Redeemed = 1 WHERE Owner_ID = (SELECT ID FROM Members WHERE Username = '$email') WHERE Redeemed = 0";
-     $result = mysqli_query($conn, $query);
-     $values = mysqli_fetch_assoc($result);
-     $num_rows = $values['total'];
-     echo '<h2 style="margin-left:10px">Redemption Successful! </h2>';
-    }
-    else {
-     echo '<h2 style="margin-left:10px;">Unable to redeem likes </h2>';
-    }
- }
- ?>
  
   <?php 
  

@@ -5,7 +5,7 @@ require 'helpers.php';
 
 $id = $_GET['ID'];
 
-$sql = "SELECT Total, Tip, PayStatus, WashDate 
+$sql = "SELECT Total, Tip, PayStatus, Rating, WashDate 
 FROM Carwash 
 WHERE Lurch_ID = $id 
 Order By ID DESC ";
@@ -33,7 +33,13 @@ if (mysqli_num_rows($result) > 0) {
     
     $washDate = $workHistory['WashDate'];
     
-    $rtnString = "Job: Carwash Total: $total Tip: $tip WashDate: $washDate Pay Status: $payStatus";
+    $rating = $workHistory['Rating'];
+    
+    if ($rating == 0 || $rating == "0") {
+        $rating = 'N/A';
+    }
+    
+    $rtnString = "Job: Carwash Total: $total Tip: $tip WashDate: $washDate Pay Status: $payStatus Rating: $rating";
     
     $workHistory['Total'] = $rtnString;
     $myArray[] = $workHistory;

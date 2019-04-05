@@ -32,7 +32,7 @@
 -->
 <html>
 	<head>
-		<title>Statuz - Create Password</title>
+		<title>Lurchit - Create Password</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="css/main.css" />
@@ -41,7 +41,7 @@
 
 		<!-- Header -->
 			<header id="header">
-				<a href="index.php" class="logo">Statuz</a>
+				<a href="index.php" class="logo">Lurchit</a>
 			</header>
 
 		<!-- Menu -->
