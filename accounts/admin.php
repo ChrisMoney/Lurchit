@@ -1,13 +1,40 @@
 <?php 
+require 'connect.php';
+include_once 'helpers.php';
+
 $lurchID = $_GET['ID'];
+
+$sql = "SELECT * FROM Members m WHERE m.ID = $lurchID ";
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($result);
+
+$firstName = $row['FirstName'];
+$lastName = $row['LastName'];
+$email = $row['Email'];
+$address = $row['Address'];
+$apt = $row['Apt'];
+$city = $row['MailCity'];
+$state = $row['MailState'];
+$zip = $row['MailZip'];
+$birthdate = $row['Birthdate'];
+$memberStatus = $row['IsActive'];
+$lurchStatus = $row['IsLurch'];
+
+$sql2 = "SELECT (Select SUM(Total) FROM Carwash WHERE Lurch_ID = $lurchID) as Balance,
+        (SELECT SUM(Tip) FROM Carwash WHERE Lurch_ID = $lurchID) as Tip, PaypalEmail, IsPayProcessing, IsLurch
+FROM Members WHERE ID = $lurchID And IsPayProcessing != 'paid' ";
+$result2 = mysqli_query($conn, $sql2);
+$row2 = mysqli_fetch_assoc($result2);
+$total = $row2['Balance'];
+
+$balance = round(60 / ($total / 100),2);
+
+$tip = $row2['Tip'];
+$paypalEmail = $row2['PaypalEmail'];
 ?>
 
 <!DOCTYPE HTML>
-<!--
-	Intensify by TEMPLATED
-	templated.co @templatedco
-	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
--->
+
 <html>
 	<head>
 		<title>Lurchit - Admin</title>
@@ -38,64 +65,72 @@ $lurchID = $_GET['ID'];
                      
                     <h3>First Name: </h3>
 
-                    <input style="max-width:50%" type = "text" name = "fName" id = "fName" />
+                    <input style="max-width:50%" type = "text" name = "fName" id = "fName" value = "<?php echo $firstName ?>" />
 
                     <br/>
                     
                     <h3>Last Name: </h3>
 
-                    <input style="max-width:50%" type = "text" name = "lName" id = "lName" />
+                    <input style="max-width:50%" type = "text" name = "lName" id = "lName"  value = "<?php echo $lastName ?>" />
 
                     <br/>
                     
                     <h3>Email: </h3>
 
-                    <input style="max-width:50%" type = "text" name = "email" id = "email" />
+                    <input style="max-width:50%" type = "text" name = "email" id = "email" value = "<?php echo $email ?>" />
 
                     <br/>
                     
                     <!-- Address -->
                     <h3>Address: </h3>
 
-                    <input style="max-width:50%" type = "text" name = "address" id = "address" />
+                    <input style="max-width:50%" type = "text" name = "address" id = "address" value = "<?php echo $address ?>" />
 
                     <br/>
                     
                     <!-- Apt -->
                     <h3>Apt: </h3>
 
-                    <input style="max-width:25%" type = "text" name = "apt" id = "apt" />
+                    <input style="max-width:25%" type = "text" name = "apt" id = "apt" value = "<?php echo $apt ?>" />
 
                     <br/>
                     
                     <!-- City -->
                     <h3>City: </h3>
 
-                    <input style="max-width:25%" type = "text" name = "city" id = "city" />
+                    <input style="max-width:25%" type = "text" name = "city" id = "city" value = "<?php echo $city ?>" />
 
                     <br/>
                     
                     <h3>State: </h3>
 
-                    <input style="max-width:25%" type = "text" name = "state" id = "state" />
+                    <input style="max-width:25%" type = "text" name = "state" id = "state" value = "<?php echo $state ?>" />
 
                     <br/>
                     
                     <h3>Zip: </h3>
 
-                    <input style="max-width:25%" type = "text" name = "zip" id = "zip" />
+                    <input style="max-width:25%" type = "text" name = "zip" id = "zip" value = "<?php echo $zip ?>" />
 
 					<br/>
 					<h3>Birthdate</h3>
 					
-					<input style="max-width:50%" type= "text" name = "birthdate" id = "birthdate" />
+					<input style="max-width:50%" type= "text" name = "birthdate" id = "birthdate" value = "<?php echo $birthdate ?>" />
 					
                     <br/>
                     
+                     <h3>Member Status</h3>
+                   	<select class="form-control" style = "width:25%" name="lurchStatus" id="lurchStatus">
+                   		 <option value="MAP" <?php if($memberStatus=='1') echo selected;?>>Active</option>
+       					 <option value="CP" <?php if($memberStatus=='0') echo selected;?>>Inactive</option>
+                	</select>
+                	
+                	<br/>
+                	
                     <h3>Lurch Status</h3>
                    	<select class="form-control" style = "width:25%" name="lurchStatus" id="lurchStatus">
-                        <option value="one">Active</option>
-                        <option value="two">Inactive</option>
+                        <option value="MAP" <?php if($lurchStatus=='1') echo selected;?>>Active</option>
+       					 <option value="CP" <?php if($lurchStatus=='0') echo selected;?>>Inactive</option>
                 	</select>
                     
                      <br/>
@@ -106,11 +141,24 @@ $lurchID = $_GET['ID'];
                    	 <br/>
                    	 
                     <h3>Total: </h3>
-                    <input style="max-width:90%" type = "text" name = "total" id = "total" readonly />
-                    
+                    <input style="max-width:25%" type = "text" name = "total" id = "total" readonly = "readonly" value = "<?php echo $balance ?>" />
+                   
+               		<br/><br/> 
+               		
+               		<h3>Tips: </h3>
+                    <input style="max-width:25%" type = "text" name = "total" id = "tips" readonly = "readonly" value = "<?php echo $tip ?>" />
                    
                		<br/><br/> 
                     
+                   <?php  if (filter_var($paypalEmail, FILTER_VALIDATE_EMAIL)) {
+  echo "Lurch has requested to receive payment via Paypal: <b>$paypalEmail</b>";
+} else {
+  echo "Lurch has elected to have their check mail to the address above.";
+}
+?>
+
+<br/><br/>
+
                      <input style="background:#ff0000;padding-left:10px;padding-right:10px;" type = "submit" name = "process" id = "process" value = "Process Payment" />
                     
               </form>
