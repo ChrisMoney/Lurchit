@@ -3,7 +3,7 @@ header("Content-Type: application/json;charset=utf-8");
 require 'connect.php';
 require 'helpers.php';
 
-$sqlLurch = "SELECT ID FROM Members WHERE IsLurchActive = 1 And IsDeactivated = 0 ";
+$sqlLurch = "SELECT ID FROM Members WHERE IsLurchActive = 1 ";
 $lurchResult = mysqli_query($conn, $sqlLurch);
 $lurchCount = mysqli_num_rows($lurchResult);
 
