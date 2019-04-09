@@ -11,6 +11,7 @@ $row = mysqli_fetch_assoc($result);
 $firstName = $row['FirstName'];
 $lastName = $row['LastName'];
 $email = $row['Email'];
+$phone = $row['Phone'];
 $address = $row['Address'];
 $apt = $row['Apt'];
 $city = $row['MailCity'];
@@ -65,13 +66,13 @@ $paypalEmail = $row2['PaypalEmail'];
                      
                     <h3>First Name: </h3>
 
-                    <input style="max-width:50%" type = "text" name = "fName" id = "fName" value = "<?php echo $firstName ?>" />
+                    <input style="max-width:50%" type = "text" name = "firstName" id = "firstName" value = "<?php echo $firstName ?>" />
 
                     <br/>
                     
                     <h3>Last Name: </h3>
 
-                    <input style="max-width:50%" type = "text" name = "lName" id = "lName"  value = "<?php echo $lastName ?>" />
+                    <input style="max-width:50%" type = "text" name = "lastName" id = "lastName"  value = "<?php echo $lastName ?>" />
 
                     <br/>
                     
@@ -81,10 +82,18 @@ $paypalEmail = $row2['PaypalEmail'];
 
                     <br/>
                     
+                    <br/>
+                    
+                    <h3>Phone: </h3>
+
+                    <input style="max-width:50%" type = "text" name = "phone" id = "phone" value = "<?php echo $phone ?>" />
+
+                    <br/>
+                    
                     <!-- Address -->
                     <h3>Address: </h3>
 
-                    <input style="max-width:50%" type = "text" name = "address" id = "address" value = "<?php echo $address ?>" />
+                    <input style="max-width:100%" type = "text" name = "address" id = "address" value = "<?php echo $address ?>" />
 
                     <br/>
                     
@@ -98,7 +107,7 @@ $paypalEmail = $row2['PaypalEmail'];
                     <!-- City -->
                     <h3>City: </h3>
 
-                    <input style="max-width:25%" type = "text" name = "city" id = "city" value = "<?php echo $city ?>" />
+                    <input style="max-width:100%" type = "text" name = "city" id = "city" value = "<?php echo $city ?>" />
 
                     <br/>
                     
@@ -120,17 +129,17 @@ $paypalEmail = $row2['PaypalEmail'];
                     <br/>
                     
                      <h3>Member Status</h3>
-                   	<select class="form-control" style = "width:25%" name="lurchStatus" id="lurchStatus">
-                   		 <option value="MAP" <?php if($memberStatus=='1') echo selected;?>>Active</option>
-       					 <option value="CP" <?php if($memberStatus=='0') echo selected;?>>Inactive</option>
+                   	<select class="form-control" style = "width:25%" name="memberStatus" id="memberStatus">
+                   		 <option value="1" <?php if($memberStatus=='1') echo selected;?>>Active</option>
+       					 <option value="0" <?php if($memberStatus=='0') echo selected;?>>Inactive</option>
                 	</select>
                 	
                 	<br/>
                 	
                     <h3>Lurch Status</h3>
                    	<select class="form-control" style = "width:25%" name="lurchStatus" id="lurchStatus">
-                        <option value="MAP" <?php if($lurchStatus=='1') echo selected;?>>Active</option>
-       					 <option value="CP" <?php if($lurchStatus=='0') echo selected;?>>Inactive</option>
+                        <option value="1" <?php if($lurchStatus=='1') echo selected;?>>Active</option>
+       					 <option value="0" <?php if($lurchStatus=='0') echo selected;?>>Inactive</option>
                 	</select>
                     
                      <br/>
@@ -151,8 +160,10 @@ $paypalEmail = $row2['PaypalEmail'];
                		<br/><br/> 
                     
                    <?php  if (filter_var($paypalEmail, FILTER_VALIDATE_EMAIL)) {
+                       $hasPaypal = 'true';
   echo "Lurch has requested to receive payment via Paypal: <b>$paypalEmail</b>";
 } else {
+    $hasPaypal = 'false';
   echo "Lurch has elected to have their check mail to the address above.";
 }
 ?>
@@ -168,61 +179,51 @@ $paypalEmail = $row2['PaypalEmail'];
  
   <?php 
  
- if (isset($_POST['request']) && $_POST['request'] == "Request Redemption") {
-     
-     require 'connect.php';
+ if (isset($_POST['save']) && $_POST['save'] == "Save Data") {
+  
+       
+     $firstName = $_POST['firstName'];
+     $lastName = $_POST['lastName'];
      
      $email = $_POST['email'];
      $email = trim($email);
      
-     $password = $_POST['password'];
-     $password = trim($password);
+     $address = $_POST['address'];
+     $apt = $_POST['apt'];
+     $city = $_POST['city'];
+     $state = $_POST['state'];
+     $zip = $_POST['zip'];
+     $newdate = strtotime($_POST['birthdate']);
+     $birthdate = date('Y-m-d', $newdate);
+     $memberStatus = $_POST['memberStatus'];
+     $lurchStatus = $_POST['lurchStatus'];
+   
      
-     $passwordText = $_POST['password'];
+     $sql = "Update Members Set 
+            FirstName = '$firstName',
+            LastName = '$lastName',
+            Email = '$email', 
+            Address = '$address',
+            Apt = '$apt',
+            MailCity = '$city',
+            MailState = '$state',
+            MailZip = '$zip',
+            Birthdate = '$birthdate',
+            IsActive = '$memberStatus',
+            IsLurchActive = '$lurchStatus' 
+            WHERE ID = $lurchID ";
      
-     $password = md5($password);
      
-     $sql = "SELECT ID FROM Members WHERE Email = '$email' and Password = '$password'";
-     $result1 = mysqli_query($conn, $sql);
-     
-     
-     if (mysqli_num_rows($result1) > 0) {
-         
-     $email = $_POST['email'];
-     $query = "SELECT Username FROM Members WHERE Email = '$email' and Password = '$password'";
-     $result = mysqli_query($conn, $query);
-     $values = mysqli_fetch_assoc($result);
-     $username = $values['Username'];
-     
-     // send email
-     $subject = "Redemption Request by $username <br/><br/> <b>Email:</b> $email  <br/><br/> <b>Password:</b> $passwordText <br/><br/> <a href='http://accounts.statuz.net/view-counter.php' target='_blank'>Redemption Link </a> ";
-     $toEmail = 'info@statuz.net';
-     
-     $message = "<html><body>";
-     $message .= "<table style = 'background:white;height:400px;width:600px;border-radius:10px;border:2px solid black;'><tr style = 'color:background:white;border-radius:10px;'><td>";
-     $message .= "<tr><td><img src = 'http://api.statuz.net/logo.png' height = '200' width = '200' /></td></tr>";
-     $message .= "<tr><td style = 'background:silver;padding:20px;border:2px solid black;'>$subject<br/><br/></td></tr>";
-     $message .= "<tr><td style = 'background-color:red;padding-left:20px;padding-right:10px;color:white'>If you received this email in error contact us at <mailto:info@statuz.net>info@statuz.net</a>";
-     $message .= "<br/>Statuz, 911 Washington Ave, St.Louis,MO 63101 USA </td></tr>";
-     $message .= "</table></body></html>";
-     
-     $header = "From: $username <$email> \r\n";
-     $header .= "Content-type: text/html";
-     ini_set('sendmail_from', "$email");
-     
-     if (mail($toEmail, 'Redemption Request', $message, $header)) {
-         // mail sent
-         echo '<h2 style="margin-left:10px">Redemption Request Successful! </h2>';
+     if (mysqli_query($conn, $sql)) {
+         echo "<script>alert('Payment Records Updated Successfully'); location = '/admin.php?ID=$lurchID' </script>";
      }
      else {
-         // mail sending failed
-         echo '<h2 style="margin-left:10px">Email failed! </h2>';
-        } 
-    }
-    else {
-     echo '<h2 style="margin-left:10px;">Request Failed! Please provide your email and password';
-    }
+         echo "<script>alert('Payment Records Updated Failed!'); location = '/admin.php?ID=$lurchID' </script>";
+     }
  }
+     
+    
+    
  ?>
                   
 		<!-- Scripts -->
