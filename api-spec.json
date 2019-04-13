@@ -2699,6 +2699,13 @@
             "get": {
                 "operationId": "GET_getNotifications-php",
                 "summary": "GetNotifications",
+                "parameters": [
+                    {
+                        "name": "LurchID",
+                        "in": "query",
+                        "type": "integer"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "",
