@@ -21,16 +21,26 @@ $birthdate = $row['Birthdate'];
 $memberStatus = $row['IsActive'];
 $lurchStatus = $row['IsLurch'];
 
+
 $sql2 = "SELECT (Select SUM(Total) FROM Carwash WHERE Lurch_ID = $lurchID) as Balance,
-        (SELECT SUM(Tip) FROM Carwash WHERE Lurch_ID = $lurchID) as Tip, PaypalEmail, IsPayProcessing, IsLurch
-FROM Members WHERE ID = $lurchID And IsPayProcessing != 'paid' ";
+        (SELECT SUM(Tip) FROM Carwash WHERE Lurch_ID = $lurchID) as Tip, PaypalEmail, IsPayProcessing, IsLurch,
+(SELECT ID FROM Carwash WHERE PayStatus = 'unpaid' AND Lurch_ID = $lurchID LIMIT 1) As HasPaymentProcessing
+FROM Members WHERE ID = $lurchID ";
 $result2 = mysqli_query($conn, $sql2);
 $row2 = mysqli_fetch_assoc($result2);
 $total = $row2['Balance'];
 
-$balance = round(60 / ($total / 100),2);
+$hasPaymentProcessing = $row2['HasPaymentProcessing'];
 
-$tip = $row2['Tip'];
+if (strlen($hasPaymentProcessing) > 1) {
+    $balance = round(60 / ($total / 100),2);
+    $tip = $row2['Tip'];
+}
+else {
+    $balance = "$0";
+    $tip = "$0";
+}
+
 $paypalEmail = $row2['PaypalEmail'];
 ?>
 
@@ -164,13 +174,13 @@ $paypalEmail = $row2['PaypalEmail'];
   echo "Lurch has requested to receive payment via Paypal: <b>$paypalEmail</b>";
 } else {
     $hasPaypal = 'false';
-  echo "Lurch has elected to have their check mail to the address above.";
+  echo "Lurch has elected to have their check mailed to the address above.";
 }
 ?>
 
 <br/><br/>
 
-                     <input style="background:#ff0000;padding-left:10px;padding-right:10px;" type = "submit" name = "process" id = "process" value = "Process Payment" />
+                     <input style="background:#ff0000;padding-left:10px;padding-right:10px;" type = "submit" name = "process" id = "process" value = "Update Payment Records" />
                     
               </form>
               
@@ -215,18 +225,29 @@ $paypalEmail = $row2['PaypalEmail'];
      
      
      if (mysqli_query($conn, $sql)) {
-         echo "<script>alert('Payment Records Updated Successfully'); location = '/admin.php?ID=$lurchID' </script>";
+         echo "<script>alert('Member data updated successfully'); location = '/admin.php?ID=$lurchID' </script>";
      }
      else {
-         echo "<script>alert('Payment Records Updated Failed!'); location = '/admin.php?ID=$lurchID' </script>";
+         echo "<script>alert('Member update failed!'); location = '/admin.php?ID=$lurchID' </script>";
      }
  }
-     
-    
-    
+       
  ?>
                   
-		<!-- Scripts -->
+<?php 
+
+if (isset($_POST['process']) && $_POST['process'] == "Update Payment Records") {
+    
+    $sql = "Update Carwash Set PayStatus = 'paid' WHERE PayStatus = 'processing' AND Lurch_ID = $lurchID ";
+    
+    if (mysqli_query($conn, $sql)) {
+        echo "<script>alert('Payment records updated successfully'); location = '/admin.php?ID=$lurchID' </script>";
+    }
+    else {
+        echo "<script>alert('Payment records update failed!'); location = '/admin.php?ID=$lurchID' </script>";
+    }
+}
+?>
 
 	</body>
 </html>
