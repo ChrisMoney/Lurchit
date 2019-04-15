@@ -7,7 +7,7 @@ $sqlLurch = "SELECT ID FROM Members WHERE IsLurchActive = 1 ";
 $lurchResult = mysqli_query($conn, $sqlLurch);
 $lurchCount = mysqli_num_rows($lurchResult);
 
-$sqlJobs = "SELECT ID FROM Carwash WHERE Status <> 'complete' ";
+$sqlJobs = "SELECT ID FROM Carwash WHERE Status <> 'complete' Or Status <> 'refunded' ";
 $jobResult = mysqli_query($conn, $sqlJobs);
 $jobCount = mysqli_num_rows($jobResult);
 

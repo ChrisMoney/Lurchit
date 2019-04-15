@@ -23,11 +23,11 @@ $birthdate = $row['Birthdate'];
 $memberStatus = $row['IsActive'];
 $lurchStatus = $row['IsLurch'];
 $total = $row['Total'];
-$wasRefunded = $row['WasRefunded'];
+$refundStatus = $row['Status'];
 
 $disabled = "";
 
-if ($wasRefunded == '1') {
+if ($refundStatus == 'refunded') {
     $disabled = "disabled";
     $color = "#d3d3d3";
 }
@@ -53,34 +53,33 @@ else {
 			</header>
 
 		<!-- Menu -->
-			<nav id="menu">
-				<ul class="links">
-					<li><a href="index.php">Home</a></li>
-				</ul>
-			</nav>
-			
-
 					<!-- Content -->
 					<div style="padding-left:10px">
+					
+
+        			<a href="overdue.php">Overdue Jobs</a>
+
+        			<br/><br/>
+        			
 						<h2 id="content">Refund Data</h2>
 						
 						 <form method = "post" action = "" >
                      
                     <h3>First Name: </h3>
 
-                    <input style="max-width:50%" type = "text" name = "firstName" id = "firstName" value = "<?php echo $firstName ?>" />
+                    <input style="max-width:50%" type = "text" name = "firstName" id = "firstName" readonly = "readonly" value = "<?php echo $firstName ?>" />
 
                     <br/>
                     
                     <h3>Last Name: </h3>
 
-                    <input style="max-width:50%" type = "text" name = "lastName" id = "lastName"  value = "<?php echo $lastName ?>" />
+                    <input style="max-width:50%" type = "text" name = "lastName" id = "lastName" readonly = "readonly"  value = "<?php echo $lastName ?>" />
 
                     <br/>
                     
                     <h3>Email: </h3>
 
-                    <input style="max-width:50%" type = "text" name = "email" id = "email" value = "<?php echo $email ?>" />
+                    <input style="max-width:50%" type = "text" name = "email" id = "email" readonly = "readonly" value = "<?php echo $email ?>" />
 
                     <br/>
                     
@@ -103,7 +102,7 @@ else {
 
 if (isset($_POST['process']) && $_POST['process'] == "Update Refund Status") {
     
-    $sql = "Update Carwash Set WasRefunded = '1' WHERE ID = $jobID ";
+    $sql = "Update Carwash Set Status = 'refunded' WHERE ID = $jobID ";
     
     if (mysqli_query($conn, $sql)) {
         echo "<script>alert('Refund record updated successfully'); location = '/job-overdue.php?JobID=$jobID' </script>";

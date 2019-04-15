@@ -55,7 +55,7 @@
 							include_once 'helpers.php';
 							
 							$sql = "SELECT ID, WashDate FROM Carwash 
-                            WHERE WashDate < NOW() - INTERVAL 1 DAY ";
+                            WHERE WashDate < NOW() - INTERVAL 1 DAY AND Status = 'new' ";
 							$result = mysqli_query($conn, $sql);
 							
 							if (mysqli_num_rows($result) > 0) {
