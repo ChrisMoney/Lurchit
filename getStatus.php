@@ -5,7 +5,10 @@ require 'connect.php';
 
 $id = $_GET['ID'];
 
-$sql1 = "SELECT PayStatus FROM Carwash WHERE Lurch_ID = $id AND PayStatus = 'processing' LIMIT 1 ";
+$sql1 = "SELECT c.PayStatus as PayStatus, m.PaypalEmail 
+FROM Carwash c, Members m 
+WHERE c.Lurch_ID = $id m.ID = $id
+ LIMIT 1 ";
 $result1 = mysqli_query($conn, $sql1);
 $row = mysqli_fetch_assoc($result1);
 

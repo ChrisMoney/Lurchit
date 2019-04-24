@@ -54,6 +54,10 @@ $device = "iPhone";
 
 if (mysqli_query($conn, $sql)) {
     
+    // update new notifications
+    $sql2 = "Update Notifications Set New = 0 WHERE Job_ID = $jobID ";
+    mysqli_query($conn, $sql2);
+    
     // email consumer
     sendNewMessageMail($email, $name, $profilePic, $device, $subject, $title);
     

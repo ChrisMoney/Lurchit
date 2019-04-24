@@ -2683,7 +2683,7 @@
 	}
 
 		#header .logo {
-			color: #f6755e;
+			color: #000000;
 			font-family: "Pacifico", cursive;
 			font-size: 2.5em;
 			letter-spacing: 2px;
@@ -3136,7 +3136,7 @@
 
 	#footer {
 		padding: 6em 0 4em 0;
-		background: #25a2c3;
+		background: #000000 !important;
 		text-align: center;
 		color: #c8e7f0;
 	}
