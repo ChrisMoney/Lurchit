@@ -5,10 +5,7 @@ require 'connect.php';
 
 $id = $_GET['ID'];
 
-$sql1 = "SELECT c.PayStatus as PayStatus, m.PaypalEmail 
-FROM Carwash c, Members m 
-WHERE c.Lurch_ID = $id m.ID = $id
- LIMIT 1 ";
+$sql1 = "SELECT PayStatus FROM Carwash WHERE Lurch_ID = $id AND PayStatus = 'processing' LIMIT 1 ";
 $result1 = mysqli_query($conn, $sql1);
 $row = mysqli_fetch_assoc($result1);
 
@@ -22,7 +19,7 @@ else {
 }
 
 $sql = "SELECT (Select SUM(Total) FROM Carwash WHERE Lurch_ID = $id) as Balance, 
-        (SELECT SUM(Tip) FROM Carwash WHERE Lurch_ID = $id) as Tip, PaypalEmail, IsPayProcessing, IsLurch 
+        (SELECT SUM(Tip) FROM Carwash WHERE Lurch_ID = $id) as Tip, IsPayProcessing, IsLurch 
 FROM Members WHERE ID = $id And PayStatus == 'unpaid' ";
 
 if ($result = mysqli_query($conn, $sql)) {

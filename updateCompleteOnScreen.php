@@ -22,6 +22,6 @@ $status = $lurch['Status'];
             goto a;
         }  
         else {
-            echo ' has completed the job.';
+            echo ' complete';
         }
  

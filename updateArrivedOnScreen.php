@@ -22,5 +22,5 @@ $status = $lurch['Status'];
             goto a;
         }  
         else {
-            echo ' has arrived.';
+            echo ' arrived';
         }

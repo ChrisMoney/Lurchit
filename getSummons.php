@@ -6,8 +6,8 @@ require 'helpers.php';
 
 $id = $_GET['ID'];
 
-$sql = "Select ID as NotificationID, Job_ID as JobID, Customer_ID as CustomerID, Job, Message, New, NotificationDate
-FROM Notifications 
+$sql = "Select ID as JobID, Customer_ID as CustomerID, Carwash, WashDate, Status
+FROM Carwash 
 WHERE Customer_ID = $id 
 Order By ID Desc ";
 
@@ -16,12 +16,16 @@ $myArray = array();
 
 if (mysqli_num_rows($result) > 0) {
     
-    while ($notifications = mysqli_fetch_assoc($result)) {
-        $date = $notifications['NotificationDate'];
+    while ($summons = mysqli_fetch_assoc($result)) {
+        $date = $summons['WashDate'];
         $date = date('M/d/Y', strtotime($date));
-        $notifications['NotificationDate'] = $date;
+        $summons['WashDate'] = $date;
+        $status = $summons['Status'];
         
-        $myArray[] = $notifications;
+        $displayString = "Carwash:  $date  Status: $status ";
+        $summons['Status'] = $displayString;
+        
+        $myArray[] = $summons;
     }
     
     echo json_encode($myArray, JSON_NUMERIC_CHECK);
