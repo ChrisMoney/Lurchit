@@ -1082,13 +1082,13 @@
                                 "SSN": {
                                     "type": "string"
                                 },
-                                "Month": {
+                                "BirthMonth": {
                                     "type": "string"
                                 },
-                                "Day": {
+                                "BirthDay": {
                                     "type": "string"
                                 },
-                                "Year": {
+                                "BirthYear": {
                                     "type": "string"
                                 },
                                 "Phone": {
