@@ -18,9 +18,9 @@ else {
     $payStatus = 'false';
 }
 
-$sql = "SELECT (Select SUM(Total) FROM Carwash WHERE Lurch_ID = $id) as Balance, 
+$sql = "SELECT (Select SUM(Total) FROM Carwash WHERE Lurch_ID = $id And PayStatus = 'unpaid') as Balance, 
         (SELECT SUM(Tip) FROM Carwash WHERE Lurch_ID = $id) as Tip, IsPayProcessing, IsLurch 
-FROM Members WHERE ID = $id And PayStatus == 'unpaid' ";
+FROM Members WHERE ID = $id ";
 
 if ($result = mysqli_query($conn, $sql)) {
     if (mysqli_num_rows($result) > 0) {
@@ -28,14 +28,14 @@ if ($result = mysqli_query($conn, $sql)) {
         $status['IsLurch'] = filter_var($status['IsLurch'], FILTER_VALIDATE_BOOLEAN);
         
         $balance = $status['Balance'];
-        $newBalance = round(60 / ($balance / 100),2);
+        $newBalance = $balance * 0.6;
         
         $newBalance = $newBalance + $status['Tip'];
-        $status['Balance'] = money_format('$%i', $newBalance);
+        $status['Balance'] = $newBalance;
         
         $status['IsPayProcessing'] = $payStatus;
         
-        echo json_encode($status, JSON_NUMERIC_CHECK);
+        echo json_encode($status);
     }
     else {
         echo http_response_code(400);

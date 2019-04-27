@@ -1618,7 +1618,7 @@
                                     "type": "boolean"
                                 },
                                 "Balance": {
-                                    "type": "string"
+                                    "type": "number"
                                 },
                                 "IsPayProcessing": {
                                     "type": "string"
