@@ -20,25 +20,23 @@ if (strlen($email) <= 0 || strlen($password) <= 0) {
 
 $password = md5($password);
 
-    $sql = "SELECT IsActive FROM Members WHERE Email = '$email' and Password = '$password' AND IsActive = 1";
+    $sql = "SELECT ID, IsActive FROM Members WHERE Email = '$email' and Password = '$password' ";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
     $isActive = $row['IsActive'];
-    
-    if ($isActive == 0) {
-        echo 401;
-        exit;
+   
+    if (mysqli_num_rows($result) == 0) {
+        echo 400;  
     }
-    
-    if (mysqli_num_rows($result) > 0) {
-        $row = mysqli_fetch_assoc($result);
-        $ID = $row['ID'];
-        echo $ID;    
-    }
-    else {
-        echo json_encode(http_response_code(400));
-    }
+    elseif ($isActive == 0) {
+            echo 401;
+        }
+        else {
+            $ID = $row['ID'];
+            echo $ID;  
+        }
 
+    
 
 
 

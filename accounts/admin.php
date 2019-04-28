@@ -17,23 +17,33 @@ $apt = $row['Apt'];
 $city = $row['MailCity'];
 $state = $row['MailState'];
 $zip = $row['MailZip'];
-$birthdate = $row['Birthdate'];
+$birthDay = $row['BirthDay'];
+$birthMonth = $row['BirthMonth'];
+$birthYear = $row['BirthYear'];
 $memberStatus = $row['IsActive'];
 $lurchStatus = $row['IsLurch'];
+$paypalEmail = $row['PaypalEmail'];
 
+$hasPaymentProcessing = false;
 
-$sql2 = "SELECT (Select SUM(Total) FROM Carwash WHERE Lurch_ID = $lurchID) as Balance,
-        (SELECT SUM(Tip) FROM Carwash WHERE Lurch_ID = $lurchID) as Tip, PaypalEmail, IsPayProcessing, IsLurch,
-(SELECT ID FROM Carwash WHERE PayStatus = 'unpaid' AND Lurch_ID = $lurchID LIMIT 1) As HasPaymentProcessing
+$sql2 = "SELECT (Select SUM(Total) FROM Carwash WHERE Lurch_ID = $lurchID And PayStatus = 'unpaid') as Balance, 
+        (SELECT SUM(Tip) FROM Carwash WHERE Lurch_ID = $lurchID) as Tip, IsPayProcessing, IsLurch 
 FROM Members WHERE ID = $lurchID ";
 $result2 = mysqli_query($conn, $sql2);
 $row2 = mysqli_fetch_assoc($result2);
 $total = $row2['Balance'];
 
-$hasPaymentProcessing = $row2['HasPaymentProcessing'];
+if ($total > 0) {
+    $hasPaymentProcessing = true;
+}
 
-if (strlen($hasPaymentProcessing) > 1) {
-    $balance = round(60 / ($total / 100),2);
+
+if ($hasPaymentProcessing == true) {
+    $balance = $row2['Balance'];
+    $newBalance = $balance * 0.6;
+    
+    $newBalance = $newBalance;
+    $balance = $newBalance;
     $tip = $row2['Tip'];
 }
 else {
@@ -41,7 +51,7 @@ else {
     $tip = "$0";
 }
 
-$paypalEmail = $row2['PaypalEmail'];
+
 ?>
 
 <!DOCTYPE HTML>
@@ -52,6 +62,13 @@ $paypalEmail = $row2['PaypalEmail'];
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="css/main.css" />
+		
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+        <!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 	</head>
 	<body class="subpage">
 
@@ -96,14 +113,14 @@ $paypalEmail = $row2['PaypalEmail'];
                     
                     <h3>Phone: </h3>
 
-                    <input style="max-width:50%" type = "text" name = "phone" id = "phone" value = "<?php echo $phone ?>" />
+                    <input style="max-width:50%" maxLength = "12" type = "text" name = "phone" id = "phone" value = "<?php echo $phone ?>" />
 
                     <br/>
                     
                     <!-- Address -->
                     <h3>Address: </h3>
 
-                    <input style="max-width:100%" type = "text" name = "address" id = "address" value = "<?php echo $address ?>" />
+                    <input style="max-width:50%" type = "text" name = "address" id = "address" value = "<?php echo $address ?>" />
 
                     <br/>
                     
@@ -117,25 +134,26 @@ $paypalEmail = $row2['PaypalEmail'];
                     <!-- City -->
                     <h3>City: </h3>
 
-                    <input style="max-width:100%" type = "text" name = "city" id = "city" value = "<?php echo $city ?>" />
+                    <input style="max-width:50%" type = "text" name = "city" id = "city" value = "<?php echo $city ?>" />
 
                     <br/>
                     
                     <h3>State: </h3>
 
-                    <input style="max-width:25%" type = "text" name = "state" id = "state" value = "<?php echo $state ?>" />
+                    <input style="max-width:25%" maxLength ="2" type = "text" name = "state" id = "state" value = "<?php echo $state ?>" />
 
                     <br/>
                     
                     <h3>Zip: </h3>
 
-                    <input style="max-width:25%" type = "text" name = "zip" id = "zip" value = "<?php echo $zip ?>" />
+                    <input class="form-control" maxLength = "5" style="max-width: 25%" type = "number" name = "zip" id = "zip" value = "<?php echo $zip ?>" />
 
 					<br/>
 					<h3>Birthdate</h3>
 					
-					<input style="max-width:50%" type= "text" name = "birthdate" id = "birthdate" value = "<?php echo $birthdate ?>" />
-					
+					(Month)<input class="form-control" maxLength = "2" style="max-width: 25%" type= "number" name = "birthMonth" id = "birthMonth" value = "<?php echo $birthMonth ?>" /> <br/>
+					(Day)<input class="form-control" maxLength = "2" style="max-width: 25%" type= "number" name = "birthDay" id = "birthDay" 	value = "<?php echo $birthDay ?>" /> <br/>
+					(Year)<input class="form-control" maxLength = "4" style="max-width: 25%" type= "number" name = "birthYear" id = "birthYear" value = "<?php echo $birthYear ?>" /> 
                     <br/>
                     
                      <h3>Member Status</h3>
@@ -203,8 +221,9 @@ $paypalEmail = $row2['PaypalEmail'];
      $city = $_POST['city'];
      $state = $_POST['state'];
      $zip = $_POST['zip'];
-     $newdate = strtotime($_POST['birthdate']);
-     $birthdate = date('Y-m-d', $newdate);
+     $birthDay = $_POST['birthDay'];
+     $birthMonth = $_POST['birthMonth'];
+     $birthYear = $_POST['birthYear'];
      $memberStatus = $_POST['memberStatus'];
      $lurchStatus = $_POST['lurchStatus'];
    
@@ -218,7 +237,9 @@ $paypalEmail = $row2['PaypalEmail'];
             MailCity = '$city',
             MailState = '$state',
             MailZip = '$zip',
-            Birthdate = '$birthdate',
+            BirthDay = '$birthDay',
+            BirthMonth = '$birthMonth',
+            BirthYear = '$birthYear',
             IsActive = '$memberStatus',
             IsLurchActive = '$lurchStatus' 
             WHERE ID = $lurchID ";
