@@ -147,6 +147,12 @@
                             "type": "integer",
                             "description": "Invalid email or password."
                         }
+                    },
+                    "401": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer"
+                        }
                     }
                 }
             }
