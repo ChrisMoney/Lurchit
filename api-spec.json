@@ -1321,10 +1321,10 @@
                             "type": "object",
                             "properties": {
                                 "IsLurch": {
-                                    "type": "boolean"
+                                    "type": "string"
                                 },
                                 "IsLurchActive": {
-                                    "type": "boolean"
+                                    "type": "string"
                                 }
                             }
                         }
@@ -1814,13 +1814,23 @@
                         "name": "ID",
                         "in": "query",
                         "type": "integer"
+                    },
+                    {
+                        "name": "Lat",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Long",
+                        "in": "query",
+                        "type": "string"
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "boolean"
+                            "type": "string"
                         }
                     }
                 }

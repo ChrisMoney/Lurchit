@@ -13,8 +13,23 @@ $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
     $status = mysqli_fetch_assoc($result);
     
-    $status['IsLurch'] = filter_var($status['IsLurch'], FILTER_VALIDATE_BOOLEAN);
-    $status['IsLurchActive'] = filter_var($status['IsLurchActive'], FILTER_VALIDATE_BOOLEAN);
+    $isLurch = $status['IsLurch'];
+    $isLurchActive = $status['IsLurchActive'];
+    
+    if ($isLurch == 1) {
+        $status['IsLurch'] = 'true';
+    }
+    else {
+        $status['IsLurch'] = 'false';
+    }
+    
+    if ($isLurchActive == 1) {
+        $status['IsLurchActive'] = 'true';
+    }
+    else {
+        $status['IsLurchActive'] = 'false';
+    }
+    
     echo json_encode($status);
 }
 else {
