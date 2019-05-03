@@ -19,7 +19,7 @@ else {
 }
 
 $sql = "SELECT (Select SUM(Total) FROM Carwash WHERE Lurch_ID = $id And PayStatus = 'unpaid') as Balance, 
-        (SELECT SUM(Tip) FROM Carwash WHERE Lurch_ID = $id) as Tip, IsPayProcessing, IsLurch 
+        (SELECT SUM(Tip) FROM Carwash WHERE Lurch_ID = $id And PayStauts = 'unpaid') as Tip, IsPayProcessing, IsLurch 
 FROM Members WHERE ID = $id ";
 
 if ($result = mysqli_query($conn, $sql)) {

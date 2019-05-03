@@ -30,7 +30,7 @@ FROM Members
 WHERE IsLurch = 1
 And IsLurchActive = 1
 Group By ID
-HAVING distance <= 15
+HAVING distance <= 30
 
 ";
 

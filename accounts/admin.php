@@ -26,7 +26,7 @@ $paypalEmail = $row['PaypalEmail'];
 
 $hasPaymentProcessing = false;
 
-$sql2 = "SELECT (Select SUM(Total) FROM Carwash WHERE Lurch_ID = $lurchID And PayStatus = 'unpaid') as Balance, 
+$sql2 = "SELECT (Select SUM(Total) FROM Carwash WHERE Lurch_ID = $lurchID And PayStatus = 'processing') as Balance, 
         (SELECT SUM(Tip) FROM Carwash WHERE Lurch_ID = $lurchID) as Tip, IsPayProcessing, IsLurch 
 FROM Members WHERE ID = $lurchID ";
 $result2 = mysqli_query($conn, $sql2);

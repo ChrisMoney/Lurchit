@@ -19,6 +19,7 @@ else {
     $rain = round($rain);
 }
 
+//$rain = "1";
 $temp = round($celcius);
 
 $conditions = array("Temp"=>$temp, "Rain"=>$rain);
