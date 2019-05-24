@@ -1,8 +1,8 @@
 <?php
 header("Content-Type: application/json;charset=utf-8");
-require 'connect.php';
-require 'helpers.php';
-require 'email.php';
+require '../connect.php';
+require '../helpers.php';
+require '../email.php';
 
 $jobID = $_GET['JobID'];
 $newStatus = $_GET['Status'];

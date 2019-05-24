@@ -846,6 +846,41 @@
                 }
             }
         },
+        "/carwash/updateStatus.php": {
+            "get": {
+                "operationId": "GET_carwash-updateStatus-php",
+                "summary": "UpdateStatus",
+                "tags": [
+                    "carwash"
+                ],
+                "parameters": [
+                    {
+                        "name": "JobID",
+                        "in": "query",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "Status",
+                        "in": "query",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        },
         "/shared/uploadProfileMedia.php": {
             "post": {
                 "operationId": "POST_shared-uploadProfileMedia-php",
@@ -2058,41 +2093,6 @@
                         "schema": {
                             "type": "integer",
                             "description": "Failed to update message status."
-                        }
-                    }
-                }
-            }
-        },
-        "/shared/updateStatus.php": {
-            "get": {
-                "operationId": "GET_shared-updateStatus-php",
-                "summary": "UpdateStatus",
-                "tags": [
-                    "shared"
-                ],
-                "parameters": [
-                    {
-                        "name": "JobID",
-                        "in": "query",
-                        "type": "integer"
-                    },
-                    {
-                        "name": "Status",
-                        "in": "query",
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer"
-                        }
-                    },
-                    "500": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer"
                         }
                     }
                 }

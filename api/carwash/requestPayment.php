@@ -1,8 +1,8 @@
 <?php
 
 header("Content-Type: application/json;charset=utf-8");
-require 'connect.php';
-require 'email.php';
+require '../connect.php';
+require '../email.php';
 
 $id = $_GET['ID'];
 

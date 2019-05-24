@@ -1,8 +1,8 @@
 <?php
 
 header("Content-Type: application/json;charset=utf-8");
-require 'connect.php';
-include_once 'helpers.php';
+require '../connect.php';
+include_once '../helpers.php';
 
 date_default_timezone_set("UTC");
 $id = $_GET['ID'];

@@ -2,8 +2,8 @@
 
 header("Content-Type: application/json;charset=utf-8");
 
-require 'connect.php';
-require 'helpers.php';
+require '../connect.php';
+require '../helpers.php';
 include_once 'email.php';
 
 $data = json_decode(file_get_contents('php://input'), true);

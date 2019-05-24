@@ -1,7 +1,7 @@
 <?php
-require 'connect.php';
-require 'helpers.php';
-include_once 'email.php';
+require '../connect.php';
+require '../helpers.php';
+include_once '../email.php';
 
 $id = $_GET['ID'];
 $lat = $_GET['Lat'];
