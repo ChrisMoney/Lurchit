@@ -7,7 +7,7 @@
  */
 header('Content-Type: application/json');
 
-require 'connect.php';
+require '../connect.php';
 
 
 $email = trim($_GET['email']);

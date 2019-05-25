@@ -1,5 +1,5 @@
 <?php
-require 'connect.php';
+require '../connect.php';
 
 $service = $_GET['ServiceType'];
 $memberID = $_GET['Member_ID'];

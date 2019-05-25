@@ -2,8 +2,8 @@
 
 // Google Map API Key: AIzaSyCoRTbekTZbeNP03VMkpyx-N9Lcfe2XGP0
 header("Content-Type: application/json;charset=utf-8");
-require 'connect.php';
-require 'helpers.php';
+require '../connect.php';
+require '../helpers.php';
 
 /*
  * 38.672287

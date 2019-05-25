@@ -1,8 +1,8 @@
 <?php
 
 header("Content-Type: application/json;charset=utf-8");
-require 'connect.php';
-require 'helpers.php';
+require '../connect.php';
+require '../helpers.php';
 
 $address = $_GET['Address'];
 $id = $_GET['ID'];

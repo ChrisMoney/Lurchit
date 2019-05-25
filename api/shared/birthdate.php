@@ -7,8 +7,8 @@
  */
 
 header("Content-Type: application/json;charset=utf-8");
-require 'connect.php';
-require 'helpers.php';
+require '../connect.php';
+require '../helpers.php';
 
 $month = $_GET['Month'];
 $day = $_GET['Day'];

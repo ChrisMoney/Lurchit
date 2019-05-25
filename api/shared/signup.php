@@ -7,9 +7,9 @@
  */
 
 header("Content-Type: application/json;charset=utf-8");
-require 'connect.php';
-include_once 'helpers.php';
-include_once 'email.php';
+require '../connect.php';
+include_once '../helpers.php';
+include_once '../email.php';
 
 $firstName = ucfirst($_GET['FirstName']);
 $lastName = ucfirst($_GET['LastName']);
