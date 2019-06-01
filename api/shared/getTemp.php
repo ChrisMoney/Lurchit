@@ -13,7 +13,7 @@ $celcius = $kelvin - 240.00;
 $rain = $weather['rain']['1h'];
 
 if ($rain == null) {
-    $rain = "";
+    $rain = 0;
 }
 else {
     $rain = round($rain);

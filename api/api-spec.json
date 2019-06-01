@@ -514,53 +514,6 @@
                 }
             }
         },
-        "/carwash/getSummons.php": {
-            "get": {
-                "operationId": "GET_carwash-getSummons-php",
-                "summary": "GetSummons",
-                "tags": [
-                    "carwash"
-                ],
-                "parameters": [
-                    {
-                        "name": "ID",
-                        "in": "query",
-                        "type": "integer"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "type": "object",
-                                "properties": {
-                                    "JobID": {
-                                        "type": "integer"
-                                    },
-                                    "CustomerID": {
-                                        "type": "integer"
-                                    },
-                                    "WashDate": {
-                                        "type": "string"
-                                    },
-                                    "Status": {
-                                        "type": "string"
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                }
-            }
-        },
         "/carwash/getStatus.php": {
             "get": {
                 "operationId": "GET_carwash-getStatus-php",
@@ -2137,6 +2090,53 @@
                         "schema": {
                             "type": "integer",
                             "description": "Error saving data."
+                        }
+                    }
+                }
+            }
+        },
+        "/shared/getSummons.php": {
+            "get": {
+                "operationId": "GET_shared-getSummons-php",
+                "summary": "GetSummons",
+                "tags": [
+                    "shared"
+                ],
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "JobID": {
+                                        "type": "integer"
+                                    },
+                                    "CustomerID": {
+                                        "type": "integer"
+                                    },
+                                    "WashDate": {
+                                        "type": "string"
+                                    },
+                                    "Status": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer"
                         }
                     }
                 }
