@@ -2171,7 +2171,12 @@
                         "type": "string"
                     },
                     {
-                        "name": "CVV",
+                        "name": "CVC",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "CCNumber",
                         "in": "query",
                         "type": "string"
                     }
