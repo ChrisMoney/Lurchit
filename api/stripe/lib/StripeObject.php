@@ -7,6 +7,8 @@ namespace Stripe;
  *
  * @package Stripe
  */
+include_once('../stripe/lib/Util/Set.php');
+
 class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
 {
     protected $_opts;

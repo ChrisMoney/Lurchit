@@ -26,6 +26,9 @@ if (!defined('CURL_HTTP_VERSION_2TLS')) {
     define('CURL_HTTP_VERSION_2TLS', 4);
 }
 
+include_once('../stripe/lib/HttpClient/ClientInterface.php');
+include_once('../stripe/lib/Util/RandomGenerator.php');
+include_once('../stripe/lib/Error/ApiConnection.php');
 class CurlClient implements ClientInterface
 {
     private static $instance;
@@ -336,7 +339,7 @@ class CurlClient implements ClientInterface
             $msg .= "\n\nRequest was retried $numRetries times.";
         }
 
-        throw new Error\ApiConnection($msg);
+        //throw new Error\ApiConnection($msg);
     }
 
     /**

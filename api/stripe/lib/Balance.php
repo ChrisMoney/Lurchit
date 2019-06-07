@@ -13,6 +13,8 @@ namespace Stripe;
  *
  * @package Stripe
  */
+include_once('../stripe/lib/SingletonApiResource.php');
+
 class Balance extends SingletonApiResource
 {
 

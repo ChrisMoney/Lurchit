@@ -7,6 +7,10 @@ namespace Stripe;
  *
  * @package Stripe
  */
+include_once('../stripe/lib/ApiOperations/Request.php');
+include_once('../stripe/lib/ApiResource.php');
+include_once('../stripe/lib/StripeObject.php');
+
 abstract class ApiResource extends StripeObject
 {
     use ApiOperations\Request;

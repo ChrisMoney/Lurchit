@@ -7,6 +7,13 @@ namespace Stripe;
  *
  * @package Stripe
  */
+include_once('../stripe/lib/HttpClient/CurlClient.php');
+include_once('../stripe/lib/Util/Util.php');
+include_once('../stripe/lib/Util/CaseInsensitiveArray.php');
+include_once('../stripe/lib/Error/InvalidRequest.php');
+include_once('../stripe/lib/Error/Card.php');
+include_once('../stripe/lib/Error/Authentication.php');
+
 class ApiRequestor
 {
     /**
@@ -459,6 +466,8 @@ class ApiRequestor
      * @throws Error\RateLimit
      * @throws Error\Idempotency
      */
+
+    
     private function _interpretResponse($rbody, $rcode, $rheaders)
     {
         $resp = json_decode($rbody, true);

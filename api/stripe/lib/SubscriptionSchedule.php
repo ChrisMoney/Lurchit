@@ -28,6 +28,13 @@ namespace Stripe;
  *
  * @package Stripe
  */
+
+include_once('../stripe/lib/ApiOperations/All.php');
+include_once('../stripe/lib/ApiOperations/Create.php');
+include_once('../stripe/lib/ApiOperations/NestedResource.php');
+include_once('../stripe/lib/ApiOperations/Retrieve.php');
+include_once('../stripe/lib/ApiOperations/Update.php');
+
 class SubscriptionSchedule extends ApiResource
 {
 

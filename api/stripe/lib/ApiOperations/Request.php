@@ -7,6 +7,8 @@ namespace Stripe\ApiOperations;
  *
  * This trait should only be applied to classes that derive from StripeObject.
  */
+include_once('../stripe/lib/Util/RequestOptions.php');
+
 trait Request
 {
     /**

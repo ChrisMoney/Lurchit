@@ -28,6 +28,14 @@ namespace Stripe;
  *
  * @package Stripe
  */
+include_once('../stripe/lib/ApiResource.php');
+include_once('../stripe/lib/ApiOperations/All.php');
+include_once('../stripe/lib/ApiOperations/Update.php');
+include_once('../stripe/lib/ApiOperations/Create.php');
+include_once('../stripe/lib/ApiOperations/Delete.php');
+include_once('../stripe/lib/ApiOperations/Retrieve.php');
+include_once('../stripe/lib/ApiOperations/NestedResource.php');
+
 class Account extends ApiResource
 {
 

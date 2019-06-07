@@ -18,6 +18,33 @@
         "application/json"
     ],
     "paths": {
+        "/getPaypalEmail.php": {
+            "get": {
+                "operationId": "GET_getPaypalEmail-php",
+                "summary": "GetPaypalEmail",
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        },
         "/updatePaypalEmail.php": {
             "get": {
                 "operationId": "GET_updatePaypalEmail-php",
@@ -54,33 +81,6 @@
                         "schema": {
                             "type": "integer",
                             "description": "Error saving data."
-                        }
-                    }
-                }
-            }
-        },
-        "/getPaypalEmail.php": {
-            "get": {
-                "operationId": "GET_getPaypalEmail-php",
-                "summary": "GetPaypalEmail",
-                "parameters": [
-                    {
-                        "name": "ID",
-                        "in": "query",
-                        "type": "integer"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "400": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer"
                         }
                     }
                 }
@@ -2131,6 +2131,56 @@
                                     }
                                 }
                             }
+                        }
+                    },
+                    "400": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        },
+        "/shared/payment.php": {
+            "get": {
+                "operationId": "GET_shared-payment-php",
+                "summary": "Payment",
+                "tags": [
+                    "shared"
+                ],
+                "parameters": [
+                    {
+                        "name": "Amount",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "ExpMonth",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "ExpYear",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "CVV",
+                        "in": "query",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer"
                         }
                     },
                     "400": {

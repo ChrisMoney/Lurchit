@@ -4,6 +4,24 @@ namespace Stripe\Util;
 
 use Stripe\StripeObject;
 
+include_once('../stripe/lib/Checkout/Session.php');
+include_once('../stripe/lib/Issuing/Authorization.php');
+include_once('../stripe/lib/Issuing/Card.php');
+include_once('../stripe/lib/Issuing/CardDetails.php');
+include_once('../stripe/lib/Issuing/Cardholder.php');
+include_once('../stripe/lib/Issuing/Dispute.php');
+include_once('../stripe/lib/Issuing/Transaction.php');
+include_once('../stripe/lib/Radar/EarlyFraudWarning.php');
+include_once('../stripe/lib/Radar/ValueList.php');
+include_once('../stripe/lib/Radar/ValueListItem.php');
+include_once('../stripe/lib/Reporting/ReportRun.php');
+include_once('../stripe/lib/Reporting/ReportType.php');
+include_once('../stripe/lib/Sigma/ScheduledQueryRun.php');
+include_once('../stripe/lib/Terminal/ConnectionToken.php');
+include_once('../stripe/lib/Terminal/Location.php');
+include_once('../stripe/lib/Terminal/Reader.php');
+include_once('../stripe/lib/UsageRecordSummary.php');
+
 abstract class Util
 {
     private static $isMbstringAvailable = null;
