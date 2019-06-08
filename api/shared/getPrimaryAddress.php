@@ -8,15 +8,15 @@ $id = $_GET['ID'];
 $sql = "SELECT Address FROM CustomerAddress WHERE Member_ID = $id And IsPrimary = 1 ";
 
 $result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($result);
 
-
-if (mysqli_num_rows($result) > 0) {
-    $row = mysqli_fetch_assoc($result);
+if (empty($row['Address'])) {
     
-    $address = $row['Address'];
+    
+    $address = '';
     
     echo $address;
 }
 else {
-    echo json_encode(http_response_code(500));
+    echo $row['Address'];
 }
