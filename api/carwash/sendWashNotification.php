@@ -47,15 +47,15 @@ if (mysqli_query($conn, $sql2)) {
         while ($row = mysqli_fetch_assoc($result)) {
         
         $lurchID = $row['ID'];
-        $senderName = $row['FirstName'];
         $email = $row['Email'];
-        $profilePhoto = $row['ProfilePhoto'];
+
         $subject = "Car Wash Request";
         $title = "Car Wash Request";
         
+        $profilePhoto = getProfilePhoto($id);
         $profilePhoto = ProfileMediaPath.$profilePhoto;
             
-        //echo $lurchID;
+        $senderName = getFirstName($id);
         
             // insert into notification table
             $sql3 = "INSERT INTO Notifications (Customer_ID, Lurch_ID,      Job_ID,        Job,    Message,       New, NotificationDate)

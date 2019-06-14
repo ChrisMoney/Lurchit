@@ -116,7 +116,7 @@
                                     "type": "string"
                                 },
                                 "HasPhoto": {
-                                    "type": "boolean"
+                                    "type": "string"
                                 }
                             }
                         }

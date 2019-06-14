@@ -181,3 +181,23 @@ function phone_number_format($number) {
     return $number;
     
 }
+
+function getProfilePhoto($id) {
+    $conn = connection();
+    $sql = "SELECT ProfilePhoto FROM Members WHERE ID = $id ";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+    $profilePhoto = $row['ProfilePhoto'];
+    
+    return $profilePhoto;
+}
+
+function getFirstName($id) {
+    $conn = connection();
+    $sql = "SELECT FirstName FROM Members WHERE ID = $id ";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+    $fName = $row['FirstName'];
+    
+    return $fName;
+}

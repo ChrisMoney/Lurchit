@@ -2,11 +2,13 @@
 
 header("Content-Type: application/json;charset=utf-8");
 
-require '../connect.php';
-require '../helpers.php';
-include_once 'email.php';
+require 'connect.php';
 
-$data = json_decode(file_get_contents('php://input'), true);
+$json = file_get_contents("php://input");
+
+//convert the string of data to an array
+$data = json_decode($json, true);
+
 
 $make = $data['Make'];
 $model = $data['Model']; 
@@ -16,10 +18,13 @@ $hasMedia = $data['HasPhoto'];
 $id = $data['ID'];
 $mediaName = "";
 
+
+
 if (($hasMedia == 'true' || $hasMedia == 1 || $hasMedia == '1' || $hasMedia == true)) {
         // save media to file server
         $mediaName = uniqid().'img.png';
-        file_put_contents('../api/cars/'.$mediaName, base64_decode($media));
+        file_put_contents('cars/'.$mediaName, base64_decode($media));
+        
         $carPhotoUpdate = ", CarPhoto = '$mediaName' ";
     }
     else {
