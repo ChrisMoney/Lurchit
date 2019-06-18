@@ -5,9 +5,9 @@ require '../connect.php';
 
 $id = $_GET['ID'];
 
-$isLurch = $_GET['IsLurchActive'];
+$isLurchActive = $_GET['IsLurchActive'];
 
-$sql = "Update Members Set IsLurchActive = $isLurch WHERE ID = $id ";
+$sql = "Update Members Set IsLurchActive = $isLurchActive WHERE ID = $id ";
 
 if (mysqli_query($conn, $sql)) {
     echo http_response_code(200);

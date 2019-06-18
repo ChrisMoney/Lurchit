@@ -3,7 +3,7 @@
 header("Content-Type: application/json;charset=utf-8");
 require '../connect.php';
 
-$id = $_GET['ID'];
+$id = $_GET['JobID'];
 
 $rating = $_GET['Rating'];
 

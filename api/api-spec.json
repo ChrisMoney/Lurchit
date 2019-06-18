@@ -86,13 +86,47 @@
                 }
             }
         },
-        "/carwash/vehicle.php": {
+        "/uploadProfileMedia.php": {
             "post": {
-                "operationId": "POST_carwash-vehicle-php",
-                "summary": "Vehicle",
-                "tags": [
-                    "carwash"
+                "operationId": "POST_uploadProfileMedia-php",
+                "summary": "UploadProfileMedia",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "ID": {
+                                    "type": "integer"
+                                },
+                                "Media": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
                 ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        },
+        "/vehicle.php": {
+            "post": {
+                "operationId": "POST_vehicle-php",
+                "summary": "Vehicle",
                 "parameters": [
                     {
                         "name": "body",
@@ -742,7 +776,7 @@
                 ],
                 "parameters": [
                     {
-                        "name": "ID",
+                        "name": "JobID",
                         "in": "query",
                         "type": "integer"
                     },
@@ -816,49 +850,11 @@
                         "name": "Status",
                         "in": "query",
                         "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer"
-                        }
                     },
-                    "500": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                }
-            }
-        },
-        "/shared/uploadProfileMedia.php": {
-            "post": {
-                "operationId": "POST_shared-uploadProfileMedia-php",
-                "summary": "UploadProfileMedia",
-                "tags": [
-                    "shared"
-                ],
-                "parameters": [
                     {
-                        "name": "body",
-                        "in": "body",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "ID": {
-                                    "type": "integer"
-                                },
-                                "Media": {
-                                    "type": "string"
-                                },
-                                "MediaType": {
-                                    "type": "string"
-                                }
-                            }
-                        }
+                        "name": "LurchID",
+                        "in": "query",
+                        "type": "integer"
                     }
                 ],
                 "responses": {
@@ -1892,16 +1888,6 @@
                         "name": "ID",
                         "in": "query",
                         "type": "integer"
-                    },
-                    {
-                        "name": "Lat",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "Long",
-                        "in": "query",
-                        "type": "string"
                     }
                 ],
                 "responses": {

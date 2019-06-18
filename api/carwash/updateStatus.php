@@ -6,24 +6,20 @@ require '../email.php';
 
 $jobID = $_GET['JobID'];
 $newStatus = $_GET['Status'];
-
+$lurchID = $_GET['LurchID'];
 
 $sqlCustomer = "SELECT Customer_ID FROM Carwash WHERE ID = $jobID ";
 $resultCustomer = mysqli_query($conn, $sqlCustomer);
 $row = mysqli_fetch_assoc($resultCustomer);
 $customerID = $row['Customer_ID'];
 
-$sqlLurch = "SELECT Lurch_ID FROM Carwash WHERE ID = $jobID ";
-$resultLurch = mysqli_query($conn, $sqlLurch);
-$rowLurch = mysqli_fetch_assoc($resultLurch);
-$lurchID = $rowLurch['Lurch_ID'];
 
-if ($newStatus == 'Accept') {
+if (strtolower($newStatus) == 'accept' || strtolower($newStatus) == 'accepted') {
     $status = "accepted";
     $message = "Your job has been accepted";
     $subjectText = "has accepted your job.";
 }
-elseif ($newStatus == "Arrived") {
+elseif (strtolower($newStatus) == "arrived") {
     $status = "arrived";
     $message = "Your lurch has arrived";
     $subjectText = "has arrived.";
@@ -48,15 +44,15 @@ $profilePic = ProfileMediaPath.$profilePhoto;
 $subject = $name . ' '.$subjectText;
 $title = "Status Update";
 
-$sql = "Update Carwash Set Status = '$status' WHERE ID = $jobID ";
+$sql = "Update Carwash Set Status = '$status', Lurch_ID = '$lurchID' WHERE ID = $jobID ";
 
 $device = "iPhone";
 
 if (mysqli_query($conn, $sql)) {
     
     // update new notifications
-    $sql2 = "Update Notifications Set New = 0 WHERE Job_ID = $jobID ";
-    mysqli_query($conn, $sql2);
+    $sql3 = "Update Notifications Set New = 0, Lurch_ID = '$lurchID' WHERE Job_ID = $jobID ";
+    mysqli_query($conn, $sql3);
     
     // email consumer
     sendNewMessageMail($email, $name, $profilePic, $device, $subject, $title);
