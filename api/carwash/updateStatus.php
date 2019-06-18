@@ -30,18 +30,17 @@ else {
     $subjectText = "has completed your job.";
 }
 
-$sql2 = "Select Username, Email, ProfilePhoto FROM Members WHERE ID = $lurchID ";
+$sql2 = "Select Username, ProfilePhoto FROM Members WHERE ID = $lurchID ";
 $result2 = mysqli_query($conn, $sql2);
 $row2 = mysqli_fetch_assoc($result2);
 
-$name = $row2['Username'];
-$email = $row2['Email'];
+$username = $row2['Username'];
 
 $profilePhoto = $row2['ProfilePhoto'];
 $profilePic = ProfileMediaPath.$profilePhoto;
 
 
-$subject = $name . ' '.$subjectText;
+$subject = $username . ' '.$subjectText;
 $title = "Status Update";
 
 $sql = "Update Carwash Set Status = '$status', Lurch_ID = '$lurchID' WHERE ID = $jobID ";
@@ -55,7 +54,13 @@ if (mysqli_query($conn, $sql)) {
     mysqli_query($conn, $sql3);
     
     // email consumer
-    sendNewMessageMail($email, $name, $profilePic, $device, $subject, $title);
+    $sqlCustomerEmail = "Select Email FROM Members WHERE ID = $customerID ";
+    $resultCustomerEmail = mysqli_query($conn, $sqlCustomerEmail);
+    $rowCustomerEmail = mysqli_fetch_assoc($resultCustomerEmail);
+    
+    $email = $rowCustomerEmail['Email'];
+      
+    sendNewMessageMail($email, $username, $profilePic, $device, $subject, $title);
     
     // push notification to consumer
     pushNotification("Job Update", $message, $customerID);
