@@ -4,9 +4,9 @@ require '../connect.php';
 require '../helpers.php';
 
 $jobID = $_GET['JobID'];
-$id = $_GET['ID'];
 
-$memberSql = "SELECT Latitude, Longitude, Phone FROM Members WHERE ID = $id ";
+
+$memberSql = "SELECT Latitude, Longitude, Phone FROM Members WHERE ID = (SELECT Customer_ID FROM Carwash WHERE ID = $jobID) ";
 $memberResult = mysqli_query($conn, $memberSql);
 $memberRow = mysqli_fetch_assoc($memberResult);
 

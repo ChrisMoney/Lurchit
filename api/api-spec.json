@@ -700,11 +700,6 @@
                         "name": "JobID",
                         "in": "query",
                         "type": "integer"
-                    },
-                    {
-                        "name": "ID",
-                        "in": "query",
-                        "type": "integer"
                     }
                 ],
                 "responses": {
@@ -2178,6 +2173,38 @@
                         "description": "",
                         "schema": {
                             "type": "integer"
+                        }
+                    }
+                }
+            }
+        },
+        "/shared/getCustomerProfile.php": {
+            "get": {
+                "operationId": "GET_shared-getCustomerProfile-php",
+                "summary": "GetCustomerProfile",
+                "tags": [
+                    "shared"
+                ],
+                "parameters": [
+                    {
+                        "name": "JobID",
+                        "in": "query",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "ProfilePhoto": {
+                                    "type": "string"
+                                },
+                                "CarPhoto": {
+                                    "type": "string"
+                                }
+                            }
                         }
                     }
                 }

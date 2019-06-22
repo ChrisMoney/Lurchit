@@ -1,10 +1,9 @@
 <?php 
 require 'connect.php';
-include_once 'helpers.php';
 
 $lurchID = $_GET['ID'];
 
-$sql = "SELECT * FROM Members m WHERE m.ID = $lurchID ";
+$sql = "SELECT * FROM Members m WHERE ID = $lurchID ";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
 
@@ -22,7 +21,7 @@ $birthMonth = $row['BirthMonth'];
 $birthYear = $row['BirthYear'];
 $memberStatus = $row['IsActive'];
 $lurchStatus = $row['IsLurch'];
-$paypalEmail = $row['PaypalEmail'];
+$lurchActive = $row['IsLurchActive'];
 
 $hasPaymentProcessing = false;
 
@@ -158,20 +157,28 @@ else {
                     
                      <h3>Member Status</h3>
                    	<select class="form-control" style = "width:25%" name="memberStatus" id="memberStatus">
-                   		 <option value="1" <?php if($memberStatus=='1') echo selected;?>>Active</option>
-       					 <option value="0" <?php if($memberStatus=='0') echo selected;?>>Inactive</option>
+                   		 <option value="1" <?php if($memberStatus=='1') echo 'selected'; ?>>Active</option>
+       					 <option value="0" <?php if($memberStatus=='0') echo 'selected'; ?>>Inactive</option>
                 	</select>
                 	
                 	<br/>
                 	
                     <h3>Lurch Status</h3>
                    	<select class="form-control" style = "width:25%" name="lurchStatus" id="lurchStatus">
-                        <option value="1" <?php if($lurchStatus=='1') echo selected;?>>Active</option>
-       					 <option value="0" <?php if($lurchStatus=='0') echo selected;?>>Inactive</option>
+                        <option value="1" <?php if($lurchStatus=='1') echo 'selected';?>>Active</option>
+       					 <option value="0" <?php if($lurchStatus=='0') echo 'selected';?>>Inactive</option>
                 	</select>
                     
                      <br/>
                     
+                     <h3>Lurch Active</h3>
+                   	<select class="form-control" style = "width:25%" name="lurchActive" id="lurchActive">
+                        <option value="1" <?php if($lurchActive=='1') echo 'selected';?>>Active</option>
+       					 <option value="0" <?php if($lurchActive=='0') echo 'selected';?>>Inactive</option>
+                	</select>
+                	
+                	<br/>
+                	
                     <input style="background:#ff0000;padding-left:10px;padding-right:10px;" type = "submit" name = "save" id = "save" value = "Save Data" />
                    
                    	 <hr/>
@@ -186,19 +193,11 @@ else {
                     <input style="max-width:25%" type = "text" name = "total" id = "tips" readonly = "readonly" value = "<?php echo $tip ?>" />
                    
                		<br/><br/> 
-                    
-                   <?php  if (filter_var($paypalEmail, FILTER_VALIDATE_EMAIL)) {
-                       $hasPaypal = 'true';
-  echo "Lurch has requested to receive payment via Paypal: <b>$paypalEmail</b>";
-} else {
-    $hasPaypal = 'false';
-  echo "Lurch has elected to have their check mailed to the address above.";
-}
-?>
+                 
 
 <br/><br/>
 
-                     <input style="background:#ff0000;padding-left:10px;padding-right:10px;" type = "submit" name = "process" id = "process" value = "Update Payment Records" />
+                     <input style="background:#ff0000;padding-left:10px;padding-right:10px;" type = "submit" name = "process" id = "process" value = "Update Payment Records" onclick="return confirm('Are you sure you want to update this payment record ?');" />
                     
               </form>
               
@@ -226,7 +225,7 @@ else {
      $birthYear = $_POST['birthYear'];
      $memberStatus = $_POST['memberStatus'];
      $lurchStatus = $_POST['lurchStatus'];
-   
+     $lurchActive = $_POST['lurchActive'];
      
      $sql = "Update Members Set 
             FirstName = '$firstName',
