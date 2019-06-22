@@ -240,7 +240,8 @@ else {
             BirthMonth = '$birthMonth',
             BirthYear = '$birthYear',
             IsActive = '$memberStatus',
-            IsLurchActive = '$lurchStatus' 
+            IsLurch = '$lurchStatus',
+            IsLurchActive = '$lurchActive' 
             WHERE ID = $lurchID ";
      
      
