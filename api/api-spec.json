@@ -45,47 +45,6 @@
                 }
             }
         },
-        "/updatePaypalEmail.php": {
-            "get": {
-                "operationId": "GET_updatePaypalEmail-php",
-                "summary": "PaypalEmail",
-                "parameters": [
-                    {
-                        "name": "ID",
-                        "in": "query",
-                        "type": "integer"
-                    },
-                    {
-                        "name": "PaypalEmail",
-                        "in": "query",
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "Appearance data updated successfully."
-                        }
-                    },
-                    "400": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "Invalid user data provided."
-                        }
-                    },
-                    "500": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "Error saving data."
-                        }
-                    }
-                }
-            }
-        },
         "/uploadProfileMedia.php": {
             "post": {
                 "operationId": "POST_uploadProfileMedia-php",
@@ -169,6 +128,47 @@
                         "schema": {
                             "type": "integer",
                             "description": "Message Failed"
+                        }
+                    }
+                }
+            }
+        },
+        "/updatePaypalEmail.php": {
+            "get": {
+                "operationId": "GET_updatePaypalEmail-php",
+                "summary": "PaypalEmail",
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "PaypalEmail",
+                        "in": "query",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Appearance data updated successfully."
+                        }
+                    },
+                    "400": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Invalid user data provided."
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Error saving data."
                         }
                     }
                 }
@@ -548,41 +548,6 @@
                 }
             }
         },
-        "/carwash/getStatus.php": {
-            "get": {
-                "operationId": "GET_carwash-getStatus-php",
-                "summary": "GetStatus",
-                "tags": [
-                    "carwash"
-                ],
-                "parameters": [
-                    {
-                        "name": "ID",
-                        "in": "query",
-                        "type": "integer"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "IsLurch": {
-                                    "type": "boolean"
-                                },
-                                "Balance": {
-                                    "type": "number"
-                                },
-                                "IsPayProcessing": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
         "/carwash/getDetailsCustomer.php": {
             "get": {
                 "operationId": "GET_carwash-getDetailsCustomer-php",
@@ -642,47 +607,6 @@
                                     "type": "string"
                                 }
                             }
-                        }
-                    }
-                }
-            }
-        },
-        "/carwash/getLurch.php": {
-            "get": {
-                "operationId": "GET_carwash-getLurch-php",
-                "summary": "GetLurch",
-                "tags": [
-                    "carwash"
-                ],
-                "parameters": [
-                    {
-                        "name": "LurchID",
-                        "in": "query",
-                        "type": "integer"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "ID": {
-                                    "type": "integer"
-                                },
-                                "Username": {
-                                    "type": "string"
-                                },
-                                "ProfilePhoto": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer"
                         }
                     }
                 }
@@ -2205,6 +2129,85 @@
                                     "type": "string"
                                 }
                             }
+                        }
+                    }
+                }
+            }
+        },
+        "/shared/getStatus.php": {
+            "get": {
+                "operationId": "GET_shared-getStatus-php",
+                "summary": "GetStatus",
+                "tags": [
+                    "shared"
+                ],
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "IsLurch": {
+                                    "type": "boolean"
+                                },
+                                "Balance": {
+                                    "type": "string"
+                                },
+                                "IsPayProcessing": {
+                                    "type": "string"
+                                },
+                                "IsLurchActive": {
+                                    "type": "boolean"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/shared/getLurch.php": {
+            "get": {
+                "operationId": "GET_shared-getLurch-php",
+                "summary": "GetLurch",
+                "tags": [
+                    "shared"
+                ],
+                "parameters": [
+                    {
+                        "name": "LurchID",
+                        "in": "query",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "ID": {
+                                    "type": "integer"
+                                },
+                                "Username": {
+                                    "type": "string"
+                                },
+                                "ProfilePhoto": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer"
                         }
                     }
                 }

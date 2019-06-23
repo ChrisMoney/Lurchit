@@ -19,13 +19,15 @@ else {
 }
 
 $sql = "SELECT (Select SUM(Total) FROM Carwash WHERE Lurch_ID = $id And PayStatus = 'unpaid') as Balance, 
-        (SELECT SUM(Tip) FROM Carwash WHERE Lurch_ID = $id And PayStatus = 'unpaid') as Tip, IsPayProcessing, IsLurch 
+        (SELECT SUM(Tip) FROM Carwash WHERE Lurch_ID = $id And PayStatus = 'unpaid') as Tip, IsPayProcessing, IsLurch, IsLurchActive 
 FROM Members WHERE ID = $id ";
 
 if ($result = mysqli_query($conn, $sql)) {
     if (mysqli_num_rows($result) > 0) {
         $status = mysqli_fetch_assoc($result);
+        
         $status['IsLurch'] = filter_var($status['IsLurch'], FILTER_VALIDATE_BOOLEAN);
+        $status['IsLurchActive'] = filter_var($status['IsLurchActive'], FILTER_VALIDATE_BOOLEAN);
         
         $balance = $status['Balance'];
         $newBalance = $balance * 0.6;
