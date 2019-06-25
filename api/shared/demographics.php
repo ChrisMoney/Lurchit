@@ -2,6 +2,7 @@
 
 header("Content-Type: application/json;charset=utf-8");
 require '../connect.php';
+require '../helpers.php';
 
 $month = $_GET['Month'];
 $day = $_GET['Day'];
@@ -21,10 +22,10 @@ if (strlen($address) == 0) {
     exit;
 }
 
-$phoneFormat = substr($phone,2,3)."-".substr($phone,6,3)."-".substr($phone,10,4);
+$phoneFormat = phone_number_format($phone);
 // $currentYear = date("Y");
 
-if (strlen(trim($phoneFormat)) != 10) {
+if (strlen(trim($phoneFormat)) != 12) {
     echo http_response_code(500);
     exit;
 }
@@ -36,7 +37,7 @@ $formattedSSN = preg_replace ('/^(\d{3})(\d{2})(\d{4})$/', '$1-$2-$3', $formatte
 
 
 $sql = "Update Members Set Address = '$address', Apt = '$apt',
-SSN = '$formattedSSN', Phone = '$phone', MailCity = '$city', MailState = '$state', MailZip = '$zip',
+SSN = '$formattedSSN', Phone = '$phoneFormat', MailCity = '$city', MailState = '$state', MailZip = '$zip',
 BirthMonth = '$month', BirthDay = '$day', BirthYear = '$year'
 WHERE ID = $id ";
 
