@@ -4,6 +4,7 @@ header("Content-Type: application/json;charset=utf-8");
 require '../connect.php';
 include_once '../helpers.php';
 
+
 $id = $_GET['ID'];
 
 $sql = "SELECT FirstName, LastName, Username, Email, Phone, ProfilePhoto FROM Members WHERE ID = $id";

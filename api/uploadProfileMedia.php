@@ -6,7 +6,7 @@
  * Time: 4:13 PM
  */
 
-header("Content-Type: application/json;charset=utf-8");
+//header("Content-Type: application/json;charset=utf-8");
 require 'connect.php';
 
 

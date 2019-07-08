@@ -8,17 +8,17 @@
 
 // use this to call connection in non function calls
     $localhost = 'localhost';
-    $username = 'flickpitch';
-    $pass = 'Manager@10';
+    $username = 'lurchit';
+    $pass = '@Dmin10!';
     $db = 'Lurchit';
 
     $conn = mysqli_connect ($localhost, $username, $pass, $db);
 
 // use this function to pass to other functions
 function connection () {
-    $localhost = 'localhost';
-    $username = 'flickpitch';
-    $pass = 'Manager@10';
+    $localhost = 'localhost:3306';
+    $username = 'lurchit';
+    $pass = '@Dmin10!';
     $db = 'Lurchit';
 
     static $conn;

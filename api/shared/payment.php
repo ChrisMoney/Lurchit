@@ -77,6 +77,7 @@ require_once('../stripe/lib/Webhook.php');
 require_once('../stripe/lib/WebhookEndpoint.php');
 require_once('../stripe/lib/WebhookSignature.php');
 
+
 $env = $_GET['ENV'];
 
 if ($env == 'PROD') {
@@ -94,11 +95,11 @@ $expYear = $_GET['ExpYear'];
 $cvc = $_GET['CVC'];
 
 
-/*$ccNumber = 4242424242424242;
+$ccNumber = 4242424242424242;
 $expMonth = 6;
 $expYear = 2020;
 $cvc = 314;
-*/
+
 
 Stripe::setApiKey($apiKey);
 
@@ -126,4 +127,4 @@ catch (Exception $e) {
     $status = 400;
 }
 
-echo http_response_code($status);
+echo http_response_code($status); 

@@ -5,7 +5,7 @@
         "title": "Lurchit",
         "description": "Lurchit APIs"
     },
-    "host": "api.lurchit.com",
+    "host": "lurchit.com",
     "basePath": "/api",
     "schemes": [
         "http",
@@ -18,33 +18,6 @@
         "application/json"
     ],
     "paths": {
-        "/getPaypalEmail.php": {
-            "get": {
-                "operationId": "GET_getPaypalEmail-php",
-                "summary": "GetPaypalEmail",
-                "parameters": [
-                    {
-                        "name": "ID",
-                        "in": "query",
-                        "type": "integer"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "400": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                }
-            }
-        },
         "/uploadProfileMedia.php": {
             "post": {
                 "operationId": "POST_uploadProfileMedia-php",
@@ -82,10 +55,10 @@
                 }
             }
         },
-        "/vehicle.php": {
+        "/uploadCarPhoto.php": {
             "post": {
-                "operationId": "POST_vehicle-php",
-                "summary": "Vehicle",
+                "operationId": "POST_uploadCarPhoto-php",
+                "summary": "UploadCarPhoto",
                 "parameters": [
                     {
                         "name": "body",
@@ -96,19 +69,7 @@
                                 "ID": {
                                     "type": "integer"
                                 },
-                                "Make": {
-                                    "type": "string"
-                                },
-                                "Model": {
-                                    "type": "string"
-                                },
-                                "Year": {
-                                    "type": "string"
-                                },
-                                "CarPhoto": {
-                                    "type": "string"
-                                },
-                                "HasPhoto": {
+                                "Media": {
                                     "type": "string"
                                 }
                             }
@@ -119,56 +80,13 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "integer",
-                            "description": "Message Successful"
+                            "type": "integer"
                         }
                     },
                     "500": {
                         "description": "",
                         "schema": {
-                            "type": "integer",
-                            "description": "Message Failed"
-                        }
-                    }
-                }
-            }
-        },
-        "/updatePaypalEmail.php": {
-            "get": {
-                "operationId": "GET_updatePaypalEmail-php",
-                "summary": "PaypalEmail",
-                "parameters": [
-                    {
-                        "name": "ID",
-                        "in": "query",
-                        "type": "integer"
-                    },
-                    {
-                        "name": "PaypalEmail",
-                        "in": "query",
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "Appearance data updated successfully."
-                        }
-                    },
-                    "400": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "Invalid user data provided."
-                        }
-                    },
-                    "500": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "Error saving data."
+                            "type": "integer"
                         }
                     }
                 }
@@ -503,44 +421,6 @@
                                     "Total": {
                                         "type": "string"
                                     }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/carwash/getVehicle.php": {
-            "get": {
-                "operationId": "GET_carwash-getVehicle-php",
-                "summary": "GetVehicle",
-                "tags": [
-                    "carwash"
-                ],
-                "parameters": [
-                    {
-                        "name": "ID",
-                        "in": "query",
-                        "type": "integer"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "Make": {
-                                    "type": "string"
-                                },
-                                "Model": {
-                                    "type": "string"
-                                },
-                                "Year": {
-                                    "type": "string"
-                                },
-                                "CarPhoto": {
-                                    "type": "string"
                                 }
                             }
                         }
@@ -1265,53 +1145,6 @@
                 }
             }
         },
-        "/shared/getProfile.php": {
-            "get": {
-                "operationId": "GET_shared-getProfile-php",
-                "summary": "GetProfile",
-                "tags": [
-                    "shared"
-                ],
-                "parameters": [
-                    {
-                        "name": "ID",
-                        "in": "query",
-                        "type": "integer"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "FirstName": {
-                                    "type": "string"
-                                },
-                                "LastName": {
-                                    "type": "string"
-                                },
-                                "Username": {
-                                    "type": "string"
-                                },
-                                "Email": {
-                                    "type": "string"
-                                },
-                                "Phone": {
-                                    "type": "string"
-                                },
-                                "ProfilePhoto": {
-                                    "type": "string"
-                                },
-                                "Password": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
         "/shared/getProfileMedia.php": {
             "get": {
                 "operationId": "GET_shared-getProfileMedia-php",
@@ -1331,36 +1164,6 @@
                         "description": "",
                         "schema": {
                             "type": "string"
-                        }
-                    }
-                }
-            }
-        },
-        "/shared/getPrimaryAddress.php": {
-            "get": {
-                "operationId": "GET_shared-getPrimaryAddress-php",
-                "summary": "GetPrimaryAddress",
-                "tags": [
-                    "shared"
-                ],
-                "parameters": [
-                    {
-                        "name": "ID",
-                        "in": "query",
-                        "type": "integer"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    "500": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer"
                         }
                     }
                 }
@@ -1956,9 +1759,9 @@
                 }
             }
         },
-        "/carwash/saveStatus.php": {
+        "/shared/saveStatus.php": {
             "get": {
-                "operationId": "GET_carwash-saveStatus-php",
+                "operationId": "GET_shared-saveStatus-php",
                 "summary": "SaveStatus",
                 "tags": [
                     "shared"
@@ -2208,6 +2011,168 @@
                         "description": "",
                         "schema": {
                             "type": "integer"
+                        }
+                    }
+                }
+            }
+        },
+        "/shared/getPrimaryAddress.php": {
+            "get": {
+                "operationId": "GET_shared-getPrimaryAddress-php",
+                "summary": "GetPrimaryAddress",
+                "tags": [
+                    "shared"
+                ],
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        },
+        "/shared/getProfile.php": {
+            "get": {
+                "operationId": "GET_shared-getProfile-php",
+                "summary": "GetProfile",
+                "tags": [
+                    "shared"
+                ],
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "FirstName": {
+                                    "type": "string"
+                                },
+                                "LastName": {
+                                    "type": "string"
+                                },
+                                "Username": {
+                                    "type": "string"
+                                },
+                                "Email": {
+                                    "type": "string"
+                                },
+                                "Phone": {
+                                    "type": "string"
+                                },
+                                "ProfilePhoto": {
+                                    "type": "string"
+                                },
+                                "Password": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/shared/vehicle.php": {
+            "get": {
+                "operationId": "GET_shared-vehicle-php",
+                "summary": "Vehicle",
+                "tags": [
+                    "shared"
+                ],
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "Make",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Model",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Year",
+                        "in": "query",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Message Successful"
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Message Failed"
+                        }
+                    }
+                }
+            }
+        },
+        "/shared/getVehicle.php": {
+            "get": {
+                "operationId": "GET_shared-getVehicle-php",
+                "summary": "GetVehicle",
+                "tags": [
+                    "shared"
+                ],
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Make": {
+                                    "type": "string"
+                                },
+                                "Model": {
+                                    "type": "string"
+                                },
+                                "Year": {
+                                    "type": "string"
+                                },
+                                "CarPhoto": {
+                                    "type": "string"
+                                }
+                            }
                         }
                     }
                 }

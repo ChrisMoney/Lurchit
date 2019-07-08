@@ -28,6 +28,7 @@ cos( radians( Longitude ) - radians($long) ) + sin ( radians($lat) ) *
 sin( radians( Latitude ) ) ) ) AS distance 
 FROM Members 
 WHERE IsLurch = 1
+AND ID != $id
 And IsLurchActive = 1
 Group By ID
 HAVING distance <= 30
