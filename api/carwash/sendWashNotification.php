@@ -23,6 +23,9 @@ mysqli_query($conn, $sql);
 
 $carwashID = mysqli_insert_id($conn);
 
+
+echo $carwashID;
+
 $sql2 = "SELECT ID, FirstName, Email, ProfilePhoto, ( 3959 * acos ( cos ( radians($lat) ) * cos( radians( Latitude ) ) *
 cos( radians( Longitude ) - radians($long) ) + sin ( radians($lat) ) *
 sin( radians( Latitude ) ) ) ) AS distance 
@@ -72,11 +75,6 @@ if (mysqli_query($conn, $sql2)) {
              else {
              pushNotificationAndroid('Message', $notification, $lurchID);
              }
-           
-                 echo json_encode($carwashID, JSON_NUMERIC_CHECK);
         }
-    }  
-}
-else {
-    echo http_response_code(500);
+    } 
 }
