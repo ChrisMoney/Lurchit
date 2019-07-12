@@ -8,7 +8,6 @@ $sql = "SELECT ID FROM Carwash WHERE Customer_ID = $id
 AND (Status = 'new' Or Status = 'accepted' Or Status = 'arrived') ";
 
 $result = mysqli_query($conn, $sql);
-$row = mysqli_fetch_assoc($result);
 
 if (mysqli_num_rows($result) == 0) {
     echo 'false';
