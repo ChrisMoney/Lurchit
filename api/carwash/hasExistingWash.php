@@ -11,8 +11,8 @@ $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
 
 if (mysqli_num_rows($result) == 0) {
-    echo json_encode('false');
+    echo 'false';
 }
 else {
-    echo json_encode('true');
+    echo 'true';
 }
