@@ -1,0 +1,23 @@
+<?php
+
+
+header("Content-Type: application/json;charset=utf-8");
+require '../connect.php';
+require '../helpers.php';
+
+$jobID = $_GET['JobID'];
+
+$sql = "SELECT Status, Lurch_ID
+FROM Carwash
+WHERE ID = $jobID ";
+
+
+$result = mysqli_query($conn, $sql);
+$lurch = mysqli_fetch_assoc($result);
+$status = ' '.$lurch['Status'];
+$lurchID = $lurch['Lurch_ID'];
+
+$username = getUsername($lurchID);
+$status = array("Username"=>$username, "Status"=>$status);
+echo json_encode($status);
+        

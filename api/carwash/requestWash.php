@@ -19,6 +19,7 @@ $status = $lurch['Status'];
 $lurchID = 0;
 
 if ($status != "accepted") {
+    sleep(30);
     goto a;
     // $lurchID = $lurch['Lurch_ID'];
     

@@ -92,33 +92,9 @@
                 }
             }
         },
-        "/carwash/updateCompleteOnScreen.php": {
+        "/carwash/updateStatusOnScreen.php": {
             "get": {
-                "operationId": "GET_carwash-updateCompleteOnScreen-php",
-                "summary": "UpdateCompleteOnScreen",
-                "tags": [
-                    "carwash"
-                ],
-                "parameters": [
-                    {
-                        "name": "JobID",
-                        "in": "query",
-                        "type": "integer"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            }
-        },
-        "/carwash/updateArrivedOnScreen.php": {
-            "get": {
-                "operationId": "GET_carwash-updateArrivedOnScreen-php",
+                "operationId": "GET_carwash-updateStatusOnScreen-php",
                 "summary": "UpdateArrivedOnScreen",
                 "tags": [
                     "carwash"
@@ -667,6 +643,38 @@
                         "description": "",
                         "schema": {
                             "type": "integer"
+                        }
+                    }
+                }
+            }
+        },
+        "/carwash/updateAcceptedOnScreen.php": {
+            "get": {
+                "operationId": "GET_carwash-updateAcceptedOnScreen-php",
+                "summary": "UpdateAcceptedOnScreen",
+                "tags": [
+                    "carwash"
+                ],
+                "parameters": [
+                    {
+                        "name": "JobID",
+                        "in": "query",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Username": {
+                                    "type": "string"
+                                },
+                                "Status": {
+                                    "type": "string"
+                                }
+                            }
                         }
                     }
                 }

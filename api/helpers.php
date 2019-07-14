@@ -200,3 +200,13 @@ function getFirstName($id) {
     return $fName;
 }
 
+function getUsername($id) {
+    $conn = connection();
+    $sql = "SELECT Username FROM Members WHERE ID = $id ";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+    $username = $row['Username'];
+    
+    return $username;
+}
+

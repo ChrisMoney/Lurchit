@@ -1,11 +1,11 @@
 <?php
+
+
 header("Content-Type: application/json;charset=utf-8");
 require '../connect.php';
 
 $jobID = $_GET['JobID'];
 
-
-a:
 
 $sql = "SELECT Status
 FROM Carwash
@@ -17,11 +17,4 @@ $lurch = mysqli_fetch_assoc($result);
 $status = $lurch['Status'];
 
 
-        
-        if ($status == 'arrived') {
-            goto a;
-        }  
-        else {
-            echo ' complete';
-        }
- 
+echo $status;

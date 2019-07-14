@@ -246,10 +246,10 @@ else {
      
      
      if (mysqli_query($conn, $sql)) {
-         echo "<script>alert('Member data updated successfully'); location = '/admin.php?ID=$lurchID' </script>";
+         echo "<script>alert('Member data updated successfully'); location = '/accounts/admin.php?ID=$lurchID' </script>";
      }
      else {
-         echo "<script>alert('Member update failed!'); location = '/admin.php?ID=$lurchID' </script>";
+         echo "<script>alert('Member update failed!'); location = '/accounts/admin.php?ID=$lurchID' </script>";
      }
  }
        
@@ -262,10 +262,10 @@ if (isset($_POST['process']) && $_POST['process'] == "Update Payment Records") {
     $sql = "Update Carwash Set PayStatus = 'paid' WHERE PayStatus = 'processing' AND Lurch_ID = $lurchID ";
     
     if (mysqli_query($conn, $sql)) {
-        echo "<script>alert('Payment records updated successfully'); location = '/admin.php?ID=$lurchID' </script>";
+        echo "<script>alert('Payment records updated successfully'); location = 'accounts/admin.php?ID=$lurchID' </script>";
     }
     else {
-        echo "<script>alert('Payment records update failed!'); location = '/admin.php?ID=$lurchID' </script>";
+        echo "<script>alert('Payment records update failed!'); location = 'accounts/admin.php?ID=$lurchID' </script>";
     }
 }
 ?>
