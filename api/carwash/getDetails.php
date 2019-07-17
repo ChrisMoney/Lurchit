@@ -6,13 +6,13 @@ require '../helpers.php';
 $jobID = $_GET['JobID'];
 
 
-$memberSql = "SELECT Latitude, Longitude, Phone FROM Members WHERE ID = (SELECT Customer_ID FROM Carwash WHERE ID = $jobID) ";
-$memberResult = mysqli_query($conn, $memberSql);
-$memberRow = mysqli_fetch_assoc($memberResult);
+$lurchSql = "SELECT Latitude, Longitude, Phone FROM Members WHERE ID = (SELECT Lurch_ID FROM Carwash WHERE ID = $jobID) ";
+$lurchResult = mysqli_query($conn, $lurchSql);
+$lurchRow = mysqli_fetch_assoc($lurchResult);
 
-$lat = $memberRow['Latitude'];
-$long = $memberRow['Longitude'];
-$phone = $memberRow['Phone'];
+$lat = $lurchRow['Latitude'];
+$long = $lurchRow['Longitude'];
+$phone = $lurchRow['Phone'];
 
 $sql = "SELECT ID, Customer_ID as CustomerID, Lurch_ID as LurchID,
         Carwash as Carwash, Tires as Tires, Interior as Interior,
