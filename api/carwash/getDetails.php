@@ -20,23 +20,20 @@ $sql = "SELECT ID, Customer_ID as CustomerID, Lurch_ID as LurchID,
         ( 3959 * acos ( cos ( radians($lat) ) * cos( radians( Latitude ) ) *
 cos( radians( Longitude ) - radians($long) ) + sin ( radians($lat) ) *
 sin( radians( Latitude ) ) ) ) AS Distance
-    FROM Carwash 
+    FROM Carwash
     WHERE ID = $jobID ";
 
 $result = mysqli_query($conn, $sql);
+$jobDetail = mysqli_fetch_assoc($result);
 
 
-if (mysqli_num_rows($result) > 0) {
+if(implode(null,$jobDetail) == null) { echo '400'; } else {
     
-    $jobDetail = mysqli_fetch_assoc($result);
-
+    
     $distance = $jobDetail['Distance'];
     $distance = round($distance);
     $jobDetail['Distance'] = $distance . " miles (estimated)";
     $jobDetail['Phone'] = $phone;
     
     echo json_encode($jobDetail);
-}
-else {
-    echo http_response_code(400);
 }
