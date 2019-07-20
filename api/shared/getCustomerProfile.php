@@ -18,9 +18,15 @@ $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
 
 $profilePhoto = $row['ProfilePhoto'];
+
+if (strlen($profilePhoto) > 1) {
 $row['ProfilePhoto'] = ProfileMediaPath.$profilePhoto;
+}
 
 $carPhoto = $row['CarPhoto'];
-$row['CarPhoto'] = CarMediaPath.$carPhoto;
+if (strlen($carPhoto) > 0) {
+    $row['CarPhoto'] = CarMediaPath.$carPhoto;
+}
+
 
 echo json_encode($row);

@@ -6,7 +6,7 @@ require '../helpers.php';
 $jobID = $_GET['JobID'];
 
 
-$lurchSql = "SELECT Latitude, Longitude, Phone FROM Members WHERE ID = (SELECT Lurch_ID FROM Carwash WHERE ID = $jobID) ";
+$lurchSql = "SELECT Latitude, Longitude, Phone FROM Members WHERE ID = (SELECT Lurch_ID FROM Notifications WHERE Job_ID = $jobID) ";
 $lurchResult = mysqli_query($conn, $lurchSql);
 $lurchRow = mysqli_fetch_assoc($lurchResult);
 
