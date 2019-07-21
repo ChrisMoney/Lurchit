@@ -37,8 +37,12 @@ $row2 = mysqli_fetch_assoc($result2);
 $username = $row2['Username'];
 
 $profilePhoto = $row2['ProfilePhoto'];
+if (strlen($profilePhoto) > 1) {
 $profilePic = ProfileMediaPath.$profilePhoto;
-
+}
+else {
+    $profilePic = LogoPath;
+}
 
 $subject = $username . ' '.$subjectText;
 $title = "Status Update";

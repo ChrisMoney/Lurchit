@@ -57,7 +57,12 @@ if (mysqli_query($conn, $sql2)) {
         $title = "Car Wash Request";
         
         $profilePhoto = getProfilePhoto($id);
-        $profilePhoto = ProfileMediaPath.$profilePhoto;
+        if (strlen($profilePhoto) > 1) {
+            $profilePhoto = ProfileMediaPath.$profilePhoto;
+        }
+        else {
+            $profilePhoto = LogoPath;
+        }
             
         $senderName = getFirstName($id);
         
