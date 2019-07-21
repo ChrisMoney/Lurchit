@@ -6,17 +6,16 @@ require '../helpers.php';
 $jobID = $_GET['JobID'];
 
 
-$lurchSql = "SELECT Latitude, Longitude, Phone FROM Members WHERE ID = (SELECT Lurch_ID FROM Notifications WHERE Job_ID = $jobID) ";
+$lurchSql = "SELECT Latitude, Longitude FROM Members WHERE ID = (SELECT Lurch_ID FROM Notifications WHERE Job_ID = $jobID) ";
 $lurchResult = mysqli_query($conn, $lurchSql);
 $lurchRow = mysqli_fetch_assoc($lurchResult);
 
 $lat = $lurchRow['Latitude'];
 $long = $lurchRow['Longitude'];
-$phone = $lurchRow['Phone'];
 
 $sql = "SELECT ID, Customer_ID as CustomerID, Lurch_ID as LurchID,
         Carwash as Carwash, Tires as Tires, Interior as Interior,
-        Wax, Total as Total, Status, Address, Phone,
+        Wax, Total as Total, Status, Address, (Select Phone FROM Members WHERE ID = (Select Customer_ID FROM Carwash WHERE ID = $jobID)) as Phone,
         ( 3959 * acos ( cos ( radians($lat) ) * cos( radians( Latitude ) ) *
 cos( radians( Longitude ) - radians($long) ) + sin ( radians($lat) ) *
 sin( radians( Latitude ) ) ) ) AS Distance
@@ -33,7 +32,6 @@ if(implode(null,$jobDetail) == null) { echo '400'; } else {
     $distance = $jobDetail['Distance'];
     $distance = round($distance);
     $jobDetail['Distance'] = $distance . " miles (estimated)";
-    $jobDetail['Phone'] = $phone;
     
     echo json_encode($jobDetail);
 }
