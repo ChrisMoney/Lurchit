@@ -19,8 +19,10 @@ if ($result = mysqli_query($conn, $sql)) {
         $profileView = mysqli_fetch_assoc($result);
         // format profile photo
         $mediaName = $profileView['ProfilePhoto'];
-        $profileView['ProfilePhoto'] = ProfileMediaPath.$mediaName;
         
+        if (strlen($mediaName) > 1) {
+            $profileView['ProfilePhoto'] = ProfileMediaPath.$mediaName;
+        }
         echo json_encode($profileView);
     }
 }

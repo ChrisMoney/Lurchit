@@ -11,7 +11,7 @@ $sql = "UPDATE Carwash Set Tip = '$tip' WHERE ID = $jobID ";
 
 if (mysqli_query($conn, $sql)) {
     
-    $sql2 = "INSERT INTO Tips (Job_ID, Lurch_ID, Job, Tip) Values ('$jobID', '$lurchID', 'Carwash', '$tip') ";
+    $sql2 = "INSERT INTO Tips (Job_ID, Lurch_ID, Job, Tip, TipDate) Values ('$jobID', '$lurchID', 'Carwash', '$tip', NOW()) ";
     
     if (mysqli_query($conn, $sql2)) {
         echo http_response_code(200);

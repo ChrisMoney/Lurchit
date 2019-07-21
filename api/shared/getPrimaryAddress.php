@@ -1,5 +1,4 @@
 <?php
-header('Content-Type: application/json');
 require '../connect.php';
 require '../helpers.php';
 
@@ -9,14 +8,7 @@ $sql = "SELECT Address FROM CustomerAddress WHERE Member_ID = $id And IsPrimary 
 
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
+$address = $row['Address'];
+$newAddress = strval($address);
 
-if (empty($row['Address'])) {
-    
-    
-    $address = '';
-    
-    echo $address;
-}
-else {
-    echo $row['Address'];
-}
+echo $newAddress;
