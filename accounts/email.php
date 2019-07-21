@@ -8,7 +8,7 @@ function sendResetEmail($email) {
     
     $message = "<html><body>";
     $message .= "<table style = 'background:white;height:400px;width:600px;border-radius:10px;border:2px solid black;'><tr style = 'border-radius:10px;'><td>";
-    $message .= "<tr><td><img src = 'http://api.lurchit.com/logo.jpg' height = '200' width = '200' style='padding-left:10px' /></td></tr>";
+    $message .= "<tr><td><img src = 'http://lurchit.com/api/logo.png' height = '200' width = '200' style='padding-left:10px' /></td></tr>";
     $message .= "<tr><td style = 'background:silver;padding:20px;border:2px solid black;'>$subject<br/><br/></td></tr>";
     $message .= "<tr><td style = 'background-color:red;color:white;padding-left:10px;'>If you received this email in error contact us at <mailto:info@lurchit.com>info@lurchit.com</a>";
     $message .= "<br/>Lurchit, 911 Washington Ave, St.Louis,MO 63101 USA </td></tr>";
