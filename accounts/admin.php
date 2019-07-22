@@ -262,6 +262,8 @@ if (isset($_POST['process']) && $_POST['process'] == "Update Payment Records") {
     $sql = "Update Carwash Set PayStatus = 'paid' WHERE PayStatus = 'processing' AND Lurch_ID = $lurchID ";
     
     if (mysqli_query($conn, $sql)) {
+        // send payment processed email
+        sendPaymentProcessedEmail($email);
         echo "<script>alert('Payment records updated successfully'); location = 'accounts/admin.php?ID=$lurchID' </script>";
     }
     else {

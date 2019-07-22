@@ -1,5 +1,4 @@
  <?php 
- session_start();
  
  if (!isset($_SESSION['Email']) && empty($_SESSION['Email'])) {
      $_SESSION['Email'] = $_GET['email'];
