@@ -23,11 +23,11 @@ function sendIntroMail($email) {
           $message .= "<br/>Statuz, 911 Washington Ave, St.Louis,MO 63101 USA </td></tr>";
           $message .= "</table></body></html>"; 
 
-          $header = "From: Statuz <no-reply@statuz.net> \r\n";
+          $header = "From: Statuz <no-reply@lurchit.com> \r\n";
           $header .= "Content-type: text/html";
-          ini_set('sendmail_from', 'no-reply@statuz.net');
+          ini_set('sendmail_from', 'no-reply@lurchit.com');
 
-          if (mail($toEmail, 'Statuz Notification', $message, $header)) {
+          if (mail($toEmail, 'Lurchit Notification', $message, $header)) {
               // mail sent
               return true;
           }

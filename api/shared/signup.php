@@ -8,7 +8,6 @@
 
 header("Content-Type: application/json;charset=utf-8");
 require '../connect.php';
-include_once '../helpers.php';
 include_once '../email.php';
 
 $firstName = ucfirst($_GET['FirstName']);
@@ -19,12 +18,14 @@ $phone = $_GET['Phone'];
 $password = $_GET['Password'];
 $password = md5($password);
 
-if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+
+
+/*if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
    // invalid email
    return json_encode(http_response_code(406));
-}
-
-$sql1 = "Select ID From Members Where Email = '$email' ";
+}*/
+echo 'test';
+/*$sql1 = "Select ID From Members Where Email = '$email' ";
 $result1 = mysqli_query($conn, $sql1);
 
 if (mysqli_num_rows($result1)  > 0) {
@@ -41,7 +42,7 @@ if (mysqli_num_rows($result2)  > 0) {
    echo json_encode(http_response_code(406));
    exit;
 }
-
+*/
 if (strlen($username) > 0 && strlen($email) > 0
        && strlen($password) >= 3) {
 
@@ -57,10 +58,6 @@ if (strlen($username) > 0 && strlen($email) > 0
          $id = intval($id);
 
          echo $id;
-         
-         // create profile media instance
-         $sql1 = "Insert Into ProfileMedia (Member_ID, UploadDate) Values ('$id', NOW())";
-         mysqli_query($conn, $sql1);
       }
       else {
          // insert login failed

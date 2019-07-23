@@ -14,3 +14,6 @@ INSERT INTO Carwash         (Customer_ID, Carwash,    Tires,   Interior,     Wax
 							
 							// UpdateAcceptedOnScreen Test
 							https://lurchit.com/api/carwash/updateAcceptedOnScreen.php?JobID=43
+							
+							// Signup Test
+							http://lurchit.com/shared/signup.php?FirstName=Test&LastName=Tester&Username=Email=chriscoreyweathers@gmail.com&Phone=314-458-5040&Password=Admin10!
