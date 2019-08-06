@@ -5,7 +5,7 @@
         "title": "Lurchit",
         "description": "Lurchit APIs"
     },
-    "host": "lurchit.com",
+    "host": "apilurchit.com",
     "basePath": "/api",
     "schemes": [
         "http",
@@ -537,6 +537,12 @@
                                     "type": "string"
                                 }
                             }
+                        }
+                    },
+                    "400": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer"
                         }
                     }
                 }

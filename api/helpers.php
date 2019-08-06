@@ -1,7 +1,7 @@
 <?php
-define("ProfileMediaPath", "http://lurchit.com/api/media/");
-define("CarMediaPath", "http://lurchit.com/api/cars/");
-define("LogoPath", "http://lurchit.com/api/logo.png");
+define("ProfileMediaPath", "http://apilurchit.com/api/media/");
+define("CarMediaPath", "http://apilurchit.com/api/cars/");
+define("LogoPath", "http://apilurchit.com/api/logo.png");
 
 function getDistance($id) {
     $conn = connection();
