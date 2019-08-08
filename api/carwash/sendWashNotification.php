@@ -35,7 +35,7 @@ AND ID != $id
 And IsLurchActive = 1
 Group By ID
 HAVING distance <= 30
-
+ORDER BY distance DESC
 ";
 
 $notification = "Car Wash Request";
@@ -75,11 +75,13 @@ if (mysqli_query($conn, $sql2)) {
             if ($device == 'iPhone') {
              
              sendNewMessageMail($email, $senderName, $profilePhoto, $device, $subject, $title);
-             pushNotification('Job', $notification, $lurchID); 
+             pushNotification('Job', $notification, $lurchID);
              }
              else {
              pushNotificationAndroid('Message', $notification, $lurchID);
              }
+             // give closest lurch a chance to respond
+             sleep(60);
         }
     } 
 }
