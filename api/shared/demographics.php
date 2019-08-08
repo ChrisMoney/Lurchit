@@ -37,7 +37,7 @@ $formattedSSN = preg_replace ('/^(\d{3})(\d{2})(\d{4})$/', '$1-$2-$3', $formatte
 
 
 $sql = "Update Members Set Address = '$address', Apt = '$apt',
-SSN = '$formattedSSN', Phone = '$phoneFormat', MailCity = '$city', MailState = '$state', MailZip = '$zip',
+SSN = AES_ENCRYPT('$formattedSSN', 'ssn'), Phone = '$phoneFormat', MailCity = '$city', MailState = '$state', MailZip = '$zip',
 BirthMonth = '$month', BirthDay = '$day', BirthYear = '$year'
 WHERE ID = $id ";
 

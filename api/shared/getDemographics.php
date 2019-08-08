@@ -5,7 +5,7 @@ require '../connect.php';
 
 $id = $_GET['ID'];
 
-$sql = "SELECT BirthMonth, BirthDay, BirthYear, Address, MailCity, MailState, MailZip, Apt, SSN, Phone 
+$sql = "SELECT BirthMonth, BirthDay, BirthYear, Address, MailCity, MailState, MailZip, Apt, AES_DECRYPT(SSN, 'ssn') as SSN, Phone 
 FROM Members WHERE ID = $id";
 
 $result = mysqli_query($conn, $sql);

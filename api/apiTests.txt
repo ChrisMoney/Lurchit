@@ -4,16 +4,19 @@ INSERT INTO Carwash         (Customer_ID, Carwash,    Tires,   Interior,     Wax
 							
 							
 							// sendWashNotification test
-							http://lurchit.com/api/carwash/sendWashNotification.php?ID=1&Lat=38.7385&Long=-90.3904&Carwash=25&Wax=0&Interior=0&Tires=0&Total=25&Address=123Street
+							http://apilurchit.com/api/carwash/sendWashNotification.php?ID=1&Lat=38.7385&Long=-90.3904&Carwash=25&Wax=0&Interior=0&Tires=0&Total=25&Address=123Street
 							
 							// requestWash test
-							https://lurchit.com/api/carwash/requestWash.php?JobID=41
+							https://apilurchit.com/api/carwash/requestWash.php?JobID=41
 							
 							// Payment Test
-							https://lurchit.com/api/shared/payment.php?Amount=25&CCNumber=4242424242424242&ExpMonth=02&ExpYear=2020&CVC=314
+							https://apilurchit.com/api/shared/payment.php?Amount=25&CCNumber=4242424242424242&ExpMonth=02&ExpYear=2020&CVC=314
 							
 							// UpdateAcceptedOnScreen Test
-							https://lurchit.com/api/carwash/updateAcceptedOnScreen.php?JobID=43
+							https://apilurchit.com/api/carwash/updateAcceptedOnScreen.php?JobID=43
 							
 							// Signup Test
-							http://lurchit.com/shared/signup.php?FirstName=Test&LastName=Tester&Username=Email=chriscoreyweathers@gmail.com&Phone=314-458-5040&Password=Admin10!
+							http://apilurchit.com/shared/signup.php?FirstName=Test&LastName=Tester&Username=Email=chriscoreyweathers@gmail.com&Phone=314-458-5040&Password=Admin10!
+							
+							// Get Demographics Test
+							http://apilurchit.com/api/shared/getDemographics.php?ID=1
