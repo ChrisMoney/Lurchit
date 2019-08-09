@@ -35,7 +35,7 @@ AND ID != $id
 And IsLurchActive = 1
 Group By ID
 HAVING distance <= 30
-ORDER BY distance DESC
+ORDER BY distance ASC
 ";
 
 $notification = "Car Wash Request";
