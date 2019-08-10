@@ -8,6 +8,7 @@
 
 
 header("Content-Type: application/json;charset=utf-8");
+$env = $_GET['ENV'];
 require '../connect.php';
 include_once '../email.php';
 include_once '../helpers.php';

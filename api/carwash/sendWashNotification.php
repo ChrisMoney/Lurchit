@@ -1,4 +1,6 @@
 <?php
+$env = $_GET['ENV'];
+
 require '../connect.php';
 require '../helpers.php';
 include_once '../email.php';
@@ -56,7 +58,7 @@ if (mysqli_query($conn, $sql2)) {
         $subject = "Car Wash Request";
         $title = "Car Wash Request";
         
-        $profilePhoto = getProfilePhoto($id);
+        $profilePhoto = getProfilePhoto($id, $env);
         if (strlen($profilePhoto) > 1) {
             $profilePhoto = ProfileMediaPath.$profilePhoto;
         }
@@ -64,7 +66,7 @@ if (mysqli_query($conn, $sql2)) {
             $profilePhoto = LogoPath;
         }
             
-        $senderName = getFirstName($id);
+        $senderName = getFirstName($id, $env);
         
             // insert into notification table
             $sql3 = "INSERT INTO Notifications (Customer_ID, Lurch_ID,      Job_ID,        Job,    Message,       New, NotificationDate)

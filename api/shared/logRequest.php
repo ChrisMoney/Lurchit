@@ -1,4 +1,5 @@
 <?php
+$env = $_GET['ENV'];
 require '../connect.php';
 
 $service = $_GET['ServiceType'];

@@ -2,6 +2,7 @@
 
 // Google Map API Key: AIzaSyCoRTbekTZbeNP03VMkpyx-N9Lcfe2XGP0
 header("Content-Type: application/json;charset=utf-8");
+$env = $_GET['ENV'];
 require '../connect.php';
 require '../helpers.php';
 

@@ -1,5 +1,6 @@
 <?php
 header("Content-Type: application/json;charset=utf-8");
+$env = $_GET['ENV'];
 require '../connect.php';
 
 $id = $_GET['ID'];

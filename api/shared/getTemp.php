@@ -1,5 +1,5 @@
 <?php
-
+$env = $_GET['ENV'];
 $lat = $_GET['Lat'];
 $long = $_GET['Long'];
 

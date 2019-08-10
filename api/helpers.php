@@ -1,6 +1,13 @@
 <?php
-define("ProfileMediaPath", "http://apilurchit.com/api/media/");
-define("CarMediaPath", "http://apilurchit.com/api/cars/");
+if ($env == 'DEV') {
+    define("ProfileMediaPath", "http://apilurchit.com/api/media-dev/");
+    define("CarMediaPath", "http://apilurchit.com/api/cars-dev/");
+}
+else {
+    define("ProfileMediaPath", "http://apilurchit.com/api/media/");
+    define("CarMediaPath", "http://apilurchit.com/api/cars/");
+}
+
 define("LogoPath", "http://apilurchit.com/api/logo.png");
 
 function getDistance($id) {
@@ -146,9 +153,9 @@ function pushNotification($heading, $message, $userID){
 
 
 
-function checkActive($id) {
+function checkActive($id, $env) {
     
-    $conn = connection();
+    $conn = connection($db);
     $sql = "SELECT IsDeactivated FROM Members WHERE ID = $id ";
     $result = mysqli_query($conn, $sql);
     
@@ -181,8 +188,8 @@ function phone_number_format($number) {
     
 }
 
-function getProfilePhoto($id) {
-    $conn = connection();
+function getProfilePhoto($id, $env) {
+    $conn = connection($env);
     $sql = "SELECT ProfilePhoto FROM Members WHERE ID = $id ";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
@@ -191,8 +198,8 @@ function getProfilePhoto($id) {
     return $profilePhoto;
 }
 
-function getFirstName($id) {
-    $conn = connection();
+function getFirstName($id, $env) {
+    $conn = connection($env);
     $sql = "SELECT FirstName FROM Members WHERE ID = $id ";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
@@ -201,8 +208,8 @@ function getFirstName($id) {
     return $fName;
 }
 
-function getUsername($id) {
-    $conn = connection();
+function getUsername($id, $env) {
+    $conn = connection($env);
     $sql = "SELECT Username FROM Members WHERE ID = $id ";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);

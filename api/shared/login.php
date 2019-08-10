@@ -6,7 +6,7 @@
  * Time: 10:19 AM
  */
 header('Content-Type: application/json');
-
+$env = $_GET['ENV'];
 require '../connect.php';
 
 

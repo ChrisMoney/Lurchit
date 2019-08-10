@@ -1,6 +1,7 @@
 <?php
 
 header("Content-Type: application/json;charset=utf-8");
+$env = $_GET['ENV'];
 
 date_default_timezone_set("America/Chicago");
 

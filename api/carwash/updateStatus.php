@@ -1,5 +1,6 @@
 <?php
 header("Content-Type: application/json;charset=utf-8");
+$env = $_GET['ENV'];
 require '../connect.php';
 require '../helpers.php';
 require '../email.php';
@@ -54,7 +55,7 @@ $device = "iPhone";
 if (mysqli_query($conn, $sql)) {
     
     // update new notifications
-    $sql3 = "Update Notifications Set New = 0, Lurch_ID = '$lurchID' WHERE Job_ID = $jobID ";
+    $sql3 = "Update Notifications Set New = 0 WHERE Job_ID = $jobID ";
     mysqli_query($conn, $sql3);
     
     // email consumer

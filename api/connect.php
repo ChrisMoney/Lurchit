@@ -6,78 +6,44 @@
  * Time: 9:22 PM
  */
 
+$localhost = 'localhost';
+$username = 'lurchit';
+$pass = '@Dmin10!';
+
 if ($env == 'PROD') {
-    // use this to call connection in non function calls
-    $localhost = 'localhost';
-    $username = 'lurchit';
-    $pass = '@Dmin10!';
     $db = 'Lurchit';
-    
-    $conn = mysqli_connect ($localhost, $username, $pass, $db);
-    
-    // use this function to pass to other functions
-    function connection () {
-        $localhost = 'localhost:3306';
-        $username = 'lurchit';
-        $pass = '@Dmin10!';
-        $db = 'Lurchit';
-        
-        static $conn;
-        if ($conn===NULL){
-            $conn = mysqli_connect ($localhost, $username, $pass, $db);
-        }
-        return $conn;
-    }
-    
 }
 elseif ($env == 'DEV') {
-    // use this to call connection in non function calls
-    $localhost = 'localhost';
-    $username = 'lurchit';
-    $pass = '@Dmin10!';
     $db = 'LurchitDev';
-    
-    $conn = mysqli_connect ($localhost, $username, $pass, $db);
-    
-    // use this function to pass to other functions
-    function connection () {
-        $localhost = 'localhost:3306';
-        $username = 'lurchit';
-        $pass = '@Dmin10!';
-        $db = 'LurchitDev';
-        
-        static $conn;
-        if ($conn===NULL){
-            $conn = mysqli_connect ($localhost, $username, $pass, $db);
-        }
-        return $conn;
-    }
-    
+}
+else {
+    $db = 'Lurchit';
 }
 
-else {
-    // use this to call connection in non function calls
-    $localhost = 'localhost';
+$conn = mysqli_connect ($localhost, $username, $pass, $db);
+
+
+function connection ($env) {
+    
+    if ($env == 'PROD') {
+        $db = 'Lurchit';
+    }
+    elseif ($env == 'DEV') {
+        $db = 'LurchitDev';
+    }
+    else {
+        $db = 'Lurchit';
+    }
+    
+    $localhost = 'localhost:3306';
     $username = 'lurchit';
     $pass = '@Dmin10!';
-    $db = 'Lurchit';
+
     
-    $conn = mysqli_connect ($localhost, $username, $pass, $db);
-    
-    // use this function to pass to other functions
-    function connection () {
-        $localhost = 'localhost:3306';
-        $username = 'lurchit';
-        $pass = '@Dmin10!';
-        $db = 'Lurchit';
-        
-        static $conn;
-        if ($conn===NULL){
-            $conn = mysqli_connect ($localhost, $username, $pass, $db);
-        }
-        return $conn;
+    static $conn;
+    if ($conn===NULL){
+        $conn = mysqli_connect ($localhost, $username, $pass, $db);
     }
+    return $conn;
 }
-
-
 

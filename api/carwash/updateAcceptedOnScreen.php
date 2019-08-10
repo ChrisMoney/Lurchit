@@ -2,6 +2,7 @@
 
 
 header("Content-Type: application/json;charset=utf-8");
+$env = $_GET['ENV'];
 require '../connect.php';
 require '../helpers.php';
 
@@ -17,7 +18,7 @@ $lurch = mysqli_fetch_assoc($result);
 $status = ' '.$lurch['Status'];
 $lurchID = $lurch['Lurch_ID'];
 
-$username = getUsername($lurchID);
+$username = getUsername($lurchID, $env);
 $status = array("Username"=>$username, "Status"=>$status);
 echo json_encode($status);
         
