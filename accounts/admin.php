@@ -1,5 +1,7 @@
 <?php 
+$env = $_GET['ENV'];
 require 'connect.php';
+require 'email.php';
 
 $lurchID = $_GET['ID'];
 

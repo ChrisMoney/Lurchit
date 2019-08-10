@@ -78,10 +78,10 @@ function sendNewMessageMail($email, $senderName, $profilePhoto, $device, $subjec
     }
 }
 
-function sendRequestPaymentEmail($email, $lurchID) {
+function sendRequestPaymentEmail($email, $lurchID, $env) {
     
     // send email
-    $subject = "<a href='http://accounts.apilurchit.com/admin.php?ID=$lurchID'>Click here to process payment</a>";
+    $subject = "<a href='http://accounts.apilurchit.com/admin.php?ID=$lurchID&ENV=$env'>Click here to process payment</a>";
     $toEmail = $email;
     
     $message = "<html><body>";

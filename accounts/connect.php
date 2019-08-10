@@ -6,20 +6,39 @@
  * Time: 9:22 PM
  */
 
-// use this to call connection in non function calls
 $localhost = 'localhost';
 $username = 'lurchit';
 $pass = '@Dmin10!';
-$db = 'Lurchit';
+
+if ($env == 'PROD') {
+    $db = 'Lurchit';
+}
+elseif ($env == 'DEV') {
+    $db = 'LurchitDev';
+}
+else {
+    $db = 'Lurchit';
+}
 
 $conn = mysqli_connect ($localhost, $username, $pass, $db);
 
-// use this function to pass to other functions
-function connection () {
+
+function connection ($env) {
+    
+    if ($env == 'PROD') {
+        $db = 'Lurchit';
+    }
+    elseif ($env == 'DEV') {
+        $db = 'LurchitDev';
+    }
+    else {
+        $db = 'Lurchit';
+    }
+    
     $localhost = 'localhost:3306';
     $username = 'lurchit';
     $pass = '@Dmin10!';
-    $db = 'Lurchit';
+    
     
     static $conn;
     if ($conn===NULL){
@@ -27,6 +46,7 @@ function connection () {
     }
     return $conn;
 }
+
 
 
 
