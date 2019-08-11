@@ -1,6 +1,14 @@
 <?php 
 require 'connect.php';
-include_once 'helpers.php';
+
+// track IP addresses accessing this page.
+if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+    $ip = $_SERVER['HTTP_CLIENT_IP'];
+} elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+    $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+} else {
+    $ip = $_SERVER['REMOTE_ADDR'];
+}
 
 $jobID = $_GET['JobID'];
 

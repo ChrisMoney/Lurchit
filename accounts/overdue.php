@@ -1,4 +1,14 @@
-
+<?php
+require 'connect.php';
+// track IP addresses accessing this page.
+if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+    $ip = $_SERVER['HTTP_CLIENT_IP'];
+} elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+    $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+} else {
+    $ip = $_SERVER['REMOTE_ADDR'];
+}
+?>
 <!DOCTYPE HTML>
 
 <html>
@@ -52,7 +62,6 @@
 							<?php 
 							
 							require 'connect.php';
-							include_once 'helpers.php';
 							
 							$sql = "SELECT ID, WashDate FROM Carwash 
                             WHERE WashDate < NOW() - INTERVAL 1 DAY AND Status = 'new' ";
@@ -144,11 +153,10 @@
 		<!-- Footer -->
 			<footer id="footer">
 				<div class="inner">
-					<h2>Get In Touch</h2>
-					<ul class="actions">
-						<li><span class=""></span> <a href="mailto:info@lurchit.com">info@lurchit.com</a></li>
-						<li><span class=""></span> 911 Washington Avenue, Suite 501, St. Louis, MO 63101</li>
-					</ul>
+					<p>
+					Unauthorized access of this page is punishable to the fullest extent of local and federal law.
+					All IPs accessing this page are tracked, whether direct or VPN accessed.
+					</p>
 				</div>
 				<div class="copyright">
 					&copy; 2019
