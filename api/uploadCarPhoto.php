@@ -1,19 +1,24 @@
 <?php
 
-require 'connect.php';
-
-
 $json = file_get_contents("php://input");
 $data = json_decode($json, true);
 
 $id = $data["ID"];
 $media = $data['Media'];
+$env = $data['ENV'];
 
 $mediaName = uniqid().'img.png';
 
 // save media to file server
-file_put_contents('cars/'.$mediaName, base64_decode($media));
+if ($env == "DEV") {
+    file_put_contents('cars-dev/'.$mediaName, base64_decode($media));
+}
+else {
+    file_put_contents('cars/'.$mediaName, base64_decode($media));
+}
 
+
+require 'connect.php';
 $sql = "Update Members Set CarPhoto = '$mediaName'
 WHERE ID = $id ";
 

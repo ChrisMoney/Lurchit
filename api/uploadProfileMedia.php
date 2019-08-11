@@ -7,28 +7,28 @@
  */
 
 //header("Content-Type: application/json;charset=utf-8");
-require 'connect.php';
 
 
 $json = file_get_contents("php://input");
 $data = json_decode($json, true);
 
 
-
-//convert the string of data to an array
-
-
 $id = $data["ID"];
 $media = $data['Media'];
-
-mysqli_query($conn, "INSERT INTO LogError (Log, Date) Values ('$media', NOW())");
+$env = $data['ENV'];
 
 $mediaName = uniqid().'img.png';
 //$type = $data['MediaType'];
 
 // save media to file server
-file_put_contents('media/'.$mediaName, base64_decode($media));
+if ($env == "DEV") {
+    file_put_contents('media-dev/'.$mediaName, base64_decode($media));
+}
+else {
+    file_put_contents('media/'.$mediaName, base64_decode($media));
+}
 
+require 'connect.php';
 // save reference to media
 $sql = "Update Members Set ProfilePhoto = '$mediaName' WHERE ID = $id ";
 
