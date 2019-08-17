@@ -6,7 +6,7 @@ require '../helpers.php';
 
 $id = $_GET['ID'];
 
-$sql = "SELECT ID, Total, Tip, PayStatus, Rating, WashDate 
+$sql = "SELECT ID as JobID, Total, Tip, PayStatus, Rating, WashDate 
 FROM Carwash 
 WHERE Lurch_ID = $id 
 Order By ID DESC ";

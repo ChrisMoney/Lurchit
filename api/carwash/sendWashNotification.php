@@ -34,6 +34,7 @@ sin( radians( Latitude ) ) ) ) AS distance
 FROM Members 
 WHERE IsLurch = 1
 AND ID != $id
+And ID NOT IN (SELECT Lurch_ID FROM Carwash WHERE Status = 'Accepted' Or Status = 'Arrived')
 And IsLurchActive = 1
 Group By ID
 HAVING distance <= 30
@@ -83,7 +84,7 @@ if (mysqli_query($conn, $sql2)) {
              pushNotificationAndroid('Message', $notification, $lurchID);
              }
              // give closest lurch a chance to respond
-             sleep(60);
+             sleep(2);
         }
     } 
 }

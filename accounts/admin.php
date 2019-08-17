@@ -5,7 +5,12 @@ require 'email.php';
 
 $lurchID = $_GET['ID'];
 
-$sql = "SELECT * FROM Members m WHERE ID = $lurchID ";
+if (!isset($lurchID) || empty($lurchID)) {
+    echo "<script>alert('member not found'); location = history.back(); </script>";
+}
+
+$sql = "SELECT FirstName, LastName, Email, Phone, Address, Apt, MailCity, MailState, MailZip,
+AES_DECRYPT(SSN, 'ssn') as SSN, BirthDay, BirthMonth, BirthYear, IsActive, IsLurch, IsLurchActive FROM Members m WHERE ID = $lurchID ";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
 
@@ -18,6 +23,7 @@ $apt = $row['Apt'];
 $city = $row['MailCity'];
 $state = $row['MailState'];
 $zip = $row['MailZip'];
+$ssn = $row['SSN'];
 $birthDay = $row['BirthDay'];
 $birthMonth = $row['BirthMonth'];
 $birthYear = $row['BirthYear'];
@@ -148,8 +154,15 @@ else {
                     <h3>Zip: </h3>
 
                     <input class="form-control" maxLength = "5" style="max-width: 25%" type = "number" name = "zip" id = "zip" value = "<?php echo $zip ?>" />
-
+					
 					<br/>
+					
+					<h3>SSN: </h3>
+
+                    <input class="form-control" maxLength = "5" style="max-width: 25%" type = "number" name = "ssn" id = "ssn" value = "<?php echo $ssn ?>" />
+                    
+					<br/>
+					
 					<h3>Birthdate</h3>
 					
 					(Month)<input class="form-control" maxLength = "2" style="max-width: 25%" type= "number" name = "birthMonth" id = "birthMonth" value = "<?php echo $birthMonth ?>" /> <br/>
@@ -222,6 +235,7 @@ else {
      $city = $_POST['city'];
      $state = $_POST['state'];
      $zip = $_POST['zip'];
+     $ssn = $_POST['ssn'];
      $birthDay = $_POST['birthDay'];
      $birthMonth = $_POST['birthMonth'];
      $birthYear = $_POST['birthYear'];
@@ -238,6 +252,7 @@ else {
             MailCity = '$city',
             MailState = '$state',
             MailZip = '$zip',
+            SSN = AES_ENCRYPT('$ssn', 'ssn'),
             BirthDay = '$birthDay',
             BirthMonth = '$birthMonth',
             BirthYear = '$birthYear',
@@ -248,10 +263,10 @@ else {
      
      
      if (mysqli_query($conn, $sql)) {
-         echo "<script>alert('Member data updated successfully'); location = '/accounts/admin.php?ID=$lurchID' </script>";
+         echo "<script>alert('Member data updated successfully'); location = '/admin.php?ID=$lurchID' </script>";
      }
      else {
-         echo "<script>alert('Member update failed!'); location = '/accounts/admin.php?ID=$lurchID' </script>";
+         echo "<script>alert('Member update failed!'); location = '/admin.php?ID=$lurchID' </script>";
      }
  }
        

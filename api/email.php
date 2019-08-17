@@ -51,7 +51,15 @@ function sendIntroMail($email) {
 
 function sendNewMessageMail($email, $senderName, $profilePhoto, $device, $subject, $title) {
     
-   
+    if ($device = "iPhone") {
+        $link = "https://apps.apple.com/us/app/lurchit/id1462289389?ls=1";
+    }
+    elseif ($device == "Android") {
+        $link = "";
+    }
+    else {
+        $link = "https://apps.apple.com/us/app/lurchit/id1462289389?ls=1";
+    }
     
     // send email
     $toEmail = $email;

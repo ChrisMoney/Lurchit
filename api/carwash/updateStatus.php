@@ -8,6 +8,7 @@ require '../email.php';
 $jobID = $_GET['JobID'];
 $newStatus = $_GET['Status'];
 $lurchID = $_GET['LurchID'];
+$device = $_GET['Device'];
 
 $sqlCustomer = "SELECT Customer_ID FROM Carwash WHERE ID = $jobID ";
 $resultCustomer = mysqli_query($conn, $sqlCustomer);
@@ -50,7 +51,9 @@ $title = "Status Update";
 
 $sql = "Update Carwash Set Status = '$status', Lurch_ID = '$lurchID' WHERE ID = $jobID ";
 
+if (strlen($device) == 0) {
 $device = "iPhone";
+}
 
 if (mysqli_query($conn, $sql)) {
     
