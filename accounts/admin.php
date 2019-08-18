@@ -159,7 +159,7 @@ else {
 					
 					<h3>SSN: </h3>
 
-                    <input class="form-control" maxLength = "5" style="max-width: 25%" type = "number" name = "ssn" id = "ssn" value = "<?php echo $ssn ?>" />
+                    <input class="form-control" maxLength = "5" style="max-width: 25%" type = "text" name = "ssn" id = "ssn" value = "<?php echo $ssn ?>" />
                     
 					<br/>
 					

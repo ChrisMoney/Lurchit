@@ -7,7 +7,7 @@ require '../helpers.php';
 
 $lurchID = $_GET['LurchID'];
 
-$sql = "SELECT ID, Username, ProfilePhoto
+$sql = "SELECT ID, Username, ProfilePhoto, Phone
 FROM Members
 WHERE ID = $lurchID ";
 
