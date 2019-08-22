@@ -1,16 +1,6 @@
 <?php
 $env = $_GET['ENV'];
 
-date_default_timezone_set("America/Chicago");
-
-$centralStates = array("ND","MO","SD","NE","KS","OK","TX","MN","IA","MO","AR","LA","WI","TN","MS","LA","AL");
-
-$pacificStates = array("WA","OR","CA","NV");
-
-$mountainStates = array("MT","ID","UT","AZ","WY","CO","NM");
-
-$easternStates = array("MI","IN","OH","KY","ME","VT","NY","PA","VA","NC","SC","GA","FL","NH","MA","RI","CT","NJ","DE","MD","DC");
-
 require '../connect.php';
 require '../helpers.php';
 include_once '../email.php';
@@ -78,29 +68,9 @@ if (mysqli_query($conn, $sql2)) {
             $profilePhoto = LogoPath;
         }
             
-        $senderName = getFirstName($id, $env);
+        $senderName = getFirstName($id, $distance, $env);
         
-        // get lurch state
-        $sqlState = "SELECT State FROM Members WHERE ID = $id ";
-        $resultState = mysqli_query($conn, $sqlState);
-        $rowState = mysqli_fetch_assoc($resultState);
-        $state = $rowState['State'];
-       
-        if (in_array($state, $centralStates)) {
-            $currentTime = time();
-        }
-        elseif (in_array($state, $pacificStates)) {
-            $currentTime = time() - 60*60*2;
-        }
-        elseif (in_array($state, $mountainStates)) {
-            $currentTime = time() - 60*60;
-        }
-        else {
-            $currentTime = time() + 60*60;
-        }
-        
-
-        $eta = date("h:i", strtotime('+'.$distance. 'minutes', $currentTime));
+        $eta = calculateETA($id, $env);
         
         
         // insert into notification table
