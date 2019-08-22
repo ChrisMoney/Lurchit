@@ -218,7 +218,7 @@ function getUsername($id, $env) {
     return $username;
 }
 
-function calculateETA($id, $distance, $env) {
+function calculateETA($customerId, $distance, $env) {
     $conn = connection($env);
     
     date_default_timezone_set("America/Chicago");
@@ -232,7 +232,7 @@ function calculateETA($id, $distance, $env) {
     $easternStates = array("MI","IN","OH","KY","ME","VT","NY","PA","VA","NC","SC","GA","FL","NH","MA","RI","CT","NJ","DE","MD","DC");
     
     // get lurch state
-    $sqlState = "SELECT State FROM Members WHERE ID = $id ";
+    $sqlState = "SELECT State FROM Members WHERE ID = $customerId ";
     $resultState = mysqli_query($conn, $sqlState);
     $rowState = mysqli_fetch_assoc($resultState);
     $state = $rowState['State'];
