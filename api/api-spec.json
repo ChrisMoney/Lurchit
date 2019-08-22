@@ -2264,6 +2264,9 @@
                                 },
                                 "Phone": {
                                     "type": "string"
+                                },
+                                "ETA": {
+                                    "type": "string"
                                 }
                             }
                         }

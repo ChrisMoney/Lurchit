@@ -31,7 +31,7 @@ if ($result = mysqli_query($conn, $sql)) {
         $status['IsLurchActive'] = filter_var($status['IsLurchActive'], FILTER_VALIDATE_BOOLEAN);
         
         $balance = $status['Balance'];
-        $newBalance = $balance * 0.6;
+        $newBalance = $balance * 0.7;
         
         $newBalance = $newBalance + $status['Tip'];
         $status['Balance'] = "$".$newBalance;
