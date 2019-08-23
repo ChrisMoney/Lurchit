@@ -250,9 +250,10 @@ function calculateETA($customerId, $distance, $env) {
         $currentTime = time() + 60*60;
     }
     
-    
-    $eta = date("h:i", strtotime('+'.$distance. 'minutes', $currentTime));
-    
+
+    $eta = $currentTime + ($distance * 60);
+    $eta = date('g:i', $eta);
+
     return $eta;
 
 }

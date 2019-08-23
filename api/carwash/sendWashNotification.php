@@ -37,7 +37,7 @@ And ID NOT IN (SELECT Lurch_ID FROM Carwash WHERE Status = 'Accepted' Or Status 
 And IsLurchActive = 1
 Group By ID
 HAVING Distance <= 30
-ORDER BY distance ASC
+ORDER BY Distance ASC
 ";
 
 $notification = "Car Wash Request";
@@ -69,6 +69,7 @@ if (mysqli_query($conn, $sql2)) {
             
         $senderName = getFirstName($id, $env);
         
+        $distance = ceil($distance);
         $eta = calculateETA($id, $distance, $env);
         
         
