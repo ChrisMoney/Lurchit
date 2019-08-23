@@ -4,7 +4,7 @@ INSERT INTO Carwash         (Customer_ID, Carwash,    Tires,   Interior,     Wax
 							
 							
 							// sendWashNotification test
-							http://apilurchit.com/api/carwash/sendWashNotification.php?ENV=DEV&ID=1&Lat=38.7385&Long=-90.3904&Carwash=25&Wax=0&Interior=0&Tires=0&Total=25&Address=123Street
+							http://apilurchit.com/api/carwash/sendWashNotification.php?ENV=DEV&ID=1&Lat=38.7385&Long=-90.3904&Carwash=25&Wax=0&Interior=0&Total=25&Address=123Street
 							
 							// requestWash test
 							https://apilurchit.com/api/carwash/requestWash.php?ENV=DEV&JobID=41
