@@ -196,11 +196,6 @@
                         "type": "integer"
                     },
                     {
-                        "name": "Tires",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
                         "name": "Interior",
                         "in": "query",
                         "type": "string"
@@ -500,9 +495,6 @@
                                 "Carwash": {
                                     "type": "string"
                                 },
-                                "Tires": {
-                                    "type": "string"
-                                },
                                 "Interior": {
                                     "type": "string"
                                 },
@@ -522,6 +514,9 @@
                                     "type": "string"
                                 },
                                 "Phone": {
+                                    "type": "string"
+                                },
+                                "ETA": {
                                     "type": "string"
                                 }
                             }
@@ -565,9 +560,6 @@
                                     "type": "integer"
                                 },
                                 "Carwash": {
-                                    "type": "string"
-                                },
-                                "Tires": {
                                     "type": "string"
                                 },
                                 "Interior": {
@@ -770,6 +762,9 @@
                                     "type": "string"
                                 },
                                 "Status": {
+                                    "type": "string"
+                                },
+                                "ETA": {
                                     "type": "string"
                                 }
                             }

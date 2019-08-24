@@ -7,7 +7,7 @@ require '../helpers.php';
 
 $lurchID = $_GET['LurchID'];
 
-$sql = "SELECT ID, Username, ProfilePhoto, Phone, (SELECT ETA FROM Notifications WHERE Lurch_ID = $lurchID) as ETA
+$sql = "SELECT ID, Username, ProfilePhoto, Phone, (SELECT ETA FROM Carwash WHERE Lurch_ID = $lurchID ORDER BY ID DESC LIMIT 1) as ETA
 FROM Members
 WHERE ID = $lurchID ";
 

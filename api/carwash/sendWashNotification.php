@@ -78,6 +78,7 @@ if (mysqli_query($conn, $sql2)) {
                                     Values ('$id',       '$lurchID', '$carwashID', 'Carwash', '$notification', 1,    '$eta',   NOW()) ";
         mysqli_query($conn, $sql3);
         
+        // update ETA in carwash
         $sql4 = "UPDATE Carwash Set ETA = '$eta' WHERE ID = $carwashID";
         mysqli_query($conn, $sql4);
         

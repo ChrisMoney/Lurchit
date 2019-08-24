@@ -20,3 +20,6 @@ INSERT INTO Carwash         (Customer_ID, Carwash,    Tires,   Interior,     Wax
 							
 							// Get Demographics Test
 							http://apilurchit.com/api/shared/getDemographics.php?ENV=DEV&ID=1
+							
+							// Get Lurch
+							http://apilurchit.com/api/shared/getLurch.php?ENV=DEV&LurchID=1
