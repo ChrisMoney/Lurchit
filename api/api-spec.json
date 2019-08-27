@@ -18,10 +18,10 @@
         "application/json"
     ],
     "paths": {
-        "/uploadProfileMedia.php": {
+        "/uploadCarPhoto.php": {
             "post": {
-                "operationId": "POST_uploadProfileMedia-php",
-                "summary": "UploadProfileMedia",
+                "operationId": "POST_uploadCarPhoto-php",
+                "summary": "UploadCarPhoto",
                 "parameters": [
                     {
                         "name": "body",
@@ -58,10 +58,10 @@
                 }
             }
         },
-        "/uploadCarPhoto.php": {
+        "/uploadProfileMedia.php": {
             "post": {
-                "operationId": "POST_uploadCarPhoto-php",
-                "summary": "UploadCarPhoto",
+                "operationId": "POST_uploadProfileMedia-php",
+                "summary": "UploadProfileMedia",
                 "parameters": [
                     {
                         "name": "body",
@@ -2454,6 +2454,40 @@
                                     "type": "string"
                                 }
                             }
+                        }
+                    }
+                }
+            }
+        },
+        "/shared/recordRequest.php": {
+            "get": {
+                "operationId": "GET_shared-recordRequest-php",
+                "summary": "RecordRequest",
+                "tags": [
+                    "shared"
+                ],
+                "parameters": [
+                    {
+                        "name": "CustomerID",
+                        "in": "query",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "Service",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer"
                         }
                     }
                 }
