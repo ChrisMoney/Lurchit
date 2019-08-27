@@ -253,7 +253,7 @@ function calculateETA($customerId, $distance, $env) {
     // spot 5 minutes for accepting job and heading out
     $distance = $distance + 5;
     $eta = $currentTime + ($distance * 60);
-    $eta = date('g:i', $eta);
+    $eta = "ETA ".date('g:i', $eta);
 
     return $eta;
 

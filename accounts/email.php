@@ -3,7 +3,7 @@
 function sendResetEmail($email) {
     
     // send email
-    $subject = "<a href='http://accounts.lurchit.com/password-create.php?email=$email'>Click here to reset your password</a>";
+    $subject = "<a href='http://accounts.apilurchit.com/password-create.php?email=$email'>Click here to reset your password</a>";
     $toEmail = $email;
     
     $message = "<html><body>";

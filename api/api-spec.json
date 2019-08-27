@@ -763,9 +763,6 @@
                                 },
                                 "Status": {
                                     "type": "string"
-                                },
-                                "ETA": {
-                                    "type": "string"
                                 }
                             }
                         }
@@ -2240,6 +2237,11 @@
                         "name": "ENV",
                         "in": "query",
                         "type": "string"
+                    },
+                    {
+                        "name": "JobID",
+                        "in": "query",
+                        "type": "integer"
                     }
                 ],
                 "responses": {

@@ -18,8 +18,8 @@ $address = mysqli_escape_string($conn, $address);
 $notification = "Car Wash Request";
 
 // insert into service table
-$sql = "INSERT INTO Carwash         (Customer_ID, Carwash,   Interior,     Wax,    Total, Latitude, Longitude, Address,   ETA,   Status, WashDate)
-                            Values  ('$id',      '$carwash', '$interior', '$wax', '$total', '$lat', '$long',   '$address', '0', 'new', NOW()) ";
+$sql = "INSERT INTO Carwash         (Customer_ID, Carwash,   Interior,     Wax,    Total, Latitude, Longitude, Address,  Distance, ETA,   Status, WashDate)
+                            Values  ('$id',      '$carwash', '$interior', '$wax', '$total', '$lat', '$long',   '$address', '0',     '0', 'new', NOW()) ";
 mysqli_query($conn, $sql);
 
 $carwashID = mysqli_insert_id($conn);
@@ -69,13 +69,9 @@ if (mysqli_query($conn, $sql2)) {
             
         $senderName = getFirstName($id, $env);
         
-        $distance = ceil($distance);
-        $eta = calculateETA($id, $distance, $env);
-        
-        
         // insert into notification table
-        $sql3 = "INSERT INTO Notifications (Customer_ID, Lurch_ID,      Job_ID,        Job,    Message,       New,    ETA,    NotificationDate)
-                                    Values ('$id',       '$lurchID', '$carwashID', 'Carwash', '$notification', 1,    '$eta',   NOW()) ";
+        $sql3 = "INSERT INTO Notifications (Customer_ID, Lurch_ID,      Job_ID,        Job,    Message,       New,  NotificationDate)
+                                    Values ('$id',       '$lurchID', '$carwashID', 'Carwash', '$notification', 1,    NOW()) ";
         mysqli_query($conn, $sql3);
         
         // update ETA in carwash

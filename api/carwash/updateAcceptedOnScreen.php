@@ -20,6 +20,6 @@ $lurchID = $lurch['Lurch_ID'];
 $eta = $lurch['ETA'];
 
 $username = getUsername($lurchID, $env);
-$status = array("Username"=>$username, "Status"=>$status, "ETA" => $eta);
+$status = array("Username"=>$username, "Status"=>$status);
 echo json_encode($status);
         

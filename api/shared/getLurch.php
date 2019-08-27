@@ -6,8 +6,11 @@ require '../connect.php';
 require '../helpers.php';
 
 $lurchID = $_GET['LurchID'];
+$jobID = $_GET['JobID'];
 
-$sql = "SELECT ID, Username, ProfilePhoto, Phone, (SELECT ETA FROM Carwash WHERE Lurch_ID = $lurchID ORDER BY ID DESC LIMIT 1) as ETA
+$sql = "SELECT ID, Username, ProfilePhoto, Phone, (SELECT Distance FROM Carwash WHERE ID = $jobID) as Distance,
+(SELECT ETA FROM Carwash WHERE ID = $jobID) as ETA, 
+(SELECT Customer_ID FROM Carwash WHERE ID = $jobID) as CustomerID
 FROM Members
 WHERE ID = $lurchID ";
 
@@ -21,6 +24,13 @@ WHERE ID = $lurchID ";
         $profileMedia = $lurch['ProfilePhoto'];
         $mediaUrl = ProfileMediaPath.$profileMedia;
         $lurch['ProfilePhoto'] = $mediaUrl;
+        $distance = $lurch['Distance'];
+        $customerId = $lurch['CustomerID'];
+        $distance = ceil($distance);
+        
+        $eta = calculateETA($customerId, $distance, $env);
+        
+        $lurch['ETA'] = $eta;
         
         echo json_encode($lurch);
     }
