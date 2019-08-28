@@ -38,7 +38,7 @@
 				<div class="inner flex flex-3">
 					<div class="flex-item left">
 						<div>
-							<h3><a href='password-reset.php'>Password Recovery</a></h3>
+							<h3><a href='search.php'>Search</a></h3>
 							
 						</div>
 						<div>
