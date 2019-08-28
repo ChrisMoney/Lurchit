@@ -23,3 +23,6 @@ INSERT INTO Carwash         (Customer_ID, Carwash,    Tires,   Interior,     Wax
 							
 							// Get Lurch
 							http://apilurchit.com/api/shared/getLurch.php?ENV=DEV&LurchID=1
+							
+							// Get Details
+							http://apilurchit.com/api/carwash/getDetails.php?JobID=5&ENV=DEV
