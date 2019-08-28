@@ -259,3 +259,6 @@ function calculateETA($customerId, $distance, $env) {
 
 }
 
+function detect_zipcode($string) {
+    return preg_match('/\b\d{5}(-\d{4})?\b/', $string);
+}

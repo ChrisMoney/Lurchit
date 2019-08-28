@@ -75,7 +75,7 @@ if (mysqli_query($conn, $sql2)) {
         mysqli_query($conn, $sql3);
         
         // update ETA in carwash
-        $sql4 = "UPDATE Carwash Set ETA = '$eta' WHERE ID = $carwashID";
+        $sql4 = "UPDATE Carwash Set Distance = '$distance' WHERE ID = $carwashID";
         mysqli_query($conn, $sql4);
         
         $device = 'iPhone';
