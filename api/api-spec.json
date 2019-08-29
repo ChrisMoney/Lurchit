@@ -224,6 +224,16 @@
                         "name": "ENV",
                         "in": "query",
                         "type": "string"
+                    },
+                    {
+                        "name": "Temp",
+                        "in": "query",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "Time",
+                        "in": "query",
+                        "type": "integer"
                     }
                 ],
                 "responses": {

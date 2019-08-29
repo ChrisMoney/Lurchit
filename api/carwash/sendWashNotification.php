@@ -13,13 +13,15 @@ $interior = $_GET['Interior'];
 $wax = $_GET['Wax'];
 $total= $_GET['Total'];
 $address = $_GET['Address'];
+$temp = $_GET['Temp'];
+$time = $_GET['Time'];
 $address = mysqli_escape_string($conn, $address);
 
 $notification = "Car Wash Request";
 
 // insert into service table
-$sql = "INSERT INTO Carwash         (Customer_ID, Carwash,   Interior,     Wax,    Total, Latitude, Longitude, Address,  Distance, ETA,   Status, WashDate)
-                            Values  ('$id',      '$carwash', '$interior', '$wax', '$total', '$lat', '$long',   '$address', '0',     '0', 'new', NOW()) ";
+$sql = "INSERT INTO Carwash         (Customer_ID, Carwash,   Interior,     Wax,    Total, Latitude, Longitude, Address,  Distance, ETA,   Status, Temp, Time,    WashDate)
+                            Values  ('$id',      '$carwash', '$interior', '$wax', '$total', '$lat', '$long',   '$address', '0',     '0', 'new',  '$temp', '$time', NOW()) ";
 mysqli_query($conn, $sql);
 
 $carwashID = mysqli_insert_id($conn);
