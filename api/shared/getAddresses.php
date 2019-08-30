@@ -9,7 +9,8 @@ $id = $_GET['ID'];
 $sql = "Select DISTINCT ID, Address, IsPrimary
 From CustomerAddress
 WHERE Member_ID = $id
-Group By ID ";
+Group By ID 
+Order By IsPrimary DESC ";
 
 $result = mysqli_query($conn, $sql);
 $myArray = array();
