@@ -26,3 +26,6 @@ INSERT INTO Carwash         (Customer_ID, Carwash,    Tires,   Interior,     Wax
 							
 							// Get Details
 							http://apilurchit.com/api/carwash/getDetails.php?JobID=5&ENV=DEV
+							
+							// Get Addresses
+							hhttp://apilurchit.com/api/shared/getAddresses.php?ID=1

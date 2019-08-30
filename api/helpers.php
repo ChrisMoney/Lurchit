@@ -259,5 +259,19 @@ function calculateETA($customerId, $distance, $env) {
 }
 
 function detect_zipcode($string) {
-    return preg_match('/\b\d{5}(-\d{4})?\b/', $string);
+    $conn = connection('DEV');
+    
+    $addressArray = explode(' ',$string);
+    $zipCode = end($addressArray);
+    $arrayCount = count($addressArray);
+    
+    if ($arrayCount < 6 || strlen($zipCode) != 5) {
+        $sql = "INSERT INTO LogError (Log, Date) Values ('$arrayCount', NOW())";
+        mysqli_query($conn, $sql);
+        return false;
+    }
+    else {
+        return true;
+        
+    }
 }
