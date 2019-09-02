@@ -5,7 +5,7 @@ require '../connect.php';
 require '../helpers.php';
 
 $id = $_GET['ID'];
-
+$device = $_GET['DEVICE'];
 
 $sql = "SELECT ID, Status FROM Carwash WHERE (Lurch_ID = $id) And (Status = 'accepted' Or Status = 'arrived') ";
 

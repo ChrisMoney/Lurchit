@@ -8,7 +8,7 @@ require '../email.php';
 $jobID = $_GET['JobID'];
 $newStatus = $_GET['Status'];
 $lurchID = $_GET['LurchID'];
-$device = $_GET['Device'];
+$device = $_GET['DEVICE'];
 
 $sqlCustomer = "SELECT Customer_ID FROM Carwash WHERE ID = $jobID ";
 $resultCustomer = mysqli_query($conn, $sqlCustomer);
@@ -71,7 +71,16 @@ if (mysqli_query($conn, $sql)) {
     sendNewMessageMail($email, $username, $profilePic, $device, $subject, $title);
     
     // push notification to consumer
-    pushNotification("Job Update", $message, $customerID);
+    if ($device == "IOS") {
+        pushNotification("Job Update", $message, $customerID);
+    }
+    elseif ($device == "ANDROID") {
+        
+    }
+    else {
+        pushNotification("Job Update", $message, $customerID);
+    }
+    
     echo http_response_code(200);
 }
 else {

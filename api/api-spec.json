@@ -115,6 +115,11 @@
                         "name": "ENV",
                         "in": "query",
                         "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
+                        "in": "query",
+                        "type": "string"
                     }
                 ],
                 "responses": {
@@ -152,6 +157,11 @@
                     },
                     {
                         "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
                         "in": "query",
                         "type": "string"
                     }
@@ -234,6 +244,11 @@
                         "name": "Time",
                         "in": "query",
                         "type": "integer"
+                    },
+                    {
+                        "name": "DEVICE",
+                        "in": "query",
+                        "type": "string"
                     }
                 ],
                 "responses": {
@@ -268,6 +283,11 @@
                     },
                     {
                         "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
                         "in": "query",
                         "type": "string"
                     }
@@ -305,6 +325,11 @@
                         "name": "ENV",
                         "in": "query",
                         "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
+                        "in": "query",
+                        "type": "string"
                     }
                 ],
                 "responses": {
@@ -332,6 +357,11 @@
                     },
                     {
                         "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
                         "in": "query",
                         "type": "string"
                     }
@@ -369,6 +399,11 @@
                     },
                     {
                         "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
                         "in": "query",
                         "type": "string"
                     }
@@ -411,6 +446,11 @@
                         "name": "ENV",
                         "in": "query",
                         "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
+                        "in": "query",
+                        "type": "string"
                     }
                 ],
                 "responses": {
@@ -438,6 +478,11 @@
                     },
                     {
                         "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
                         "in": "query",
                         "type": "string"
                     }
@@ -483,6 +528,11 @@
                     },
                     {
                         "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
                         "in": "query",
                         "type": "string"
                     }
@@ -550,6 +600,11 @@
                     },
                     {
                         "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
                         "in": "query",
                         "type": "string"
                     }
@@ -639,6 +694,11 @@
                         "name": "ENV",
                         "in": "query",
                         "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
+                        "in": "query",
+                        "type": "string"
                     }
                 ],
                 "responses": {
@@ -671,6 +731,11 @@
                     },
                     {
                         "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
                         "in": "query",
                         "type": "string"
                     }
@@ -722,7 +787,7 @@
                         "type": "string"
                     },
                     {
-                        "name": "Device",
+                        "name": "DEVICE",
                         "in": "query",
                         "type": "string"
                     }
@@ -758,6 +823,11 @@
                     },
                     {
                         "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
                         "in": "query",
                         "type": "string"
                     }
@@ -802,6 +872,11 @@
                         "name": "ENV",
                         "in": "query",
                         "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
+                        "in": "query",
+                        "type": "string"
                     }
                 ],
                 "responses": {
@@ -835,6 +910,11 @@
                     },
                     {
                         "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
                         "in": "query",
                         "type": "string"
                     }
@@ -887,6 +967,11 @@
                     },
                     {
                         "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
                         "in": "query",
                         "type": "string"
                     }
@@ -955,6 +1040,12 @@
                     },
                     {
                         "name": "ENV",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -1046,6 +1137,11 @@
                         "name": "ENV",
                         "in": "query",
                         "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
+                        "in": "query",
+                        "type": "string"
                     }
                 ],
                 "responses": {
@@ -1090,6 +1186,11 @@
                         "name": "ENV",
                         "in": "query",
                         "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
+                        "in": "query",
+                        "type": "string"
                     }
                 ],
                 "responses": {
@@ -1124,6 +1225,12 @@
                     },
                     {
                         "name": "ENV",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
                         "in": "query",
                         "required": false,
                         "type": "string"
@@ -1180,6 +1287,11 @@
                         "name": "ENV",
                         "in": "query",
                         "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
+                        "in": "query",
+                        "type": "string"
                     }
                 ],
                 "responses": {
@@ -1207,6 +1319,11 @@
                     },
                     {
                         "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
                         "in": "query",
                         "type": "string"
                     }
@@ -1242,6 +1359,11 @@
                     },
                     {
                         "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
                         "in": "query",
                         "type": "string"
                     }
@@ -1282,6 +1404,11 @@
                     },
                     {
                         "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
                         "in": "query",
                         "type": "string"
                     }
@@ -1327,6 +1454,11 @@
                         "name": "ENV",
                         "in": "query",
                         "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
+                        "in": "query",
+                        "type": "string"
                     }
                 ],
                 "responses": {
@@ -1354,6 +1486,11 @@
                     },
                     {
                         "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
                         "in": "query",
                         "type": "string"
                     }
@@ -1442,6 +1579,11 @@
                         "name": "ENV",
                         "in": "query",
                         "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
+                        "in": "query",
+                        "type": "string"
                     }
                 ],
                 "responses": {
@@ -1476,6 +1618,11 @@
                     },
                     {
                         "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
                         "in": "query",
                         "type": "string"
                     }
@@ -1529,6 +1676,11 @@
                     },
                     {
                         "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
                         "in": "query",
                         "type": "string"
                     }
@@ -1590,6 +1742,11 @@
                     },
                     {
                         "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
                         "in": "query",
                         "type": "string"
                     }
@@ -1689,6 +1846,11 @@
                         "name": "ENV",
                         "in": "query",
                         "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
+                        "in": "query",
+                        "type": "string"
                     }
                 ],
                 "responses": {
@@ -1731,6 +1893,11 @@
                     },
                     {
                         "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
                         "in": "query",
                         "type": "string"
                     }
@@ -1788,6 +1955,11 @@
                         "name": "ENV",
                         "in": "query",
                         "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
+                        "in": "query",
+                        "type": "string"
                     }
                 ],
                 "responses": {
@@ -1825,6 +1997,11 @@
                         "name": "ENV",
                         "in": "query",
                         "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
+                        "in": "query",
+                        "type": "string"
                     }
                 ],
                 "responses": {
@@ -1852,6 +2029,11 @@
                     },
                     {
                         "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
                         "in": "query",
                         "type": "string"
                     }
@@ -1902,6 +2084,11 @@
                         "name": "ENV",
                         "in": "query",
                         "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
+                        "in": "query",
+                        "type": "string"
                     }
                 ],
                 "responses": {
@@ -1935,6 +2122,11 @@
                     },
                     {
                         "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
                         "in": "query",
                         "type": "string"
                     }
@@ -1972,6 +2164,11 @@
                     },
                     {
                         "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
                         "in": "query",
                         "type": "string"
                     }
@@ -2016,6 +2213,11 @@
                         "name": "ENV",
                         "in": "query",
                         "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
+                        "in": "query",
+                        "type": "string"
                     }
                 ],
                 "responses": {
@@ -2058,6 +2260,11 @@
                     },
                     {
                         "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
                         "in": "query",
                         "type": "string"
                     }
@@ -2132,6 +2339,11 @@
                         "name": "CCNumber",
                         "in": "query",
                         "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
+                        "in": "query",
+                        "type": "string"
                     }
                 ],
                 "responses": {
@@ -2165,6 +2377,11 @@
                     },
                     {
                         "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
                         "in": "query",
                         "type": "string"
                     }
@@ -2202,6 +2419,11 @@
                     },
                     {
                         "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
                         "in": "query",
                         "type": "string"
                     }
@@ -2252,6 +2474,11 @@
                         "name": "JobID",
                         "in": "query",
                         "type": "integer"
+                    },
+                    {
+                        "name": "DEVICE",
+                        "in": "query",
+                        "type": "string"
                     }
                 ],
                 "responses": {
@@ -2304,6 +2531,11 @@
                         "name": "ENV",
                         "in": "query",
                         "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
+                        "in": "query",
+                        "type": "string"
                     }
                 ],
                 "responses": {
@@ -2337,6 +2569,11 @@
                     },
                     {
                         "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
                         "in": "query",
                         "type": "string"
                     }
@@ -2406,6 +2643,11 @@
                         "name": "ENV",
                         "in": "query",
                         "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
+                        "in": "query",
+                        "type": "string"
                     }
                 ],
                 "responses": {
@@ -2441,6 +2683,11 @@
                     },
                     {
                         "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
                         "in": "query",
                         "type": "string"
                     }
@@ -2489,6 +2736,11 @@
                     },
                     {
                         "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
                         "in": "query",
                         "type": "string"
                     }

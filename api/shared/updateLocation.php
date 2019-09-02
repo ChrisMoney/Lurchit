@@ -21,7 +21,7 @@ if (mysqli_query($conn, $sql)) {
         echo json_encode($city .', ' . $state .' ' .$country);
     }
     else {
-        echo 'Location Unavailable';
+        echo json_encode('Location Unavailable');
     }
 }
 else {
