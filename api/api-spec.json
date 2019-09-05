@@ -2754,6 +2754,28 @@
                     }
                 }
             }
+        },
+        "/shared/logError.php": {
+            "get": {
+                "operationId": "GET_shared-logError-php",
+                "summary": "LogError",
+                "tags": [
+                    "shared"
+                ],
+                "parameters": [
+                    {
+                        "name": "Error",
+                        "in": "query",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "",
+                        "schema": {}
+                    }
+                }
+            }
         }
     },
     "definitions": {}
