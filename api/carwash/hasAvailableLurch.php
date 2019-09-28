@@ -6,6 +6,7 @@ require '../helpers.php';
 
 $lat = $_GET['Lat'];
 $long = $_GET['Long'];
+$device = $_GET['DEVICE'];
 
 // Determine user location 
 $sqlLurch = "SELECT ID,
@@ -25,9 +26,26 @@ $jobResult = mysqli_query($conn, $sqlJobs);
 $jobCount = mysqli_num_rows($jobResult);
 
 if ($lurchCount > $jobCount) {
-    echo 'true';
+    if ($device == 'IOS') {
+        echo 'true';
+    }
+    elseif ($device == 'ANDROID') {
+        echo json_encode('true');
+    }
+    else {
+        echo 'true';
+    }
+   
 }
 else {
-    echo 'false';
+    if ($device == 'IOS') {
+        echo 'false';
+    }
+    elseif ($device == 'ANDROID') {
+        echo json_encode('false');
+    }
+    else {
+        echo 'false';
+    }
 }
 

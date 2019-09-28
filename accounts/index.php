@@ -36,10 +36,10 @@
 		<!-- One -->
 			<section id="one" class="wrapper">
 				<div class="inner flex flex-3">
-					<div class="flex-item left">
+					<div class="flex-item right">
 						<div>
 							<h3><a href='search.php'>Search</a></h3>
-							
+							<h3><a href='data.php'>Data</a></h3>
 						</div>
 						<div>
 							<h3></h3>

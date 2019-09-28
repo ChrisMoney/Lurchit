@@ -19,7 +19,9 @@ $myArray = array();
 if (mysqli_num_rows($result) > 0) {
     
     while ($address = mysqli_fetch_assoc($result)) {
-        
+        $isPrimaryVal = $address['IsPrimary'];
+        $isPrimary = filter_var($isPrimaryVal, FILTER_VALIDATE_BOOLEAN); 
+        $address['IsPrimary'] = $isPrimary;
         $myArray[] = $address;
     }
     echo json_encode($myArray, JSON_NUMERIC_CHECK);

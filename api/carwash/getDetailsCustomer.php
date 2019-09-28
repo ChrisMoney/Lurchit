@@ -28,6 +28,14 @@ if (mysqli_num_rows($result) > 0) {
     
     $jobDetail['Carwash'] = strval($jobDetail['Carwash']);
     
+    $phone = $jobDetail['Phone'];
+    
+    if (is_null($phone) || !isset($phone)) {
+        $phone = "";
+    }
+    
+    $jobDetail['Phone'] = $phone;
+    
     echo json_encode($jobDetail);
 }
 else {

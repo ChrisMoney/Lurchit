@@ -504,6 +504,12 @@
                                 }
                             }
                         }
+                    },
+                    "400": {
+                        "description": "",
+                        "schema": {
+                            "type": "number"
+                        }
                     }
                 }
             }
@@ -2765,6 +2771,16 @@
                 "parameters": [
                     {
                         "name": "Error",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "ENV",
                         "in": "query",
                         "type": "string"
                     }

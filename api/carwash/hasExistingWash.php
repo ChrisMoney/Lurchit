@@ -4,6 +4,7 @@ $env = $_GET['ENV'];
 require '../connect.php';
 
 $id = $_GET['ID'];
+$device = $_GET['DEVICE'];
 
 $sql = "SELECT ID FROM Carwash WHERE Customer_ID = $id 
 AND (Status = 'new' Or Status = 'accepted' Or Status = 'arrived') ";
@@ -11,8 +12,26 @@ AND (Status = 'new' Or Status = 'accepted' Or Status = 'arrived') ";
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) == 0) {
-    echo 'false';
+    if ($device == 'IOS') {
+        echo 'false';
+    }
+    elseif ($device == 'ANDROID') {
+        echo json_encode('false');
+    }
+    else {
+        echo 'false';
+    }
+   
 }
 else {
-    echo 'true';
+    if ($device == 'IOS') {
+        echo 'false';
+    }
+    elseif ($device = 'ANDROID') {
+        echo json_encode('true');
+    }
+    else {
+        echo 'true';
+    }
+
 }

@@ -49,5 +49,5 @@ if (mysqli_num_rows($result) > 0) {
     echo json_encode($myArray, JSON_PRETTY_PRINT);
 }
 else {
-    echo http_response_code(500);
+    echo http_response_code(400);
 }
