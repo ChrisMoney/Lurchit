@@ -6,7 +6,7 @@ require '../connect.php';
 $id = $_GET['ID'];
 $device = $_GET['DEVICE'];
 
-$sql = "SELECT ID FROM Carwash WHERE Customer_ID = $id 
+$sql = "SELECT ID FROM Massage WHERE Customer_ID = $id 
 AND (Status = 'new' Or Status = 'accepted' Or Status = 'arrived') ";
 
 $result = mysqli_query($conn, $sql);

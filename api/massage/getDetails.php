@@ -15,12 +15,12 @@ $lat = $lurchRow['Latitude'];
 $long = $lurchRow['Longitude'];
 
 $sql = "SELECT ID, Customer_ID as CustomerID, Lurch_ID as LurchID,
-        Carwash as Carwash, Interior as Interior, Longitude, Latitude,
-        Wax, Total as Total, Status, Address, (Select Phone FROM Members WHERE ID = (Select Customer_ID FROM Carwash WHERE ID = $jobID)) as Phone,
+        Massage as Massage, Longitude, Latitude,
+        Wax, Total as Total, Status, Address, (Select Phone FROM Members WHERE ID = (Select Customer_ID FROM Massage WHERE ID = $jobID)) as Phone,
         ( 3959 * acos ( cos ( radians($lat) ) * cos( radians( Latitude ) ) *
 cos( radians( Longitude ) - radians($long) ) + sin ( radians($lat) ) *
 sin( radians( Latitude ) ) ) ) AS Distance
-    FROM Carwash
+    FROM Massage
     WHERE ID = $jobID ";
 
 $result = mysqli_query($conn, $sql);

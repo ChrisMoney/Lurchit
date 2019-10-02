@@ -69,9 +69,9 @@ function pushNotification($heading, $message, $userID){
   
 	function pushNotificationAndroid($heading, $message, $userID) {
 	    
-	    $serverKey = "AAAAMt6yYGw:APA91bH3n1KNrRM6vQQfaN-ld0HVF5dM1qq-
-                      3Jt2Uo4xKkG-VG4YdGDWmg3qkF4wP2BpsBilBuhBhp-
-                      aZg0LRE1kmC60M0GrUFe3azbx1kx_U9PlxAdZKT1ZZQ_8Kus2XpIoHnfkOwvF";
+	    $serverKey = "AAAAAJWxg1Q:APA91bFbLcCy_qbjdrg7WEbJfrv_
+                        MGqB6LmOtaWoLSRccVvWPO1SkdBwatuy-XZxX5O8PhHKP1tO1WHZx3s4_
+                        pSE4cZY0Y-pG1K-snQ5cw68QFgijzY8MUQ-h_iERHvI8iwcHHLQym_Q";
 	    
 	    $msg = array
 	    (
@@ -82,7 +82,7 @@ function pushNotification($heading, $message, $userID){
 	    );
 	    $fields = array
 	    (
-	        'to'		=> $userID,
+	        'to'		=> '/topics/'.$userID,
 	        'notification'	=> $msg
 	    );
 	    

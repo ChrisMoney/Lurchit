@@ -7,7 +7,7 @@ require '../helpers.php';
 $id = $_GET['ID'];
 $device = $_GET['DEVICE'];
 
-$sql = "SELECT ID, Status FROM Carwash WHERE (Lurch_ID = $id) And (Status = 'accepted' Or Status = 'arrived') ";
+$sql = "SELECT ID, Status FROM Massage WHERE (Lurch_ID = $id) And (Status = 'accepted' Or Status = 'arrived') ";
 
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);

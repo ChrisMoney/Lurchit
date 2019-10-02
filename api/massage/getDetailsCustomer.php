@@ -9,10 +9,10 @@ $id = $_GET['ID'];
 
 
 $sql = "SELECT ID, Customer_ID as CustomerID, Lurch_ID as LurchID,
-        Carwash, Interior,
-        Wax, Total, Tip, Status, WashDate, Rating, (Select Username From Members WHERE ID = Lurch_ID) as Username,
+        Massage,
+        Total, Tip, Status, MassageDate, Rating, (Select Username From Members WHERE ID = Lurch_ID) as Username,
         (Select Phone FROM Members WHERE ID = Lurch_ID) as Phone
-    FROM Carwash 
+    FROM Massage
     WHERE ID = $jobID And Customer_ID = $id ";
 
 $result = mysqli_query($conn, $sql);
@@ -22,11 +22,11 @@ if (mysqli_num_rows($result) > 0) {
     
     $jobDetail = mysqli_fetch_assoc($result);
     
-    $date = $jobDetail['WashDate'];
+    $date = $jobDetail['MassageDate'];
     $date = date('M/d/Y', strtotime($date));
-    $jobDetail['WashDate'] = $date;
+    $jobDetail['MassageDate'] = $date;
     
-    $jobDetail['Carwash'] = strval($jobDetail['Carwash']);
+    $jobDetail['Massage'] = strval($jobDetail['Massage']);
     
     $phone = $jobDetail['Phone'];
     

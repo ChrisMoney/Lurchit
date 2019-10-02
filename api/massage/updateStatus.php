@@ -10,7 +10,7 @@ $newStatus = $_GET['Status'];
 $lurchID = $_GET['LurchID'];
 $device = $_GET['DEVICE'];
 
-$sqlCustomer = "SELECT Customer_ID FROM Carwash WHERE ID = $jobID ";
+$sqlCustomer = "SELECT Customer_ID FROM Massage WHERE ID = $jobID ";
 $resultCustomer = mysqli_query($conn, $sqlCustomer);
 $row = mysqli_fetch_assoc($resultCustomer);
 $customerID = $row['Customer_ID'];
@@ -49,7 +49,7 @@ else {
 $subject = $username . ' '.$subjectText;
 $title = "Status Update";
 
-$sql = "Update Carwash Set Status = '$status', Lurch_ID = '$lurchID' WHERE ID = $jobID ";
+$sql = "Update Massage Set Status = '$status', Lurch_ID = '$lurchID' WHERE ID = $jobID ";
 
 if (strlen($device) == 0) {
 $device = "iPhone";
@@ -75,7 +75,7 @@ if (mysqli_query($conn, $sql)) {
         pushNotification("Job Update", $message, $customerID);
     }
     elseif ($device == "ANDROID") {
-        
+        pushNotificationAndroid("Job Update", $message, $customerID);
     }
     else {
         pushNotification("Job Update", $message, $customerID);

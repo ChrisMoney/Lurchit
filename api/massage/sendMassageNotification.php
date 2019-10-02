@@ -8,20 +8,17 @@ include_once '../email.php';
 $id = $_GET['ID'];
 $lat = $_GET['Lat'];
 $long = $_GET['Long'];
-$carwash = $_GET['Carwash'];
-$interior = $_GET['Interior'];
-$wax = $_GET['Wax'];
+$massage = $_GET['Massage'];
 $total= $_GET['Total'];
 $address = $_GET['Address'];
-$temp = $_GET['Temp'];
 $time = $_GET['Time'];
 $address = mysqli_escape_string($conn, $address);
 
 $notification = "Car Wash Request";
 
 // insert into service table
-$sql = "INSERT INTO Carwash         (Customer_ID, Carwash,   Interior,     Wax,    Total, Latitude, Longitude, Address,  Distance, ETA,   Status, Temp, Time,    WashDate)
-                            Values  ('$id',      '$carwash', '$interior', '$wax', '$total', '$lat', '$long',   '$address', '0',     '0', 'new',  '$temp', '$time', NOW()) ";
+$sql = "INSERT INTO Carwash         (Customer_ID, Massage,  Total, Latitude, Longitude, Address,  Distance, ETA,   Status, Time,    WashDate)
+                            Values  ('$id',      '$massage', '$total', '$lat', '$long',   '$address', '0',     '0', 'new', '$time', NOW()) ";
 mysqli_query($conn, $sql);
 
 $carwashID = mysqli_insert_id($conn);
@@ -57,8 +54,8 @@ if (mysqli_query($conn, $sql2)) {
         $lurchID = $row['ID'];
         $email = $row['Email'];
 
-        $subject = "Car Wash Request";
-        $title = "Car Wash Request";
+        $subject = "Massage Request";
+        $title = "Massage Request";
         $distance = $row['Distance'];
         
         $profilePhoto = getProfilePhoto($id, $env);

@@ -21,7 +21,7 @@ HAVING distance <= 30";
 $lurchResult = mysqli_query($conn, $sqlLurch);
 $lurchCount = mysqli_num_rows($lurchResult);
 
-$sqlJobs = "SELECT ID FROM Carwash WHERE Status <> 'complete' And Status <> 'refunded' ";
+$sqlJobs = "SELECT ID FROM Massage WHERE Status <> 'complete' And Status <> 'refunded' ";
 $jobResult = mysqli_query($conn, $sqlJobs);
 $jobCount = mysqli_num_rows($jobResult);
 

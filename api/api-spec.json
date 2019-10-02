@@ -98,12 +98,12 @@
                 }
             }
         },
-        "/carwash/updateStatusOnScreen.php": {
+        "/massage/updateStatusOnScreen.php": {
             "get": {
-                "operationId": "GET_carwash-updateStatusOnScreen-php",
+                "operationId": "GET_massage-updateStatusOnScreen-php",
                 "summary": "UpdateArrivedOnScreen",
                 "tags": [
-                    "carwash"
+                    "massage"
                 ],
                 "parameters": [
                     {
@@ -132,12 +132,12 @@
                 }
             }
         },
-        "/carwash/tip.php": {
+        "/massage/tip.php": {
             "get": {
-                "operationId": "GET_carwash-tip-php",
+                "operationId": "GET_massage-tip-php",
                 "summary": "Tip",
                 "tags": [
-                    "carwash"
+                    "massage"
                 ],
                 "parameters": [
                     {
@@ -182,12 +182,12 @@
                 }
             }
         },
-        "/carwash/sendWashNotification.php": {
+        "/massage/sendMassageNotification.php": {
             "get": {
-                "operationId": "GET_carwash-sendWashNotification-php",
-                "summary": "SendWashNotification",
+                "operationId": "GET_massage-sendMassageNotification-php",
+                "summary": "SendMassageNotification",
                 "tags": [
-                    "carwash"
+                    "massage"
                 ],
                 "parameters": [
                     {
@@ -206,16 +206,6 @@
                         "type": "integer"
                     },
                     {
-                        "name": "Interior",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "Wax",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
                         "name": "Total",
                         "in": "query",
                         "type": "string"
@@ -226,7 +216,7 @@
                         "type": "string"
                     },
                     {
-                        "name": "Carwash",
+                        "name": "Massage",
                         "in": "query",
                         "type": "string"
                     },
@@ -234,11 +224,6 @@
                         "name": "ENV",
                         "in": "query",
                         "type": "string"
-                    },
-                    {
-                        "name": "Temp",
-                        "in": "query",
-                        "type": "integer"
                     },
                     {
                         "name": "Time",
@@ -268,12 +253,12 @@
                 }
             }
         },
-        "/carwash/requestWash.php": {
+        "/massage/requestMassage.php": {
             "get": {
-                "operationId": "GET_carwash-requestWash-php",
-                "summary": "RequestWash",
+                "operationId": "GET_massage-requestMassage-php",
+                "summary": "RequestMassage",
                 "tags": [
-                    "carwash"
+                    "massage"
                 ],
                 "parameters": [
                     {
@@ -308,46 +293,12 @@
                 }
             }
         },
-        "/carwash/isCarProfileComplete.php": {
+        "/massage/hasJob.php": {
             "get": {
-                "operationId": "GET_carwash-isCarProfileComplete-php",
-                "summary": "IsCarProfileComplete",
-                "tags": [
-                    "carwash"
-                ],
-                "parameters": [
-                    {
-                        "name": "ID",
-                        "in": "query",
-                        "type": "integer"
-                    },
-                    {
-                        "name": "ENV",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "DEVICE",
-                        "in": "query",
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "boolean"
-                        }
-                    }
-                }
-            }
-        },
-        "/carwash/hasJob.php": {
-            "get": {
-                "operationId": "GET_carwash-hasJob-php",
+                "operationId": "GET_massage-hasJob-php",
                 "summary": "HasJob",
                 "tags": [
-                    "carwash"
+                    "massage"
                 ],
                 "parameters": [
                     {
@@ -384,12 +335,12 @@
                 }
             }
         },
-        "/carwash/hasExistingWash.php": {
+        "/massage/hasExistingMassage.php": {
             "get": {
-                "operationId": "GET_carwash-hasExistingWash-php",
-                "summary": "HasExistingWash",
+                "operationId": "GET_massage-hasExistingMassage-php",
+                "summary": "HasExistingMassage",
                 "tags": [
-                    "carwash"
+                    "massage"
                 ],
                 "parameters": [
                     {
@@ -424,12 +375,12 @@
                 }
             }
         },
-        "/carwash/hasAvailableLurch.php": {
+        "/massage/hasAvailableLurch.php": {
             "get": {
-                "operationId": "GET_carwash-hasAvailableLurch-php",
+                "operationId": "GET_massage-hasAvailableLurch-php",
                 "summary": "HasAvailableLurch",
                 "tags": [
-                    "carwash"
+                    "massage"
                 ],
                 "parameters": [
                     {
@@ -463,12 +414,12 @@
                 }
             }
         },
-        "/carwash/getWorkHistory.php": {
+        "/massage/getWorkHistory.php": {
             "get": {
-                "operationId": "GET_carwash-getWorkHistory-php",
+                "operationId": "GET_massage-getWorkHistory-php",
                 "summary": "GetWorkHistory",
                 "tags": [
-                    "carwash"
+                    "massage"
                 ],
                 "parameters": [
                     {
@@ -514,12 +465,12 @@
                 }
             }
         },
-        "/carwash/getDetailsCustomer.php": {
+        "/massage/getDetailsCustomer.php": {
             "get": {
-                "operationId": "GET_carwash-getDetailsCustomer-php",
+                "operationId": "GET_massage-getDetailsCustomer-php",
                 "summary": "GetDetailsCustomer",
                 "tags": [
-                    "carwash"
+                    "massage"
                 ],
                 "parameters": [
                     {
@@ -558,13 +509,7 @@
                                 "Customer_ID": {
                                     "type": "integer"
                                 },
-                                "Carwash": {
-                                    "type": "string"
-                                },
-                                "Interior": {
-                                    "type": "string"
-                                },
-                                "Wax": {
+                                "Massage": {
                                     "type": "string"
                                 },
                                 "Total": {
@@ -573,7 +518,7 @@
                                 "Status": {
                                     "type": "string"
                                 },
-                                "WashDate": {
+                                "MassageDate": {
                                     "type": "string"
                                 },
                                 "Username": {
@@ -591,12 +536,12 @@
                 }
             }
         },
-        "/carwash/getDetails.php": {
+        "/massage/getDetails.php": {
             "get": {
-                "operationId": "GET_carwash-getDetails-php",
+                "operationId": "GET_massage-getDetails-php",
                 "summary": "GetDetails",
                 "tags": [
-                    "carwash"
+                    "massage"
                 ],
                 "parameters": [
                     {
@@ -630,13 +575,7 @@
                                 "Customer_ID": {
                                     "type": "integer"
                                 },
-                                "Carwash": {
-                                    "type": "string"
-                                },
-                                "Interior": {
-                                    "type": "string"
-                                },
-                                "Wax": {
+                                "Massage": {
                                     "type": "string"
                                 },
                                 "Total": {
@@ -654,7 +593,7 @@
                                 "Address": {
                                     "type": "string"
                                 },
-                                "WashDate": {
+                                "MassageDate": {
                                     "type": "string"
                                 },
                                 "Distance": {
@@ -678,12 +617,12 @@
                 }
             }
         },
-        "/carwash/rate.php": {
+        "/massage/rate.php": {
             "get": {
-                "operationId": "GET_carwash-rate-php",
+                "operationId": "GET_massage-rate-php",
                 "summary": "Rate",
                 "tags": [
-                    "carwash"
+                    "massage"
                 ],
                 "parameters": [
                     {
@@ -717,12 +656,12 @@
                 }
             }
         },
-        "/carwash/getTipAndRating.php": {
+        "/massage/getTipAndRating.php": {
             "get": {
-                "operationId": "GET_carwash-getTipAndRating-php",
+                "operationId": "GET_massage-getTipAndRating-php",
                 "summary": "GetTipAndRating",
                 "tags": [
-                    "carwash"
+                    "massage"
                 ],
                 "parameters": [
                     {
@@ -764,12 +703,12 @@
                 }
             }
         },
-        "/carwash/updateStatus.php": {
+        "/massage/updateStatus.php": {
             "get": {
-                "operationId": "GET_carwash-updateStatus-php",
+                "operationId": "GET_massage-updateStatus-php",
                 "summary": "UpdateStatus",
                 "tags": [
-                    "carwash"
+                    "massage"
                 ],
                 "parameters": [
                     {
@@ -814,12 +753,12 @@
                 }
             }
         },
-        "/carwash/updateAcceptedOnScreen.php": {
+        "/massage/updateAcceptedOnScreen.php": {
             "get": {
-                "operationId": "GET_carwash-updateAcceptedOnScreen-php",
+                "operationId": "GET_massage-updateAcceptedOnScreen-php",
                 "summary": "UpdateAcceptedOnScreen",
                 "tags": [
-                    "carwash"
+                    "massage"
                 ],
                 "parameters": [
                     {
@@ -2789,6 +2728,40 @@
                     "default": {
                         "description": "",
                         "schema": {}
+                    }
+                }
+            }
+        },
+        "/shared/isCarProfileComplete.php": {
+            "get": {
+                "operationId": "GET_shared-isCarProfileComplete-php",
+                "summary": "IsCarProfileComplete",
+                "tags": [
+                    "shared"
+                ],
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
+                        "in": "query",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "boolean"
+                        }
                     }
                 }
             }

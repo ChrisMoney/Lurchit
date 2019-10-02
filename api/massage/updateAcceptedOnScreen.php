@@ -9,7 +9,7 @@ require '../helpers.php';
 $jobID = $_GET['JobID'];
 
 $sql = "SELECT Status, Lurch_ID, ETA
-FROM Carwash
+FROM Massage
 WHERE ID = $jobID ";
 
 

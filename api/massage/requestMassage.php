@@ -6,7 +6,7 @@ require '../connect.php';
 $jobID = $_GET['JobID'];
 
 $sql = "SELECT Lurch_ID, Status
-FROM Carwash
+FROM Massage
 WHERE ID = $jobID ";
 
 

@@ -9,7 +9,7 @@ $jobID = $_GET['JobID'];
 
 
 $sql = "SELECT Status
-FROM Carwash
+FROM Massage
 WHERE ID = $jobID ";
 
 

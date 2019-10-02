@@ -10,7 +10,7 @@ $id = $_GET['ID'];
 
 
 $sql = "SELECT  Tip, Rating
-    FROM Carwash
+    FROM Massage
     WHERE ID = $jobID And Customer_ID = $id ";
 
 $result = mysqli_query($conn, $sql);
