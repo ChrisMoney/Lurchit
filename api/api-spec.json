@@ -234,6 +234,16 @@
                         "name": "DEVICE",
                         "in": "query",
                         "type": "string"
+                    },
+                    {
+                        "name": "Duration",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Gender",
+                        "in": "query",
+                        "type": "string"
                     }
                 ],
                 "responses": {
@@ -529,6 +539,9 @@
                                 },
                                 "ETA": {
                                     "type": "string"
+                                },
+                                "Duration": {
+                                    "type": "string"
                                 }
                             }
                         }
@@ -603,6 +616,9 @@
                                     "type": "string"
                                 },
                                 "Amount": {
+                                    "type": "string"
+                                },
+                                "Duration": {
                                     "type": "string"
                                 }
                             }

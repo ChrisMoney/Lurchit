@@ -8,10 +8,10 @@ require '../helpers.php';
 $lurchID = $_GET['LurchID'];
 
 $sql = "Select n.ID as NotificationID, n.Job_ID as JobID, n.Customer_ID as CustomerID, n.Job as Job, n.Message as Message, n.New as New,
-c.Status
-From Notifications n, Carwash c
-WHERE c.Status = 'new'
-And n.Job_ID = c.ID
+m.Status
+From Notifications n, Massage m
+WHERE m.Status = 'new'
+And n.Job_ID = m.ID
 And n.Lurch_ID = $lurchID 
 Order By n.ID Desc ";
 

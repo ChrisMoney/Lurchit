@@ -9,22 +9,23 @@ $id = $_GET['ID'];
 $lat = $_GET['Lat'];
 $long = $_GET['Long'];
 $massage = $_GET['Massage'];
+$duration = $_GET['Duration'];
 $total= $_GET['Total'];
 $address = $_GET['Address'];
 $time = $_GET['Time'];
 $address = mysqli_escape_string($conn, $address);
-
-$notification = "Car Wash Request";
+$gender = $_GET['Gender'];
+$notification = "Massage Request";
 
 // insert into service table
-$sql = "INSERT INTO Carwash         (Customer_ID, Massage,  Total, Latitude, Longitude, Address,  Distance, ETA,   Status, Time,    WashDate)
-                            Values  ('$id',      '$massage', '$total', '$lat', '$long',   '$address', '0',     '0', 'new', '$time', NOW()) ";
+$sql = "INSERT INTO Massage        (Customer_ID, Massage,   Duration,      Gender,    Total, Latitude, Longitude, Address,  Distance, ETA,   Status, Time,    MassageDate)
+                            Values  ('$id',      '$massage', '$duration',   '$gender', '$total', '$lat', '$long',   '$address', '0',     '0', 'new', '$time', NOW()) ";
 mysqli_query($conn, $sql);
 
-$carwashID = mysqli_insert_id($conn);
+$massageID = mysqli_insert_id($conn);
 
 
-echo $carwashID;
+echo $massageID;
 
 $sql2 = "SELECT ID, FirstName, Email, ProfilePhoto, ( 3959 * acos ( cos ( radians($lat) ) * cos( radians( Latitude ) ) *
 cos( radians( Longitude ) - radians($long) ) + sin ( radians($lat) ) *
@@ -32,14 +33,15 @@ sin( radians( Latitude ) ) ) ) AS Distance
 FROM Members 
 WHERE IsLurch = 1
 AND ID != $id
-And ID NOT IN (SELECT Lurch_ID FROM Carwash WHERE Status = 'Accepted' Or Status = 'Arrived')
+And Gender = '$gender'
+And ID NOT IN (SELECT Lurch_ID FROM Massage WHERE Status = 'Accepted' Or Status = 'Arrived')
 And IsLurchActive = 1
 Group By ID
 HAVING Distance <= 30
 ORDER BY Distance ASC
 ";
 
-$notification = "Car Wash Request";
+$notification = "Massage Request";
 
 
 if (mysqli_query($conn, $sql2)) {
@@ -70,11 +72,11 @@ if (mysqli_query($conn, $sql2)) {
         
         // insert into notification table
         $sql3 = "INSERT INTO Notifications (Customer_ID, Lurch_ID,      Job_ID,        Job,    Message,       New,  NotificationDate)
-                                    Values ('$id',       '$lurchID', '$carwashID', 'Carwash', '$notification', 1,    NOW()) ";
+                                    Values ('$id',       '$lurchID', '$massageID', 'Massage', '$notification', 1,    NOW()) ";
         mysqli_query($conn, $sql3);
         
         // update ETA in carwash
-        $sql4 = "UPDATE Carwash Set Distance = '$distance' WHERE ID = $carwashID";
+        $sql4 = "UPDATE Massage Set Distance = '$distance' WHERE ID = $massageID";
         mysqli_query($conn, $sql4);
         
         $device = 'iPhone';
@@ -84,7 +86,7 @@ if (mysqli_query($conn, $sql2)) {
          pushNotification('Job', $notification, $lurchID);
          }
          else {
-         pushNotificationAndroid('Message', $notification, $lurchID);
+         pushNotificationAndroid('Job', $notification, $lurchID);
          }
          // give closest lurch a chance to respond
          sleep(2);
