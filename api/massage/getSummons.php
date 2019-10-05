@@ -7,8 +7,8 @@ require '../helpers.php';
 
 $id = $_GET['ID'];
 
-$sql = "Select ID as JobID, Customer_ID as CustomerID, Carwash, WashDate, Status
-FROM Carwash 
+$sql = "Select ID as JobID, Customer_ID as CustomerID, Lurch_ID as LurchID, Massage, MassageDate, Status
+FROM Massage
 WHERE Customer_ID = $id 
 Order By ID Desc ";
 
@@ -18,12 +18,12 @@ $myArray = array();
 if (mysqli_num_rows($result) > 0) {
     
     while ($summons = mysqli_fetch_assoc($result)) {
-        $date = $summons['WashDate'];
+        $date = $summons['MassageDate'];
         $date = date('M/d/Y', strtotime($date));
-        $summons['WashDate'] = $date;
+        $summons['MassageDate'] = $date;
         $status = $summons['Status'];
         
-        $displayString = "Carwash:  $date  Status: $status ";
+        $displayString = "Massage:  $date  Status: $status ";
         $summons['Status'] = $displayString;
         
         $myArray[] = $summons;

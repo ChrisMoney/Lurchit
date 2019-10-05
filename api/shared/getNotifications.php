@@ -7,7 +7,7 @@ require '../helpers.php';
 
 $lurchID = $_GET['LurchID'];
 
-$sql = "Select n.ID as NotificationID, n.Job_ID as JobID, n.Customer_ID as CustomerID, n.Job as Job, n.Message as Message, n.New as New,
+$sql = "Select n.ID as NotificationID, n.Job_ID as JobID, n.Customer_ID as CustomerID, n.Lurch_ID as LurchID, n.Job as Job, n.Message as Message, n.New as New,
 m.Status
 From Notifications n, Massage m
 WHERE m.Status = 'new'

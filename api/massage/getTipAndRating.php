@@ -20,7 +20,12 @@ if (mysqli_num_rows($result) > 0) {
     
     $tipAndRating = mysqli_fetch_assoc($result);
     
-    echo json_encode($tipAndRating, JSON_NUMERIC_CHECK);
+    $tip = $tipAndRating['Tip'];
+    $rating = $tipAndRating['Rating'];
+    
+    $tipAndRatingArray = array("Tip"=>$tip, "Rating"=>$rating);
+    
+    echo json_encode($tipAndRatingArray, JSON_NUMERIC_CHECK);
 }
 else {
     echo http_response_code(400);

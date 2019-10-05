@@ -811,6 +811,66 @@
                 }
             }
         },
+        "/massage/getSummons.php": {
+            "get": {
+                "operationId": "GET_massage-getSummons-php",
+                "summary": "GetSummons",
+                "tags": [
+                    "massage"
+                ],
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
+                        "in": "query",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "JobID": {
+                                        "type": "integer"
+                                    },
+                                    "CustomerID": {
+                                        "type": "integer"
+                                    },
+                                    "WashDate": {
+                                        "type": "string"
+                                    },
+                                    "Status": {
+                                        "type": "string"
+                                    },
+                                    "LurchID": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        },
         "/shared/updatePrimaryAddress.php": {
             "get": {
                 "operationId": "GET_shared-updatePrimaryAddress-php",
@@ -1483,6 +1543,9 @@
                                         "type": "string"
                                     },
                                     "NotificationID": {
+                                        "type": "integer"
+                                    },
+                                    "LurchID": {
                                         "type": "integer"
                                     }
                                 }
@@ -2201,63 +2264,6 @@
                         "schema": {
                             "type": "integer",
                             "description": "Error saving data."
-                        }
-                    }
-                }
-            }
-        },
-        "/shared/getSummons.php": {
-            "get": {
-                "operationId": "GET_shared-getSummons-php",
-                "summary": "GetSummons",
-                "tags": [
-                    "shared"
-                ],
-                "parameters": [
-                    {
-                        "name": "ID",
-                        "in": "query",
-                        "type": "integer"
-                    },
-                    {
-                        "name": "ENV",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "DEVICE",
-                        "in": "query",
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "type": "object",
-                                "properties": {
-                                    "JobID": {
-                                        "type": "integer"
-                                    },
-                                    "CustomerID": {
-                                        "type": "integer"
-                                    },
-                                    "WashDate": {
-                                        "type": "string"
-                                    },
-                                    "Status": {
-                                        "type": "string"
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer"
                         }
                     }
                 }

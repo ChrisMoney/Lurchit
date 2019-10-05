@@ -8,11 +8,11 @@ $jobID = $_GET['JobID'];
 $tip = $_GET['Tip'];
 $lurchID = $_GET['LurchID'];
 
-$sql = "UPDATE Carwash Set Tip = '$tip' WHERE ID = $jobID ";
+$sql = "UPDATE Massage Set Tip = '$tip' WHERE ID = $jobID ";
 
 if (mysqli_query($conn, $sql)) {
     
-    $sql2 = "INSERT INTO Tips (Job_ID, Lurch_ID, Job, Tip, TipDate) Values ('$jobID', '$lurchID', 'Massage', '$tip', NOW()) ";
+    $sql2 = "INSERT INTO Tips (Job_ID, Lurch_ID, Job, Tip, IsTipPaid, TipDate) Values ('$jobID', '$lurchID', 'Massage', '$tip', '0', NOW()) ";
     
     if (mysqli_query($conn, $sql2)) {
         echo http_response_code(200);
