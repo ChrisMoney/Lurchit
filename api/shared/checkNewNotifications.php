@@ -12,24 +12,9 @@ $sql = "SELECT ID FROM Notifications WHERE New = 1 And Lurch_ID = $id ";
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
-    if ($device == "IOS") {
-        echo 'true';
-    }
-    elseif ($device == "ANDROID") {
+
         echo json_encode('true');
-    }
-    else {
-        echo 'true';
-    }
 }
 else {
-    if ($device == "IOS") {
-        echo 'false';
-    }
-    elseif ($device == "ANDROID") {
         echo json_encode('false');
-    }
-    else {
-        echo 'false';
-    }
 }

@@ -8,9 +8,9 @@ require '../helpers.php';
 $lurchID = $_GET['LurchID'];
 $jobID = $_GET['JobID'];
 
-$sql = "SELECT ID, Username, ProfilePhoto, Phone, (SELECT Distance FROM Carwash WHERE ID = $jobID) as Distance,
-(SELECT ETA FROM Carwash WHERE ID = $jobID) as ETA, 
-(SELECT Customer_ID FROM Carwash WHERE ID = $jobID) as CustomerID
+$sql = "SELECT ID, Username, ProfilePhoto, Phone, (SELECT Distance FROM Massage WHERE ID = $jobID) as Distance,
+(SELECT ETA FROM Massage WHERE ID = $jobID) as ETA, 
+(SELECT Customer_ID FROM Massage WHERE ID = $jobID) as CustomerID
 FROM Members
 WHERE ID = $lurchID ";
 

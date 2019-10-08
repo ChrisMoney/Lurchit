@@ -26,26 +26,10 @@ $jobResult = mysqli_query($conn, $sqlJobs);
 $jobCount = mysqli_num_rows($jobResult);
 
 if ($lurchCount > $jobCount) {
-    if ($device == 'IOS') {
-        echo 'true';
-    }
-    elseif ($device == 'ANDROID') {
         echo json_encode('true');
     }
-    else {
-        echo 'true';
-    }
-   
-}
+
 else {
-    if ($device == 'IOS') {
-        echo 'false';
-    }
-    elseif ($device == 'ANDROID') {
         echo json_encode('false');
-    }
-    else {
-        echo 'false';
-    }
 }
 

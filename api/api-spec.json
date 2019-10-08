@@ -18,10 +18,10 @@
         "application/json"
     ],
     "paths": {
-        "/uploadCarPhoto.php": {
+        "/uploadProfileMedia.php": {
             "post": {
-                "operationId": "POST_uploadCarPhoto-php",
-                "summary": "UploadCarPhoto",
+                "operationId": "POST_uploadProfileMedia-php",
+                "summary": "UploadProfileMedia",
                 "parameters": [
                     {
                         "name": "body",
@@ -58,10 +58,10 @@
                 }
             }
         },
-        "/uploadProfileMedia.php": {
+        "/uploadCarPhoto.php": {
             "post": {
-                "operationId": "POST_uploadProfileMedia-php",
-                "summary": "UploadProfileMedia",
+                "operationId": "POST_uploadCarPhoto-php",
+                "summary": "UploadCarPhoto",
                 "parameters": [
                     {
                         "name": "body",
@@ -863,6 +863,68 @@
                         }
                     },
                     "400": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        },
+        "/massage/getLurch.php": {
+            "get": {
+                "operationId": "GET_massage-getLurch-php",
+                "summary": "GetLurch",
+                "tags": [
+                    "massage"
+                ],
+                "parameters": [
+                    {
+                        "name": "LurchID",
+                        "in": "query",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "JobID",
+                        "in": "query",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "DEVICE",
+                        "in": "query",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "ID": {
+                                    "type": "integer"
+                                },
+                                "Username": {
+                                    "type": "string"
+                                },
+                                "ProfilePhoto": {
+                                    "type": "string"
+                                },
+                                "Phone": {
+                                    "type": "string"
+                                },
+                                "ETA": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
                         "description": "",
                         "schema": {
                             "type": "integer"
@@ -2414,68 +2476,6 @@
                                     "type": "boolean"
                                 }
                             }
-                        }
-                    }
-                }
-            }
-        },
-        "/shared/getLurch.php": {
-            "get": {
-                "operationId": "GET_shared-getLurch-php",
-                "summary": "GetLurch",
-                "tags": [
-                    "shared"
-                ],
-                "parameters": [
-                    {
-                        "name": "LurchID",
-                        "in": "query",
-                        "type": "integer"
-                    },
-                    {
-                        "name": "ENV",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "JobID",
-                        "in": "query",
-                        "type": "integer"
-                    },
-                    {
-                        "name": "DEVICE",
-                        "in": "query",
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "ID": {
-                                    "type": "integer"
-                                },
-                                "Username": {
-                                    "type": "string"
-                                },
-                                "ProfilePhoto": {
-                                    "type": "string"
-                                },
-                                "Phone": {
-                                    "type": "string"
-                                },
-                                "ETA": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer"
                         }
                     }
                 }

@@ -16,6 +16,7 @@ $time = $_GET['Time'];
 $address = mysqli_escape_string($conn, $address);
 $gender = $_GET['Gender'];
 $notification = "Massage Request";
+$device = $_GET['DEVICE'];
 
 // insert into service table
 $sql = "INSERT INTO Massage        (Customer_ID, Massage,   Duration,      Gender,    Total, Latitude, Longitude, Address,  Distance, ETA,   Status, Time,    MassageDate)
@@ -27,13 +28,23 @@ $massageID = mysqli_insert_id($conn);
 
 echo $massageID;
 
+if ($gender == 'Male') {
+    $genderSql = "And Gender = 'Male'";
+}
+elseif ($gender == 'Female') {
+    $genderSql = "And Gender = 'Female'";
+}
+else {
+    $genderSql = "And (Gender = 'Male' Or Gender = 'Female')";
+}
+
 $sql2 = "SELECT ID, FirstName, Email, ProfilePhoto, ( 3959 * acos ( cos ( radians($lat) ) * cos( radians( Latitude ) ) *
 cos( radians( Longitude ) - radians($long) ) + sin ( radians($lat) ) *
 sin( radians( Latitude ) ) ) ) AS Distance 
 FROM Members 
 WHERE IsLurch = 1
 AND ID != $id
-And Gender = '$gender'
+$genderSql
 And ID NOT IN (SELECT Lurch_ID FROM Massage WHERE Status = 'Accepted' Or Status = 'Arrived')
 And IsLurchActive = 1
 Group By ID
@@ -79,15 +90,11 @@ if (mysqli_query($conn, $sql2)) {
         $sql4 = "UPDATE Massage Set Distance = '$distance' WHERE ID = $massageID";
         mysqli_query($conn, $sql4);
         
-        $device = 'iPhone';
-        if ($device == 'iPhone') {
          
-         sendNewMessageMail($email, $senderName, $profilePhoto, $device, $subject, $title);
-         pushNotification('Job', $notification, $lurchID);
-         }
-         else {
-         pushNotificationAndroid('Job', $notification, $lurchID);
-         }
+        sendNewMessageMail($email, $senderName, $profilePhoto, $device, $subject, $title);
+        pushNotification('Job', $notification, $lurchID);
+        pushNotificationAndroid('Job', $notification, $lurchID);
+         
          // give closest lurch a chance to respond
          sleep(2);
         }
