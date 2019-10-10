@@ -33,8 +33,8 @@ $lurchActive = $row['IsLurchActive'];
 
 $hasPaymentProcessing = false;
 
-$sql2 = "SELECT (Select SUM(Total) FROM Carwash WHERE Lurch_ID = $lurchID And PayStatus = 'processing') as Balance, 
-        (SELECT SUM(Tip) FROM Carwash WHERE Lurch_ID = $lurchID) as Tip, IsPayProcessing, IsLurch 
+$sql2 = "SELECT (Select SUM(Total) FROM Massage WHERE Lurch_ID = $lurchID And PayStatus = 'processing') as Balance, 
+        (SELECT SUM(Tip) FROM Massage WHERE Lurch_ID = $lurchID) as Tip, IsPayProcessing, IsLurch 
 FROM Members WHERE ID = $lurchID ";
 $result2 = mysqli_query($conn, $sql2);
 $row2 = mysqli_fetch_assoc($result2);

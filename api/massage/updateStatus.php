@@ -51,10 +51,6 @@ $title = "Status Update";
 
 $sql = "Update Massage Set Status = '$status', Lurch_ID = '$lurchID' WHERE ID = $jobID ";
 
-if (strlen($device) == 0) {
-$device = "iPhone";
-}
-
 if (mysqli_query($conn, $sql)) {
     
     // update new notifications
@@ -71,16 +67,9 @@ if (mysqli_query($conn, $sql)) {
     sendNewMessageMail($email, $username, $profilePic, $device, $subject, $title);
     
     // push notification to consumer
-    if ($device == "IOS") {
         pushNotification("Job Update", $message, $customerID);
-    }
-    elseif ($device == "ANDROID") {
         pushNotificationAndroid("Job Update", $message, $customerID);
-    }
-    else {
-        pushNotification("Job Update", $message, $customerID);
-    }
-    
+
     echo http_response_code(200);
 }
 else {
