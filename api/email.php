@@ -9,13 +9,13 @@ else
     echo 'mail() has been disabled';
 } */
 
-function sendIntroMail($email) {
+function sendIntroMail($email, $device) {
     
-    $device = "iPhone";
+    $device = "IOS";
     if ($device == "iPhone") {
         $link = "https://apps.apple.com/us/app/lurchit/id1462289389?ls=1";
     }
-    else if ($device == "Android") {
+    else if ($device == "ANDROID") {
         $link = "https://play.google.com/store/apps/details?id=com.iam.statuz";
     }
     else {

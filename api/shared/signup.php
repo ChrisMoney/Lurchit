@@ -22,7 +22,7 @@ $phoneFormat = phone_number_format($phone);
 $password = $_GET['Password'];
 $password = md5($password);
 
-
+$device = $_GET['DEVICE'];
 
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
    // invalid email
@@ -56,7 +56,7 @@ if (strlen($username) > 0 && strlen($email) > 0
 
       if (mysqli_query($conn, $sql)) {
 
-         sendIntroMail($email);
+         sendIntroMail($email, $device);
 
          $id = mysqli_insert_id($conn);
          $id = intval($id);
