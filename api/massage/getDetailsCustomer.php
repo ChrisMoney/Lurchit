@@ -10,7 +10,7 @@ $id = $_GET['ID'];
 
 $sql = "SELECT ID, Customer_ID as CustomerID, Lurch_ID as LurchID,
         Massage, Duration,
-        Total, Tip, Status, MassageDate, Rating, (Select Username From Members WHERE ID = Lurch_ID) as Username,
+        MassageType, Tip, Status, MassageDate, Rating, (Select Username From Members WHERE ID = Lurch_ID) as Username,
         (Select Phone FROM Members WHERE ID = Lurch_ID) as Phone
     FROM Massage
     WHERE ID = $jobID And Customer_ID = $id ";

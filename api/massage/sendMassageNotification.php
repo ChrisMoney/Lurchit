@@ -17,10 +17,16 @@ $address = mysqli_escape_string($conn, $address);
 $gender = $_GET['Gender'];
 $notification = "Massage Request";
 $device = $_GET['DEVICE'];
+$massageType = $_GET['MassageType'];
+
+$sqlGender = "SELECT Gender FROM Members WHERE ID = $id ";
+$resultGender = mysqli_query($conn, $sqlGender);
+$genderRow = mysqli_fetch_assoc($resultGender);
+$genderOfRequest = $genderRow['Gender'];
 
 // insert into service table
-$sql = "INSERT INTO Massage        (Customer_ID, Massage,   Duration,      Gender,    Total, Latitude, Longitude, Address,  Distance, ETA,   Status, Time,    MassageDate)
-                            Values  ('$id',      '$massage', '$duration',   '$gender', '$total', '$lat', '$long',   '$address', '0',     '0', 'new', '$time', NOW()) ";
+$sql = "INSERT INTO Massage        (Customer_ID, Massage,   Duration,     MassageType,     Gender,  GenderOfRequest,     Total, Latitude, Longitude, Address,  Distance, ETA,   Status, Time,    MassageDate)
+                            Values  ('$id',      '$massage', '$duration',  '$massageType', '$gender', '$genderOfRequest','$total', '$lat', '$long',   '$address', '0',     '0', 'new', '$time', NOW()) ";
 mysqli_query($conn, $sql);
 
 $massageID = mysqli_insert_id($conn);

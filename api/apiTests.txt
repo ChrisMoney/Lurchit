@@ -30,7 +30,7 @@ INSERT INTO Massage        (Customer_ID, Massage,   Duration,      Gender,    To
 							https://apilurchit.com/api/massage/updateAcceptedOnScreen.php?ENV=DEV&JobID=43
 							
 							// Signup Test
-							http://apilurchit.com/shared/signup.php?ENV=DEV&FirstName=Test&LastName=Tester&Username=Email=chriscoreyweathers@gmail.com&Phone=314-458-5040&Password=Admin10!
+							http://apilurchit.com/api/shared/signup.php?ENV=DEV&FirstName=Test&LastName=Tester&Username=Email=chriscoreyweathers@gmail.com&Phone=314-458-5040&Password=Admin10!
 							
 							// Get Demographics Test
 							http://apilurchit.com/api/shared/getDemographics.php?ENV=DEV&ID=1

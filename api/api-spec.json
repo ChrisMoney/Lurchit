@@ -18,6 +18,46 @@
         "application/json"
     ],
     "paths": {
+        "/uploadCarPhoto.php": {
+            "post": {
+                "operationId": "POST_uploadCarPhoto-php",
+                "summary": "UploadCarPhoto",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "ID": {
+                                    "type": "integer"
+                                },
+                                "Media": {
+                                    "type": "string"
+                                },
+                                "ENV": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        },
         "/uploadProfileMedia.php": {
             "post": {
                 "operationId": "POST_uploadProfileMedia-php",
@@ -58,41 +98,42 @@
                 }
             }
         },
-        "/uploadCarPhoto.php": {
-            "post": {
-                "operationId": "POST_uploadCarPhoto-php",
-                "summary": "UploadCarPhoto",
+        "/massage/hasAvailableGender.php": {
+            "get": {
+                "operationId": "GET_massage-hasAvailableGender-php",
+                "summary": "HasAvailableGender",
                 "parameters": [
                     {
-                        "name": "body",
-                        "in": "body",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "ID": {
-                                    "type": "integer"
-                                },
-                                "Media": {
-                                    "type": "string"
-                                },
-                                "ENV": {
-                                    "type": "string"
-                                }
-                            }
-                        }
+                        "name": "Lat",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Long",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Gender",
+                        "in": "query",
+                        "type": "string"
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "integer"
-                        }
-                    },
-                    "500": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer"
+                            "type": "string"
                         }
                     }
                 }
@@ -242,6 +283,11 @@
                     },
                     {
                         "name": "Gender",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "MassageType",
                         "in": "query",
                         "type": "string"
                     }
@@ -522,7 +568,7 @@
                                 "Massage": {
                                     "type": "string"
                                 },
-                                "Total": {
+                                "MassageType": {
                                     "type": "string"
                                 },
                                 "Status": {
@@ -591,7 +637,7 @@
                                 "Massage": {
                                     "type": "string"
                                 },
-                                "Total": {
+                                "MassageType": {
                                     "type": "string"
                                 },
                                 "Status": {
@@ -619,6 +665,9 @@
                                     "type": "string"
                                 },
                                 "Duration": {
+                                    "type": "string"
+                                },
+                                "GenderOfRequest": {
                                     "type": "string"
                                 }
                             }

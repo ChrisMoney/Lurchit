@@ -9,29 +9,34 @@ $lat = $_GET['Lat'];
 $long = $_GET['Long'];
 $device = $_GET['DEVICE'];
 
+if ($gender == 'Male') {
+    $genderSql = "WHERE Gender = 'Male'";
+}
+elseif ($gender == 'Female') {
+    $genderSql = "WHERE Gender = 'Female'";
+}
+else {
+    $genderSql = "WHERE (Gender = 'Male' Or Gender = 'Female')";
+}
+
 // Determine user location 
 $sqlLurch = "SELECT ID,
 ( 3959 * acos ( cos ( radians($lat) ) * cos( radians( Latitude ) ) *
 cos( radians( Longitude ) - radians($long) ) + sin ( radians($lat) ) *
 sin( radians( Latitude ) ) ) ) AS distance 
 FROM Members
-WHERE IsLurchActive = 1 
-And Gender = '$gender'
+$genderSql
 Group By ID
 HAVING distance <= 30";
 
 $genderResult = mysqli_query($conn, $sqlLurch);
 $lurchCount = mysqli_num_rows($genderResult);
 
-$sqlJobs = "SELECT ID FROM Massage WHERE Status <> 'complete' And Status <> 'refunded' ";
-$jobResult = mysqli_query($conn, $sqlJobs);
-$jobCount = mysqli_num_rows($jobResult);
-
-if ($lurchCount > $jobCount) {
-        echo json_encode('true');
+if ($lurchCount > 0) {
+        echo json_encode(true);
     }
 
 else {
-        echo json_encode('false');
+        echo json_encode(false);
 }
 

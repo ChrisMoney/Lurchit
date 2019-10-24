@@ -16,7 +16,7 @@ $long = $lurchRow['Longitude'];
 
 $sql = "SELECT ID, Customer_ID as CustomerID, Lurch_ID as LurchID,
         Massage as Massage, Longitude, Latitude, Duration,
-         Total as Total, Status, Address, (Select Phone FROM Members WHERE ID = (Select Customer_ID FROM Massage WHERE ID = $jobID)) as Phone,
+         MassageType,GenderOfRequest, Status, Address, (Select Phone FROM Members WHERE ID = (Select Customer_ID FROM Massage WHERE ID = $jobID)) as Phone,
         ( 3959 * acos ( cos ( radians($lat) ) * cos( radians( Latitude ) ) *
 cos( radians( Longitude ) - radians($long) ) + sin ( radians($lat) ) *
 sin( radians( Latitude ) ) ) ) AS Distance

@@ -9,7 +9,7 @@ if (!isset($lurchID) || empty($lurchID)) {
     echo "<script>alert('member not found'); location = history.back(); </script>";
 }
 
-$sql = "SELECT FirstName, LastName, Email, Phone, Address, Apt, MailCity, MailState, MailZip,
+$sql = "SELECT FirstName, LastName, Email, Phone, Address, Apt, MailCity, MailState, MailZip, Gender,
 AES_DECRYPT(SSN, 'ssn') as SSN, BirthDay, BirthMonth, BirthYear, IsActive, IsLurch, IsLurchActive FROM Members m WHERE ID = $lurchID ";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
@@ -30,6 +30,7 @@ $birthYear = $row['BirthYear'];
 $memberStatus = $row['IsActive'];
 $lurchStatus = $row['IsLurch'];
 $lurchActive = $row['IsLurchActive'];
+$gender = $row['Gender'];
 
 $hasPaymentProcessing = false;
 
@@ -170,6 +171,14 @@ else {
 					(Year)<input class="form-control" maxLength = "4" style="max-width: 25%" type= "number" name = "birthYear" id = "birthYear" value = "<?php echo $birthYear ?>" /> 
                     <br/>
                     
+                    <h3>Gender</h3>
+                   	<select class="form-control" style = "width:25%" name="memberStatus" id="memberStatus">
+                   		 <option value="1" <?php if($gender=='Male') echo 'selected'; ?>>Male</option>
+       					 <option value="0" <?php if($gender=='Female') echo 'selected'; ?>>Female</option>
+                	</select>
+                	
+                	<br/>
+                	
                      <h3>Member Status</h3>
                    	<select class="form-control" style = "width:25%" name="memberStatus" id="memberStatus">
                    		 <option value="1" <?php if($memberStatus=='1') echo 'selected'; ?>>Active</option>
@@ -236,6 +245,7 @@ else {
      $state = $_POST['state'];
      $zip = $_POST['zip'];
      $ssn = $_POST['ssn'];
+     $gender = $_POST['Gender'];
      $birthDay = $_POST['birthDay'];
      $birthMonth = $_POST['birthMonth'];
      $birthYear = $_POST['birthYear'];
@@ -252,6 +262,7 @@ else {
             MailCity = '$city',
             MailState = '$state',
             MailZip = '$zip',
+            Gender = '$gender',
             SSN = AES_ENCRYPT('$ssn', 'ssn'),
             BirthDay = '$birthDay',
             BirthMonth = '$birthMonth',
