@@ -13,7 +13,7 @@ $sql = "Update Carwash Set PayStatus = 'processing' WHERE Lurch_ID = $id ";
 if (mysqli_query($conn, $sql)) {
     
     // send email to admin
-    if (sendRequestPaymentEmail('payroll@lurchit.com', $id, $env)) {
+    if (sendRequestPaymentEmail('hr@lurchit.com', $id, $env)) {
         echo http_response_code(200);
     }
     else {
