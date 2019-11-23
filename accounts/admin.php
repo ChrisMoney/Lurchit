@@ -9,8 +9,18 @@ if (!isset($lurchID) || empty($lurchID)) {
     echo "<script>alert('member not found'); location = history.back(); </script>";
 }
 
-$sql = "SELECT FirstName, LastName, Email, Phone, Address, Apt, MailCity, MailState, MailZip, Gender,
-AES_DECRYPT(SSN, 'ssn') as SSN, BirthDay, BirthMonth, BirthYear, IsActive, IsLurch, IsLurchActive FROM Members m WHERE ID = $lurchID ";
+$sql = "SELECT FirstName, LastName, Email, Phone, 
+(CASE WHEN Address IS NULL THEN '' ELSE Address END) as Address, 
+(CASE WHEN Apt IS NULL THEN '' ELSE Apt END) As Apt, 
+(CASE WHEN MailCity IS NULL THEN '' ELSE MailCity END) as MailCity, 
+(CASE WHEN MailState IS NULL THEN '' ELSE MailState END) as MailState, 
+(CASE WHEN MailZip IS NULL THEN '0' ELSE MailZip END) as MailZip, 
+(CASE WHEN Gender IS NULL THEN '1' ELSE Gender END) as Gender,
+(CASE WHEN SSN IS NULL THEN '' ELSE AES_DECRYPT(SSN, 'ssn') END) as SSN, 
+(CASE WHEN BirthDay IS NULL THEN '0' ELSE BirthDay END) as BirthDay, 
+(CASE WHEN BirthMonth IS NULL THEN '0' ELSE BirthMonth END) as BirthMonth, 
+(CASE WHEN BirthYear IS NULL THEN '0' ELSE BirthYear END) as BirthYear, 
+IsActive, IsLurch, IsLurchActive FROM Members m WHERE ID = $lurchID ";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
 
@@ -172,7 +182,7 @@ else {
                     <br/>
                     
                     <h3>Gender</h3>
-                   	<select class="form-control" style = "width:25%" name="memberStatus" id="memberStatus">
+                   	<select class="form-control" style = "width:25%" name="gender" id="gender">
                    		 <option value="1" <?php if($gender=='Male') echo 'selected'; ?>>Male</option>
        					 <option value="0" <?php if($gender=='Female') echo 'selected'; ?>>Female</option>
                 	</select>
