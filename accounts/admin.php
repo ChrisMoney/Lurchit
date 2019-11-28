@@ -183,8 +183,8 @@ else {
                     
                     <h3>Gender</h3>
                    	<select class="form-control" style = "width:25%" name="gender" id="gender">
-                   		 <option value="1" <?php if($gender=='Male') echo 'selected'; ?>>Male</option>
-       					 <option value="0" <?php if($gender=='Female') echo 'selected'; ?>>Female</option>
+                   		 <option value="Male" <?php if($gender=='Male') echo 'selected'; ?>>Male</option>
+       					 <option value="Female" <?php if($gender=='Female') echo 'selected'; ?>>Female</option>
                 	</select>
                 	
                 	<br/>
@@ -255,7 +255,7 @@ else {
      $state = $_POST['state'];
      $zip = $_POST['zip'];
      $ssn = $_POST['ssn'];
-     $gender = $_POST['Gender'];
+     $gender = $_POST['gender'];
      $birthDay = $_POST['birthDay'];
      $birthMonth = $_POST['birthMonth'];
      $birthYear = $_POST['birthYear'];

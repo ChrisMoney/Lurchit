@@ -54,7 +54,7 @@ $genderSql
 And ID NOT IN (SELECT Lurch_ID FROM Massage WHERE Status = 'Accepted' Or Status = 'Arrived')
 And IsLurchActive = 1
 Group By ID
-HAVING Distance <= 30
+HAVING Distance <= 15
 ORDER BY Distance ASC
 ";
 
