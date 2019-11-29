@@ -16,7 +16,7 @@ sin( radians( Latitude ) ) ) ) AS distance
 FROM Members
 WHERE IsLurchActive = 1 
 Group By ID
-HAVING distance <= 30";
+HAVING distance <= 15";
 
 $lurchResult = mysqli_query($conn, $sqlLurch);
 $lurchCount = mysqli_num_rows($lurchResult);
