@@ -1,4 +1,6 @@
 <?php
+
+$env = $_GET['ENV'];
 require 'connect.php';
 // track IP addresses accessing this page.
 if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
@@ -61,21 +63,19 @@ if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
 							
 							<?php 
 							
-							require 'connect.php';
-							
-							$sql = "SELECT ID, WashDate FROM Carwash 
-                            WHERE WashDate < NOW() - INTERVAL 1 DAY AND Status = 'new' ";
+							$sql = "SELECT ID, MassageDate FROM Massage 
+                            WHERE MassageDate < NOW() - INTERVAL 1 DAY AND Status = 'new' ";
 							$result = mysqli_query($conn, $sql);
 							
 							if (mysqli_num_rows($result) > 0) {
 							    
 							    while ($overdueJobs = mysqli_fetch_assoc($result)) {
 							        $jobID = $overdueJobs['ID'];
-							        $washDate = $overdueJobs['WashDate'];
+							        $massageDate = $overdueJobs['MassageDate'];
 
-							        $date = date('M/d/Y', strtotime($washDate));
+							        $date = date('M/d/Y', strtotime($massageDate));
 							        
-							        echo "<a href = '/job-overdue.php?JobID=$jobID'>Carwash: $date </a> <br/>";
+							        echo "<a href = '/job-overdue.php?JobID=$jobID'>Massage: $date </a> <br/>";
 							    }
 							}
 							    else {

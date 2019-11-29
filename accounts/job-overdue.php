@@ -12,8 +12,8 @@ if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
 
 $jobID = $_GET['JobID'];
 
-$sql = "SELECT * FROM Carwash c, Members m 
-WHERE c.ID = $jobID";
+$sql = "SELECT * FROM Massage ma, Members m 
+WHERE ma.ID = $jobID";
 
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
