@@ -110,7 +110,7 @@ else {
 
 if (isset($_POST['process']) && $_POST['process'] == "Update Refund Status") {
     
-    $sql = "Update Carwash Set Status = 'refunded' WHERE ID = $jobID ";
+    $sql = "Update Massage Set Status = 'refunded' WHERE ID = $jobID ";
     
     if (mysqli_query($conn, $sql)) {
         echo "<script>alert('Refund record updated successfully'); location = '/job-overdue.php?JobID=$jobID' </script>";
