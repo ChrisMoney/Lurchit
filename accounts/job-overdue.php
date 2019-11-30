@@ -100,7 +100,8 @@ else {
 
 <br/><br/>
 
-                     <input style="background:<?php echo $color ?>;padding-left:10px;padding-right:10px;" <?php echo $disabled ?>  type = "submit" name = "process" id = "process" value = "Update Refund Status" />
+                     <input style="background:<?php echo $color ?>;padding-left:10px;padding-right:10px;" <?php echo $disabled ?>  type = "submit" name = "process" id = "process" value = "Update Refund Status" 
+                    onclick="return confirm('Are you sure you want to update this refund status ?');" />
                     
               </form>
               

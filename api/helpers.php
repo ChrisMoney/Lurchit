@@ -9,6 +9,7 @@ else {
 }
 
 define("LogoPath", "http://apilurchit.com/api/logo.png");
+define ("MassageRadius", "15");
 
 function getDistance($id) {
     $conn = connection();

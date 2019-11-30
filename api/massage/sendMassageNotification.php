@@ -44,6 +44,8 @@ else {
     $genderSql = "And (Gender = 'Male' Or Gender = 'Female')";
 }
 
+$distance = MassageRadius;
+
 $sql2 = "SELECT ID, FirstName, Email, ProfilePhoto, ( 3959 * acos ( cos ( radians($lat) ) * cos( radians( Latitude ) ) *
 cos( radians( Longitude ) - radians($long) ) + sin ( radians($lat) ) *
 sin( radians( Latitude ) ) ) ) AS Distance 
@@ -54,7 +56,7 @@ $genderSql
 And ID NOT IN (SELECT Lurch_ID FROM Massage WHERE Status = 'Accepted' Or Status = 'Arrived')
 And IsLurchActive = 1
 Group By ID
-HAVING Distance <= 15
+HAVING Distance <= $distance
 ORDER BY Distance ASC
 ";
 

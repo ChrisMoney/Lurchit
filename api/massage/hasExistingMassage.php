@@ -25,7 +25,7 @@ if (mysqli_num_rows($result) == 0) {
 }
 else {
     if ($device == 'IOS') {
-        echo 'false';
+        echo 'true';
     }
     elseif ($device = 'ANDROID') {
         echo json_encode('true');

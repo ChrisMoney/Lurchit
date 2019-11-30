@@ -7,6 +7,7 @@ require '../helpers.php';
 $lat = $_GET['Lat'];
 $long = $_GET['Long'];
 $device = $_GET['DEVICE'];
+$distance = MassageRadius;
 
 // Determine user location 
 $sqlLurch = "SELECT ID,
@@ -16,7 +17,7 @@ sin( radians( Latitude ) ) ) ) AS distance
 FROM Members
 WHERE IsLurchActive = 1 
 Group By ID
-HAVING distance <= 15";
+HAVING distance <= $distance";
 
 $lurchResult = mysqli_query($conn, $sqlLurch);
 $lurchCount = mysqli_num_rows($lurchResult);
