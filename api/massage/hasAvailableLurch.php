@@ -27,10 +27,10 @@ $jobResult = mysqli_query($conn, $sqlJobs);
 $jobCount = mysqli_num_rows($jobResult);
 
 if ($lurchCount > $jobCount) {
-        echo json_encode('true');
+        echo 'true';
     }
 
 else {
-        echo json_encode('false');
+        echo 'false';
 }
 
