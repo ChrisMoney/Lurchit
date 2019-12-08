@@ -15,22 +15,23 @@ $sqlLurch = "SELECT ID,
 cos( radians( Longitude ) - radians($long) ) + sin ( radians($lat) ) *
 sin( radians( Latitude ) ) ) ) AS distance 
 FROM Members
-WHERE IsLurchActive = 1 
+WHERE IsLurchActive = 1
+AND ID NOT IN (SELECT Lurch_ID FROM  Massage WHERE Status <> 'complete' And Status <> 'refunded')
 Group By ID
-HAVING distance <= $distance";
+HAVING distance <= $distance
+LIMIT 1";
 
 $lurchResult = mysqli_query($conn, $sqlLurch);
-$lurchCount = mysqli_num_rows($lurchResult);
+$lurchRow = mysqli_fetch_assoc($lurchResult);
+$lurchID = $lurchRow['ID'];
+echo 'true';
 
-$sqlJobs = "SELECT ID FROM Massage WHERE Status <> 'complete' And Status <> 'refunded' ";
-$jobResult = mysqli_query($conn, $sqlJobs);
-$jobCount = mysqli_num_rows($jobResult);
-
-if ($lurchCount > $jobCount) {
-        echo 'true';
+/*if ($lurchID > 0) {
+        echo json_encode('true');
     }
 
 else {
-        echo 'false';
+        echo json_encode('false');
 }
 
+*/

@@ -11,20 +11,19 @@ else
 
 function sendIntroMail($email, $device) {
     
-    $device = "IOS";
     if ($device == "iPhone") {
-        $link = "https://apps.apple.com/us/app/lurchit/id1462289389?ls=1";
+        $link = "<a href='https://apps.apple.com/us/app/lurchit/id1462289389?ls=1'>Login now </a>";
     }
     else if ($device == "ANDROID") {
-        $link = "https://play.google.com/store/apps/details?id=com.iam.statuz";
+        $link = "<a href='https://play.google.com/store/apps/details?id=com.lurchit.lurchit'>Login now </a>";
     }
     else {
-        $link = "";
+        $link = "<a href='https://apps.apple.com/us/app/lurchit/id1462289389?ls=1'>Login now </a>";
     }
     
      // send email
           $subject = "Thank you for signing up! Use Lurchit to request personal services and save time, be more productive and get things done wherever you are! 
-                        <a href='".$link."'>Login now</a> a start making your life easier.";
+                      $link and start making your life easier.";
           $toEmail = $email;
          
           $message = "<html><body>";
