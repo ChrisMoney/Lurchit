@@ -458,13 +458,18 @@
                         "name": "DEVICE",
                         "in": "query",
                         "type": "string"
+                    },
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "string"
+                            "type": "boolean"
                         }
                     }
                 }

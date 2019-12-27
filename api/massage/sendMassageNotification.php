@@ -94,7 +94,7 @@ if (mysqli_query($conn, $sql2)) {
                                     Values ('$id',       '$lurchID', '$massageID', 'Massage', '$notification', 1,    NOW()) ";
         mysqli_query($conn, $sql3);
         
-        // update ETA in carwash
+        // update ETA in 
         $sql4 = "UPDATE Massage Set Distance = '$distance' WHERE ID = $massageID";
         mysqli_query($conn, $sql4);
         

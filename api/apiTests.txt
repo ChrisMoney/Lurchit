@@ -45,6 +45,6 @@ INSERT INTO Massage        (Customer_ID, Massage,   Duration,      Gender,    To
 							hhttp://apilurchit.com/api/shared/getAddresses.php?ID=1
 							
 							// Has available watch
-							http://apilurchit.com/api/massage/hasAvailableLurch.php?Lat=38.7385&Long=-90.3904&DEVICE=IOS
+							http://apilurchit.com/api/massage/hasAvailableLurch.php?Lat=38.7385&Long=-90.3904&DEVICE=IOS&DEV=false
 							
 					
