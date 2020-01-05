@@ -30,7 +30,7 @@
 
 					<!-- Content -->
 					<div style="padding-left:10px">
-						<h2 id="content">Search for Employee</h2>
+						<h2 id="content">Search for Member</h2>
 						
 						 <form method = "post" action = "" >
                      

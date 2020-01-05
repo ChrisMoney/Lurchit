@@ -9,7 +9,7 @@ if (!isset($lurchID) || empty($lurchID)) {
     echo "<script>alert('member not found'); location = history.back(); </script>";
 }
 
-$sql = "SELECT FirstName, LastName, Email, Phone, 
+$sql = "SELECT FirstName, LastName, Email, Phone,
 (CASE WHEN Address IS NULL THEN '' ELSE Address END) as Address, 
 (CASE WHEN Apt IS NULL THEN '' ELSE Apt END) As Apt, 
 (CASE WHEN MailCity IS NULL THEN '' ELSE MailCity END) as MailCity, 
@@ -213,6 +213,16 @@ else {
                 	
                 	<br/>
                 	
+                	<h3>Discount: </h3>
+
+                   	<select class="form-control" style = "width:25%" name="service" id="service">
+                   		 <option value="massage" selected>Massage</option>
+                	</select>
+                	
+                    <input placeholder="Input dollar amount of discount only" class="form-control" maxLength = "5" style="max-width: 25%" type = "number" name = "discount" id = "discount" value = "0" />
+					
+					<br/>
+					
                     <input style="background:#ff0000;padding-left:10px;padding-right:10px;" type = "submit" name = "save" id = "save" value = "Save Data" />
                    
                    	 <hr/>
@@ -242,6 +252,16 @@ else {
  
  if (isset($_POST['save']) && $_POST['save'] == "Save Data") {
   
+     $discount = $_POST['discount'];
+     $service = $_POST['service'];
+     
+     if ($discount > 0) {
+         $sql2 = "INSERT INTO Discounts (Customer_ID, Discount, Service, HasUsed, DiscountDate ) Values (1, $discount, '$service', 0, NOW() ) ";
+         
+         if (!mysqli_query($conn, $sql2)) {
+             echo "<script>alert('Failed to created discount');</script>";
+         }
+     }
        
      $firstName = $_POST['firstName'];
      $lastName = $_POST['lastName'];
@@ -290,7 +310,8 @@ else {
          echo "<script>alert('Member update failed!'); location = '/admin.php?ID=$lurchID' </script>";
      }
  }
-       
+  
+ 
  ?>
                   
 <?php 

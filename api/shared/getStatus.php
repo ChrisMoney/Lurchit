@@ -20,7 +20,7 @@ else {
     $payStatus = 'false';
 }
 
-$sql = "SELECT (Select SUM(Total) FROM Massage WHERE Lurch_ID = $id And PayStatus = 'unpaid') as Balance, 
+$sql = "SELECT (Select SUM(Massage) FROM Massage WHERE Lurch_ID = $id And PayStatus = 'unpaid') as Balance, 
         (SELECT SUM(Tip) FROM Massage WHERE Lurch_ID = $id And PayStatus = 'unpaid') as Tip, IsPayProcessing, IsLurch, IsLurchActive 
 FROM Members WHERE ID = $id ";
 

@@ -98,33 +98,18 @@
                 }
             }
         },
-        "/massage/hasAvailableGender.php": {
+        "/shared/updateDiscount.php": {
             "get": {
-                "operationId": "GET_massage-hasAvailableGender-php",
-                "summary": "HasAvailableGender",
+                "operationId": "GET_shared-updateDiscount-php",
+                "summary": "UpdateDiscount",
                 "parameters": [
                     {
-                        "name": "Lat",
+                        "name": "DiscountID",
                         "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "Long",
-                        "in": "query",
-                        "type": "string"
+                        "type": "integer"
                     },
                     {
                         "name": "ENV",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "DEVICE",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "Gender",
                         "in": "query",
                         "type": "string"
                     }
@@ -133,7 +118,13 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "string"
+                            "type": "integer"
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer"
                         }
                     }
                 }
@@ -982,6 +973,50 @@
                         "description": "",
                         "schema": {
                             "type": "integer"
+                        }
+                    }
+                }
+            }
+        },
+        "/massage/hasAvailableGender.php": {
+            "get": {
+                "operationId": "GET_massage-hasAvailableGender-php",
+                "summary": "HasAvailableGender",
+                "tags": [
+                    "massage"
+                ],
+                "parameters": [
+                    {
+                        "name": "Lat",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Long",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Gender",
+                        "in": "query",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
                         }
                     }
                 }
@@ -2837,6 +2872,93 @@
                         "description": "",
                         "schema": {
                             "type": "boolean"
+                        }
+                    }
+                }
+            }
+        },
+        "/shared/discount.php": {
+            "get": {
+                "operationId": "GET_shared-discount-php",
+                "summary": "Discount",
+                "tags": [
+                    "shared"
+                ],
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Service",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Discount",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/shared/checkDiscount.php": {
+            "get": {
+                "operationId": "GET_shared-checkDiscount-php",
+                "summary": "CheckDiscount",
+                "tags": [
+                    "shared"
+                ],
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Service",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "OrigAmount",
+                        "in": "query",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "Discount": {
+                                    "type": "string"
+                                },
+                                "HasDiscount": {
+                                    "type": "string"
+                                },
+                                "ID": {
+                                    "type": "integer"
+                                }
+                            }
                         }
                     }
                 }

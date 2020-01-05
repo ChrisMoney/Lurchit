@@ -47,4 +47,10 @@ INSERT INTO Massage        (Customer_ID, Massage,   Duration,      Gender,    To
 							// Has available watch
 							http://apilurchit.com/api/massage/hasAvailableLurch.php?Lat=38.7385&Long=-90.3904&DEVICE=IOS&DEV=false
 							
+							// Check Discount
+							http://apilurchit.com/api/shared/checkDiscount.php?ID=1&ENV=DEV
+							
+							// Update Discount
+							http://apilurchit.com/api/shared/updateDiscount.php?DiscoountID=1&ENV=DEV
+							
 					
