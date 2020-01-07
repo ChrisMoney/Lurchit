@@ -256,7 +256,7 @@ else {
      $service = $_POST['service'];
      
      if ($discount > 0) {
-         $sql2 = "INSERT INTO Discounts (Customer_ID, Discount, Service, HasUsed, DiscountDate ) Values (1, $discount, '$service', 0, NOW() ) ";
+         $sql2 = "INSERT INTO Discounts (Customer_ID, Discount, Service, HasUsed, DiscountDate ) Values ($lurchID, $discount, '$service', 0, NOW() ) ";
          
          if (!mysqli_query($conn, $sql2)) {
              echo "<script>alert('Failed to created discount');</script>";
