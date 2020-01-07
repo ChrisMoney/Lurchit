@@ -10,7 +10,8 @@ $service = $_GET['Service'];
 $service = strtolower($service);
 $origAmount = $_GET['OrigAmount'];
 
-$sql = "SELECT ID,Discount,HasDiscount FROM Discounts WHERE Customer_ID = $ID AND Service = '$service' And HasUsed = 0 ";
+$sql = "SELECT ID,Discount,HasDiscount FROM Discounts WHERE Customer_ID = $ID AND Service = '$service' And HasUsed = 0 
+Order By HasUsed DESC";
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
@@ -19,6 +20,10 @@ if (mysqli_num_rows($result) > 0) {
     
     $discountData['HasDiscount'] = 'true';
     $discount = $origAmount - $discountData['Discount'];
+
+    if ($discount < 0) {
+        $discount = 0;
+    }
     $discountData['Discount'] = "$discount";
 }
 else {

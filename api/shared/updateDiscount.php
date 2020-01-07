@@ -15,3 +15,4 @@ if (mysqli_query($conn, $sql)) {
 } else {
     // internal error
     echo http_response_code(500);
+}

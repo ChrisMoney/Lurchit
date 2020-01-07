@@ -8,7 +8,7 @@ include_once '../helpers.php';
 
 $jobID = $_GET['JobID'];
 
-$memberSql = "SELECT Customer_ID FROM Carwash WHERE ID = $jobID ";
+$memberSql = "SELECT Customer_ID FROM Massage WHERE ID = $jobID ";
 $memberResult = mysqli_query($conn, $memberSql);
 $memberRow = mysqli_fetch_assoc($memberResult);
 
