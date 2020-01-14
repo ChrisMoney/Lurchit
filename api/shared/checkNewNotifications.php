@@ -13,8 +13,18 @@ $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
 
-        echo 'true';
+    if ($device == "IOS") {
+        echo 'true';   
 }
 else {
+    echo json_encode('true');
+}
+}
+else {
+    if ($device == "IOS") {
         echo 'false';
+    }
+    else {
+        echo json_encode('false');
+    }
 }

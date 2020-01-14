@@ -44,8 +44,8 @@ INSERT INTO Massage        (Customer_ID, Massage,   Duration,      Gender,    To
 							// Get Addresses
 							hhttp://apilurchit.com/api/shared/getAddresses.php?ID=1
 							
-							// Has available watch
-							http://apilurchit.com/api/massage/hasAvailableLurch.php?Lat=38.7385&Long=-90.3904&DEVICE=IOS&DEV=false
+							// Has available lurch
+							http://apilurchit.com/api/shared/hasAvailableLurch.php?Lat=38.7385&Long=-90.3904&DEVICE=IOS&ENV=DEV
 							
 							// Check Discount
 							http://apilurchit.com/api/shared/checkDiscount.php?ID=1&ENV=DEV&OrigAmount=60&Service=massage

@@ -18,46 +18,6 @@
         "application/json"
     ],
     "paths": {
-        "/uploadCarPhoto.php": {
-            "post": {
-                "operationId": "POST_uploadCarPhoto-php",
-                "summary": "UploadCarPhoto",
-                "parameters": [
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "ID": {
-                                    "type": "integer"
-                                },
-                                "Media": {
-                                    "type": "string"
-                                },
-                                "ENV": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer"
-                        }
-                    },
-                    "500": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                }
-            }
-        },
         "/uploadProfileMedia.php": {
             "post": {
                 "operationId": "POST_uploadProfileMedia-php",
@@ -98,20 +58,28 @@
                 }
             }
         },
-        "/shared/updateDiscount.php": {
-            "get": {
-                "operationId": "GET_shared-updateDiscount-php",
-                "summary": "UpdateDiscount",
+        "/uploadCarPhoto.php": {
+            "post": {
+                "operationId": "POST_uploadCarPhoto-php",
+                "summary": "UploadCarPhoto",
                 "parameters": [
                     {
-                        "name": "DiscountID",
-                        "in": "query",
-                        "type": "integer"
-                    },
-                    {
-                        "name": "ENV",
-                        "in": "query",
-                        "type": "string"
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "ID": {
+                                    "type": "integer"
+                                },
+                                "Media": {
+                                    "type": "string"
+                                },
+                                "ENV": {
+                                    "type": "string"
+                                }
+                            }
+                        }
                     }
                 ],
                 "responses": {
@@ -2956,9 +2924,44 @@
                                     "type": "string"
                                 },
                                 "ID": {
-                                    "type": "integer"
+                                    "type": "string"
                                 }
                             }
+                        }
+                    }
+                }
+            }
+        },
+        "/shared/updateDiscount.php": {
+            "get": {
+                "operationId": "GET_shared-updateDiscount-php",
+                "summary": "UpdateDiscount",
+                "tags": [
+                    "shared"
+                ],
+                "parameters": [
+                    {
+                        "name": "DiscountID",
+                        "in": "query",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer"
                         }
                     }
                 }
