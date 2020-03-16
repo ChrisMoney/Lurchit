@@ -30,6 +30,7 @@ function connection ($env) {
     }
     elseif ($env == 'DEV') {
         $db = 'LurchitDev';
+
     }
     else {
         $db = 'Lurchit';

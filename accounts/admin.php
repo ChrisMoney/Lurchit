@@ -42,32 +42,7 @@ $lurchStatus = $row['IsLurch'];
 $lurchActive = $row['IsLurchActive'];
 $gender = $row['Gender'];
 
-$hasPaymentProcessing = false;
 
-$sql2 = "SELECT (Select SUM(Total) FROM Massage WHERE Lurch_ID = $lurchID And PayStatus = 'processing') as Balance, 
-        (SELECT SUM(Tip) FROM Massage WHERE Lurch_ID = $lurchID) as Tip, IsPayProcessing, IsLurch 
-FROM Members WHERE ID = $lurchID ";
-$result2 = mysqli_query($conn, $sql2);
-$row2 = mysqli_fetch_assoc($result2);
-$total = $row2['Balance'];
-
-if ($total > 0) {
-    $hasPaymentProcessing = true;
-}
-
-
-if ($hasPaymentProcessing == true) {
-    $balance = $row2['Balance'];
-    $newBalance = $balance * 0.6;
-    
-    $newBalance = $newBalance;
-    $balance = $newBalance;
-    $tip = $row2['Tip'];
-}
-else {
-    $balance = "$0";
-    $tip = "$0";
-}
 
 
 ?>
@@ -213,35 +188,8 @@ else {
                 	
                 	<br/>
                 	
-                	<h3>Discount: </h3>
-
-                   	<select class="form-control" style = "width:25%" name="service" id="service">
-                   		 <option value="massage" selected>Massage</option>
-                	</select>
-                	
-                    <input placeholder="Input dollar amount of discount only" class="form-control" maxLength = "5" style="max-width: 25%" type = "number" name = "discount" id = "discount" value = "0" />
-					
-					<br/>
 					
                     <input style="background:#ff0000;padding-left:10px;padding-right:10px;" type = "submit" name = "save" id = "save" value = "Save Data" />
-                   
-                   	 <hr/>
-                   	 <br/>
-                   	 
-                    <h3>Total: </h3>
-                    <input style="max-width:25%" type = "text" name = "total" id = "total" readonly = "readonly" value = "<?php echo $balance ?>" />
-                   
-               		<br/><br/> 
-               		
-               		<h3>Tips: </h3>
-                    <input style="max-width:25%" type = "text" name = "total" id = "tips" readonly = "readonly" value = "<?php echo $tip ?>" />
-                   
-               		<br/><br/> 
-                 
-
-<br/><br/>
-
-                     <input style="background:#ff0000;padding-left:10px;padding-right:10px;" type = "submit" name = "process" id = "process" value = "Update Payment Records" onclick="return confirm('Are you sure you want to update this payment record ?');" />
                     
               </form>
               
@@ -251,17 +199,6 @@ else {
   <?php 
  
  if (isset($_POST['save']) && $_POST['save'] == "Save Data") {
-  
-     $discount = $_POST['discount'];
-     $service = $_POST['service'];
-     
-     if ($discount > 0) {
-         $sql2 = "INSERT INTO Discounts (Customer_ID, Discount, Service, HasUsed, DiscountDate ) Values ($lurchID, $discount, '$service', 0, NOW() ) ";
-         
-         if (!mysqli_query($conn, $sql2)) {
-             echo "<script>alert('Failed to created discount');</script>";
-         }
-     }
        
      $firstName = $_POST['firstName'];
      $lastName = $_POST['lastName'];
@@ -314,22 +251,7 @@ else {
  
  ?>
                   
-<?php 
 
-if (isset($_POST['process']) && $_POST['process'] == "Update Payment Records") {
-    
-    $sql = "Update Carwash Set PayStatus = 'paid' WHERE PayStatus = 'processing' AND Lurch_ID = $lurchID ";
-    
-    if (mysqli_query($conn, $sql)) {
-        // send payment processed email
-        sendPaymentProcessedEmail($email);
-        echo "<script>alert('Payment records updated successfully'); location = 'accounts/admin.php?ID=$lurchID' </script>";
-    }
-    else {
-        echo "<script>alert('Payment records update failed!'); location = 'accounts/admin.php?ID=$lurchID' </script>";
-    }
-}
-?>
 
 	</body>
 </html>
