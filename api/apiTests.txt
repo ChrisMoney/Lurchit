@@ -3,60 +3,18 @@ INSERT INTO Massage        (Customer_ID, Massage,   Duration,      Gender,    To
                             Values  ('1', '50', 'Half Hour', 'Female', '50', '-90.199402', '38.627003', '123 Main St', '5', '5', 'new', '5', NOW())
 							
 							
-							// sendWashNotification test
-							http://apilurchit.com/api/massage/sendWashNotification.php?ENV=DEV&ID=1&Lat=38.7385&Long=-90.3904&Carwash=25&Wax=0&Interior=0&Total=25&Address=123Street
 							
-							// Send Notifications
-							SELECT ID, FirstName, Email, ProfilePhoto, ( 3959 * acos ( cos ( radians(38.627003) ) * cos( radians( Latitude ) ) *
-							cos( radians( Longitude ) - radians(-90.199402) ) + sin ( radians(38.627003) ) *
-							sin( radians( Latitude ) ) ) ) AS Distance 
-							FROM Members 
-							WHERE IsLurch = 1
-							AND ID != 3
-							And Gender = 'Male'
-							And ID NOT IN (SELECT Lurch_ID FROM Massage WHERE Status = 'Accepted' Or Status = 'Arrived')
-							And IsLurchActive = 1
-							Group By ID
-							HAVING Distance <= 30
-							ORDER BY Distance ASC
-							
-							// requestWash test
-							https://apilurchit.com/api/massage/requestWash.php?ENV=DEV&JobID=41
-							
-							// Payment Test
-							https://apilurchit.com/api/shared/payment.php?ENV=DEV&DEVICE=ANDROID&Amount=25&CCNumber=4242424242424242&ExpMonth=02&ExpYear=2020&CVC=314
-							
-							// UpdateAcceptedOnScreen Test
-							https://apilurchit.com/api/massage/updateAcceptedOnScreen.php?ENV=DEV&JobID=43
+							// Get service providers test
+							http://apilurchit.com/api/getServiceProviders.php?ENV=DEV&Distance=15&Lat=38.672287&Long=-90.440702&Service=Masseuse
 							
 							// Signup Test
 							http://apilurchit.com/api/shared/signup.php?ENV=DEV&FirstName=Test&LastName=Tester&Username=Email=chriscoreyweathers@gmail.com&Phone=314-458-5040&Password=Admin10!
 							
 							// Get Demographics Test
-							http://apilurchit.com/api/shared/getDemographics.php?ENV=DEV&ID=1
-							
-							// Get Lurch
-							http://apilurchit.com/api/shared/getLurch.php?ENV=DEV&LurchID=1
-							
-							// Get Details
-							http://apilurchit.com/api/massage/getDetails.php?JobID=5&ENV=DEV
-							
-							// Get Addresses
-							hhttp://apilurchit.com/api/shared/getAddresses.php?ID=1
-							
-							// Has available lurch
-							http://apilurchit.com/api/shared/hasAvailableLurch.php?Lat=38.7385&Long=-90.3904&DEVICE=IOS&ENV=DEV
-							
-							// Check Discount
-							http://apilurchit.com/api/shared/checkDiscount.php?ID=1&ENV=DEV&OrigAmount=60&Service=massage
-							
-							// Update Discount
-							http://apilurchit.com/api/shared/updateDiscount.php?DiscountID=1&ENV=DEV
+							http://apilurchit.com/api/shared/getDemographics.php?ENV=DEV&ID=1							
 
 							// Get Customer Profile
 							http://apilurchit.com/api/shared/getCustomerProfile.php?JobID
 
-							// check for new Notifications
-							http://apilurchit.com/api/shared/checkNewNotifications.php?ID=1&DEVICE=IOS&ENV=DEV
 							
 					

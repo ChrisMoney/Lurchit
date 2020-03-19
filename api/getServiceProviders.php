@@ -20,7 +20,7 @@ And IsLurchActive = 1
 And Service = '$service'
 Group By ID
 HAVING Distance <= $distance
-ORDER BY Distance ASC
+ORDER BY IsProfilePremium DESC, Distance ASC, MinPrice ASC
 ";
 
 $result = mysqli_query($conn, $sql);
@@ -45,9 +45,9 @@ if (mysqli_query($conn, $sql)) {
         echo json_encode($myArray, JSON_PRETTY_PRINT);
     }
     else {
-        echo json_encode(201);
+        echo json_encode(201, JSON_NUMERIC_CHECK);
     }
 }
 else {
-    echo json_encode(201);
+    echo json_encode(201, JSON_NUMERIC_CHECK);
 }

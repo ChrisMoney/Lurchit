@@ -6,7 +6,7 @@ include_once 'helpers.php';
 
 $id = $_GET['ID'];
 
-$sql = "SELECT ProfilePhoto,Service,MinPrice,Blurb,Description,Website,Phone,IsProfilePremium FROM Members WHERE ID = $id";
+$sql = "SELECT ProfilePhoto,Service,MinPrice, (Select MinPrice FROM Members WHERE ID = $id) as MinPriceCustView, Blurb,Description,Website,Phone,IsProfilePremium FROM Members WHERE ID = $id";
 
 $count = 0;
 
@@ -22,6 +22,10 @@ if ($result = mysqli_query($conn, $sql)) {
         if (strlen($mediaName) > 1) {
             $profileView['ProfilePhoto'] = ProfileMediaPath.$mediaName;
         }
+        $minPrice = $profileView['MinPriceCustView'];
+        $minPrice = "Min Price $".$minPrice;
+        $profileView['MinPriceCustView'] = $minPrice;
+        
         echo json_encode($profileView);
     }
 }
