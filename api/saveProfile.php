@@ -21,7 +21,7 @@ Username = '$userName', Email = '$email', Phone = '$phone' WHERE ID = $id ";
 
 if (mysqli_query($conn, $sql)) {
     
-    if (strlen($password) > 1) {
+    if ($password > 1) {
         $password = md5($password);
         $sql1 = "Update Members Set Password = '$password' WHERE ID = $id ";
         mysqli_query($conn, $sql1);
