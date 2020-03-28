@@ -6,7 +6,7 @@ $env = $_GET['ENV'];
 require 'connect.php';
 
 $id = $_GET['ID'];
-$ = $_GET['Service'];
+$service = $_GET['Service'];
 
 $sql = "Update Members Set Service = '$service' WHERE ID = $id ";
 

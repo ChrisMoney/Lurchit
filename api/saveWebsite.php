@@ -8,6 +8,10 @@ require 'connect.php';
 $id = $_GET['ID'];
 $website = $_GET['Website'];
 
+if (!preg_match("~^(?:f|ht)tps?://~i", $website)) {
+    $website = "http://" . $website;
+}
+
 $sql = "Update Members Set Website = '$website' WHERE ID = $id ";
 
 if (mysqli_query($conn, $sql)) {
