@@ -1,7 +1,8 @@
 <?php 
 $env = $_GET['ENV'];
-require 'connect.php';
-require 'email.php';
+require '../api/connect.php';
+require '../api/email.php';
+require_once '../api/helpers.php';
 
 $lurchID = $_GET['ID'];
 
@@ -10,16 +11,6 @@ if (!isset($lurchID) || empty($lurchID)) {
 }
 
 $sql = "SELECT FirstName, LastName, Email, Phone,
-(CASE WHEN Address IS NULL THEN '' ELSE Address END) as Address, 
-(CASE WHEN Apt IS NULL THEN '' ELSE Apt END) As Apt, 
-(CASE WHEN MailCity IS NULL THEN '' ELSE MailCity END) as MailCity, 
-(CASE WHEN MailState IS NULL THEN '' ELSE MailState END) as MailState, 
-(CASE WHEN MailZip IS NULL THEN '0' ELSE MailZip END) as MailZip, 
-(CASE WHEN Gender IS NULL THEN '1' ELSE Gender END) as Gender,
-(CASE WHEN SSN IS NULL THEN '' ELSE AES_DECRYPT(SSN, 'ssn') END) as SSN, 
-(CASE WHEN BirthDay IS NULL THEN '0' ELSE BirthDay END) as BirthDay, 
-(CASE WHEN BirthMonth IS NULL THEN '0' ELSE BirthMonth END) as BirthMonth, 
-(CASE WHEN BirthYear IS NULL THEN '0' ELSE BirthYear END) as BirthYear, 
 IsActive, IsLurch, IsLurchActive FROM Members m WHERE ID = $lurchID ";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
@@ -28,23 +19,9 @@ $firstName = $row['FirstName'];
 $lastName = $row['LastName'];
 $email = $row['Email'];
 $phone = $row['Phone'];
-$address = $row['Address'];
-$apt = $row['Apt'];
-$city = $row['MailCity'];
-$state = $row['MailState'];
-$zip = $row['MailZip'];
-$ssn = $row['SSN'];
-$birthDay = $row['BirthDay'];
-$birthMonth = $row['BirthMonth'];
-$birthYear = $row['BirthYear'];
 $memberStatus = $row['IsActive'];
 $lurchStatus = $row['IsLurch'];
 $lurchActive = $row['IsLurchActive'];
-$gender = $row['Gender'];
-
-
-
-
 ?>
 
 <!DOCTYPE HTML>
@@ -109,61 +86,7 @@ $gender = $row['Gender'];
                     <input style="max-width:50%" maxLength = "12" type = "text" name = "phone" id = "phone" value = "<?php echo $phone ?>" />
 
                     <br/>
-                    
-                    <!-- Address -->
-                    <h3>Address: </h3>
-
-                    <input style="max-width:50%" type = "text" name = "address" id = "address" value = "<?php echo $address ?>" />
-
-                    <br/>
-                    
-                    <!-- Apt -->
-                    <h3>Apt: </h3>
-
-                    <input style="max-width:25%" type = "text" name = "apt" id = "apt" value = "<?php echo $apt ?>" />
-
-                    <br/>
-                    
-                    <!-- City -->
-                    <h3>City: </h3>
-
-                    <input style="max-width:50%" type = "text" name = "city" id = "city" value = "<?php echo $city ?>" />
-
-                    <br/>
-                    
-                    <h3>State: </h3>
-
-                    <input style="max-width:25%" maxLength ="2" type = "text" name = "state" id = "state" value = "<?php echo $state ?>" />
-
-                    <br/>
-                    
-                    <h3>Zip: </h3>
-
-                    <input class="form-control" maxLength = "5" style="max-width: 25%" type = "number" name = "zip" id = "zip" value = "<?php echo $zip ?>" />
-					
-					<br/>
-					
-					<h3>SSN: </h3>
-
-                    <input class="form-control" maxLength = "5" style="max-width: 25%" type = "text" name = "ssn" id = "ssn" value = "<?php echo $ssn ?>" />
-                    
-					<br/>
-					
-					<h3>Birthdate</h3>
-					
-					(Month)<input class="form-control" maxLength = "2" style="max-width: 25%" type= "number" name = "birthMonth" id = "birthMonth" value = "<?php echo $birthMonth ?>" /> <br/>
-					(Day)<input class="form-control" maxLength = "2" style="max-width: 25%" type= "number" name = "birthDay" id = "birthDay" 	value = "<?php echo $birthDay ?>" /> <br/>
-					(Year)<input class="form-control" maxLength = "4" style="max-width: 25%" type= "number" name = "birthYear" id = "birthYear" value = "<?php echo $birthYear ?>" /> 
-                    <br/>
-                    
-                    <h3>Gender</h3>
-                   	<select class="form-control" style = "width:25%" name="gender" id="gender">
-                   		 <option value="Male" <?php if($gender=='Male') echo 'selected'; ?>>Male</option>
-       					 <option value="Female" <?php if($gender=='Female') echo 'selected'; ?>>Female</option>
-                	</select>
-                	
-                	<br/>
-                	
+                   
                      <h3>Member Status</h3>
                    	<select class="form-control" style = "width:25%" name="memberStatus" id="memberStatus">
                    		 <option value="1" <?php if($memberStatus=='1') echo 'selected'; ?>>Active</option>
@@ -205,17 +128,8 @@ $gender = $row['Gender'];
      
      $email = $_POST['email'];
      $email = trim($email);
-     
-     $address = $_POST['address'];
-     $apt = $_POST['apt'];
-     $city = $_POST['city'];
-     $state = $_POST['state'];
-     $zip = $_POST['zip'];
-     $ssn = $_POST['ssn'];
-     $gender = $_POST['gender'];
-     $birthDay = $_POST['birthDay'];
-     $birthMonth = $_POST['birthMonth'];
-     $birthYear = $_POST['birthYear'];
+     $phone = $_POST['phone'];
+     $phone = phone_number_format($phone);
      $memberStatus = $_POST['memberStatus'];
      $lurchStatus = $_POST['lurchStatus'];
      $lurchActive = $_POST['lurchActive'];
@@ -224,16 +138,7 @@ $gender = $row['Gender'];
             FirstName = '$firstName',
             LastName = '$lastName',
             Email = '$email', 
-            Address = '$address',
-            Apt = '$apt',
-            MailCity = '$city',
-            MailState = '$state',
-            MailZip = '$zip',
-            Gender = '$gender',
-            SSN = AES_ENCRYPT('$ssn', 'ssn'),
-            BirthDay = '$birthDay',
-            BirthMonth = '$birthMonth',
-            BirthYear = '$birthYear',
+            Phone = '$phone',
             IsActive = '$memberStatus',
             IsLurch = '$lurchStatus',
             IsLurchActive = '$lurchActive' 

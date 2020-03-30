@@ -105,6 +105,11 @@
                         "name": "ENV",
                         "in": "query",
                         "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
+                        "in": "query",
+                        "type": "string"
                     }
                 ],
                 "responses": {
@@ -1238,6 +1243,11 @@
                     },
                     {
                         "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
                         "in": "query",
                         "type": "string"
                     }
