@@ -597,7 +597,7 @@ if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
 					</p>
 				</div>
 				<div class="copyright">
-					&copy; 2019
+					&copy; 2020
 				</div>
 			</footer>
 
