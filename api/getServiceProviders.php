@@ -45,9 +45,11 @@ if (mysqli_query($conn, $sql)) {
         echo json_encode($myArray, JSON_PRETTY_PRINT);
     }
     else {
-        echo json_encode(201, JSON_NUMERIC_CHECK);
+        $array = [];
+        echo json_encode($array);
     }
 }
 else {
-    echo json_encode(201, JSON_NUMERIC_CHECK);
+    $array = [];
+    echo json_encode($array);
 }
