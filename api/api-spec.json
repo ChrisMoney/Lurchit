@@ -105,6 +105,11 @@
                         "name": "ENV",
                         "in": "query",
                         "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
+                        "in": "query",
+                        "type": "string"
                     }
                 ],
                 "responses": {
@@ -308,6 +313,9 @@
                                     "type": "string"
                                 },
                                 "MinPriceCustView": {
+                                    "type": "string"
+                                },
+                                "Username": {
                                     "type": "string"
                                 }
                             }
@@ -1238,6 +1246,11 @@
                     },
                     {
                         "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
                         "in": "query",
                         "type": "string"
                     }

@@ -6,7 +6,7 @@ include_once 'helpers.php';
 
 $id = $_GET['ID'];
 
-$sql = "SELECT ProfilePhoto,Service,MinPrice, (Select MinPrice FROM Members WHERE ID = $id) as MinPriceCustView, Blurb,Description,Website,Phone,IsProfilePremium FROM Members WHERE ID = $id";
+$sql = "SELECT Username,ProfilePhoto,Service,MinPrice, (Select MinPrice FROM Members WHERE ID = $id) as MinPriceCustView, Blurb,Description,Website,Phone,IsProfilePremium FROM Members WHERE ID = $id";
 
 $count = 0;
 
