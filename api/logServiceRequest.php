@@ -6,8 +6,9 @@ require 'helpers.php';
 
 $providerID = $_GET['ProviderID'];
 $service = $_GET['Service'];
+$device = $_GET['DEVICE'];
 
-$sql = "INSERT INTO LogServiceRequest (Provider_ID, Service, Date) Values ('$providerID','$service', NOW()) ";
+$sql = "INSERT INTO LogServiceRequest (Provider_ID, Service, Device, Date) Values ('$providerID','$service','$device', NOW()) ";
 
 if (mysqli_query($conn, $sql)) {
     echo http_response_code(200);

@@ -48,7 +48,7 @@
 							
               if (isset($_POST['submit']) && $_POST['submit'] == "Search") {
                 
-                    require 'connect.php';
+                    require '../api/connect.php';
 							
 							
     				$email = $_POST['email'];

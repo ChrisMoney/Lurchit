@@ -11,7 +11,7 @@ $long = $_GET['Long'];
 
 $myArray = array();
 
-$sql = "SELECT ID,Username, MinPrice, Blurb, ProfilePhoto, ( 3959 * acos ( cos ( radians($lat) ) * cos( radians( Latitude ) ) *
+$sql = "SELECT DISTINCT(ID),Username, MinPrice, Blurb, ProfilePhoto, ( 3959 * acos ( cos ( radians($lat) ) * cos( radians( Latitude ) ) *
 cos( radians( Longitude ) - radians($long) ) + sin ( radians($lat) ) *
 sin( radians( Latitude ) ) ) ) AS Distance
 FROM Members
@@ -45,9 +45,11 @@ if (mysqli_query($conn, $sql)) {
         echo json_encode($myArray, JSON_PRETTY_PRINT);
     }
     else {
-        echo json_encode(201, JSON_NUMERIC_CHECK);
+        $array = [];
+        echo json_encode($array);
     }
 }
 else {
-    echo json_encode(201, JSON_NUMERIC_CHECK);
+    $array = [];
+    echo json_encode($array);
 }
