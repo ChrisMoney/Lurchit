@@ -63,7 +63,7 @@ if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
 							$newDate = mktime(0,0,0,date("m"),date("d"),date("Y"));
 							$today = date("Y-m-d", $newDate);
 
-							$sql = "SELECT ID FROM Members WHERE DATE(SignupDate) = '$today'  ";
+							$sql = "SELECT ID FROM Members WHERE DATE_FORMAT(SignupDate, '%Y-%m-%d') = CURDATE() ";
 							$result = mysqli_query($conn, $sql);
 							$count = mysqli_num_rows($result);
 							
