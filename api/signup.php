@@ -24,10 +24,13 @@ $password = md5($password);
 
 $device = $_GET['DEVICE'];
 
+$email = trim($email);
+
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
    // invalid email
    return json_encode(http_response_code(406));
 }
+
 //echo 'test';
 $sql1 = "Select ID From Members Where Email = '$email' ";
 $result1 = mysqli_query($conn, $sql1);
