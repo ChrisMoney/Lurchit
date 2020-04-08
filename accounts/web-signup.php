@@ -3,6 +3,8 @@ $env = $_GET['ENV'];
 require '../api/connect.php';
 require '../api/email.php';
 require_once '../api/helpers.php';
+
+
 ?>
 
 <!DOCTYPE HTML>
@@ -73,31 +75,31 @@ document.getElementById('loader').style.display = 'none';
 
 					<!-- Content -->
 					<div style="padding-left:10px">
-						<h2 id="content">Member Data</h2>
+						<h2 id="content">Web Sign up</h2>
 						
 						 <form method = "post" action = "" >
                      
                     <h3>First Name: </h3>
 
-                    <input style="max-width:50%" type = "text" name = "firstName" id = "firstName"  />
+                    <input style="max-width:50%" type = "text" name = "firstName" id = "firstName" value = "<?php echo $_SESSION['firstName'] ?>" />
 
                     <br/>
                     
                     <h3>Last Name: </h3>
 
-                    <input style="max-width:50%" type = "text" name = "lastName" id = "lastName" />
+                    <input style="max-width:50%" type = "text" name = "lastName" id = "lastName" value = "<?php echo $_SESSION['lastName'] ?>" />
 
                     <br/>
                     
                     <h3>Username: </h3>
 
-                    <input style="max-width:50%" type = "text" name = "username" id = "username"  />
+                    <input style="max-width:50%" type = "text" name = "username" id = "username" value = "<?php echo $_SESSION['username'] ?>" />
 
                     <br/>
 
                     <h3>Email: </h3>
 
-                    <input style="max-width:50%" type = "text" name = "email" id = "email"  />
+                    <input style="max-width:50%" type = "text" name = "email" id = "email" value = "<?php echo $_SESSION['email'] ?>"  />
 
                     <br/>
                     
@@ -105,7 +107,25 @@ document.getElementById('loader').style.display = 'none';
                     
                     <h3>Phone: </h3>
 
-                    <input style="max-width:50%" maxLength = "12" type = "text" name = "phone" id = "phone" />
+                    <input style="max-width:50%" maxLength = "12" type = "text" name = "phone" id = "phone" value = "<?php echo $_SESSION['phone'] ?>" />
+
+                    <br/>
+
+                    <h3>Service Summary (Blurb): </h3>
+
+                    <input style="max-width:50%" type = "text" name = "blurb" id = "blurb" maxlength="40" value = "<?php echo $_SESSION['blurb'] ?>" />
+
+                    <br/>
+
+                    <h3>Full Service Description: </h3>
+
+                    <textarea style="max-width:50%" type = "text" name = "description" id = "description" value = <?php echo $_SESSION['description'] ?> ></textarea>
+
+                    <br/>
+
+                    <h3>Min Price: </h3>
+
+                    <input style="max-width:50%" maxLength = "12" type = "number" name = "minPrice" id = "minPrice" value = "<?php echo $_SESSION['minPrice'] ?> />
 
                     <br/>
 
@@ -185,23 +205,49 @@ document.getElementById('loader').style.display = 'none';
      $lastName = $_POST['lastName'];
      $userName = $_POST['username'];
      $email = $_POST['email'];
-     $email = trim($email);
+     $emailInsert = trim($email);
      $phone = $_POST['phone'];
-     $phone = phone_number_format($phone);
+     $blurb = $_POST['blurb'];
+     $description = $_POST['description'];
+     $minPrice = $_POST['minPrice'];
+     
      $password = $_POST['password'];
-     $password = md5($password);
+     $passwordInsert = md5($password);
      $memberStatus = $_POST['memberStatus'];
      $lurchStatus = $_POST['lurchStatus'];
      $lurchActive = $_POST['lurchActive'];
     
+   // Session variables to maintain state if save fails
+         $_SESSION['firstName'] = $firstName;
+         $_SESSION['lastName'] = $lastName;
+         $_SESSION['username'] = $userName;
+         $_SESSION['email'] = $email;
+         $_SESSION['phone'] = $phone;
+         $_SESSION['blurb'] = $blurb;
+         $_SESSION['description'] =  $description;
+         $_SESSION['minPrice'] = $minPrice;
+         $_SESSION['password'] = $password;
+    // ---------------------------------------
+
 
      $sql = "INSERT INTO Members
-            (FirstName,   LastName,  Username,  Email,  Phone, Password, Latitude, Longitude, IsActive, IsLurch, IsLurchActive, SignupDate) Values
-            ('$firstName','$lastName','$userName','$email','$phone', '$password','$lat', '$long','$memberStatus','$lurchStatus','$lurchActive', NOW())";
+            (FirstName,   LastName,  Username,  Email,  Phone, Password, Latitude, Longitude,     IsActive,       IsLurch,       IsLurchActive, Blurb, Description, MinPrice, SignupDate) Values
+            ('$firstName','$lastName','$userName','$emailInsert','$phone', '$passwordInsert','$lat', '$long','$memberStatus','$lurchStatus', '$lurchActive', '$blurb', '$description', '$minPrice', NOW())";
      
      
      if (mysqli_query($conn, $sql)) {
          $lurchID = mysqli_insert_id($conn);
+         
+         unset($_SESSION['firstName']);
+         unset($_SESSION['lastName']);
+         unset($_SESSION['username']);
+         unset($_SESSION['email']);
+         unset($_SESSION['phone']);
+         unset($_SESSION['blurb']);
+         unset($_SESSION['description']);
+         unset($_SESSION['minPrice']);
+         unset($_SESSION['password']);
+         
          echo "<script>alert('Member created successfully'); location = '/admin.php?ID=$lurchID&ENV=$env' </script>";
 
      }
