@@ -276,3 +276,111 @@ function detect_zipcode($string) {
         
     }
 }
+
+function getSelectedServiceIndex($service) {
+    $serviceIndex = "0";
+
+    if ($service == "Animal Care Specialist") {
+        $serviceIndex = ServiceIndexes :: AnimalCareSpecialist;
+    }
+    elseif ($service == "Automotive Specialist") {
+        $serviceIndex = ServiceIndexes :: AutomotiveSpecialist;
+    }
+    elseif ($service == "Barber") {
+        $serviceIndex = ServiceIndexes :: Barber;
+    }
+    elseif ($service == "Chef") {
+        $serviceIndex = ServiceIndexes :: Chef;
+    }
+    elseif ($service == "Childcare Specialist") {
+        $serviceIndex = ServiceIndexes :: ChildcareSpecialist;
+    }
+    elseif ($service == "Computer & App Specialist") {
+        $serviceIndex = ServiceIndexes :: ComputerAppSpecialist;
+    }
+    elseif ($service == "Cosmetologist") {
+        $serviceIndex = SserviceIndexes :: Cosmetologist;
+    }
+    elseif ($service == "Delivery Specialist") {
+        $serviceIndex = ServiceIndexes :: DeliverySpecialist;
+    }
+    elseif ($service == "Entertainer") {
+        $serviceIndex = ServiceIndexes :: Entertainer;
+    }
+    elseif ($service == "Fashion & Design Specialist") {
+        $serviceIndex = ServiceIndexes :: FashionDesignSpecialist;
+    }
+    elseif ($service == "Financial Advisor") {
+        $serviceIndex = ServiceIndexes :: FinancialAdvisor;
+    }
+    elseif ($service == "Handyman") {
+        $serviceIndex = ServiceIndexes :: Handyman;
+    }
+    elseif ($service == "Hospice Aide") {
+        $serviceIndex = ServiceIndexes :: HospiceAide;
+    }
+    elseif ($service == "Insurance Agent") {
+        $serviceIndex = ServiceIndexes :: InsuranceAgent;
+    }
+    elseif ($service == "Interior Designer") {
+        $serviceIndex = ServiceIndexes :: InteriorDesigner;
+    }
+    elseif ($service == "Landscaper") {
+        $serviceIndex = ServiceIndexes :: Landscaper;
+    }
+    elseif ($service == "Maid") {
+        $serviceIndex = ServiceIndexes :: Maid;
+    }
+    elseif ($service == "Masseuse") {
+        $serviceIndex = ServiceIndexes :: Masseuse;
+    }
+    elseif ($service == "Media & Production Specialist") {
+        $serviceIndex = ServiceIndexes :: MediaProductionSpecialist;
+    }
+    elseif ($service == "Occupational Specialist") {
+        $serviceIndex = ServiceIndexes :: OccupationalSpecialist;
+    }
+    elseif ($service == "Personal Trainer") {
+        $serviceIndex = ServiceIndexes :: PersonalTrainer;
+    }
+    elseif ($service == "Real Estate Specialist") {
+        $serviceIndex = ServiceIndexes :: RealEstateSpecialist;
+    }
+    elseif ($service == "Therapist") {
+        $serviceIndex = ServiceIndexes :: Therapist;
+    }
+    elseif ($service == "Tutor") {
+        $serviceIndex = ServiceIndexes :: Tutor;
+    }
+    return $serviceIndex;
+}
+
+/****************
+This enum list order should always match the list in the app
+*/
+class ServiceIndexes {
+    const AnimalCareSpecialist = "0";
+    const AutomotiveSpecialist = "1";
+    const Barber = "2";
+    const Chef = "3";
+    const ChildcareSpecialist = "4";
+    const ComputerAppSpecialist = "5";
+    const Cosmetologist = "6";
+    const DeliverySpecialist = "7";
+    const Entertainer = "8";
+    const FashionDesignSpecialist = "9";
+    const FinacialAdvisor = "10";
+    const Handyman = "11";
+    const HospiceAide = "12";
+    const InsuranceAgent = "13";
+    const InteriorDesigner = "14";
+    const Landscaper = "15";
+    const Maid = "16";
+    const Masseuse = "17";
+    const MediaProductionSpecialist = "18";
+    const OccupationalSpecialist = "19";
+    const PersonalTrainer = "20";
+    const RealEstateSpecialist = "21";
+    const Therapist = "22";
+    const Tutor = "23";
+}

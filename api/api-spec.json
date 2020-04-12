@@ -317,6 +317,9 @@
                                 },
                                 "Username": {
                                     "type": "string"
+                                },
+                                "ServiceIndex": {
+                                    "type": "string"
                                 }
                             }
                         }
