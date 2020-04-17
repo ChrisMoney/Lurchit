@@ -75,8 +75,15 @@ document.getElementById('loader').style.display = 'none';
 
 					<!-- Content -->
 					<div style="padding-left:10px">
-						<h2 id="content">Web Sign up</h2>
+						<h2 id="content">Web Sign for Android</h2>
+
+                        <div class="alert alert-warning">
+                         <strong>Notice!</strong> While we finish up our Android app, you will receive customer service request via your mobile phone
+                        </div>
+   
 						
+                        <hr/>
+
 						 <form method = "post" action = "" >
                      
                     <h3>First Name: </h3>
@@ -116,6 +123,7 @@ document.getElementById('loader').style.display = 'none';
                    		 <option value="Animal Care Specialist">Animal Care Specialist</option>
        					 <option value="Automative Specialist">Automative Specialist</option>
                          <option value="Barber">Barber</option>
+                         <option value="Business Services">Business Services</option>
                          <option value="Chef">Chef</option>
                          <option value="Childcare Specialist">Childcare Specialist</option>
                          <option value="Computer & App Specialist">Computer & App Specialist</option>

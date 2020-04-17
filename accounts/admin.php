@@ -95,29 +95,30 @@ $minPrice = $row['MinPrice'];
                         <h3>Service</h3>
                     <select class="form-control" style="max-width:50%" name="service" id="service">
                    		 <option value="Animal Care Specialist" <?php if($service=='Animal Care Specialist') echo 'selected'; ?>>Animal Care Specialist</option>
-       					 <option value="Automotive Specialist" <?php if($service==='Automotive Specialist') echo 'selected'; ?>>Automative Specialist</option>
-                         <option value="Barber" <?php if($service==='Barber') echo 'selected'; ?>>Barber</option>
+       					 <option value="Automotive Specialist" <?php if($service=='Automotive Specialist') echo 'selected'; ?>>Automative Specialist</option>
+                         <option value="Barber" <?php if($service=='Barber') echo 'selected'; ?>>Barber</option>
+                         <option value="Business Services" <?php if($service =='Business Services') echo 'selected'; ?>>Business Services</option>
                          <option value="Chef" <?php if($service==='Chef') echo 'selected'; ?>>Chef</option>
-                         <option value="Childcare Specialist" <?php if($service==='Childcare Specialist') echo 'selected'; ?>>Childcare Specialist</option>
+                         <option value="Childcare Specialist" <?php if($service=='Childcare Specialist') echo 'selected'; ?>>Childcare Specialist</option>
                          <option value="Computer & App Specialist" <?php if($service=='Computer & App Specialist') echo 'selected'; ?>>Computer & App Specialist</option>
                          <option value="Cosmetologist" <?php if($service=='Cosmetologist') echo 'selected'; ?>>Cosmetologist</option>
                          <option value="Delivery Specialist" <?php if($service==='Delivery Specialist') echo 'selected'; ?>>Delivery Specialist</option>
                          <option value="Entertainer" <?php if($service==='Entertainer') echo 'selected'; ?>>Entertainer</option>
-                         <option value="Fashion & Design Specialist" <?php if($service==='Fashion & Design Specialist') echo 'selected'; ?>>Fashion & Design Specialist</option>
+                         <option value="Fashion & Design Specialist" <?php if($service=='Fashion & Design Specialist') echo 'selected'; ?>>Fashion & Design Specialist</option>
                          <option value="Financial Advisor" <?php if($service==='Financial Advisor') echo 'selected'; ?>>Financial Advisor</option>
-                         <option value="Handyman" <?php if($service==='Handyman') echo 'selected'; ?>>Handyman</option>
-                         <option value="Hospice Aide" <?php if($service==='Hospice Aide') echo 'selected'; ?>>Hospice Aide</option>
-                         <option value="Insurance Agent" <?php if($service==='Insurance Agent') echo 'selected'; ?>>Insurance Agent</option>
-                         <option value="Interior Design" <?php if($service==='Interior Design') echo 'selected'; ?>>Interior Design</option>
-                         <option value="Landscaper" <?php if($service==='Landscaper') echo 'selected'; ?>>Landscaper</option>
-                         <option value="Maid" <?php if($service==='Maid') echo 'selected'; ?>>Maid</option>
-                         <option value="Masseuse" <?php if($service==='Masseuse') echo 'selected'; ?>>Masseuse</option>
-                         <option value="Media & Production Specialist" <?php if($service==='Media & Production Specialist') echo 'selected'; ?>>Media & Production Specialist</option>
-                         <option value="Occupational Specialist" <?php if($service==='Occupational Specialist') echo 'selected'; ?>>Occupational Specialist</option>
-                         <option value="Personal Trainer" <?php if($service==='Personal Trainer') echo 'selected'; ?>>Personal Trainer</option>
+                         <option value="Handyman" <?php if($service=='Handyman') echo 'selected'; ?>>Handyman</option>
+                         <option value="Hospice Aide" <?php if($service=='Hospice Aide') echo 'selected'; ?>>Hospice Aide</option>
+                         <option value="Insurance Agent" <?php if($service=='Insurance Agent') echo 'selected'; ?>>Insurance Agent</option>
+                         <option value="Interior Design" <?php if($service=='Interior Design') echo 'selected'; ?>>Interior Design</option>
+                         <option value="Landscaper" <?php if($service=='Landscaper') echo 'selected'; ?>>Landscaper</option>
+                         <option value="Maid" <?php if($service=='Maid') echo 'selected'; ?>>Maid</option>
+                         <option value="Masseuse" <?php if($service=='Masseuse') echo 'selected'; ?>>Masseuse</option>
+                         <option value="Media & Production Specialist" <?php if($service=='Media & Production Specialist') echo 'selected'; ?>>Media & Production Specialist</option>
+                         <option value="Occupational Specialist" <?php if($service=='Occupational Specialist') echo 'selected'; ?>>Occupational Specialist</option>
+                         <option value="Personal Trainer" <?php if($service=='Personal Trainer') echo 'selected'; ?>>Personal Trainer</option>
                          <option value="Real Estate Specialist" <?php if($description=='Real Estate Specialist') echo 'selected'; ?>>Real Estate Specialist</option>
-                         <option value="Therapist" <?php if($service==='Therapist') echo 'selected'; ?>>Therapist</option>
-                         <option value="Tutor & Training Specialist" <?php if($service==='Tutor & Training Specialist') echo 'selected'; ?>>Tutor & Training Specialist</option>
+                         <option value="Therapist" <?php if($service=='Therapist') echo 'selected'; ?>>Therapist</option>
+                         <option value="Tutor & Training Specialist" <?php if($service=='Tutor & Training Specialist') echo 'selected'; ?>>Tutor & Training Specialist</option>
                 	</select>
 
                     <br/>
