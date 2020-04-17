@@ -111,6 +111,36 @@ document.getElementById('loader').style.display = 'none';
 
                     <br/>
 
+                    <h3>Service</h3>
+                    <select class="form-control" style="max-width:50%" name="service" id="service">
+                   		 <option value="Animal Care Specialist">Animal Care Specialist</option>
+       					 <option value="Automative Specialist">Automative Specialist</option>
+                         <option value="Barber">Barber</option>
+                         <option value="Chef">Chef</option>
+                         <option value="Childcare Specialist">Childcare Specialist</option>
+                         <option value="Computer & App Specialist">Computer & App Specialist</option>
+                         <option value="Cosmetologist">Cosmetologist</option>
+                         <option value="Delivery Specialist">Delivery Specialist</option>
+                         <option value="Entertainer">Entertainer</option>
+                         <option value="Fashion & Design Specialist">Fashion & Design Specialist</option>
+                         <option value="Financial Advisor">Financial Advisor</option>
+                         <option value="Handyman">Handyman</option>
+                         <option value="Hospice Aide">Hospice Aide</option>
+                         <option value="Insurance Agent">Insurance Agent</option>
+                         <option value="Interior Design">Interior Design</option>
+                         <option value="Landscaper">Landscaper</option>
+                         <option value="Maid">Maid</option>
+                         <option value="Masseuse">Masseuse</option>
+                         <option value="Media & Production Specialist">Media & Production Specialist</option>
+                         <option value="Occupational Specialist">Occupational Specialist</option>
+                         <option value="Personal Trainer">Personal Trainer</option>
+                         <option value="Real Estate Specialist">Real Estate Specialist</option>
+                         <option value="Therapist">Therapist</option>
+                         <option value="Tutor & Training Specialist">Tutor & Training Specialist</option>
+                	</select>
+
+                    <br/>
+
                     <h3>Service Summary (Blurb): </h3>
 
                     <input style="max-width:50%" type = "text" name = "blurb" id = "blurb" maxlength="40" value = "<?php echo $_SESSION['blurb'] ?>" />
@@ -125,7 +155,7 @@ document.getElementById('loader').style.display = 'none';
 
                     <h3>Min Price: </h3>
 
-                    <input style="max-width:50%" maxLength = "12" type = "number" name = "minPrice" id = "minPrice" value = "<?php echo $_SESSION['minPrice'] ?> />
+                    <input style="max-width:50%" maxLength = "12" type = "number" name = "minPrice" id = "minPrice" value = "<?php echo $_SESSION['minPrice'] ?>" />
 
                     <br/>
 
@@ -207,13 +237,14 @@ document.getElementById('loader').style.display = 'none';
      $email = $_POST['email'];
      $emailInsert = trim($email);
      $phone = $_POST['phone'];
+     $service = $_POST['service'];
      $blurb = $_POST['blurb'];
      $description = $_POST['description'];
      $minPrice = $_POST['minPrice'];
      
      $password = $_POST['password'];
      $passwordInsert = md5($password);
-     $memberStatus = $_POST['memberStatus'];
+     $description = $_POST['memberStatus'];
      $lurchStatus = $_POST['lurchStatus'];
      $lurchActive = $_POST['lurchActive'];
     
@@ -223,6 +254,7 @@ document.getElementById('loader').style.display = 'none';
          $_SESSION['username'] = $userName;
          $_SESSION['email'] = $email;
          $_SESSION['phone'] = $phone;
+         $_SESSION['service'] = $service;
          $_SESSION['blurb'] = $blurb;
          $_SESSION['description'] =  $description;
          $_SESSION['minPrice'] = $minPrice;
@@ -231,8 +263,8 @@ document.getElementById('loader').style.display = 'none';
 
 
      $sql = "INSERT INTO Members
-            (FirstName,   LastName,  Username,  Email,  Phone, Password, Latitude, Longitude,     IsActive,       IsLurch,       IsLurchActive, Blurb, Description, MinPrice, SignupDate) Values
-            ('$firstName','$lastName','$userName','$emailInsert','$phone', '$passwordInsert','$lat', '$long','$memberStatus','$lurchStatus', '$lurchActive', '$blurb', '$description', '$minPrice', NOW())";
+            (FirstName,   LastName,  Username,     Email,         Phone,     Password,     Latitude, Longitude,     IsActive,       IsLurch,       IsLurchActive,    Service,     Blurb,    Description,   MinPrice,   SignupDate) Values
+            ('$firstName','$lastName','$userName','$emailInsert','$phone', '$passwordInsert','$lat', '$long',    '$description','$lurchStatus', '$lurchActive',     '$service', '$blurb', '$description', '$minPrice', NOW())";
      
      
      if (mysqli_query($conn, $sql)) {
@@ -243,6 +275,7 @@ document.getElementById('loader').style.display = 'none';
          unset($_SESSION['username']);
          unset($_SESSION['email']);
          unset($_SESSION['phone']);
+         unset($_SESSION['service']);
          unset($_SESSION['blurb']);
          unset($_SESSION['description']);
          unset($_SESSION['minPrice']);

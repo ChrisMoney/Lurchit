@@ -11,7 +11,7 @@ if (!isset($lurchID) || empty($lurchID)) {
 }
 
 $sql = "SELECT FirstName, LastName, Email, Phone,
-IsActive, IsLurch, IsLurchActive FROM Members m WHERE ID = $lurchID ";
+IsActive, IsLurch, IsLurchActive, Service, Blurb, Description, MinPrice FROM Members WHERE ID = $lurchID ";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
 
@@ -22,6 +22,10 @@ $phone = $row['Phone'];
 $memberStatus = $row['IsActive'];
 $lurchStatus = $row['IsLurch'];
 $lurchActive = $row['IsLurchActive'];
+$service = $row['Service'];
+$blurb = $row['Blurb'];
+$description = $row['Description'];
+$minPrice = $row['MinPrice'];
 ?>
 
 <!DOCTYPE HTML>
@@ -86,6 +90,57 @@ $lurchActive = $row['IsLurchActive'];
                     <input style="max-width:50%" maxLength = "12" type = "text" name = "phone" id = "phone" value = "<?php echo $phone ?>" />
 
                     <br/>
+
+                    <?php if ($lurchStatus == 1) { ?>
+                        <h3>Service</h3>
+                    <select class="form-control" style="max-width:50%" name="service" id="service">
+                   		 <option value="Animal Care Specialist" <?php if($service=='Animal Care Specialist') echo 'selected'; ?>>Animal Care Specialist</option>
+       					 <option value="Automotive Specialist" <?php if($service==='Automotive Specialist') echo 'selected'; ?>>Automative Specialist</option>
+                         <option value="Barber" <?php if($service==='Barber') echo 'selected'; ?>>Barber</option>
+                         <option value="Chef" <?php if($service==='Chef') echo 'selected'; ?>>Chef</option>
+                         <option value="Childcare Specialist" <?php if($service==='Childcare Specialist') echo 'selected'; ?>>Childcare Specialist</option>
+                         <option value="Computer & App Specialist" <?php if($service=='Computer & App Specialist') echo 'selected'; ?>>Computer & App Specialist</option>
+                         <option value="Cosmetologist" <?php if($service=='Cosmetologist') echo 'selected'; ?>>Cosmetologist</option>
+                         <option value="Delivery Specialist" <?php if($service==='Delivery Specialist') echo 'selected'; ?>>Delivery Specialist</option>
+                         <option value="Entertainer" <?php if($service==='Entertainer') echo 'selected'; ?>>Entertainer</option>
+                         <option value="Fashion & Design Specialist" <?php if($service==='Fashion & Design Specialist') echo 'selected'; ?>>Fashion & Design Specialist</option>
+                         <option value="Financial Advisor" <?php if($service==='Financial Advisor') echo 'selected'; ?>>Financial Advisor</option>
+                         <option value="Handyman" <?php if($service==='Handyman') echo 'selected'; ?>>Handyman</option>
+                         <option value="Hospice Aide" <?php if($service==='Hospice Aide') echo 'selected'; ?>>Hospice Aide</option>
+                         <option value="Insurance Agent" <?php if($service==='Insurance Agent') echo 'selected'; ?>>Insurance Agent</option>
+                         <option value="Interior Design" <?php if($service==='Interior Design') echo 'selected'; ?>>Interior Design</option>
+                         <option value="Landscaper" <?php if($service==='Landscaper') echo 'selected'; ?>>Landscaper</option>
+                         <option value="Maid" <?php if($service==='Maid') echo 'selected'; ?>>Maid</option>
+                         <option value="Masseuse" <?php if($service==='Masseuse') echo 'selected'; ?>>Masseuse</option>
+                         <option value="Media & Production Specialist" <?php if($service==='Media & Production Specialist') echo 'selected'; ?>>Media & Production Specialist</option>
+                         <option value="Occupational Specialist" <?php if($service==='Occupational Specialist') echo 'selected'; ?>>Occupational Specialist</option>
+                         <option value="Personal Trainer" <?php if($service==='Personal Trainer') echo 'selected'; ?>>Personal Trainer</option>
+                         <option value="Real Estate Specialist" <?php if($description=='Real Estate Specialist') echo 'selected'; ?>>Real Estate Specialist</option>
+                         <option value="Therapist" <?php if($service==='Therapist') echo 'selected'; ?>>Therapist</option>
+                         <option value="Tutor & Training Specialist" <?php if($service==='Tutor & Training Specialist') echo 'selected'; ?>>Tutor & Training Specialist</option>
+                	</select>
+
+                    <br/>
+
+                    <h3>Service Summary (Blurb): </h3>
+
+                    <input style="max-width:50%" type = "text" name = "blurb" id = "blurb" maxlength="40" value = "<?php echo $blurb ?>" />
+
+                    <br/>
+
+                    <h3>Full Service Description: </h3>
+
+                    <textarea style="max-width:50%" type = "text" name = "description" id = "description"><?php echo $description ?></textarea>
+
+                    <br/>
+
+                    <h3>Min Price: </h3>
+
+                    <input style="max-width:50%" maxLength = "12" type = "number" name = "minPrice" id = "minPrice" value = "<?php echo $minPrice ?>" />
+
+                    <br/>
+                                        
+                    <?php } ?>
                    
                      <h3>Member Status</h3>
                    	<select class="form-control" style = "width:25%" name="memberStatus" id="memberStatus">
@@ -122,7 +177,20 @@ $lurchActive = $row['IsLurchActive'];
   <?php 
  
  if (isset($_POST['save']) && $_POST['save'] == "Save Data") {
-       
+    
+    // Update lurch info first if member is a lurch
+
+        $service = $_POST['service'];
+        $blurb = $_POST['blurb'];
+        $description = $_POST['description'];
+    
+         $sql1 = "Update Members Set Service = '$service', Blurb = '$blurb', Description = '$description' WHERE ID = $lurchID ";
+         if (!mysqli_query($conn, $sql1)) {
+            echo "<script>alert('".mysqli_error($conn)."');</script>";
+         }
+            
+          
+
      $firstName = $_POST['firstName'];
      $lastName = $_POST['lastName'];
      
@@ -146,14 +214,13 @@ $lurchActive = $row['IsLurchActive'];
      
      
      if (mysqli_query($conn, $sql)) {
-         echo "<script>alert('Member data updated successfully'); location = '/admin.php?ID=$lurchID' </script>";
+         echo "<script>alert('Member data updated successfully'); location = '/admin.php?ID=$lurchID&ENV=$env' </script>";
      }
      else {
-         echo "<script>alert('Member update failed!'); location = '/admin.php?ID=$lurchID' </script>";
+         echo "<script>alert('Member update failed!'); location = '/admin.php?ID=$lurchID&ENV=$env' </script>";
      }
  }
-  
- 
+
  ?>
                   
 
