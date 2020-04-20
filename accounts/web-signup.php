@@ -75,10 +75,10 @@ document.getElementById('loader').style.display = 'none';
 
 					<!-- Content -->
 					<div style="padding-left:10px">
-						<h2 id="content">Web Sign for Android</h2>
+						<h2 id="content">Provider Signup</h2>
 
                         <div class="alert alert-warning">
-                         <strong>Notice!</strong> While we finish up our Android app, you will receive customer service request via your mobile phone
+                         <strong>Notice!</strong> You will receive customer service requests via text message to your mobile phone
                         </div>
    
 						
@@ -216,13 +216,13 @@ document.getElementById('loader').style.display = 'none';
     }
 </script>
 					
-                    <button type="button" onclick="showPosition();">Get Your Location</button>
+                    <button type="button" onclick="showPosition();" style="padding-left:10px;padding-right:10px;">Get Your Location</button>
                     
                     <br/><br/>
                     <div id="loader"></div>
                     <br/><br/>
 
-                    <input type = "submit" name = "save" id = "save" value = "Save Data" />
+                    <input type = "submit" name = "save" id = "save" value = "Add to Directory" style="padding-left:10px;padding-right:10px;" />
                     
               </form>
          
@@ -236,7 +236,7 @@ document.getElementById('loader').style.display = 'none';
  
   <?php 
  
- if (isset($_POST['save']) && $_POST['save'] == "Save Data") {
+ if (isset($_POST['save']) && $_POST['save'] == "Add to Directory") {
     $lat = $_COOKIE['lat'];
     $long = $_COOKIE['long'];
      $firstName = $_POST['firstName'];
@@ -289,7 +289,7 @@ document.getElementById('loader').style.display = 'none';
          unset($_SESSION['minPrice']);
          unset($_SESSION['password']);
          
-         echo "<script>alert('Member created successfully'); location = '/admin.php?ID=$lurchID&ENV=$env' </script>";
+         echo "<script>alert('Your service was added to the directory. Bookmark this page to edit your account.'); location = '/admin.php?ID=$lurchID&ENV=$env' </script>";
 
      }
      else {
