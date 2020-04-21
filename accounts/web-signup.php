@@ -46,7 +46,7 @@ document.getElementById('loader').style.display = 'none';
 
 
 
-		<title>Sign up</title>
+		<title>Join Our Directory</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="css/main.css" />
@@ -61,8 +61,8 @@ document.getElementById('loader').style.display = 'none';
 	<body class="subpage" onload="disable()">
 
 		<!-- Header -->
-			<header id="header">
-				<a href="index.php" class="logo">Lurchit</a>
+			<header id="header" style="background-color:grey">
+				<a href="index.php" class="logo"><img src="http://apilurchit.com/logo.png" height="40" width="40" style="margin-right: 5px;"/>Lurchit</a>
 			</header>
 
 		<!-- Menu -->
@@ -75,7 +75,7 @@ document.getElementById('loader').style.display = 'none';
 
 					<!-- Content -->
 					<div style="padding-left:10px">
-						<h2 id="content">Provider Signup</h2>
+						<h2 id="content">Service Directory Signup</h2>
 
                         <div class="alert alert-warning">
                          <strong>Notice!</strong> You will receive customer service requests via text message to your mobile phone
@@ -181,7 +181,7 @@ document.getElementById('loader').style.display = 'none';
                 	
                 	<br/>
                 	
-                    <h3>Lurch Status</h3>
+                    <h3>Provider Status</h3>
                    	<select class="form-control" style = "width:25%" name="lurchStatus" id="lurchStatus">
                         <option value="1">Active</option>
        					 <option value="0">Inactive</option>
@@ -189,7 +189,7 @@ document.getElementById('loader').style.display = 'none';
                     
                      <br/>
                     
-                     <h3>Lurch Active</h3>
+                     <h3>Provider Active</h3>
                    	<select class="form-control" style = "width:25%" name="lurchActive" id="lurchActive">
                         <option value="1">Active</option>
        					 <option value="0">Inactive</option>

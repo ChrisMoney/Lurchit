@@ -289,6 +289,9 @@ function getSelectedServiceIndex($service) {
     elseif ($service == "Barber") {
         $serviceIndex = ServiceIndexes :: Barber;
     }
+    elseif ($service == "Business Services") {
+        $serviceIndex = ServiceIndexes :: BusinessServices;
+    }
     elseif ($service == "Chef") {
         $serviceIndex = ServiceIndexes :: Chef;
     }
@@ -370,7 +373,7 @@ class ServiceIndexes {
     const DeliverySpecialist = "8";
     const Entertainer = "9";
     const FashionDesignSpecialist = "10";
-    const FinacialAdvisor = "11";
+    const FinancialAdvisor = "11";
     const Handyman = "12";
     const HospiceAide = "13";
     const InsuranceAgent = "14";
