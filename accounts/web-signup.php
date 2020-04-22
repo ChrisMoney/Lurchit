@@ -42,6 +42,66 @@ document.getElementById('loader').style.display = 'none';
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+input::-webkit-input-placeholder {
+    font-size: 20px;
+    line-height: 2;
+}
+
+
+.selectdiv {
+  position: relative;
+  /*Don't really need this just for demo styling*/
+  min-width: 50%;
+}
+
+/*To remove button from IE11, thank you Matt */
+select::-ms-expand {
+     display: none;
+}
+
+.selectdiv:after {
+  content: '<>';
+  font: 17px "Consolas", monospace;
+  color: #333;
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+  left: 0px;
+  /*Adjust for position however you want*/
+  
+  top: 18px;
+  padding: 0 0 2px;
+  border-bottom: 1px solid #999;
+  /*left line */
+  
+  position: absolute;
+  pointer-events: none;
+}
+
+.selectdiv select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  /* Add some styling */
+  
+  display: block;
+  width: 50%;
+  max-width: 50%;
+  height: 50px;
+  float: left;
+  margin: 5px 0px;
+  padding: 0px 24px;
+  font-size: 16px;
+  line-height: 1.75;
+  color: #333;
+  background-color: #ffffff;
+  background-image: none;
+  border: 1px solid #cccccc;
+  -ms-word-break: normal;
+  word-break: normal;
+}
 </style>
 
 
@@ -77,8 +137,8 @@ document.getElementById('loader').style.display = 'none';
 					<div style="padding-left:10px">
 						<h2 id="content">Service Directory Signup</h2>
 
-                        <div class="alert alert-warning">
-                         <strong>Notice!</strong> You will receive customer service requests via text message to your mobile phone
+                        <div class="alert alert-warning" style="max-width:90%">
+                         <strong>Notice!</strong> You will receive service inquiries via text message to your mobile phone
                         </div>
    
 						
@@ -86,108 +146,90 @@ document.getElementById('loader').style.display = 'none';
 
 						 <form method = "post" action = "" >
                      
-                    <h3>First Name: </h3>
+                    <input style="max-width:50%" type = "text" name = "firstName" id = "firstName" placeholder = "First Name" value = "<?php echo $_SESSION['firstName'] ?>" />
 
-                    <input style="max-width:50%" type = "text" name = "firstName" id = "firstName" value = "<?php echo $_SESSION['firstName'] ?>" />
+                    <br/>
+
+                    <input style="max-width:50%" type = "text" name = "lastName" id = "lastName" placeholder = "Last Name" value = "<?php echo $_SESSION['lastName'] ?>" />
 
                     <br/>
                     
-                    <h3>Last Name: </h3>
-
-                    <input style="max-width:50%" type = "text" name = "lastName" id = "lastName" value = "<?php echo $_SESSION['lastName'] ?>" />
-
-                    <br/>
-                    
-                    <h3>Username: </h3>
-
-                    <input style="max-width:50%" type = "text" name = "username" id = "username" value = "<?php echo $_SESSION['username'] ?>" />
+                    <input style="max-width:80%" type = "text" name = "username" id = "username" placeholder = "Username/Company Name" value = "<?php echo $_SESSION['username'] ?>" />
 
                     <br/>
 
-                    <h3>Email: </h3>
-
-                    <input style="max-width:50%" type = "text" name = "email" id = "email" value = "<?php echo $_SESSION['email'] ?>"  />
-
-                    <br/>
-                    
-                    <br/>
-                    
-                    <h3>Phone: </h3>
-
-                    <input style="max-width:50%" maxLength = "12" type = "text" name = "phone" id = "phone" value = "<?php echo $_SESSION['phone'] ?>" />
+                    <input style="max-width:50%" type = "text" name = "email" id = "email" placeholder = "Email" value = "<?php echo $_SESSION['email'] ?>"  />
 
                     <br/>
 
-                    <h3>Service</h3>
-                    <select class="form-control" style="max-width:50%" name="service" id="service">
-                   		 <option value="Animal Care Specialist">Animal Care Specialist</option>
-       					 <option value="Automative Specialist">Automative Specialist</option>
-                         <option value="Barber">Barber</option>
-                         <option value="Business Services">Business Services</option>
-                         <option value="Chef">Chef</option>
-                         <option value="Childcare Specialist">Childcare Specialist</option>
-                         <option value="Computer & App Specialist">Computer & App Specialist</option>
-                         <option value="Cosmetologist">Cosmetologist</option>
-                         <option value="Delivery Specialist">Delivery Specialist</option>
-                         <option value="Entertainer">Entertainer</option>
-                         <option value="Fashion & Design Specialist">Fashion & Design Specialist</option>
-                         <option value="Financial Advisor">Financial Advisor</option>
-                         <option value="Handyman">Handyman</option>
-                         <option value="Hospice Aide">Hospice Aide</option>
-                         <option value="Insurance Agent">Insurance Agent</option>
-                         <option value="Interior Design">Interior Design</option>
-                         <option value="Landscaper">Landscaper</option>
-                         <option value="Maid">Maid</option>
-                         <option value="Masseuse">Masseuse</option>
-                         <option value="Media & Production Specialist">Media & Production Specialist</option>
-                         <option value="Occupational Specialist">Occupational Specialist</option>
-                         <option value="Personal Trainer">Personal Trainer</option>
-                         <option value="Real Estate Specialist">Real Estate Specialist</option>
-                         <option value="Therapist">Therapist</option>
-                         <option value="Tutor & Training Specialist">Tutor & Training Specialist</option>
-                	</select>
+                    <input style="max-width:50%" maxLength = "12" type = "text" name = "phone" placeholder = "Phone" id = "phone" value = "<?php echo $_SESSION['phone'] ?>" />
 
                     <br/>
 
-                    <h3>Service Summary (Blurb): </h3>
-
-                    <input style="max-width:50%" type = "text" name = "blurb" id = "blurb" maxlength="40" value = "<?php echo $_SESSION['blurb'] ?>" />
+                    <div class="selectdiv">
+                        <select class="form-control" style="max-width:50%" placeholder = "Service" name="service" id="service">
+                            <option value="Animal Care Specialist">Animal Care Specialist</option>
+                            <option value="Automative Specialist">Automative Specialist</option>
+                            <option value="Barber">Barber</option>
+                            <option value="Business Services">Business Services</option>
+                            <option value="Chef">Chef</option>
+                            <option value="Childcare Specialist">Childcare Specialist</option>
+                            <option value="Computer & App Specialist">Computer & App Specialist</option>
+                            <option value="Cosmetologist">Cosmetologist</option>
+                            <option value="Delivery Specialist">Delivery Specialist</option>
+                            <option value="Entertainer">Entertainer</option>
+                            <option value="Fashion & Design Specialist">Fashion & Design Specialist</option>
+                            <option value="Financial Advisor">Financial Advisor</option>
+                            <option value="Handyman">Handyman</option>
+                            <option value="Hospice Aide">Hospice Aide</option>
+                            <option value="Insurance Agent">Insurance Agent</option>
+                            <option value="Interior Design">Interior Design</option>
+                            <option value="Landscaper">Landscaper</option>
+                            <option value="Maid">Maid</option>
+                            <option value="Masseuse">Masseuse</option>
+                            <option value="Media & Production Specialist">Media & Production Specialist</option>
+                            <option value="Occupational Specialist">Occupational Specialist</option>
+                            <option value="Personal Trainer">Personal Trainer</option>
+                            <option value="Real Estate Specialist">Real Estate Specialist</option>
+                            <option value="Therapist">Therapist</option>
+                            <option value="Tutor & Training Specialist">Tutor & Training Specialist</option>
+                	    </select>
+                    </div>
 
                     <br/>
 
-                    <h3>Full Service Description: </h3>
-
-                    <textarea style="max-width:50%" type = "text" name = "description" id = "description" value = <?php echo $_SESSION['description'] ?> ></textarea>
+                    <input style="max-width:80%" type = "text" name = "blurb" id = "blurb" placeholder = "Service Summary/Blurb" maxlength="40" value = "<?php echo $_SESSION['blurb'] ?>" />
 
                     <br/>
 
-                    <h3>Min Price: </h3>
-
-                    <input style="max-width:50%" maxLength = "12" type = "number" name = "minPrice" id = "minPrice" value = "<?php echo $_SESSION['minPrice'] ?>" />
+                    <textarea style="max-width:80%" type = "text" name = "description" id = "description" placeholder = "Full Description" value = <?php echo $_SESSION['description'] ?> ></textarea>
 
                     <br/>
 
-                    <h3>Password: </h3>
-
-                    <input style="max-width:50%" type = "password" name = "password" id = "password" />
+                    <input style="max-width:50%" type = "password" name = "password" id = "password" placeholder = "Password" />
 
                     <br/>
                    
+                    <h3>Minimum Price</h3>
+                    <input style="max-width:50%;" maxLength = "12" type = "number" name = "minPrice" id = "minPrice" value = "<?php echo $_SESSION['minPrice'] ?>" />
+
+                    <hr/>
+
                      <h3>Member Status</h3>
-                   	<select class="form-control" style = "width:25%" name="memberStatus" id="memberStatus">
+                   	<select class="form-control" style = "width:25%" name="memberStatus" id="memberStatus" placeholder = "Member Status">
                    		 <option value="1">Active</option>
        					 <option value="0">Inactive</option>
                 	</select>
                 	
-                	<br/>
+                	<hr/>
                 	
                     <h3>Provider Status</h3>
-                   	<select class="form-control" style = "width:25%" name="lurchStatus" id="lurchStatus">
+                   	<select class="form-control" style = "width:25%" name="lurchStatus" id="lurchStatus" placeholder = "Provider Status">
                         <option value="1">Active</option>
        					 <option value="0">Inactive</option>
                 	</select>
                     
-                     <br/>
+                     <hr/>
                     
                      <h3>Provider Active</h3>
                    	<select class="form-control" style = "width:25%" name="lurchActive" id="lurchActive">
@@ -195,7 +237,6 @@ document.getElementById('loader').style.display = 'none';
        					 <option value="0">Inactive</option>
                 	</select>
                 	
-                	<br/>
                 	
                     <script>
     function showPosition() {
@@ -216,11 +257,13 @@ document.getElementById('loader').style.display = 'none';
     }
 </script>
 					
+                    <hr/>
+
                     <button type="button" onclick="showPosition();" style="padding-left:10px;padding-right:10px;">Get Your Location</button>
                     
-                    <br/><br/>
+                    <br/>
                     <div id="loader"></div>
-                    <br/><br/>
+                    <br/>
 
                     <input type = "submit" name = "save" id = "save" value = "Add to Directory" style="padding-left:10px;padding-right:10px;" />
                     
