@@ -91,7 +91,7 @@ select::-ms-expand {
   max-width: 50%;
   height: 50px;
   float: left;
-  margin: 5px 0px;
+  margin: 5px 0px 20px;
   padding: 0px 24px;
   font-size: 16px;
   line-height: 1.75;
@@ -196,7 +196,7 @@ select::-ms-expand {
                 	    </select>
                     </div>
 
-                    <br/>
+                    <br/><br/>
 
                     <input style="max-width:80%" type = "text" name = "blurb" id = "blurb" placeholder = "Service Summary/Blurb" maxlength="40" value = "<?php echo $_SESSION['blurb'] ?>" />
 
