@@ -49,59 +49,16 @@ input::-webkit-input-placeholder {
 }
 
 
-.selectdiv {
-  position: relative;
-  /*Don't really need this just for demo styling*/
-  min-width: 50%;
-}
-
-/*To remove button from IE11, thank you Matt */
-select::-ms-expand {
-     display: none;
-}
-
-.selectdiv:after {
-  content: '<>';
-  font: 17px "Consolas", monospace;
-  color: #333;
-  -webkit-transform: rotate(90deg);
-  -moz-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
-  transform: rotate(90deg);
-  left: 0px;
-  /*Adjust for position however you want*/
-  
-  top: 18px;
-  padding: 0 0 2px;
-  border-bottom: 1px solid #999;
-  /*left line */
-  
-  position: absolute;
-  pointer-events: none;
-}
-
-.selectdiv select {
+select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  /* Add some styling */
-  
-  display: block;
-  width: 50%;
-  max-width: 50%;
-  height: 50px;
-  float: left;
-  margin: 5px 0px 20px;
-  padding: 0px 24px;
-  font-size: 16px;
-  line-height: 1.75;
-  color: #333;
-  background-color: #ffffff;
-  background-image: none;
-  border: 1px solid #cccccc;
-  -ms-word-break: normal;
-  word-break: normal;
+  /* Some browsers will not display the caret when using calc, so we put the fallback first */ 
+  background: url("http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png") white no-repeat 98.5% !important; /* !important used for overriding all other customisations */
+  background: url("http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png") white no-repeat calc(100% - 10px) !important; /* Better placement regardless of input width */
 }
+/*For IE*/
+select::-ms-expand { display: none; }
 </style>
 
 
@@ -122,7 +79,7 @@ select::-ms-expand {
 
 		<!-- Header -->
 			<header id="header" style="background-color:grey">
-				<a href="index.php" class="logo"><img src="http://apilurchit.com/logo.png" height="40" width="40" style="margin-right: 5px;"/>Lurchit</a>
+				<a href="http://lurchit.com" class="logo"><img src="http://apilurchit.com/logo.png" height="40" width="40" style="margin-right: 5px;"/>Lurchit</a>
 			</header>
 
 		<!-- Menu -->
@@ -167,7 +124,7 @@ select::-ms-expand {
                     <br/>
 
                     <div class="selectdiv">
-                        <select class="form-control" style="max-width:50%" placeholder = "Service" name="service" id="service">
+                        <select style="max-width:50%" placeholder = "Service" name="service" id="service">
                             <option value="Animal Care Specialist">Animal Care Specialist</option>
                             <option value="Automative Specialist">Automative Specialist</option>
                             <option value="Barber">Barber</option>
@@ -211,32 +168,47 @@ select::-ms-expand {
                     <br/>
                    
                     <h3>Minimum Price</h3>
-                    <input style="max-width:50%;" maxLength = "12" type = "number" name = "minPrice" id = "minPrice" value = "<?php echo $_SESSION['minPrice'] ?>" />
+                    <input class="form-control" style="max-width:50%;" maxLength = "12" type = "number" name = "minPrice" id = "minPrice" value = "<?php echo $_SESSION['minPrice'] ?>" />
+
+                    <hr/>
+
+                     <h3>Is Your Service Mobile? </h3>
+                     <i>Would you come to a customer?</i>
+                     <div class="dropdown">
+                        <select class="form-control" style = "width:25%" name="mobileStatus" id="mobileStatus" placeholder = "Mobile Status">
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
 
                     <hr/>
 
                      <h3>Member Status</h3>
+                     <div class="dropdown">
                    	<select class="form-control" style = "width:25%" name="memberStatus" id="memberStatus" placeholder = "Member Status">
                    		 <option value="1">Active</option>
        					 <option value="0">Inactive</option>
                 	</select>
-                	
+                	</div>
+
                 	<hr/>
                 	
                     <h3>Provider Status</h3>
+                    <div class="dropdown">
                    	<select class="form-control" style = "width:25%" name="lurchStatus" id="lurchStatus" placeholder = "Provider Status">
                         <option value="1">Active</option>
        					 <option value="0">Inactive</option>
                 	</select>
-                    
+                    </div>
                      <hr/>
                     
                      <h3>Provider Active</h3>
-                   	<select class="form-control" style = "width:25%" name="lurchActive" id="lurchActive">
-                        <option value="1">Active</option>
-       					 <option value="0">Inactive</option>
-                	</select>
-                	
+                     <div class="dropdown">
+                        <select class="form-control" style = "width:25%" name="lurchActive" id="lurchActive">
+                            <option value="1">Active</option>
+                            <option value="0">Inactive</option>
+                        </select>
+                	</div>
                 	
                     <script>
     function showPosition() {
@@ -272,11 +244,9 @@ select::-ms-expand {
          
     <div id="result">
         <!--Position information will be inserted here-->
-
-   
-
+    </div>
            
-
+    <p>Lurchit &#169; 2020 All Rights Reserved </p>
  
   <?php 
  
@@ -293,7 +263,7 @@ select::-ms-expand {
      $blurb = $_POST['blurb'];
      $description = $_POST['description'];
      $minPrice = $_POST['minPrice'];
-     
+     $isMobile = $_POST['mobileStatus'];
      $password = $_POST['password'];
      $passwordInsert = md5($password);
      $description = $_POST['memberStatus'];
@@ -315,8 +285,8 @@ select::-ms-expand {
 
 
      $sql = "INSERT INTO Members
-            (FirstName,   LastName,  Username,     Email,         Phone,     Password,     Latitude, Longitude,     IsActive,       IsLurch,       IsLurchActive,    Service,     Blurb,    Description,   MinPrice,   SignupDate) Values
-            ('$firstName','$lastName','$userName','$emailInsert','$phone', '$passwordInsert','$lat', '$long',    '$description','$lurchStatus', '$lurchActive',     '$service', '$blurb', '$description', '$minPrice', NOW())";
+            (FirstName,   LastName,  Username,     Email,         Phone,     Password,     Latitude, Longitude,     IsActive,       IsLurch,       IsLurchActive,    Service,     Blurb,    Description,   MinPrice,    IsMobile,  SignupDate) Values
+            ('$firstName','$lastName','$userName','$emailInsert','$phone', '$passwordInsert','$lat', '$long',    '$description','$lurchStatus', '$lurchActive',     '$service', '$blurb', '$description', '$minPrice', '$isMobile', NOW())";
      
      
      if (mysqli_query($conn, $sql)) {
