@@ -6,7 +6,7 @@ require 'helpers.php';
 
 $id = $_GET['ID'];
 
-$sql = "SELECT Username,ProfilePhoto,Service,MinPrice, (Select Service FROM Members WHERE ID = $id) as ServiceIndex, (Select MinPrice FROM Members WHERE ID = $id) as MinPriceCustView, Blurb,Description,Website,Phone,IsProfilePremium FROM Members WHERE ID = $id";
+$sql = "SELECT Username,ProfilePhoto,Service,MinPrice,IsMobile, (Select Service FROM Members WHERE ID = $id) as ServiceIndex, (Select MinPrice FROM Members WHERE ID = $id) as MinPriceCustView, Blurb,Description,Website,Phone,IsProfilePremium FROM Members WHERE ID = $id";
 
 $count = 0;
 

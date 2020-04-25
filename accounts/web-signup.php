@@ -97,8 +97,7 @@ select::-ms-expand { display: none; }
                         <div class="alert alert-warning" style="max-width:90%">
                          <strong>Notice!</strong> You will receive service inquiries via text message to your mobile phone
                         </div>
-   
-						
+
                         <hr/>
 
 						 <form method = "post" action = "" >
@@ -176,8 +175,8 @@ select::-ms-expand { display: none; }
                      <i>Would you come to a customer?</i>
                      <div class="dropdown">
                         <select class="form-control" style = "width:25%" name="mobileStatus" id="mobileStatus" placeholder = "Mobile Status">
-                            <option value="Yes">Yes</option>
-                            <option value="No">No</option>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
                         </select>
                     </div>
 

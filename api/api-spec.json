@@ -320,6 +320,9 @@
                                 },
                                 "ServiceIndex": {
                                     "type": "string"
+                                },
+                                "IsMobile": {
+                                    "type": "string"
                                 }
                             }
                         }
@@ -1222,6 +1225,9 @@
                                         "type": "string"
                                     },
                                     "IsProfilePremium": {
+                                        "type": "string"
+                                    },
+                                    "IsMobile": {
                                         "type": "string"
                                     }
                                 }
