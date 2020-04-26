@@ -8,6 +8,8 @@ require 'connect.php';
 $id = $_GET['ID'];
 $description = $_GET['Description'];
 
+$description = mysqli_real_escape_string($conn, $description);
+
 $sql = "Update Members Set Description = '$description' WHERE ID = $id ";
 
 if (mysqli_query($conn, $sql)) {
