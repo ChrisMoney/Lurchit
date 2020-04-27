@@ -20,7 +20,7 @@ And IsLurchActive = 1
 And Service = '$service'
 Group By ID
 HAVING Distance <= $distance
-ORDER BY IsProfilePremium DESC, Distance ASC, MinPrice ASC
+ORDER BY IsProfilePremium DESC, Distance ASC, MinPrice ASC, IsMobile DESC
 ";
 
 $result = mysqli_query($conn, $sql);

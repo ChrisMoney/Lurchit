@@ -58,6 +58,37 @@ $minPrice = $row['MinPrice'];
 				</ul>
 			</nav>
 			
+            <?php 
+              //Detect special conditions devices
+                $iPod    = stripos($_SERVER['HTTP_USER_AGENT'],"iPod");
+                $iPhone  = stripos($_SERVER['HTTP_USER_AGENT'],"iPhone");
+                $iPad    = stripos($_SERVER['HTTP_USER_AGENT'],"iPad");
+                $Android = stripos($_SERVER['HTTP_USER_AGENT'],"Android");
+                $webOS   = stripos($_SERVER['HTTP_USER_AGENT'],"webOS");
+
+                if( $iPod || $iPhone || $iPad || $Android){ 
+    
+            ?>
+            <table>
+                <tr>
+                    <td>
+                   
+                    <?php if( $iPod || $iPhone || $iPad){ ?>
+                         <a href="https://apps.apple.com/us/app/lurchit/id1462289389?ls=1">
+                        <img src="http://apilurchit.com/appstore-badge.png" height="50" width="120">
+                        </a>
+                    <?php } elseif ($Android) { ?>
+                       <!-- <a href="https://apps.apple.com/us/app/lurchit/id1462289389?ls=1">
+                        <img src="http://apilurchit.com/appstore-badge.png" height="50" width="120">
+                        </a>-->
+                    <?php } } ?>
+                    
+                    </td>
+                </tr>
+            </table>
+
+                <hr/>
+
 
 					<!-- Content -->
 					<div style="padding-left:10px">
