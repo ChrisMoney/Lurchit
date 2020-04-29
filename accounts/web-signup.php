@@ -1,4 +1,5 @@
 <?php 
+session_start();
 $env = $_GET['ENV'];
 require '../api/connect.php';
 require '../api/email.php';
@@ -191,7 +192,7 @@ select::-ms-expand { display: none; }
 
                     <br/>
 
-                    <textarea style="max-width:80%" type = "text" name = "description" id = "description" placeholder = "Full Description" value = <?php echo $_SESSION['description'] ?> ></textarea>
+                    <textarea style="max-width:80%" type = "text" name = "description" id = "description" placeholder = "Full Description"><?php echo $_SESSION['description'] ?></textarea>
 
                     <br/>
 
@@ -243,23 +244,23 @@ select::-ms-expand { display: none; }
                 	</div>
                 	
                     <script>
-    function showPosition() {
-        if(navigator.geolocation) {
-            document.getElementById('loader').style.display = 'block';
-            navigator.geolocation.getCurrentPosition(function(position) {
-                document.cookie = "lat="+ position.coords.latitude;
-                document.cookie = "long="+ position.coords.longitude;
-                var positionInfo = "Your current position is (" + "Latitude: " + position.coords.latitude + ", " + "Longitude: " + position.coords.longitude + ")";
-                document.getElementById("save").disabled = false;
-                document.getElementById("save").style.backgroundColor = 'red';
-                document.getElementById('loader').style.display = 'none';
+                        function showPosition() {
+                            if(navigator.geolocation) {
+                                document.getElementById('loader').style.display = 'block';
+                                navigator.geolocation.getCurrentPosition(function(position) {
+                                document.cookie = "lat="+ position.coords.latitude;
+                                document.cookie = "long="+ position.coords.longitude;
+                                var positionInfo = "Your current position is (" + "Latitude: " + position.coords.latitude + ", " + "Longitude: " + position.coords.longitude + ")";
+                                document.getElementById("save").disabled = false;
+                                document.getElementById("save").style.backgroundColor = 'red';
+                                document.getElementById('loader').style.display = 'none';
 
-            });
-        } else {
-            alert("Sorry, your browser does not support HTML5 geolocation.");
-        }
-    }
-</script>
+                            });
+                        } else {
+                            alert("Sorry, your browser does not support HTML5 geolocation.");
+                        }
+                    }
+                </script>
 					
                     <hr/>
 
@@ -292,10 +293,8 @@ select::-ms-expand { display: none; }
      $emailInsert = trim($email);
      $phone = $_POST['phone'];
      $service = $_POST['service'];
-     $blurb = $_POST['blurb'];
-     $blurb = mysqli_real_escape_string($conn,$blurb);
+     $blurb = $_POST['blurb'];   
      $description = $_POST['description'];
-     $description = mysqli_real_escape_string($conn, $blurb);
      $minPrice = $_POST['minPrice'];
      $isMobile = $_POST['mobileStatus'];
      $password = $_POST['password'];
@@ -317,12 +316,15 @@ select::-ms-expand { display: none; }
          $_SESSION['password'] = $password;
     // ---------------------------------------
 
+    $blurb = mysqli_real_escape_string($conn,$blurb);
+    $description = mysqli_real_escape_string($conn, $blurb);
+
     $sql1 = "Select ID From Members Where Email = '$email' ";
     $result1 = mysqli_query($conn, $sql1);
     
     if (mysqli_num_rows($result1)  > 0) {
        // account already exists
-       echo "<script>alert('Email already exists');</script>";
+       echo "<script>alert('Email already exists'); location = '/web-signup.php?ENV=$env'</script>";
        exit;
     }
 
@@ -331,7 +333,7 @@ select::-ms-expand { display: none; }
 
     if (mysqli_num_rows($result2)  > 0) {
     // username already in use
-    echo "<script>alert('Username already exists');</script>";
+    echo "<script>alert('Username already exists'); location = '/web-signup.php?ENV=$env'</script>";
     exit;
     }
 
@@ -358,7 +360,7 @@ select::-ms-expand { display: none; }
 
      }
      else {
-         echo "<script>alert('Member creation failed!'); </script>";
+         echo "<script>alert('Member creation failed!'); location = '/web-signup.php?ENV=$env'</script>";
      }
  }
   
