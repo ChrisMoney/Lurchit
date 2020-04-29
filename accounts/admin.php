@@ -25,6 +25,7 @@ $lurchActive = $row['IsLurchActive'];
 $service = $row['Service'];
 $blurb = $row['Blurb'];
 $description = $row['Description'];
+$description = stripcslashes($description);
 $minPrice = $row['MinPrice'];
 ?>
 

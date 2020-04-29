@@ -48,6 +48,33 @@ input::-webkit-input-placeholder {
     line-height: 2;
 }
 
+.div-round {
+    overflow: hidden;
+    position: relative;
+    z-index: 10;
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+}
+
+.div-round::before {
+    display: block;
+    content: "";
+}
+
+.iframe-round {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+}
+
 
 select {
   -webkit-appearance: none;
@@ -94,8 +121,14 @@ select::-ms-expand { display: none; }
 					<div style="padding-left:10px">
 						<h2 id="content">Service Directory Signup</h2>
 
-                        <div class="alert alert-warning" style="max-width:90%">
+                        <!--<div class="alert alert-warning" style="max-width:90%">
                          <strong>Notice!</strong> You will receive service inquiries via text message to your mobile phone
+                        </div>-->
+
+                        <div class="div-round" style="width:280px; height:315px;">
+                            <iframe class="iframe-round" src="https://www.youtube.com/embed/cTy1Q3UY6kk" frameborder="0" 
+                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                            </iframe>
                         </div>
 
                         <hr/>
@@ -245,7 +278,7 @@ select::-ms-expand { display: none; }
         <!--Position information will be inserted here-->
     </div>
            
-    <p>Lurchit &#169; 2020 All Rights Reserved </p>
+    <span style="align:cener">Lurchit &#169; 2020 All Rights Reserved </span>
  
   <?php 
  
@@ -254,25 +287,27 @@ select::-ms-expand { display: none; }
     $long = $_COOKIE['long'];
      $firstName = $_POST['firstName'];
      $lastName = $_POST['lastName'];
-     $userName = $_POST['username'];
+     $username = $_POST['username'];
      $email = $_POST['email'];
      $emailInsert = trim($email);
      $phone = $_POST['phone'];
      $service = $_POST['service'];
      $blurb = $_POST['blurb'];
+     $blurb = mysqli_real_escape_string($conn,$blurb);
      $description = $_POST['description'];
+     $description = mysqli_real_escape_string($conn, $blurb);
      $minPrice = $_POST['minPrice'];
      $isMobile = $_POST['mobileStatus'];
      $password = $_POST['password'];
      $passwordInsert = md5($password);
-     $description = $_POST['memberStatus'];
+     $memberStatus = $_POST['memberStatus'];
      $lurchStatus = $_POST['lurchStatus'];
      $lurchActive = $_POST['lurchActive'];
     
    // Session variables to maintain state if save fails
          $_SESSION['firstName'] = $firstName;
          $_SESSION['lastName'] = $lastName;
-         $_SESSION['username'] = $userName;
+         $_SESSION['username'] = $username;
          $_SESSION['email'] = $email;
          $_SESSION['phone'] = $phone;
          $_SESSION['service'] = $service;
@@ -282,10 +317,27 @@ select::-ms-expand { display: none; }
          $_SESSION['password'] = $password;
     // ---------------------------------------
 
+    $sql1 = "Select ID From Members Where Email = '$email' ";
+    $result1 = mysqli_query($conn, $sql1);
+    
+    if (mysqli_num_rows($result1)  > 0) {
+       // account already exists
+       echo "<script>alert('Email already exists');</script>";
+       exit;
+    }
+
+    $sql2 = "Select ID From Members Where Username = '$username' ";
+    $result2 = mysqli_query($conn, $sql2);
+
+    if (mysqli_num_rows($result2)  > 0) {
+    // username already in use
+    echo "<script>alert('Username already exists');</script>";
+    exit;
+    }
 
      $sql = "INSERT INTO Members
-            (FirstName,   LastName,  Username,     Email,         Phone,     Password,     Latitude, Longitude,     IsActive,       IsLurch,       IsLurchActive,    Service,     Blurb,    Description,   MinPrice,    IsMobile,  SignupDate) Values
-            ('$firstName','$lastName','$userName','$emailInsert','$phone', '$passwordInsert','$lat', '$long',    '$description','$lurchStatus', '$lurchActive',     '$service', '$blurb', '$description', '$minPrice', '$isMobile', NOW())";
+            (FirstName,   LastName,  Username,     Email,         Phone,     Password,       Latitude, Longitude,     IsActive,       IsLurch,       IsLurchActive,    Service,     Blurb,    Description,   MinPrice,    IsMobile,  SignupDate) Values
+            ('$firstName','$lastName','$username','$emailInsert','$phone', '$passwordInsert','$lat',   '$long',    '$memberStatus','$lurchStatus', '$lurchActive',     '$service', '$blurb', '$description', '$minPrice', '$isMobile', NOW())";
      
      
      if (mysqli_query($conn, $sql)) {
