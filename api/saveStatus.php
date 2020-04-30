@@ -8,7 +8,7 @@ $id = $_GET['ID'];
 
 $isLurchActive = $_GET['IsLurchActive'];
 
-$sql = "Update Members Set IsLurchActive = $isLurchActive WHERE ID = $id ";
+$sql = "Update Members Set IsLurchActive = '$isLurchActive' WHERE ID = $id ";
 
 if (mysqli_query($conn, $sql)) {
     echo http_response_code(200);

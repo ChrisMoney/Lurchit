@@ -11,7 +11,7 @@ $long = $_GET['Long'];
 
 $myArray = array();
 
-$sql = "SELECT DISTINCT(ID),Username, MinPrice, Blurb, ProfilePhoto,IsMobile, ( 3959 * acos ( cos ( radians($lat) ) * cos( radians( Latitude ) ) *
+$sql = "SELECT DISTINCT(ID),Username, MinPrice, Blurb, ProfilePhoto,IsMobile, Gender, ( 3959 * acos ( cos ( radians($lat) ) * cos( radians( Latitude ) ) *
 cos( radians( Longitude ) - radians($long) ) + sin ( radians($lat) ) *
 sin( radians( Latitude ) ) ) ) AS Distance
 FROM Members
