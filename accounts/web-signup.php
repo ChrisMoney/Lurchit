@@ -82,8 +82,8 @@ select {
   -moz-appearance: none;
   appearance: none;
   /* Some browsers will not display the caret when using calc, so we put the fallback first */ 
-  background: url("http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png") white no-repeat 98.5% !important; /* !important used for overriding all other customisations */
-  background: url("http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png") white no-repeat calc(100% - 10px) !important; /* Better placement regardless of input width */
+  background: url("https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png") white no-repeat 98.5% !important; /* !important used for overriding all other customisations */
+  background: url("https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png") white no-repeat calc(100% - 10px) !important; /* Better placement regardless of input width */
 }
 /*For IE*/
 select::-ms-expand { display: none; }
@@ -107,7 +107,7 @@ select::-ms-expand { display: none; }
 
 		<!-- Header -->
 			<header id="header" style="background-color:grey">
-				<a href="http://lurchit.com" class="logo"><img src="http://apilurchit.com/logo.png" height="40" width="40" style="margin-right: 5px;"/>Lurchit</a>
+				<a href="https://lurchit.com" class="logo"><img src="https://apilurchit.com/logo.png" height="40" width="40" style="margin-right: 5px;"/>Lurchit</a>
 			</header>
 
 		<!-- Menu -->
@@ -214,34 +214,6 @@ select::-ms-expand { display: none; }
                         </select>
                     </div>
 
-                    <hr/>
-
-                     <h3>Member Status</h3>
-                     <div class="dropdown">
-                   	<select class="form-control" style = "width:25%" name="memberStatus" id="memberStatus" placeholder = "Member Status">
-                   		 <option value="1">Active</option>
-       					 <option value="0">Inactive</option>
-                	</select>
-                	</div>
-
-                	<hr/>
-                	
-                    <h3>Provider Status</h3>
-                    <div class="dropdown">
-                   	<select class="form-control" style = "width:25%" name="lurchStatus" id="lurchStatus" placeholder = "Provider Status">
-                        <option value="1">Active</option>
-       					 <option value="0">Inactive</option>
-                	</select>
-                    </div>
-                     <hr/>
-                    
-                     <h3>Provider Active</h3>
-                     <div class="dropdown">
-                        <select class="form-control" style = "width:25%" name="lurchActive" id="lurchActive">
-                            <option value="1">Active</option>
-                            <option value="0">Inactive</option>
-                        </select>
-                	</div>
                 	
                     <script>
                         function showPosition() {
@@ -339,7 +311,7 @@ select::-ms-expand { display: none; }
 
      $sql = "INSERT INTO Members
             (FirstName,   LastName,  Username,     Email,         Phone,     Password,       Latitude, Longitude,     IsActive,       IsLurch,       IsLurchActive,    Service,     Blurb,    Description,   MinPrice,    IsMobile,  SignupDate) Values
-            ('$firstName','$lastName','$username','$emailInsert','$phone', '$passwordInsert','$lat',   '$long',    '$memberStatus','$lurchStatus', '$lurchActive',     '$service', '$blurb', '$description', '$minPrice', '$isMobile', NOW())";
+            ('$firstName','$lastName','$username','$emailInsert','$phone', '$passwordInsert','$lat',   '$long',         '1',            '1',               '1',     '$service', '$blurb', '$description', '$minPrice', '$isMobile', NOW())";
      
      
      if (mysqli_query($conn, $sql)) {
