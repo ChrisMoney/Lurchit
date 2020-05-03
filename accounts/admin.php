@@ -1,32 +1,87 @@
 <?php 
+session_start();
+
 $env = $_GET['ENV'];
 require '../api/connect.php';
 require '../api/email.php';
 require_once '../api/helpers.php';
 
 $lurchID = $_GET['ID'];
+$v = $_SESSION['V'];
 
-if (!isset($lurchID) || empty($lurchID)) {
-    echo "<script>alert('member not found'); location = history.back(); </script>";
+if (isset($v) && !empty($v)) {
+    if ($v == 'true') {
+        $validated = 'true';
+    }
+    else { $validated = 'false';}
 }
+else {
+    $validated = 'false';
+} 
 
-$sql = "SELECT FirstName, LastName, Email, Phone,
-IsActive, IsLurch, IsLurchActive, Service, Blurb, Description, MinPrice FROM Members WHERE ID = $lurchID ";
-$result = mysqli_query($conn, $sql);
-$row = mysqli_fetch_assoc($result);
 
-$firstName = $row['FirstName'];
-$lastName = $row['LastName'];
-$email = $row['Email'];
-$phone = $row['Phone'];
-$memberStatus = $row['IsActive'];
-$lurchStatus = $row['IsLurch'];
-$lurchActive = $row['IsLurchActive'];
-$service = $row['Service'];
-$blurb = $row['Blurb'];
-$description = $row['Description'];
-$description = stripcslashes($description);
-$minPrice = $row['MinPrice'];
+if (isset($_POST['login']) && $_POST['login'] == "Login") {
+
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $password = md5($password);
+
+    $sql = "SELECT Email, Password FROM Members WHERE ID = $lurchID ";
+
+    $result = mysqli_query($conn, $sql);
+            
+    
+
+        if (mysqli_num_rows($result) > 0) {
+
+            if (!isset($lurchID) || empty($lurchID)) {
+                echo "<script>alert('member not found'); location = history.back(); </script>";
+            }
+            else {
+            $sql = "SELECT FirstName, LastName, Email, Phone,
+            IsActive, IsLurch, IsLurchActive, Service, Blurb, Description, MinPrice FROM Members WHERE ID = $lurchID ";
+            $result = mysqli_query($conn, $sql);
+            $row = mysqli_fetch_assoc($result);
+            
+            $firstName = $row['FirstName'];
+            $lastName = $row['LastName'];
+            $email = $row['Email'];
+            $phone = $row['Phone'];
+            $memberStatus = $row['IsActive'];
+            $lurchStatus = $row['IsLurch'];
+            $lurchActive = $row['IsLurchActive'];
+            $service = $row['Service'];
+            $blurb = $row['Blurb'];
+            $description = $row['Description'];
+            $description = stripcslashes($description);
+            $minPrice = $row['MinPrice'];
+            $validated = 'true';
+            }
+        }
+
+    }
+
+    if ($v == 'true' & $validated == 'true') {
+        $sql = "SELECT FirstName, LastName, Email, Phone,
+            IsActive, IsLurch, IsLurchActive, Service, Blurb, Description, MinPrice FROM Members WHERE ID = $lurchID ";
+            $result = mysqli_query($conn, $sql);
+            $row = mysqli_fetch_assoc($result);
+            
+            $firstName = $row['FirstName'];
+            $lastName = $row['LastName'];
+            $email = $row['Email'];
+            $phone = $row['Phone'];
+            $memberStatus = $row['IsActive'];
+            $lurchStatus = $row['IsLurch'];
+            $lurchActive = $row['IsLurchActive'];
+            $service = $row['Service'];
+            $blurb = $row['Blurb'];
+            $description = $row['Description'];
+            $description = stripcslashes($description);
+            $minPrice = $row['MinPrice'];
+            $validated = 'true';
+    }
+    
 ?>
 
 <!DOCTYPE HTML>
@@ -44,8 +99,211 @@ $minPrice = $row['MinPrice'];
         <!-- jQuery library -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
+       
+
+      
+
+        <script>
+            function goBack() {
+                myWindow.close(); 
+            }
+        </script>
+
+<style>
+
+#loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Loader spin action for Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+/* Center the image and position the close button */
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
+
+img.avatar {
+  width: 40%;
+  border-radius: 50%;
+}
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+</style>
+
+        <script type="text/javascript">
+            function disable() { 
+                
+            // Get the modal
+            var validated = "<?php echo $validated ?>";
+            var modal = document.getElementById('id01');
+
+            if (validated == 'false') {
+                modal.style.display = 'block';
+            }
+            else {
+                modal.style.display = 'none';
+            }
+                
+                document.getElementById("save").disabled = true;
+                document.getElementById("save").style.backgroundColor = 'gray';
+                document.getElementById('loader').style.display = 'none';
+                       
+        }
+        </script>
+
+         
 	</head>
-	<body class="subpage">
+
+	<body class="subpage" onload="disable()">
+
+
+<div id="id01" class="modal">
+  
+  <form class="modal-content animate" action="" method="post">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <img src="https://apilurchit.com/logo.png" alt="Avatar" class="avatar">
+    </div>
+
+    <div class="container">
+      <label for="uname"><b>Email<b></label>
+      <input type="text" placeholder="Enter Username" name="email" id="email" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="password" id="password" required>
+        
+      <input style="padding-left:10px;padding-right:10px" type="submit" id="login" name="login" value = "Login" />
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn" onclick="goBack()">Cancel</button>
+      <span class="psw">Forgot <a href="https://accounts.apilurchit.com/password-reset.php">password?</a></span>
+    </div>
+  </form>
+</div>
+
 
 		<!-- Header -->
 			<header id="header">
@@ -76,11 +334,11 @@ $minPrice = $row['MinPrice'];
                    
                     <?php if( $iPod || $iPhone || $iPad){ ?>
                          <a href="https://apps.apple.com/us/app/lurchit/id1462289389?ls=1">
-                        <img src="http://apilurchit.com/appstore-badge.png" height="50" width="120">
+                        <img src="https://apilurchit.com/appstore-badge.png" height="50" width="120">
                         </a>
                     <?php } elseif ($Android) { ?>
                        <!-- <a href="https://apps.apple.com/us/app/lurchit/id1462289389?ls=1">
-                        <img src="http://apilurchit.com/appstore-badge.png" height="50" width="120">
+                        <img src="https://apilurchit.com/appstore-badge.png" height="50" width="120">
                         </a>-->
                     <?php } } ?>
                     
@@ -199,6 +457,32 @@ $minPrice = $row['MinPrice'];
                 	
                 	<br/>
                 	
+                    <script>
+                        function showPosition() {
+                            if(navigator.geolocation) {
+                                document.getElementById('loader').style.display = 'block';
+                                navigator.geolocation.getCurrentPosition(function(position) {
+                                document.cookie = "lat="+ position.coords.latitude;
+                                document.cookie = "long="+ position.coords.longitude;
+                                var positionInfo = "Your current position is (" + "Latitude: " + position.coords.latitude + ", " + "Longitude: " + position.coords.longitude + ")";
+                                document.getElementById("save").disabled = false;
+                                document.getElementById("save").style.backgroundColor = 'red';
+                                document.getElementById('loader').style.display = 'none';
+
+                            });
+                        } else {
+                            alert("Sorry, your browser does not support HTML5 geolocation.");
+                        }
+                    }
+                </script>
+					
+                    <hr/>
+
+                    <button type="button" onclick="showPosition();" style="padding-left:10px;padding-right:10px;width:40%">Get Your Location</button>
+                    
+                    <br/>
+                    <div id="loader"></div>
+                    <br/>
 					
                     <input style="background:#ff0000;padding-left:10px;padding-right:10px;" type = "submit" name = "save" id = "save" value = "Save Data" />
                     
@@ -208,7 +492,8 @@ $minPrice = $row['MinPrice'];
 
  
   <?php 
- 
+ unset($_SESSION['V']);
+
  if (isset($_POST['save']) && $_POST['save'] == "Save Data") {
     
     // Update lurch info first if member is a lurch
@@ -223,7 +508,8 @@ $minPrice = $row['MinPrice'];
          }
             
           
-
+         $lat = $_COOKIE['lat'];
+         $long = $_COOKIE['long'];
      $firstName = $_POST['firstName'];
      $lastName = $_POST['lastName'];
      
@@ -240,16 +526,20 @@ $minPrice = $row['MinPrice'];
             LastName = '$lastName',
             Email = '$email', 
             Phone = '$phone',
+            Latitude = '$lat',
+            Longitude = '$long',
             IsActive = '$memberStatus',
             IsLurch = '$lurchStatus',
-            IsLurchActive = '$lurchActive' 
+            IsLurchActive = '$lurchActive'
             WHERE ID = $lurchID ";
      
      
      if (mysqli_query($conn, $sql)) {
+         $_SESSION['V'] = 'true';
          echo "<script>alert('Member data updated successfully'); location = '/admin.php?ID=$lurchID&ENV=$env' </script>";
      }
      else {
+        $_SESSION['V'] = 'true';
          echo "<script>alert('Member update failed!'); location = '/admin.php?ID=$lurchID&ENV=$env' </script>";
      }
  }
