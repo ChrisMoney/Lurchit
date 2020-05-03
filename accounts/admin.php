@@ -300,6 +300,9 @@ span.psw {
     <div class="container" style="background-color:#f1f1f1">
       <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn" onclick="goBack()">Cancel</button>
       <span class="psw">Forgot <a href="https://accounts.apilurchit.com/password-reset.php">password?</a></span>
+
+      <br/><br/>
+      <span><a href="https://twitter.com/lurch_it" target="_blank">Need Help? Contact Us on Twitter <img src="https://apilurchit.com/twitter-logo.png" height="50" width="50"/></a>
     </div>
   </form>
 </div>
