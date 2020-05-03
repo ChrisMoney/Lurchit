@@ -9,6 +9,41 @@ require_once '../api/helpers.php';
 $lurchID = $_GET['ID'];
 $v = $_SESSION['V'];
 
+if ((isset($_POST['login']) && $_POST['login'] == "Login") Or ($v == 'true')) {
+
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $password = md5($password);
+
+
+        $sql = "SELECT FirstName, LastName, Email, Phone,
+            IsActive, IsLurch, IsLurchActive, Service, Blurb, Description, MinPrice FROM Members WHERE (Email = '$email' And Password = '$password') Or (ID = $lurchID) ";
+            $result = mysqli_query($conn, $sql);
+            $row = mysqli_fetch_assoc($result);
+
+            if (mysqli_num_rows($result) > 0) {
+
+            $firstName = $row['FirstName'];
+            $lastName = $row['LastName'];
+            $email = $row['Email'];
+            $phone = $row['Phone'];
+            $memberStatus = $row['IsActive'];
+            $lurchStatus = $row['IsLurch'];
+            $lurchActive = $row['IsLurchActive'];
+            $service = $row['Service'];
+            $blurb = $row['Blurb'];
+            $description = $row['Description'];
+            $description = stripcslashes($description);
+            $minPrice = $row['MinPrice'];
+            $validated = 'true';
+            $_SESSION['V'] = 'true';
+
+            }
+    }
+
+
+  $v = $_SESSION['V'];
+
 if (isset($v) && !empty($v)) {
     if ($v == 'true') {
         $validated = 'true';
@@ -19,69 +54,6 @@ else {
     $validated = 'false';
 } 
 
-
-if (isset($_POST['login']) && $_POST['login'] == "Login") {
-
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $password = md5($password);
-
-    $sql = "SELECT Email, Password FROM Members WHERE ID = $lurchID ";
-
-    $result = mysqli_query($conn, $sql);
-            
-    
-
-        if (mysqli_num_rows($result) > 0) {
-
-            if (!isset($lurchID) || empty($lurchID)) {
-                echo "<script>alert('member not found'); location = history.back(); </script>";
-            }
-            else {
-            $sql = "SELECT FirstName, LastName, Email, Phone,
-            IsActive, IsLurch, IsLurchActive, Service, Blurb, Description, MinPrice FROM Members WHERE ID = $lurchID ";
-            $result = mysqli_query($conn, $sql);
-            $row = mysqli_fetch_assoc($result);
-            
-            $firstName = $row['FirstName'];
-            $lastName = $row['LastName'];
-            $email = $row['Email'];
-            $phone = $row['Phone'];
-            $memberStatus = $row['IsActive'];
-            $lurchStatus = $row['IsLurch'];
-            $lurchActive = $row['IsLurchActive'];
-            $service = $row['Service'];
-            $blurb = $row['Blurb'];
-            $description = $row['Description'];
-            $description = stripcslashes($description);
-            $minPrice = $row['MinPrice'];
-            $validated = 'true';
-            }
-        }
-
-    }
-
-    if ($v == 'true' & $validated == 'true') {
-        $sql = "SELECT FirstName, LastName, Email, Phone,
-            IsActive, IsLurch, IsLurchActive, Service, Blurb, Description, MinPrice FROM Members WHERE ID = $lurchID ";
-            $result = mysqli_query($conn, $sql);
-            $row = mysqli_fetch_assoc($result);
-            
-            $firstName = $row['FirstName'];
-            $lastName = $row['LastName'];
-            $email = $row['Email'];
-            $phone = $row['Phone'];
-            $memberStatus = $row['IsActive'];
-            $lurchStatus = $row['IsLurch'];
-            $lurchActive = $row['IsLurchActive'];
-            $service = $row['Service'];
-            $blurb = $row['Blurb'];
-            $description = $row['Description'];
-            $description = stripcslashes($description);
-            $minPrice = $row['MinPrice'];
-            $validated = 'true';
-    }
-    
 ?>
 
 <!DOCTYPE HTML>
@@ -257,6 +229,7 @@ span.psw {
                 
             // Get the modal
             var validated = "<?php echo $validated ?>";
+           // alert(validated);
             var modal = document.getElementById('id01');
 
             if (validated == 'false') {
@@ -273,7 +246,25 @@ span.psw {
         }
         </script>
 
-         
+      <script type="text/javascript">
+              function showPosition() {
+                  if(navigator.geolocation) {
+                      document.getElementById('loader').style.display = 'block';
+                      navigator.geolocation.getCurrentPosition(function(position) {
+                      document.cookie = "lat="+ position.coords.latitude;
+                      document.cookie = "long="+ position.coords.longitude;
+                      var positionInfo = "Your current position is (" + "Latitude: " + position.coords.latitude + ", " + "Longitude: " + position.coords.longitude + ")";
+                      document.getElementById("save").disabled = false;
+                      document.getElementById("save").style.backgroundColor = 'red';
+                      document.getElementById('loader').style.display = 'none';
+
+                  });
+              } else {
+                  alert("Sorry, your browser does not support HTML5 geolocation.");
+              }
+          }
+                </script>
+					
 	</head>
 
 	<body class="subpage" onload="disable()">
@@ -460,25 +451,7 @@ span.psw {
                 	
                 	<br/>
                 	
-                    <script>
-                        function showPosition() {
-                            if(navigator.geolocation) {
-                                document.getElementById('loader').style.display = 'block';
-                                navigator.geolocation.getCurrentPosition(function(position) {
-                                document.cookie = "lat="+ position.coords.latitude;
-                                document.cookie = "long="+ position.coords.longitude;
-                                var positionInfo = "Your current position is (" + "Latitude: " + position.coords.latitude + ", " + "Longitude: " + position.coords.longitude + ")";
-                                document.getElementById("save").disabled = false;
-                                document.getElementById("save").style.backgroundColor = 'red';
-                                document.getElementById('loader').style.display = 'none';
-
-                            });
-                        } else {
-                            alert("Sorry, your browser does not support HTML5 geolocation.");
-                        }
-                    }
-                </script>
-					
+                    
                     <hr/>
 
                     <button type="button" onclick="showPosition();" style="padding-left:10px;padding-right:10px;width:40%">Get Your Location</button>
@@ -536,13 +509,12 @@ span.psw {
             IsLurchActive = '$lurchActive'
             WHERE ID = $lurchID ";
      
-     
-     if (mysqli_query($conn, $sql)) {
-         $_SESSION['V'] = 'true';
+            $_SESSION['V'] = 'true';
+
+     if (mysqli_query($conn, $sql)) { 
          echo "<script>alert('Member data updated successfully'); location = '/admin.php?ID=$lurchID&ENV=$env' </script>";
      }
      else {
-        $_SESSION['V'] = 'true';
          echo "<script>alert('Member update failed!'); location = '/admin.php?ID=$lurchID&ENV=$env' </script>";
      }
  }
