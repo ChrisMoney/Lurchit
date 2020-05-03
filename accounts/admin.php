@@ -225,7 +225,7 @@ span.psw {
 </style>
 
         <script type="text/javascript">
-            function disable() { 
+            function authenticate() { 
                 
             // Get the modal
             var validated = "<?php echo $validated ?>";
@@ -267,7 +267,7 @@ span.psw {
 					
 	</head>
 
-	<body class="subpage" onload="disable()">
+	<body class="subpage" onload="authenticate()">
 
 
 <div id="id01" class="modal">
