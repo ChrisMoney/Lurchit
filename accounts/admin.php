@@ -118,11 +118,10 @@ input[type=text], input[type=password] {
 button {
   background-color: #4CAF50;
   color: white;
-  padding: 14px 20px;
   margin: 8px 0;
   border: none;
   cursor: pointer;
-  width: 100%;
+  width: 25%%;
 }
 
 button:hover {
@@ -285,11 +284,14 @@ span.psw {
       <label for="psw"><b>Password</b></label>
       <input type="password" placeholder="Enter Password" name="password" id="password" required>
         
-      <input style="padding-left:10px;padding-right:10px" type="submit" id="login" name="login" value = "Login" />
+      <input style="padding-left:10px;padding-right:10px;background:green;" type="submit" id="login" name="login" value = "Login" />
     </div>
 
     <div class="container" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn" onclick="goBack()">Cancel</button>
+
+      <input style="padding-left:10px;padding-right:10px;padding-bottom:10px;background:red;" type="button" 
+      onclick="document.getElementById('id01').style.display='none'" onclick="goBack()" value="Cancel" />
+
       <span class="psw">Forgot <a href="https://accounts.apilurchit.com/password-reset.php">password?</a></span>
 
       <br/><br/>
