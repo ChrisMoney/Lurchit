@@ -207,10 +207,8 @@ span.psw {
 		</div>
 
 		<div class="container">
-		<label for="uname"><b>Email<b></label>
-		<input type="text" placeholder="Enter Username" name="email" id="email" required>
+		<input type="text" placeholder="Enter Email" name="email" id="email" required>
 
-		<label for="psw"><b>Password</b></label>
 		<input type="password" placeholder="Enter Password" name="password" id="password" required>
 			
 		<input style="padding-left:10px;padding-right:10px;background:green;" type="submit" id="login" name="login" value = "Login" />
