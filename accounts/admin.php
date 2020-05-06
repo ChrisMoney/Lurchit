@@ -3,7 +3,6 @@ session_start();
 
 $env = $_GET['ENV'];
 require '../api/connect.php';
-require '../api/email.php';
 require_once '../api/helpers.php';
 
 $lurchID = $_GET['ID'];
@@ -477,12 +476,12 @@ span.psw {
         $service = $_POST['service'];
         $blurb = $_POST['blurb'];
         $description = $_POST['description'];
-    
+
          $sql1 = "Update Members Set Service = '$service', Blurb = '$blurb', Description = '$description' WHERE ID = $lurchID ";
          if (!mysqli_query($conn, $sql1)) {
             echo "<script>alert('".mysqli_error($conn)."');</script>";
          }
-            
+        
           
          $lat = $_COOKIE['lat'];
          $long = $_COOKIE['long'];
@@ -512,6 +511,7 @@ span.psw {
             $_SESSION['V'] = 'true';
 
      if (mysqli_query($conn, $sql)) { 
+        
          echo "<script>alert('Member data updated successfully'); location = '/admin.php?ID=$lurchID&ENV=$env' </script>";
      }
      else {

@@ -2,7 +2,7 @@
 
                         if (isset($_POST['submit']) && ($_POST['submit'] == "Reset Password")) {
  
-                         require 'connect.php';
+                         require '../api/connect.php';
                          
                          $email = trim($_POST['email']);
                          
@@ -17,7 +17,7 @@
                // if email was found
               
              else {      
-                include_once 'email.php';
+                include_once '../api/email.php';
                 sendResetEmail($email);
                 echo "<script>alert('A password reset link has been sent to your email on file');</script>";
              }

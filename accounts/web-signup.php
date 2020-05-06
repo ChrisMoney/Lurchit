@@ -5,7 +5,17 @@ require '../api/connect.php';
 require '../api/email.php';
 require_once '../api/helpers.php';
 
+// track IP addresses accessing this page.
+if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+    $ip = $_SERVER['HTTP_CLIENT_IP'];
+} elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+    $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+} else {
+    $ip = $_SERVER['REMOTE_ADDR'];
+}
 
+$sqlLog = "INSERT INTO SignupHits (IP, HitDate) Values ('$ip', NOW()) ";
+mysqli_query($conn, $sqlLog);
 ?>
 
 <!DOCTYPE HTML>
@@ -329,6 +339,9 @@ select::-ms-expand { display: none; }
          unset($_SESSION['minPrice']);
          unset($_SESSION['password']);
          
+         if ($env == 'PROD') {
+            providerSignupEmail($service);
+         }
          echo "<script>alert('Your service was added to the directory. Bookmark this page to edit your account.'); location = '/admin.php?ID=$lurchID&ENV=$env' </script>";
 
      }

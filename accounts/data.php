@@ -274,6 +274,10 @@ span.psw {
 							$sql5 = "SELECT ID FROM LogServiceRequest";
 							$result5 = mysqli_query($conn, $sql5);
 							$count5 = mysqli_num_rows($result5);
+
+							$sql6 = "SELECT ID FROM SignupHits";
+							$result6 = mysqli_query($conn, $sql6);
+							$count6 = mysqli_num_rows($result6);
 							?>
 	
                             <table>
@@ -309,6 +313,11 @@ span.psw {
 							        <font style='color:black'>Total Active Service Providers: <b><?php echo $count3 ?></b></font>
 							        </td>
 							    </tr>
+								<tr>
+							        <td>
+							        <font style='color:black'>Web Signup Hits: <b><?php echo $count6 ?></b></font>
+							        </td>
+							    </tr>
 						    </table>
 							
 							
@@ -342,6 +351,34 @@ span.psw {
 							    $autoSpecialist = 0;
 							}
 					
+							// Barber
+							$sqlBarber = "SELECT ID FROM Members WHERE Service = 'Barber' And IsLurchActive = 1 ";
+							$resultBarber = mysqli_query($conn, $sqlBarber);
+							if ($resultBarber) {
+							    if (mysqli_num_rows($resultBarber) > 0) {
+							        $barber = mysqli_num_rows($resultBarber);
+							    } else {
+							        $barber = 0;
+							    }
+							}
+							else {
+							    $barber = 0;
+							}
+
+							// Business Services
+							$sqlBusinessServices = "SELECT ID FROM Members WHERE Service = 'Business Services' And IsLurchActive = 1 ";
+							$resultBusinessServices = mysqli_query($conn, $sqlBarber);
+							if ($resultBusinessServices) {
+							    if (mysqli_num_rows($resultBusinessServices) > 0) {
+							        $businessServices = mysqli_num_rows($resultBusinessServices);
+							    } else {
+							        $businessServices = 0;
+							    }
+							}
+							else {
+							    $businessServices = 0;
+							}
+
 							// Childcare Specialist
 							$sqlChildCareSpecialist = "SELECT ID FROM Members WHERE Service = 'Childcare Specialist' And IsLurchAcive = 1 ";
 							$resultChildCareSpecialist = mysqli_query($conn, $sqlChildCareSpecialist);
@@ -356,19 +393,7 @@ span.psw {
 							    $childCareSpecialist = 0;
 							}
 							
-							// Barber
-							$sqlBarber = "SELECT ID FROM Members WHERE Service = 'Barber' And IsLurchActive = 1 ";
-							$resultBarber = mysqli_query($conn, $sqlBarber);
-							if ($resultBarber) {
-							    if (mysqli_num_rows($resultBarber) > 0) {
-							        $barber = mysqli_num_rows($resultBarber);
-							    } else {
-							        $barber = 0;
-							    }
-							}
-							else {
-							    $barber = 0;
-							}
+							
 							
 							// Chef
 							$sqlChef = "SELECT ID FROM Members WHERE Service = 'Chef' And IsLurchActive = 1 ";
@@ -647,6 +672,16 @@ span.psw {
 								<tr>
 									<td>
 							        <font style='color:black'>Automotive Specialist: <b><?php echo $autoSpecialist ?></b></font>
+							        </td>
+								</tr>
+								<tr>
+									<td>
+							        <font style='color:black'>Barber: <b><?php echo $barber ?></b></font>
+							        </td>
+								</tr>
+								<tr>
+									<td>
+							        <font style='color:black'>Business Services <b><?php echo $businessServices ?></b></font>
 							        </td>
 								</tr>
 								<tr>
