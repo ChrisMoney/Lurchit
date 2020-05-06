@@ -140,8 +140,8 @@ span.psw {
   right: 25px;
   top: 0;
   color: #000;
-  font-size: 35px;
-  font-weight: bold;
+  span-size: 35px;
+  span-weight: bold;
 }
 
 .close:hover,
@@ -283,39 +283,39 @@ span.psw {
                             <table>
                                 <tr>
                                     <td>
-                                     <font style='color:black'>Today's signups: <b><?php echo $count ?></b></font> 
+                                     <span style='color:black'>Today's signups: <b><?php echo $count ?></b></span> 
 							        </td>
 						        </tr>
 						        <tr>
                                     <td>
-                                     <font style='color:black'>Total Members: <b><?php echo $count1 ?></b></font> 
+                                     <span style='color:black'>Total Members: <b><?php echo $count1 ?></b></span> 
 							        </td>
 						        </tr>
 						       
 							     <tr>
 							        <td>
-							        <font style='color:black'>Total Service Searches: <b><?php echo $count4 ?></b></font>
+							        <span style='color:black'>Total Service Searches: <b><?php echo $count4 ?></b></span>
 							        </td>
 							    </tr>
 							     <tr>
 							        <td>
-							        <font style='color:black'>Total Service Requests: <b><?php echo $count5 ?></b></font>
+							        <span style='color:black'>Total Service Requests: <b><?php echo $count5 ?></b></span>
 							        </td>
 							    </tr>
 							    
 							     <tr>
 							        <td>
-							        <font style='color:black'>Total Service Providers: <b><?php echo $count2 ?></b></font>
+							        <span style='color:black'>Total Service Providers: <b><?php echo $count2 ?></b></span>
 							        </td>
 							    </tr>
 							     <tr>
 							        <td>
-							        <font style='color:black'>Total Active Service Providers: <b><?php echo $count3 ?></b></font>
+							        <span style='color:black'>Total Active Service Providers: <b><?php echo $count3 ?></b></span>
 							        </td>
 							    </tr>
 								<tr>
 							        <td>
-							        <font style='color:black'>Web Signup Hits: <b><?php echo $count6 ?></b></font>
+							        <span style='color:black'>Web Signup Hits: <b><?php echo $count6 ?></b></span>
 							        </td>
 							    </tr>
 						    </table>
@@ -423,6 +423,19 @@ span.psw {
 							    $computerAppSpecialist = 0;
 							}
 							
+							$sqlCosmetologist = "SELECT ID FROM Members WHERE Service = 'Cosmetologist' And IsLurchActive = 1 ";
+							$resultCosmetologist = mysqli_query($conn, $sqlCosmetologist);
+							if ($resultCosmetologist) {
+							    if (mysqli_num_rows($resultCosmetologist) > 0) {
+							        $cosmetologist = mysqli_num_rows($resultCosmetologist);
+							    } else {
+							        $cosmetologist = 0;
+							    }
+							}
+							else {
+							    $cosmetologist = 0;
+							}
+
 							// Delivery Specialist
 							$sqlDelivery = "SELECT ID FROM Members WHERE Service = 'Delivery Specialist' And IsLurchActive = 1 ";
 							$resultDelivery = mysqli_query($conn, $sqlDelivery);
@@ -666,128 +679,128 @@ span.psw {
 							<tr><td>Active Service Providers By Service</td></tr>
 								<tr>
 									<td>
-							        <font style='color:black'>Animal Care Specialist: <b><?php echo $animalCareSpecialist ?></b></font>
+							        <span style='color:black'>Animal Care Specialist: <b><?php echo $animalCareSpecialist ?></b></span>
 							        </td>
 								</tr>
 								<tr>
 									<td>
-							        <font style='color:black'>Automotive Specialist: <b><?php echo $autoSpecialist ?></b></font>
+							        <span style='color:black'>Automotive Specialist: <b><?php echo $autoSpecialist ?></b></span>
 							        </td>
 								</tr>
 								<tr>
 									<td>
-							        <font style='color:black'>Barber: <b><?php echo $barber ?></b></font>
+							        <span style='color:black'>Barber: <b><?php echo $barber ?></b></span>
 							        </td>
 								</tr>
 								<tr>
 									<td>
-							        <font style='color:black'>Business Services <b><?php echo $businessServices ?></b></font>
+							        <span style='color:black'>Business Services <b><?php echo $businessServices ?></b></span>
 							        </td>
 								</tr>
 								<tr>
 									<td>
-							        <font style='color:black'>Childcare Specialist: <b><?php echo $childCareSpecialist ?></b></font>
+							        <span style='color:black'>Childcare Specialist: <b><?php echo $childCareSpecialist ?></b></span>
 							        </td>
 								</tr>
 								<tr>
 									<td>
-							        <font style='color:black'>Childcare Specialist: <b><?php echo $barber ?></b></font>
+							        <span style='color:black'>Cosmetologist <b><?php echo $cosmetologist ?></b></span>
 							        </td>
 								</tr>
 								<tr>
 									<td>
-							        <font style='color:black'>Chef: <b><?php echo $chef ?></b></font>
+							        <span style='color:black'>Chef: <b><?php echo $chef ?></b></span>
 							        </td>
 								</tr>
 								<tr>
 									<td>
-							        <font style='color:black'>Computer & App Specialist: <b><?php echo $computerAppSpecialist ?></b></font>
+							        <span style='color:black'>Computer & App Specialist: <b><?php echo $computerAppSpecialist ?></b></span>
 							        </td>
 								</tr>
 								<tr>
 									<td>
-							        <font style='color:black'>Delivery Specialist: <b><?php echo $deliverySpecialist ?></b></font>
+							        <span style='color:black'>Delivery Specialist: <b><?php echo $deliverySpecialist ?></b></span>
 							        </td>
 								</tr>
 								<tr>
 									<td>
-							        <font style='color:black'>Fashion & Design Specialist: <b><?php echo $fashionDesignSpecialist ?></b></font>
+							        <span style='color:black'>Fashion & Design Specialist: <b><?php echo $fashionDesignSpecialist ?></b></span>
 							        </td>
 								</tr>
 								<tr>
 									<td>
-							        <font style='color:black'>Entertainer: <b><?php echo $entertainer ?></b></font>
+							        <span style='color:black'>Entertainer: <b><?php echo $entertainer ?></b></span>
 							        </td>
 								</tr>
 								<tr>
 									<td>
-							        <font style='color:black'>Financial Advisor: <b><?php echo $financialAdvisor ?></b></font>
+							        <span style='color:black'>Financial Advisor: <b><?php echo $financialAdvisor ?></b></span>
 							        </td>
 								</tr>
 								<tr>
 									<td>
-							        <font style='color:black'>Handyman: <b><?php echo $handyman ?></b></font>
+							        <span style='color:black'>Handyman: <b><?php echo $handyman ?></b></span>
 							        </td>
 								</tr>
 								<tr>
 									<td>
-							        <font style='color:black'>Hospice Aid: <b><?php echo $hospiceAid ?></b></font>
+							        <span style='color:black'>Hospice Aid: <b><?php echo $hospiceAid ?></b></span>
 							        </td>
 								</tr>
 								<tr>
 									<td>
-							        <font style='color:black'>Insurance Agent: <b><?php echo $insuranceAgent ?></b></font>
+							        <span style='color:black'>Insurance Agent: <b><?php echo $insuranceAgent ?></b></span>
 							        </td>
 								</tr>
 								<tr>
 									<td>
-							        <font style='color:black'>Interior Designer: <b><?php echo $interiorDesigner ?></b></font>
+							        <span style='color:black'>Interior Designer: <b><?php echo $interiorDesigner ?></b></span>
 							        </td>
 								</tr>
 								<tr>
 									<td>
-							        <font style='color:black'>Landscaper: <b><?php echo $landscaper ?></b></font>
+							        <span style='color:black'>Landscaper: <b><?php echo $landscaper ?></b></span>
 							        </td>
 								</tr>
 								<tr>
 									<td>
-							        <font style='color:black'>Maid: <b><?php echo $maid ?></b></font>
+							        <span style='color:black'>Maid: <b><?php echo $maid ?></b></span>
 							        </td>
 								</tr>
 								
 								<tr>
 									<td>
-							        <font style='color:black'>Masseuse: <b><?php echo $masseuse ?></b></font>
+							        <span style='color:black'>Masseuse: <b><?php echo $masseuse ?></b></span>
 							        </td>
 								</tr>
 								<tr>
 									<td>
-							        <font style='color:black'>Media & Production Specialist: <b><?php echo $mediaProductionSpecialist ?></b></font>
+							        <span style='color:black'>Media & Production Specialist: <b><?php echo $mediaProductionSpecialist ?></b></span>
 							        </td>
 								</tr>
 								<tr>
 									<td>
-							        <font style='color:black'>Occupational Therapist: <b><?php echo $occupationalTherapist ?></b></font>
+							        <span style='color:black'>Occupational Therapist: <b><?php echo $occupationalTherapist ?></b></span>
 							        </td>
 								</tr>
 								<tr>
 									<td>
-							        <font style='color:black'>Personal Trainer: <b><?php echo $personalTrainer ?></b></font>
+							        <span style='color:black'>Personal Trainer: <b><?php echo $personalTrainer ?></b></span>
 							        </td>
 								</tr>
 								<tr>
 									<td>
-							        <font style='color:black'>Occupational Therapist: <b><?php echo $realEstateSpecialist ?></b></font>
+							        <span style='color:black'>Occupational Therapist: <b><?php echo $realEstateSpecialist ?></b></span>
 							        </td>
 								</tr>
 								<tr>
 									<td>
-							        <font style='color:black'>Therapist <b><?php echo $therapist ?></b></font>
+							        <span style='color:black'>Therapist <b><?php echo $therapist ?></b></span>
 							        </td>
 								</tr>
 								<tr>
 									<td>
-							        <font style='color:black'>Tutor & Training Specialist <b><?php echo $tutorTrainingSpecialist ?></b></font>
+							        <span style='color:black'>Tutor & Training Specialist <b><?php echo $tutorTrainingSpecialist ?></b></span>
 							        </td>
 								</tr>
 							</table>
