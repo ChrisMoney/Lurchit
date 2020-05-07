@@ -54,7 +54,7 @@
     				$search = $_POST['search'];
     				$search = trim($search);
     				
-    				$sql = "SELECT ID, FirstName, LastName, Username FROM Members WHERE Email = '$serch' Or Username = '$search' ";
+    				$sql = "SELECT ID, FirstName, LastName, Username FROM Members WHERE Email = '$search' Or Username = '$search' ";
     				$result = mysqli_query($conn, $sql);
     				
     				if (mysqli_num_rows($result) > 0) {
@@ -70,7 +70,7 @@
     				    
     				}
     				    else {
-    				        echo "No employee found.";
+    				        echo "No member found.";
     				    }
                   }
               ?>

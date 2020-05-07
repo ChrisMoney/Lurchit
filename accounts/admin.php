@@ -228,6 +228,18 @@ span.psw {
      width: 100%;
   }
 }
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  /* Some browsers will not display the caret when using calc, so we put the fallback first */ 
+  background: url("https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png") white no-repeat 98.5% !important; /* !important used for overriding all other customisations */
+  background: url("https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png") white no-repeat calc(100% - 10px) !important; /* Better placement regardless of input width */
+}
+/*For IE*/
+select::-ms-expand { display: none; }
+
 </style>
 
         <script type="text/javascript">
@@ -370,7 +382,7 @@ span.psw {
                     
                     <h3>Email: </h3>
 
-                    <input style="max-width:50%" type = "text" name = "email" id = "email" value = "<?php echo $email ?>" />
+                    <input style="max-width:80%" type = "text" name = "email" id = "email" value = "<?php echo $email ?>" />
 
                     <br/>
                     
