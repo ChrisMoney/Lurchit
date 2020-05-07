@@ -340,7 +340,7 @@ select::-ms-expand { display: none; }
          unset($_SESSION['password']);
          
          if ($env == 'PROD') {
-            providerSignupEmail($service);
+            providerSignupEmail($username, $service);
          }
          echo "<script>alert('Your service was added to the directory. Bookmark this page to edit your account.'); location = '/admin.php?ID=$lurchID&ENV=$env' </script>";
 

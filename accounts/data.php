@@ -275,7 +275,8 @@ span.psw {
 							$result5 = mysqli_query($conn, $sql5);
 							$count5 = mysqli_num_rows($result5);
 
-							$sql6 = "SELECT ID FROM SignupHits";
+							$sql6 = "SELECT ID FROM SignupHits WHERE DATE_FORMAT(HitDate, '%Y-%m-%d') = CURDATE()";
+							//$sql6 = "SELECT ID FROM SignupHits WHERE DATE(HitDate) = DATE(NOW() - INTERVAL 1 DAY)";
 							$result6 = mysqli_query($conn, $sql6);
 							$count6 = mysqli_num_rows($result6);
 							?>
