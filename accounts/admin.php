@@ -24,7 +24,7 @@ if ((isset($_POST['login']) && $_POST['login'] == "Login") Or ($v == 'true')) {
 
 
         $sql = "SELECT FirstName, LastName, Email, Phone,
-            IsActive, IsLurch, IsLurchActive, Service, Blurb, Description, MinPrice FROM Members WHERE (Email = '$email' And Password = '$password') Or (ID = $lurchID) ";
+            IsActive, IsLurch, IsLurchActive, Service, Blurb, Description, MinPrice, Latitude, Longitude FROM Members WHERE (Email = '$email' And Password = '$password') Or (ID = $lurchID) ";
             $result = mysqli_query($conn, $sql);
             $row = mysqli_fetch_assoc($result);
 
@@ -44,7 +44,8 @@ if ((isset($_POST['login']) && $_POST['login'] == "Login") Or ($v == 'true')) {
             $minPrice = $row['MinPrice'];
             $validated = 'true';
             $_SESSION['V'] = 'true';
-
+            $longExisting = $row['Longitude'];
+            $latExisting = $row['Latitude'];
             }
     }
 
@@ -260,6 +261,7 @@ select::-ms-expand { display: none; }
                 document.getElementById("save").disabled = true;
                 document.getElementById("save").style.backgroundColor = 'gray';
                 document.getElementById('loader').style.display = 'none';
+                document.getElementById('locationSaveOptions').style.display = 'none';
                        
         }
         </script>
@@ -275,6 +277,7 @@ select::-ms-expand { display: none; }
                       document.getElementById("save").disabled = false;
                       document.getElementById("save").style.backgroundColor = 'red';
                       document.getElementById('loader').style.display = 'none';
+                      document.getElementById('locationSaveOptions').style.display = 'block';
 
                   });
               } else {
@@ -366,6 +369,7 @@ select::-ms-expand { display: none; }
 					<div style="padding-left:10px">
 						<h2 id="content">Member Data</h2>
 						
+            
 						 <form method = "post" action = "" >
                      
                     <h3>First Name: </h3>
@@ -465,9 +469,9 @@ select::-ms-expand { display: none; }
                      <h3>Lurch Active</h3>
                    	<select class="form-control" style = "width:25%" name="lurchActive" id="lurchActive">
                         <option value="1" <?php if($lurchActive=='1') echo 'selected';?>>Active</option>
-       					 <option value="0" <?php if($lurchActive=='0') echo 'selected';?>>Inactive</option>
+       					        <option value="0" <?php if($lurchActive=='0') echo 'selected';?>>Inactive</option>
                 	</select>
-                	
+
                 	<br/>
                 	
                     
@@ -479,6 +483,18 @@ select::-ms-expand { display: none; }
                     <div id="loader"></div>
                     <br/>
 					
+                    <div id = "locationSaveOptions">
+                    <h3>Save new location</h3>
+                      <select class="form-control" style = "width:25%" name="saveNewLocation" id="saveNewLocation">
+                            <option value="1">Yes</option>
+                            <option value="0" selected>No</option>
+                      </select>
+
+                      <br/><br/>
+                    </div>
+
+                     
+
                     <input style="background:#ff0000;padding-left:10px;padding-right:10px;" type = "submit" name = "save" id = "save" value = "Save Data" />
                     
               </form>
@@ -502,9 +518,18 @@ select::-ms-expand { display: none; }
             echo "<script>alert('".mysqli_error($conn)."');</script>";
          }
         
+         $saveNewLocation = $_POST['saveNewLocation'];
           
-         $lat = $_COOKIE['lat'];
-         $long = $_COOKIE['long'];
+         // if no
+         if ($saveNewLocation == '0') {
+          $lat = $latExisting;
+          $long = $longExisting;
+         }
+         else {
+          $lat = $_COOKIE['lat'];
+          $long = $_COOKIE['long'];
+         }
+         
      $firstName = $_POST['firstName'];
      $lastName = $_POST['lastName'];
      

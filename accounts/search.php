@@ -66,7 +66,7 @@
     			       $lastName = $row['LastName'];
     			       $username = $row['Username'];
     			        
-    			       echo "<a href = '/admin.php?ID=$id&search=true'>".$firstName . " ". $lastName .": ". $username ."</a> <br/>";
+    			       echo "<a href = 'https://accounts.apilurchit.com/admin.php?ID=$id&search=true'>".$firstName . " ". $lastName .": ". $username ."</a> <br/>";
     				    
     				}
     				    else {
