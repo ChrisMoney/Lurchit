@@ -9,7 +9,14 @@ if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
     $ip = $_SERVER['REMOTE_ADDR'];
 }
 
-$validated = 'false';
+$v = $_GET['v'];
+
+if ($v == 't') {
+	$validated = 'true';
+}
+else {
+	$validated = 'false';
+}
 
 if ((isset($_POST['login']) && $_POST['login'] == "Login")) {
 

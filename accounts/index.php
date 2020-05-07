@@ -1,6 +1,7 @@
 <?php 
 require '../api/connect.php';
 
+
 $validated = 'false';
 
 if ((isset($_POST['login']) && $_POST['login'] == "Login")) {
@@ -239,7 +240,7 @@ span.psw {
 					<div class="flex-item right">
 						<div>
 							<h3><a href='search.php'>Search</a></h3>
-							<h3><a href='data.php'>Data</a></h3>
+							<h3><a href='data.php?v=t'>Data</a></h3>
 						</div>
 						<div>
 							<h3></h3>

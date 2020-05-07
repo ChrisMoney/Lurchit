@@ -168,31 +168,31 @@ select::-ms-expand { display: none; }
 
                     <div class="selectdiv">
                         <select style="max-width:50%" placeholder = "Service" name="service" id="service">
-                            <option value="Animal Care Specialist">Animal Care Specialist</option>
-                            <option value="Automative Specialist">Automative Specialist</option>
-                            <option value="Barber">Barber</option>
-                            <option value="Business Services">Business Services</option>
-                            <option value="Chef">Chef</option>
-                            <option value="Childcare Specialist">Childcare Specialist</option>
-                            <option value="Computer & App Specialist">Computer & App Specialist</option>
-                            <option value="Cosmetologist">Cosmetologist</option>
-                            <option value="Delivery Specialist">Delivery Specialist</option>
-                            <option value="Entertainer">Entertainer</option>
-                            <option value="Fashion & Design Specialist">Fashion & Design Specialist</option>
-                            <option value="Financial Advisor">Financial Advisor</option>
-                            <option value="Handyman">Handyman</option>
-                            <option value="Hospice Aide">Hospice Aide</option>
-                            <option value="Insurance Agent">Insurance Agent</option>
-                            <option value="Interior Design">Interior Design</option>
-                            <option value="Landscaper">Landscaper</option>
-                            <option value="Maid">Maid</option>
-                            <option value="Masseuse">Masseuse</option>
-                            <option value="Media & Production Specialist">Media & Production Specialist</option>
-                            <option value="Occupational Specialist">Occupational Specialist</option>
-                            <option value="Personal Trainer">Personal Trainer</option>
-                            <option value="Real Estate Specialist">Real Estate Specialist</option>
-                            <option value="Therapist">Therapist</option>
-                            <option value="Tutor & Training Specialist">Tutor & Training Specialist</option>
+                            <option value="Animal Care Specialist" <?php if ($_SESSION['service'] == 'Animal Care Specialist') echo 'selected';?>>Animal Care Specialist</option>
+                            <option value="Automotive Specialist" <?php if ($_SESSION['service'] == 'Automotive Specialist') echo 'selected';?>>Automative Specialist</option>
+                            <option value="Barber" <?php if ($_SESSION['service'] == 'Barber') echo 'selected';?>>Barber</option>
+                            <option value="Business Services" <?php if ($_SESSION['service'] == 'Business Services') echo 'selected';?>>Business Services</option>
+                            <option value="Chef" <?php if ($_SESSION['service'] == 'Chef') echo 'selected';?>>Chef</option>
+                            <option value="Childcare Specialist" <?php if ($_SESSION['service'] == 'Childcare Specialist') echo 'selected';?>>Childcare Specialist</option>
+                            <option value="Computer & App Specialist" <?php if ($_SESSION['service'] == 'Computer & App Specialist') echo 'selected';?>>Computer & App Specialist</option>
+                            <option value="Cosmetologist" <?php if ($_SESSION['service'] == 'Cosmetologist') echo 'selected';?>>Cosmetologist</option>
+                            <option value="Delivery Specialist" <?php if ($_SESSION['service'] == 'Delivery Specialist') echo 'selected';?>>Delivery Specialist</option>
+                            <option value="Entertainer" <?php if ($_SESSION['service'] == 'Entertainer') echo 'selected';?>>Entertainer</option>
+                            <option value="Fashion & Design Specialist" <?php if ($_SESSION['service'] == 'Fashion & Design Specialist') echo 'selected';?>>Fashion & Design Specialist</option>
+                            <option value="Financial Advisor" <?php if ($_SESSION['service'] == 'Financial Advisor') echo 'selected';?>>Financial Advisor</option>
+                            <option value="Handyman" <?php if ($_SESSION['service'] == 'Handyman') echo 'selected';?>>Handyman</option>
+                            <option value="Hospice Aide" <?php if ($_SESSION['service'] == 'Hospice Aide') echo 'selected';?>>Hospice Aide</option>
+                            <option value="Insurance Agent" <?php if ($_SESSION['service'] == 'Insurance Agent') echo 'selected';?>>Insurance Agent</option>
+                            <option value="Interior Designer" <?php if ($_SESSION['service'] == 'Interior Designer') echo 'selected';?>>Interior Design</option>
+                            <option value="Landscaper" <?php if ($_SESSION['service'] == 'Landscaper') echo 'selected';?>>Landscaper</option>
+                            <option value="Maid" <?php if ($_SESSION['service'] == 'Maid') echo 'selected';?>>Maid</option>
+                            <option value="Masseuse" <?php if ($_SESSION['service'] == 'Masseuse') echo 'selected';?>>Masseuse</option>
+                            <option value="Media & Production Specialist" <?php if ($_SESSION['service'] == 'Media & Production Specialist') echo 'selected';?>>Media & Production Specialist</option>
+                            <option value="Occupational Specialist" <?php if ($_SESSION['service'] == 'Occupational Specialist') echo 'selected';?>>Occupational Specialist</option>
+                            <option value="Personal Trainer" <?php if ($_SESSION['service'] == 'Personal Trainer') echo 'selected';?>>Personal Trainer</option>
+                            <option value="Real Estate Specialist" <?php if ($_SESSION['service'] == 'Real Estate Specialist') echo 'selected';?>>Real Estate Specialist</option>
+                            <option value="Therapist" <?php if ($_SESSION['service'] == 'Therapist') echo 'selected';?>>Therapist</option>
+                            <option value="Tutor & Training Specialist" <?php if ($_SESSION['service'] == 'Tutor & Training Specialist') echo 'selected';?>>Tutor & Training Specialist</option>
                 	    </select>
                     </div>
 
@@ -267,21 +267,25 @@ select::-ms-expand { display: none; }
   <?php 
  
  if (isset($_POST['save']) && $_POST['save'] == "Add to Directory") {
-    $lat = $_COOKIE['lat'];
-    $long = $_COOKIE['long'];
+
+     
+     $lat = $_COOKIE['lat'];
+     $long = $_COOKIE['long'];
      $firstName = $_POST['firstName'];
      $lastName = $_POST['lastName'];
-     $username = $_POST['username'];
      $email = $_POST['email'];
-     $emailInsert = trim($email);
+     $email = trim($email);
+     $username = $_POST['username'];
+     $username = trim($username);
      $phone = $_POST['phone'];
+     $phoneFormat = phone_number_format($phone);
      $service = $_POST['service'];
      $blurb = $_POST['blurb'];   
      $description = $_POST['description'];
      $minPrice = $_POST['minPrice'];
      $isMobile = $_POST['mobileStatus'];
      $password = $_POST['password'];
-     $passwordInsert = md5($password);
+     $password = md5($password);
      $memberStatus = $_POST['memberStatus'];
      $lurchStatus = $_POST['lurchStatus'];
      $lurchActive = $_POST['lurchActive'];
@@ -298,6 +302,30 @@ select::-ms-expand { display: none; }
          $_SESSION['minPrice'] = $minPrice;
          $_SESSION['password'] = $password;
     // ---------------------------------------
+      $sql1 = "Select ID From Members Where Email = '$email' ";
+      $result1 = mysqli_query($conn, $sql1);
+      
+      if (mysqli_num_rows($result1)  > 0) {
+         // account already exists
+         echo "<script>alert('Email already exists!'); location = '/web-signup.php?ENV=$env';</script>";
+         exit;
+      }
+     
+      $sql2 = "Select ID From Members Where Username = '$username' ";
+      $result2 = mysqli_query($conn, $sql2);
+      
+      if (mysqli_num_rows($result2)  > 0) {
+         // username already in use
+         echo "<script>alert('Username already exists!'); location = '/web-signup.php?ENV=$env';</script>";
+         exit;
+      }
+     
+
+     if (strlen($firstName) == 0 || strlen($lastName) == 0 || strlen($email) == 0 || strlen($phone) == 0 || strlen($blurb) == 0
+     || strlen($password) == 0 || strlen($description) == 0 || strlen($minPrice) == 0) { 
+         echo "<script>alert('One or more of your form fields are empty'); location = '/web-signup.php?ENV=$env';</script>";
+        exit;
+    }
 
     $blurb = mysqli_real_escape_string($conn,$blurb);
     $description = mysqli_real_escape_string($conn, $blurb);
@@ -321,8 +349,8 @@ select::-ms-expand { display: none; }
     }
 
      $sql = "INSERT INTO Members
-            (FirstName,   LastName,  Username,     Email,         Phone,     Password,       Latitude, Longitude,     IsActive,       IsLurch,       IsLurchActive,    Service,     Blurb,    Description,   MinPrice,    IsMobile,  SignupDate) Values
-            ('$firstName','$lastName','$username','$emailInsert','$phone', '$passwordInsert','$lat',   '$long',         '1',            '1',               '1',     '$service', '$blurb', '$description', '$minPrice', '$isMobile', NOW())";
+            (FirstName,   LastName,  Username,     Email,    Phone,     Password,       Latitude, Longitude,     IsActive,       IsLurch,       IsLurchActive,    Service,     Blurb,    Description,   MinPrice,    IsMobile,  SignupDate) Values
+            ('$firstName','$lastName','$username','$email', '$phone', '$password',      '$lat',   '$long',         '1',            '1',               '1',     '$service', '$blurb', '$description', '$minPrice', '$isMobile', NOW())";
      
      
      if (mysqli_query($conn, $sql)) {

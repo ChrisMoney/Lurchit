@@ -23,7 +23,7 @@ if ((isset($_POST['login']) && $_POST['login'] == "Login") Or ($v == 'true')) {
     $password = md5($password);
 
 
-        $sql = "SELECT FirstName, LastName, Email, Phone,
+        $sql = "SELECT FirstName, LastName, Email, Phone, Username,
             IsActive, IsLurch, IsLurchActive, Service, Blurb, Description, MinPrice, Latitude, Longitude FROM Members WHERE (Email = '$email' And Password = '$password') Or (ID = $lurchID) ";
             $result = mysqli_query($conn, $sql);
             $row = mysqli_fetch_assoc($result);
@@ -32,7 +32,8 @@ if ((isset($_POST['login']) && $_POST['login'] == "Login") Or ($v == 'true')) {
 
             $firstName = $row['FirstName'];
             $lastName = $row['LastName'];
-            $email = $row['Email'];
+            $usernameExisting = $row['Username'];
+            $emailExisting = $row['Email'];
             $phone = $row['Phone'];
             $memberStatus = $row['IsActive'];
             $lurchStatus = $row['IsLurch'];
@@ -78,10 +79,6 @@ else {
 
         <!-- jQuery library -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-       
-
-      
 
         <script>
             function goBack() {
@@ -386,10 +383,14 @@ select::-ms-expand { display: none; }
                     
                     <h3>Email: </h3>
 
-                    <input style="max-width:80%" type = "text" name = "email" id = "email" value = "<?php echo $email ?>" />
+                    <input style="max-width:80%" type = "text" name = "email" id = "email" value = "<?php echo $emailExisting ?>" />
 
                     <br/>
                     
+                    <h3>Username </h3>
+
+                    <input style="max-width:80%" type = "text" name = "username" id = "username" value = "<?php echo $usernameExisting ?>" />
+
                     <br/>
                     
                     <h3>Phone: </h3>
@@ -503,10 +504,39 @@ select::-ms-expand { display: none; }
 
  
   <?php 
- unset($_SESSION['V']);
+
 
  if (isset($_POST['save']) && $_POST['save'] == "Save Data") {
     
+     $email = $_POST['email'];
+     $email = trim($email);
+     
+
+     if ($email != $emailExisting) {
+      $sql1 = "Select ID From Members Where Email = '$email' ";
+      $result1 = mysqli_query($conn, $sql1);
+      
+      if (mysqli_num_rows($result1)  > 0) {
+         // account already exists
+         echo "<script>alert('Email already exists!');</script>";
+         exit;
+      }
+     }
+  
+     $username = $_POST['username'];
+     $username = trim($username);
+
+     if ($username != $usernameExisting) {
+      $sql2 = "Select ID From Members Where Username = '$username' ";
+      $result2 = mysqli_query($conn, $sql2);
+      
+      if (mysqli_num_rows($result2)  > 0) {
+         // username already in use
+         echo "<script>alert('Username already exists!');</script>";
+         exit;
+      }
+     }
+ 
     // Update lurch info first if member is a lurch
 
         $service = $_POST['service'];
@@ -533,8 +563,8 @@ select::-ms-expand { display: none; }
      $firstName = $_POST['firstName'];
      $lastName = $_POST['lastName'];
      
-     $email = $_POST['email'];
-     $email = trim($email);
+     
+    
      $phone = $_POST['phone'];
      $phone = phone_number_format($phone);
      $memberStatus = $_POST['memberStatus'];
@@ -544,6 +574,7 @@ select::-ms-expand { display: none; }
      $sql = "Update Members Set 
             FirstName = '$firstName',
             LastName = '$lastName',
+            Username = '$username',
             Email = '$email', 
             Phone = '$phone',
             Latitude = '$lat',
@@ -552,8 +583,6 @@ select::-ms-expand { display: none; }
             IsLurch = '$lurchStatus',
             IsLurchActive = '$lurchActive'
             WHERE ID = $lurchID ";
-     
-            $_SESSION['V'] = 'true';
 
      if (mysqli_query($conn, $sql)) { 
         
