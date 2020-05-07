@@ -34,9 +34,9 @@
 						
 						 <form method = "post" action = "" >
                      
-                    <h3>Email : </h3>
+                    <h3>Email Or Username: </h3>
 
-                    <input style="max-width:90%" type = "email" name = "email" id = "email" />
+                    <input style="max-width:90%" type = "text" name = "search" id = "search" />
 
                     <br/>
                      
@@ -51,10 +51,10 @@
                     require '../api/connect.php';
 							
 							
-    				$email = $_POST['email'];
-    				$email = trim($email);
+    				$search = $_POST['search'];
+    				$search = trim($search);
     				
-    				$sql = "SELECT ID, FirstName, LastName, Username FROM Members WHERE Email = '$email' ";
+    				$sql = "SELECT ID, FirstName, LastName, Username FROM Members WHERE Email = '$serch' Or Username = '$search' ";
     				$result = mysqli_query($conn, $sql);
     				
     				if (mysqli_num_rows($result) > 0) {
@@ -66,7 +66,7 @@
     			       $lastName = $row['LastName'];
     			       $username = $row['Username'];
     			        
-    			       echo "<a href = '/admin.php?ID=$id'>".$firstName . " ". $lastName .": ". $username ."</a> <br/>";
+    			       echo "<a href = '/admin.php?ID=$id&search=true'>".$firstName . " ". $lastName .": ". $username ."</a> <br/>";
     				    
     				}
     				    else {

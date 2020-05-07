@@ -6,7 +6,15 @@ require '../api/connect.php';
 require_once '../api/helpers.php';
 
 $lurchID = $_GET['ID'];
-$v = $_SESSION['V'];
+$search = $_GET['search'];
+
+if ($search == 'true') {
+  $v = 'true';
+}
+else {
+  $v = $_SESSION['V'];
+}
+
 
 if ((isset($_POST['login']) && $_POST['login'] == "Login") Or ($v == 'true')) {
 
@@ -408,13 +416,13 @@ span.psw {
 
                     <h3>Service Summary (Blurb): </h3>
 
-                    <input style="max-width:50%" type = "text" name = "blurb" id = "blurb" maxlength="40" value = "<?php echo $blurb ?>" />
+                    <input style="max-width:80%" type = "text" name = "blurb" id = "blurb" maxlength="40" value = "<?php echo $blurb ?>" />
 
                     <br/>
 
                     <h3>Full Service Description: </h3>
 
-                    <textarea style="max-width:50%" type = "text" name = "description" id = "description"><?php echo $description ?></textarea>
+                    <textarea style="max-width:80%" type = "text" name = "description" id = "description"><?php echo $description ?></textarea>
 
                     <br/>
 
