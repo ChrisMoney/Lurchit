@@ -18,82 +18,6 @@
         "application/json"
     ],
     "paths": {
-        "/logServiceRequest.php": {
-            "get": {
-                "operationId": "GET_logServiceRequest-php",
-                "summary": "LogServiceRequest",
-                "parameters": [
-                    {
-                        "name": "ProviderID",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "Service",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "ENV",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "DEVICE",
-                        "in": "query",
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "default": {
-                        "description": "",
-                        "schema": {}
-                    }
-                }
-            }
-        },
-        "/saveGender.php": {
-            "get": {
-                "operationId": "GET_saveGender-php",
-                "summary": "SaveGender",
-                "parameters": [
-                    {
-                        "name": "ID",
-                        "in": "query",
-                        "type": "integer"
-                    },
-                    {
-                        "name": "ENV",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "DEVICE",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "Gender",
-                        "in": "query",
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer"
-                        }
-                    },
-                    "500": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                }
-            }
-        },
         "/saveStatus.php": {
             "get": {
                 "operationId": "GET_saveStatus-php",
@@ -136,33 +60,24 @@
                 }
             }
         },
-        "/login.php": {
+        "/updateFirstTime.php": {
             "get": {
-                "operationId": "GET_login-php",
-                "summary": "Login",
+                "operationId": "GET_updateFirstTime-php",
+                "summary": "UpdateFirstTime",
                 "parameters": [
                     {
-                        "name": "email",
+                        "name": "ID",
                         "in": "query",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "password",
-                        "in": "query",
-                        "required": true,
-                        "type": "string"
+                        "type": "integer"
                     },
                     {
                         "name": "ENV",
                         "in": "query",
-                        "required": false,
                         "type": "string"
                     },
                     {
                         "name": "DEVICE",
                         "in": "query",
-                        "required": false,
                         "type": "string"
                     }
                 ],
@@ -170,23 +85,10 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "string",
-                            "description": "Successful signup."
-                        },
-                        "examples": {
-                            "application/json": {
-                                "ID": 98124060
-                            }
+                            "type": "integer"
                         }
                     },
-                    "400": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "Invalid email or password."
-                        }
-                    },
-                    "401": {
+                    "500": {
                         "description": "",
                         "schema": {
                             "type": "integer"
@@ -267,6 +169,107 @@
                 }
             }
         },
+        "/login.php": {
+            "get": {
+                "operationId": "GET_login-php",
+                "summary": "Login",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "ENV",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
+                        "in": "query",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "string",
+                            "description": "Successful signup."
+                        },
+                        "examples": {
+                            "application/json": {
+                                "ID": 98124060
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Invalid email or password."
+                        }
+                    },
+                    "401": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        },
+        "/saveDescription.php": {
+            "get": {
+                "operationId": "GET_saveDescription-php",
+                "summary": "SaveDescription",
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Description",
+                        "in": "query",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        },
         "/uploadProfileMedia.php": {
             "post": {
                 "operationId": "POST_uploadProfileMedia-php",
@@ -307,10 +310,10 @@
                 }
             }
         },
-        "/saveDescription.php": {
+        "/saveBlurb.php": {
             "get": {
-                "operationId": "GET_saveDescription-php",
-                "summary": "SaveDescription",
+                "operationId": "GET_saveBlurb-php",
+                "summary": "SaveBlurb",
                 "parameters": [
                     {
                         "name": "ID",
@@ -328,7 +331,7 @@
                         "type": "string"
                     },
                     {
-                        "name": "Description",
+                        "name": "Blurb",
                         "in": "query",
                         "type": "string"
                     }
@@ -403,10 +406,10 @@
                 }
             }
         },
-        "/saveBlurb.php": {
+        "/saveWebsite.php": {
             "get": {
-                "operationId": "GET_saveBlurb-php",
-                "summary": "SaveBlurb",
+                "operationId": "GET_saveWebsite-php",
+                "summary": "SaveWebsite",
                 "parameters": [
                     {
                         "name": "ID",
@@ -424,7 +427,7 @@
                         "type": "string"
                     },
                     {
-                        "name": "Blurb",
+                        "name": "Website",
                         "in": "query",
                         "type": "string"
                     }
@@ -484,10 +487,10 @@
                 }
             }
         },
-        "/saveWebsite.php": {
+        "/savePhone.php": {
             "get": {
-                "operationId": "GET_saveWebsite-php",
-                "summary": "SaveWebsite",
+                "operationId": "GET_savePhone-php",
+                "summary": "SavePhone",
                 "parameters": [
                     {
                         "name": "ID",
@@ -505,7 +508,7 @@
                         "type": "string"
                     },
                     {
-                        "name": "Website",
+                        "name": "Phone",
                         "in": "query",
                         "type": "string"
                     }
@@ -589,10 +592,10 @@
                 }
             }
         },
-        "/savePhone.php": {
+        "/getDescription.php": {
             "get": {
-                "operationId": "GET_savePhone-php",
-                "summary": "SavePhone",
+                "operationId": "GET_getDescription-php",
+                "summary": "GetDescription",
                 "parameters": [
                     {
                         "name": "ID",
@@ -608,24 +611,13 @@
                         "name": "DEVICE",
                         "in": "query",
                         "type": "string"
-                    },
-                    {
-                        "name": "Phone",
-                        "in": "query",
-                        "type": "string"
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "integer"
-                        }
-                    },
-                    "500": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer"
+                            "type": "string"
                         }
                     }
                 }
@@ -676,10 +668,10 @@
                 }
             }
         },
-        "/getDescription.php": {
+        "/getWebsite.php": {
             "get": {
-                "operationId": "GET_getDescription-php",
-                "summary": "GetDescription",
+                "operationId": "GET_getWebsite-php",
+                "summary": "GetWebsite",
                 "parameters": [
                     {
                         "name": "ID",
@@ -783,10 +775,10 @@
                 }
             }
         },
-        "/getWebsite.php": {
+        "/getPhone.php": {
             "get": {
-                "operationId": "GET_getWebsite-php",
-                "summary": "GetWebsite",
+                "operationId": "GET_getPhone-php",
+                "summary": "GetPhone",
                 "parameters": [
                     {
                         "name": "ID",
@@ -853,10 +845,120 @@
                 }
             }
         },
-        "/getPhone.php": {
+        "/getServiceProviders.php": {
             "get": {
-                "operationId": "GET_getPhone-php",
-                "summary": "GetPhone",
+                "operationId": "GET_getServiceProviders-php",
+                "summary": "GetServiceProviders",
+                "parameters": [
+                    {
+                        "name": "Distance",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Lat",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Long",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Service",
+                        "in": "query",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "Username": {
+                                        "type": "string"
+                                    },
+                                    "ProfilePhoto": {
+                                        "type": "string"
+                                    },
+                                    "Blurb": {
+                                        "type": "string"
+                                    },
+                                    "MinPrice": {
+                                        "type": "string"
+                                    },
+                                    "ID": {
+                                        "type": "string"
+                                    },
+                                    "IsProfilePremium": {
+                                        "type": "string"
+                                    },
+                                    "IsMobile": {
+                                        "type": "string"
+                                    },
+                                    "Gender": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        },
+        "/logServiceRequest.php": {
+            "get": {
+                "operationId": "GET_logServiceRequest-php",
+                "summary": "LogServiceRequest",
+                "parameters": [
+                    {
+                        "name": "ProviderID",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Service",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
+                        "in": "query",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/getMinPrice.php": {
+            "get": {
+                "operationId": "GET_getMinPrice-php",
+                "summary": "GetMinPrice",
                 "parameters": [
                     {
                         "name": "ID",
@@ -879,6 +981,421 @@
                         "description": "",
                         "schema": {
                             "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/getLocation.php": {
+            "get": {
+                "operationId": "GET_getLocation-php",
+                "summary": "GetLocation",
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
+                        "in": "query",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": [
+                                "object",
+                                "string"
+                            ],
+                            "properties": {
+                                "City": {
+                                    "type": "string"
+                                },
+                                "State": {
+                                    "type": "string"
+                                },
+                                "Country": {
+                                    "type": "string"
+                                },
+                                "FullLocation": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Failed to return location."
+                        }
+                    }
+                }
+            }
+        },
+        "/saveMinPrice.php": {
+            "get": {
+                "operationId": "GET_saveMinPrice-php",
+                "summary": "SaveMinPrice",
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "MinPrice",
+                        "in": "query",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        },
+        "/deactivateAccount.php": {
+            "get": {
+                "operationId": "GET_deactivateAccount-php",
+                "summary": "DeactivateAccount",
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
+                        "in": "query",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Delete Successful"
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer",
+                            "description": "Delete Failed"
+                        }
+                    }
+                }
+            }
+        },
+        "/saveService.php": {
+            "get": {
+                "operationId": "GET_saveService-php",
+                "summary": "SaveService",
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Service",
+                        "in": "query",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        },
+        "/getProfile.php": {
+            "get": {
+                "operationId": "GET_getProfile-php",
+                "summary": "GetProfile",
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
+                        "in": "query",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "FirstName": {
+                                    "type": "string"
+                                },
+                                "LastName": {
+                                    "type": "string"
+                                },
+                                "Username": {
+                                    "type": "string"
+                                },
+                                "Email": {
+                                    "type": "string"
+                                },
+                                "Phone": {
+                                    "type": "string"
+                                },
+                                "ProfilePhoto": {
+                                    "type": "string"
+                                },
+                                "Password": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/recordRequest.php": {
+            "get": {
+                "operationId": "GET_recordRequest-php",
+                "summary": "RecordRequest",
+                "parameters": [
+                    {
+                        "name": "CustomerID",
+                        "in": "query",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "Service",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
+                        "in": "query",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        },
+        "/isFirstTime.php": {
+            "get": {
+                "operationId": "GET_isFirstTime-php",
+                "summary": "IsFirstTime",
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
+                        "in": "query",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/saveGender.php": {
+            "get": {
+                "operationId": "GET_saveGender-php",
+                "summary": "SaveGender",
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "Gender",
+                        "in": "query",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        },
+        "/saveMobileStatus.php": {
+            "get": {
+                "operationId": "GET_saveMobileStatus-php",
+                "summary": "SaveMobileStatus",
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "IsMobile",
+                        "in": "query",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        },
+        "/makeLurch.php": {
+            "get": {
+                "operationId": "GET_makeLurch-php",
+                "summary": "MakeLurch",
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "query",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    "500": {
+                        "description": "",
+                        "schema": {
+                            "type": "integer"
                         }
                     }
                 }
@@ -977,139 +1494,32 @@
                 }
             }
         },
-        "/getServiceProviders.php": {
+        "/logServiceSearch.php": {
             "get": {
-                "operationId": "GET_getServiceProviders-php",
-                "summary": "GetServiceProviders",
+                "operationId": "GET_logServiceSearch-php",
+                "summary": "LogServiceSearch",
                 "parameters": [
-                    {
-                        "name": "Distance",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "Lat",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "Long",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "ENV",
-                        "in": "query",
-                        "type": "string"
-                    },
                     {
                         "name": "Service",
                         "in": "query",
                         "type": "string"
+                    },
+                    {
+                        "name": "ENV",
+                        "in": "query",
+                        "type": "string"
+                    },
+                    {
+                        "name": "DEVICE",
+                        "in": "query",
+                        "type": "string"
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "type": "object",
-                                "properties": {
-                                    "Username": {
-                                        "type": "string"
-                                    },
-                                    "ProfilePhoto": {
-                                        "type": "string"
-                                    },
-                                    "Blurb": {
-                                        "type": "string"
-                                    },
-                                    "MinPrice": {
-                                        "type": "string"
-                                    },
-                                    "ID": {
-                                        "type": "string"
-                                    },
-                                    "IsProfilePremium": {
-                                        "type": "string"
-                                    },
-                                    "IsMobile": {
-                                        "type": "string"
-                                    },
-                                    "Gender": {
-                                        "type": "string"
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "201": {
                         "description": "",
                         "schema": {
                             "type": "integer"
-                        }
-                    }
-                }
-            }
-        },
-        "/getBlurb.php": {
-            "get": {
-                "operationId": "GET_getBlurb-php",
-                "summary": "GetBlurb",
-                "parameters": [
-                    {
-                        "name": "ID",
-                        "in": "query",
-                        "type": "integer"
-                    },
-                    {
-                        "name": "ENV",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "DEVICE",
-                        "in": "query",
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                }
-            }
-        },
-        "/getMinPrice.php": {
-            "get": {
-                "operationId": "GET_getMinPrice-php",
-                "summary": "GetMinPrice",
-                "parameters": [
-                    {
-                        "name": "ID",
-                        "in": "query",
-                        "type": "integer"
-                    },
-                    {
-                        "name": "ENV",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "DEVICE",
-                        "in": "query",
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "string"
                         }
                     }
                 }
@@ -1152,235 +1562,10 @@
                 }
             }
         },
-        "/logServiceSearch.php": {
+        "/getBlurb.php": {
             "get": {
-                "operationId": "GET_logServiceSearch-php",
-                "summary": "LogServiceSearch",
-                "parameters": [
-                    {
-                        "name": "Service",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "ENV",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "DEVICE",
-                        "in": "query",
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                }
-            }
-        },
-        "/saveMobileStatus.php": {
-            "get": {
-                "operationId": "GET_saveMobileStatus-php",
-                "summary": "SaveMobileStatus",
-                "parameters": [
-                    {
-                        "name": "ID",
-                        "in": "query",
-                        "type": "integer"
-                    },
-                    {
-                        "name": "ENV",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "DEVICE",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "IsMobile",
-                        "in": "query",
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer"
-                        }
-                    },
-                    "500": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                }
-            }
-        },
-        "/makeLurch.php": {
-            "get": {
-                "operationId": "GET_makeLurch-php",
-                "summary": "MakeLurch",
-                "parameters": [
-                    {
-                        "name": "ID",
-                        "in": "query",
-                        "type": "integer"
-                    },
-                    {
-                        "name": "ENV",
-                        "in": "query",
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer"
-                        }
-                    },
-                    "500": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                }
-            }
-        },
-        "/saveService.php": {
-            "get": {
-                "operationId": "GET_saveService-php",
-                "summary": "SaveService",
-                "parameters": [
-                    {
-                        "name": "ID",
-                        "in": "query",
-                        "type": "integer"
-                    },
-                    {
-                        "name": "ENV",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "DEVICE",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "Service",
-                        "in": "query",
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer"
-                        }
-                    },
-                    "500": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                }
-            }
-        },
-        "/saveMinPrice.php": {
-            "get": {
-                "operationId": "GET_saveMinPrice-php",
-                "summary": "SaveMinPrice",
-                "parameters": [
-                    {
-                        "name": "ID",
-                        "in": "query",
-                        "type": "integer"
-                    },
-                    {
-                        "name": "ENV",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "DEVICE",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "MinPrice",
-                        "in": "query",
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer"
-                        }
-                    },
-                    "500": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                }
-            }
-        },
-        "/recordRequest.php": {
-            "get": {
-                "operationId": "GET_recordRequest-php",
-                "summary": "RecordRequest",
-                "parameters": [
-                    {
-                        "name": "CustomerID",
-                        "in": "query",
-                        "type": "integer"
-                    },
-                    {
-                        "name": "Service",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "ENV",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "DEVICE",
-                        "in": "query",
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                }
-            }
-        },
-        "/getProfile.php": {
-            "get": {
-                "operationId": "GET_getProfile-php",
-                "summary": "GetProfile",
+                "operationId": "GET_getBlurb-php",
+                "summary": "GetBlurb",
                 "parameters": [
                     {
                         "name": "ID",
@@ -1402,124 +1587,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "type": "object",
-                            "properties": {
-                                "FirstName": {
-                                    "type": "string"
-                                },
-                                "LastName": {
-                                    "type": "string"
-                                },
-                                "Username": {
-                                    "type": "string"
-                                },
-                                "Email": {
-                                    "type": "string"
-                                },
-                                "Phone": {
-                                    "type": "string"
-                                },
-                                "ProfilePhoto": {
-                                    "type": "string"
-                                },
-                                "Password": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/deactivateAccount.php": {
-            "get": {
-                "operationId": "GET_deactivateAccount-php",
-                "summary": "DeactivateAccount",
-                "parameters": [
-                    {
-                        "name": "ID",
-                        "in": "query",
-                        "type": "integer"
-                    },
-                    {
-                        "name": "ENV",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "DEVICE",
-                        "in": "query",
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "Delete Successful"
-                        }
-                    },
-                    "500": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "Delete Failed"
-                        }
-                    }
-                }
-            }
-        },
-        "/getLocation.php": {
-            "get": {
-                "operationId": "GET_getLocation-php",
-                "summary": "GetLocation",
-                "parameters": [
-                    {
-                        "name": "ID",
-                        "in": "query",
-                        "type": "integer"
-                    },
-                    {
-                        "name": "ENV",
-                        "in": "query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "DEVICE",
-                        "in": "query",
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "type": [
-                                "object",
-                                "string"
-                            ],
-                            "properties": {
-                                "City": {
-                                    "type": "string"
-                                },
-                                "State": {
-                                    "type": "string"
-                                },
-                                "Country": {
-                                    "type": "string"
-                                },
-                                "FullLocation": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "",
-                        "schema": {
-                            "type": "integer",
-                            "description": "Failed to return location."
+                            "type": "string"
                         }
                     }
                 }
