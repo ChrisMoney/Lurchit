@@ -8,6 +8,13 @@ require 'connect.php';
 $id = $_GET['ID'];
 $isMobile = $_GET['IsMobile'];
 
+if ($isMobile == 'Yes') {
+    $isMobile = '1';
+}
+else {
+    $isMobile = '0';
+}
+
 $sql = "Update Members Set IsMobile = '$isMobile' WHERE ID = $id ";
 
 if (mysqli_query($conn, $sql)) {
