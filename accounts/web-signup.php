@@ -32,6 +32,26 @@ document.getElementById('loader').style.display = 'none';
 }
 </script>
 
+<script>
+    function validateNumber(evt) {
+  var theEvent = evt || window.event;
+
+  // Handle paste
+  if (theEvent.type === 'paste') {
+      key = event.clipboardData.getData('text/plain');
+  } else {
+  // Handle key press
+      var key = theEvent.keyCode || theEvent.which;
+      key = String.fromCharCode(key);
+  }
+  var regex = /[0-9]|\./;
+  if( !regex.test(key) ) {
+    theEvent.returnValue = false;
+    if(theEvent.preventDefault) theEvent.preventDefault();
+  }
+}
+</script>
+
 <style>
 #loader {
   border: 16px solid #f3f3f3;
@@ -211,7 +231,7 @@ select::-ms-expand { display: none; }
                     <br/>
                    
                     <h3>Minimum Price</h3>
-                    <input class="form-control" style="max-width:50%;" maxLength = "12" type = "number" name = "minPrice" id = "minPrice" value = "<?php echo $_SESSION['minPrice'] ?>" />
+                    <input class="form-control" style="max-width:50%;" maxLength = "12" type='text' placeholder = "30" onkeypress='validateNumber(event)' name = "minPrice" id = "minPrice" value = "<?php echo $_SESSION['minPrice'] ?>" />
 
                     <hr/>
 

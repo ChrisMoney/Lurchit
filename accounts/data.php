@@ -375,7 +375,7 @@ span.psw {
 
 							// Business Services
 							$sqlBusinessServices = "SELECT ID FROM Members WHERE Service = 'Business Services' And IsLurchActive = 1 ";
-							$resultBusinessServices = mysqli_query($conn, $sqlBarber);
+							$resultBusinessServices = mysqli_query($conn, $sqlBusinessServices);
 							if ($resultBusinessServices) {
 							    if (mysqli_num_rows($resultBusinessServices) > 0) {
 							        $businessServices = mysqli_num_rows($resultBusinessServices);
@@ -702,7 +702,7 @@ span.psw {
 								</tr>
 								<tr>
 									<td>
-							        <span style='color:black'>Business Services <b><?php echo $businessServices ?></b></span>
+							        <span style='color:black'>Business Services: <b><?php echo $businessServices ?></b></span>
 							        </td>
 								</tr>
 								<tr>

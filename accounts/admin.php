@@ -22,9 +22,17 @@ if ((isset($_POST['login']) && $_POST['login'] == "Login") Or ($v == 'true')) {
     $password = $_POST['password'];
     $password = md5($password);
 
+    if ($v == 'true') {
+      $whereClause = " ID = $lurchID ";
+    }
+    else {
+      $whereClause = " Email = '$email' And Password = '$password' ";
+    }
+    
 
-        $sql = "SELECT FirstName, LastName, Email, Phone, Username,
-            IsActive, IsLurch, IsLurchActive, Service, Blurb, Description, MinPrice, Latitude, Longitude FROM Members WHERE (Email = '$email' And Password = '$password') Or (ID = $lurchID) ";
+
+        $sql = "SELECT ID, FirstName, LastName, Email, Phone, Username,
+            IsActive, IsLurch, IsLurchActive, Service, Blurb, Description, MinPrice, Latitude, Longitude FROM Members WHERE $whereClause";
             $result = mysqli_query($conn, $sql);
             $row = mysqli_fetch_assoc($result);
 
@@ -47,6 +55,7 @@ if ((isset($_POST['login']) && $_POST['login'] == "Login") Or ($v == 'true')) {
             $_SESSION['V'] = 'true';
             $longExisting = $row['Longitude'];
             $latExisting = $row['Latitude'];
+            $lurchID = $row['ID'];
             }
     }
 
@@ -263,6 +272,26 @@ select::-ms-expand { display: none; }
         }
         </script>
 
+        <script>
+            function validateNumber(evt) {
+          var theEvent = evt || window.event;
+
+          // Handle paste
+          if (theEvent.type === 'paste') {
+              key = event.clipboardData.getData('text/plain');
+          } else {
+          // Handle key press
+              var key = theEvent.keyCode || theEvent.which;
+              key = String.fromCharCode(key);
+          }
+          var regex = /[0-9]|\./;
+          if( !regex.test(key) ) {
+            theEvent.returnValue = false;
+            if(theEvent.preventDefault) theEvent.preventDefault();
+          }
+        }
+        </script>
+
       <script type="text/javascript">
               function showPosition() {
                   if(navigator.geolocation) {
@@ -445,7 +474,7 @@ select::-ms-expand { display: none; }
 
                     <h3>Min Price: </h3>
 
-                    <input style="max-width:50%" maxLength = "12" type = "number" name = "minPrice" id = "minPrice" value = "<?php echo $minPrice ?>" />
+                    <input style="max-width:50%" maxLength = "12" type='text' placeholder = "30" onkeypress='validateNumber(event)' name = "minPrice" id = "minPrice" value = "<?php echo $minPrice ?>" />
 
                     <br/>
                                         
