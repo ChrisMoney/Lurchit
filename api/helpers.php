@@ -280,81 +280,91 @@ function detect_zipcode($string) {
 function getSelectedServiceIndex($service) {
     $serviceIndex = "0";
 
-    if ($service == "Animal Care Specialist") {
-        $serviceIndex = ServiceIndexes :: AnimalCareSpecialist;
+    if ($service == "Animal Care") {
+        $serviceIndex = ServiceIndexes :: AnimalCare;
     }
-    elseif ($service == "Automotive Specialist") {
-        $serviceIndex = ServiceIndexes :: AutomotiveSpecialist;
+    elseif ($service == "Artists & Entertainment") {
+        $serviceIndex = ServiceIndexes :: ArtistsEntertainment;
+    }
+    elseif ($service == "Automotive") {
+        $serviceIndex = ServiceIndexes :: Automotive;
     }
     elseif ($service == "Barber") {
         $serviceIndex = ServiceIndexes :: Barber;
     }
-    elseif ($service == "Business Services") {
-        $serviceIndex = ServiceIndexes :: BusinessServices;
+    elseif ($service == "Business") {
+        $serviceIndex = ServiceIndexes :: Business;
     }
-    elseif ($service == "Chef") {
-        $serviceIndex = ServiceIndexes :: Chef;
+    
+    elseif ($service == "Childcare") {
+        $serviceIndex = ServiceIndexes :: Childcare;
     }
-    elseif ($service == "Childcare Specialist") {
-        $serviceIndex = ServiceIndexes :: ChildcareSpecialist;
+    elseif ($service == "Cleaning") {
+        $serviceIndex = ServiceIndexes :: Cleaning;
     }
-    elseif ($service == "Computer & App Specialist") {
-        $serviceIndex = ServiceIndexes :: ComputerAppSpecialist;
+    
+    elseif ($service == "Cosmetology") {
+        $serviceIndex = SserviceIndexes :: Cosmetology;
     }
-    elseif ($service == "Cosmetologist") {
-        $serviceIndex = SserviceIndexes :: Cosmetologist;
+    elseif ($service == "Education") {
+        $serviceIndex = ServiceIndexes :: Education;
     }
-    elseif ($service == "Delivery Specialist") {
-        $serviceIndex = ServiceIndexes :: DeliverySpecialist;
+    elseif ($service == "Employment") {
+        $serviceIndex = ServiceIndexes :: Employment;
     }
-    elseif ($service == "Entertainer") {
-        $serviceIndex = ServiceIndexes :: Entertainer;
+    elseif ($service == "Fashion") {
+        $serviceIndex = ServiceIndexes :: Fashion;
     }
-    elseif ($service == "Fashion & Design Specialist") {
-        $serviceIndex = ServiceIndexes :: FashionDesignSpecialist;
+    elseif ($service == "Finance") {
+        $serviceIndex = ServiceIndexes :: Finance;
     }
-    elseif ($service == "Financial Advisor") {
-        $serviceIndex = ServiceIndexes :: FinancialAdvisor;
+    elseif ($service == "Fitness") {
+        $serviceIndex = ServiceIndexes :: Fitness;
     }
     elseif ($service == "Handyman") {
         $serviceIndex = ServiceIndexes :: Handyman;
     }
-    elseif ($service == "Hospice Aide") {
-        $serviceIndex = ServiceIndexes :: HospiceAide;
+    elseif ($service == "Insurance") {
+        $serviceIndex = ServiceIndexes :: Insurance;
     }
-    elseif ($service == "Insurance Agent") {
-        $serviceIndex = ServiceIndexes :: InsuranceAgent;
+    elseif ($service == "Interior Design") {
+        $serviceIndex = ServiceIndexes :: InteriorDesign;
     }
-    elseif ($service == "Interior Designer") {
-        $serviceIndex = ServiceIndexes :: InteriorDesigner;
+    
+    elseif ($service == "Landscaping") {
+        $serviceIndex = ServiceIndexes :: Landscaping;
     }
-    elseif ($service == "Landscaper") {
-        $serviceIndex = ServiceIndexes :: Landscaper;
+    elseif ($service == "Massage Therapy") {
+        $serviceIndex = ServiceIndexes :: MassageTherapy;
     }
-    elseif ($service == "Maid") {
-        $serviceIndex = ServiceIndexes :: Maid;
+    elseif ($service == "Media & Production") {
+        $serviceIndex = ServiceIndexes :: MediaProduction;
     }
-    elseif ($service == "Masseuse") {
-        $serviceIndex = ServiceIndexes :: Masseuse;
+    elseif ($service == "Medical Care") {
+        $serviceIndex = ServiceIndexes :: MedicalCare;
     }
-    elseif ($service == "Media & Production Specialist") {
-        $serviceIndex = ServiceIndexes :: MediaProductionSpecialist;
+    elseif ($service == "Mental Therapy") {
+        $serviceIndex = ServiceIndexes :: MentalTherapy;
     }
-    elseif ($service == "Occupational Specialist") {
-        $serviceIndex = ServiceIndexes :: OccupationalSpecialist;
+    elseif ($service == "Moving & Delivery") {
+        $serviceIndex = ServiceIndexes :: MovingDelivery;
     }
-    elseif ($service == "Personal Trainer") {
-        $serviceIndex = ServiceIndexes :: PersonalTrainer;
+    elseif ($service == "Night Life") {
+        $serviceIndex = ServiceIndexes :: NightLife;
     }
-    elseif ($service == "Real Estate Specialist") {
-        $serviceIndex = ServiceIndexes :: RealEstateSpecialist;
+    elseif ($service == "Photography") {
+        $serviceIndex = ServiceIndexes :: Photography;
     }
-    elseif ($service == "Therapist") {
-        $serviceIndex = ServiceIndexes :: Therapist;
+    elseif ($service == "Real Estate") {
+        $serviceIndex = ServiceIndexes :: RealEstate;
     }
-    elseif ($service == "Tutor") {
-        $serviceIndex = ServiceIndexes :: Tutor;
+    elseif ($service == "Restaurant & Food Services") {
+        $serviceIndex = ServiceIndexes :: RestaurantFoodServices;
     }
+    elseif ($service == "Technology") {
+        $serviceIndex = ServiceIndexes :: Technology;
+    }
+   
     return $serviceIndex;
 }
 
@@ -362,29 +372,31 @@ function getSelectedServiceIndex($service) {
 This enum list order should always match the list in the app
 */
 class ServiceIndexes {
-    const AnimalCareSpecialist = "0";
-    const AutomotiveSpecialist = "1";
-    const Barber = "2";
-    const BusinessServices = "3";
-    const Chef = "4";
-    const ChildcareSpecialist = "5";
-    const ComputerAppSpecialist = "6";
-    const Cosmetologist = "7";
-    const DeliverySpecialist = "8";
-    const Entertainer = "9";
-    const FashionDesignSpecialist = "10";
-    const FinancialAdvisor = "11";
-    const Handyman = "12";
-    const HospiceAide = "13";
-    const InsuranceAgent = "14";
+    const AnimalCare = "0";
+    const ArtistsEntertainment = "1";
+    const Automotive = "2";
+    const Barber = "3";
+    const Business = "4";  
+    const Childcare = "5";
+    const Cleaning = "6";
+    const Cosmetology = "7"; 
+    const Education = "8";
+    const Employment = "9";
+    const Fashion = "10";
+    const Finance = "11";
+    const Fitness = "12";
+    const Handyman = "13";
+    const Insurance = "14";
     const InteriorDesigner = "15";
     const Landscaper = "16";
-    const Maid = "17";
-    const Masseuse = "18";
-    const MediaProductionSpecialist = "19";
-    const OccupationalSpecialist = "20";
-    const PersonalTrainer = "21";
-    const RealEstateSpecialist = "22";
-    const Therapist = "23";
-    const Tutor = "24";
+    const MassageTherapy = "17";
+    const MediaProduction = "18";
+    const MedicalCare = "19"; 
+    const MentalTherapy = "20";
+    const MovingDelivery = "21";
+    const NightLife = "22";
+    const Photography = "23";
+    const RealEstate = "24"; 
+    const RestaurantFoodServices = "25";
+    const Technology = "26";
 }

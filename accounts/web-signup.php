@@ -188,31 +188,33 @@ select::-ms-expand { display: none; }
 
                     <div class="selectdiv">
                         <select style="max-width:50%" placeholder = "Service" name="service" id="service">
-                            <option value="Animal Care Specialist" <?php if ($_SESSION['service'] == 'Animal Care Specialist') echo 'selected';?>>Animal Care Specialist</option>
-                            <option value="Automotive Specialist" <?php if ($_SESSION['service'] == 'Automotive Specialist') echo 'selected';?>>Automative Specialist</option>
+                            <option value="Animal Care" <?php if ($_SESSION['service'] == 'Animal Care') echo 'selected';?>>Animal Care </option>
+                            <option value="Artists & Entertainment" <?php if ($_SESSION['service'] == 'Artists & Entertainment') echo 'selected';?>>Artists & Entertainment</option>
+                            <option value="Automotive" <?php if ($_SESSION['service'] == 'Automotive') echo 'selected';?>>Automotive</option>
                             <option value="Barber" <?php if ($_SESSION['service'] == 'Barber') echo 'selected';?>>Barber</option>
-                            <option value="Business Services" <?php if ($_SESSION['service'] == 'Business Services') echo 'selected';?>>Business Services</option>
-                            <option value="Chef" <?php if ($_SESSION['service'] == 'Chef') echo 'selected';?>>Chef</option>
-                            <option value="Childcare Specialist" <?php if ($_SESSION['service'] == 'Childcare Specialist') echo 'selected';?>>Childcare Specialist</option>
-                            <option value="Computer & App Specialist" <?php if ($_SESSION['service'] == 'Computer & App Specialist') echo 'selected';?>>Computer & App Specialist</option>
-                            <option value="Cosmetologist" <?php if ($_SESSION['service'] == 'Cosmetologist') echo 'selected';?>>Cosmetologist</option>
-                            <option value="Delivery Specialist" <?php if ($_SESSION['service'] == 'Delivery Specialist') echo 'selected';?>>Delivery Specialist</option>
-                            <option value="Entertainer" <?php if ($_SESSION['service'] == 'Entertainer') echo 'selected';?>>Entertainer</option>
-                            <option value="Fashion & Design Specialist" <?php if ($_SESSION['service'] == 'Fashion & Design Specialist') echo 'selected';?>>Fashion & Design Specialist</option>
-                            <option value="Financial Advisor" <?php if ($_SESSION['service'] == 'Financial Advisor') echo 'selected';?>>Financial Advisor</option>
+                            <option value="Business" <?php if ($_SESSION['service'] == 'Business') echo 'selected';?>>Business</option>
+                            <option value="Childcare" <?php if ($_SESSION['service'] == 'Childcare') echo 'selected';?>>Childcare </option>
+                            <option value="Cleaning" <?php if ($_SESSION['service'] == 'Cleaning') echo 'selected';?>>Cleaning</option>
+                            <option value="Cosmetology" <?php if ($_SESSION['service'] == 'Cosmetology') echo 'selected';?>>Cosmetology</option>                 
+                            <option value="Education" <?php if ($_SESSION['service'] == 'Education') echo 'selected';?>>Education</option>
+                            <option value="Employment" <?php if ($_SESSION['service'] == 'Employment') echo 'selected';?>>Employment</option>
+                            <option value="Fashion" <?php if ($_SESSION['service'] == 'Fashion') echo 'selected';?>>Fashion</option>
+                            <option value="Finance" <?php if ($_SESSION['service'] == 'Finance') echo 'selected';?>>Finance</option>
+                            <option value="Fitness" <?php if ($_SESSION['service'] == 'Fitness') echo 'selected';?>>Fitness</option>
                             <option value="Handyman" <?php if ($_SESSION['service'] == 'Handyman') echo 'selected';?>>Handyman</option>
-                            <option value="Hospice Aide" <?php if ($_SESSION['service'] == 'Hospice Aide') echo 'selected';?>>Hospice Aide</option>
-                            <option value="Insurance Agent" <?php if ($_SESSION['service'] == 'Insurance Agent') echo 'selected';?>>Insurance Agent</option>
-                            <option value="Interior Designer" <?php if ($_SESSION['service'] == 'Interior Designer') echo 'selected';?>>Interior Design</option>
-                            <option value="Landscaper" <?php if ($_SESSION['service'] == 'Landscaper') echo 'selected';?>>Landscaper</option>
-                            <option value="Maid" <?php if ($_SESSION['service'] == 'Maid') echo 'selected';?>>Maid</option>
-                            <option value="Masseuse" <?php if ($_SESSION['service'] == 'Masseuse') echo 'selected';?>>Masseuse</option>
-                            <option value="Media & Production Specialist" <?php if ($_SESSION['service'] == 'Media & Production Specialist') echo 'selected';?>>Media & Production Specialist</option>
-                            <option value="Occupational Specialist" <?php if ($_SESSION['service'] == 'Occupational Specialist') echo 'selected';?>>Occupational Specialist</option>
-                            <option value="Personal Trainer" <?php if ($_SESSION['service'] == 'Personal Trainer') echo 'selected';?>>Personal Trainer</option>
-                            <option value="Real Estate Specialist" <?php if ($_SESSION['service'] == 'Real Estate Specialist') echo 'selected';?>>Real Estate Specialist</option>
-                            <option value="Therapist" <?php if ($_SESSION['service'] == 'Therapist') echo 'selected';?>>Therapist</option>
-                            <option value="Tutor & Training Specialist" <?php if ($_SESSION['service'] == 'Tutor & Training Specialist') echo 'selected';?>>Tutor & Training Specialist</option>
+                            <option value="Insurance" <?php if ($_SESSION['service'] == 'Insurance') echo 'selected';?>>Insurance</option>
+                            <option value="Interior Design" <?php if ($_SESSION['service'] == 'Interior Design') echo 'selected';?>>Interior Design</option>
+                            <option value="Landscaping" <?php if ($_SESSION['service'] == 'Landscaping') echo 'selected';?>>Landscaping</option>
+                            <option value="Massage Therapy" <?php if ($_SESSION['service'] == 'Massage Therapy') echo 'selected';?>>Massage Therapy</option>
+                            <option value="Media & Production" <?php if ($_SESSION['service'] == 'Media & Production') echo 'selected';?>>Media & Production</option>
+                            <option value="Medical Care" <?php if ($_SESSION['service'] == 'Medical Care') echo 'selected';?>>Medical Care</option>
+                            <option value="Mental Therapy" <?php if ($_SESSION['service'] == 'Mental Therapy') echo 'selected';?>>Mental Therapy</option>
+                            <option value="Moving & Delivery" <?php if ($_SESSION['service'] == 'Moving & Delivery') echo 'selected';?>>Moving & Delivery</option>
+                            <option value="Night Life" <?php if ($_SESSION['service'] == 'Night Life') echo 'selected';?>>Night Life</option>
+                            <option value="Photography" <?php if ($_SESSION['service'] == 'Photography') echo 'selected';?>>Photography</option>
+                            <option value="Real Estate" <?php if ($_SESSION['service'] == 'Real Estate') echo 'selected';?>>Real Estate</option>
+                            <option value="Restaurant & Food Services" <?php if ($_SESSION['service'] == 'Restaurant & Food Services') echo 'selected';?>>Restaurant & Food Services</option>
+                            <option value="Technology" <?php if ($_SESSION['service'] == 'Technology') echo 'selected';?>>Technology</option>
                 	    </select>
                     </div>
 
