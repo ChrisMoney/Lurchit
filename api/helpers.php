@@ -283,8 +283,8 @@ function getSelectedServiceIndex($service) {
     if ($service == "Animal Care") {
         $serviceIndex = ServiceIndexes :: AnimalCare;
     }
-    elseif ($service == "Artists & Entertainment") {
-        $serviceIndex = ServiceIndexes :: ArtistsEntertainment;
+    elseif ($service == "Arts & Entertainment") {
+        $serviceIndex = ServiceIndexes :: ArtsEntertainment;
     }
     elseif ($service == "Automotive") {
         $serviceIndex = ServiceIndexes :: Automotive;
@@ -346,6 +346,9 @@ function getSelectedServiceIndex($service) {
     elseif ($service == "Mental Therapy") {
         $serviceIndex = ServiceIndexes :: MentalTherapy;
     }
+    elseif ($service == "Misc Services") {
+        $serviceIndex = ServiceIndexes :: MiscServices;
+    }
     elseif ($service == "Moving & Delivery") {
         $serviceIndex = ServiceIndexes :: MovingDelivery;
     }
@@ -373,7 +376,7 @@ This enum list order should always match the list in the app
 */
 class ServiceIndexes {
     const AnimalCare = "0";
-    const ArtistsEntertainment = "1";
+    const ArtsEntertainment = "1";
     const Automotive = "2";
     const Barber = "3";
     const Business = "4";  
@@ -393,10 +396,11 @@ class ServiceIndexes {
     const MediaProduction = "18";
     const MedicalCare = "19"; 
     const MentalTherapy = "20";
-    const MovingDelivery = "21";
-    const NightLife = "22";
-    const Photography = "23";
-    const RealEstate = "24"; 
-    const RestaurantFoodServices = "25";
-    const Technology = "26";
+    const MiscServices = "21";
+    const MovingDelivery = "22";
+    const NightLife = "23";
+    const Photography = "24";
+    const RealEstate = "25"; 
+    const RestaurantFoodServices = "26";
+    const Technology = "27";
 }

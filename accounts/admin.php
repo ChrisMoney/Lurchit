@@ -451,8 +451,8 @@ select::-ms-expand { display: none; }
                             <option value="Massage Therapy" <?php if ($_SESSION['service'] == 'Massage Therapy') echo 'selected';?>>Massage Therapy</option>
                             <option value="Media & Production" <?php if ($_SESSION['service'] == 'Media & Production') echo 'selected';?>>Media & Production</option>
                             <option value="Medical Care" <?php if ($_SESSION['service'] == 'Medical Care') echo 'selected';?>>Medical Care</option>
-                            <option value="Misc Services" <?php if ($_SESSION['service'] == 'Misc Services') echo 'selected';?>>Misc Services</option>
                             <option value="Mental Therapy" <?php if ($_SESSION['service'] == 'Mental Therapy') echo 'selected';?>>Mental Therapy</option>
+                            <option value="Misc Services" <?php if ($_SESSION['service'] == 'Misc Services') echo 'selected';?>>Misc Services</option>
                             <option value="Moving & Delivery" <?php if ($_SESSION['service'] == 'Moving & Delivery') echo 'selected';?>>Moving & Delivery</option>
                             <option value="Night Life" <?php if ($_SESSION['service'] == 'Night Life') echo 'selected';?>>Night Life</option>
                             <option value="Photography" <?php if ($_SESSION['service'] == 'Photography') echo 'selected';?>>Photography</option>
