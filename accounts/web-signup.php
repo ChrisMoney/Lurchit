@@ -395,7 +395,7 @@ select::-ms-expand { display: none; }
     }
 
     $blurb = mysqli_real_escape_string($conn,$blurb);
-    $description = mysqli_real_escape_string($conn, $blurb);
+    $description = mysqli_real_escape_string($conn, $description);
 
     $sql1 = "Select ID From Members Where Email = '$email' ";
     $result1 = mysqli_query($conn, $sql1);
@@ -416,8 +416,8 @@ select::-ms-expand { display: none; }
     }
 
      $sql = "INSERT INTO Members
-            (FirstName,   LastName,  Username,     Email,    Phone,     Password,       Latitude, Longitude,     IsActive,       IsLurch,       IsLurchActive,    Service,  Gender,    Blurb,    Description,   MinPrice,    IsMobile,  SignupDate) Values
-            ('$firstName','$lastName','$username','$email', '$phone', '$password',      '$lat',   '$long',         '1',            '1',               '1',     '$service',  '$gender', '$blurb', '$description', '$minPrice', '$isMobile', NOW())";
+            (FirstName,   LastName,  Username,     Email,    Phone,     Password,   Latitude, Longitude,     IsActive,       IsLurch,       IsLurchActive,    Service,    Gender,    Blurb,    Description,   MinPrice,    IsMobile,  SignupDate) Values
+            ('$firstName','$lastName','$username','$email', '$phone', '$password',   '$lat',   '$long',         '1',            '1',               '1',     '$service',  '$gender', '$blurb', '$description', '$minPrice', '$isMobile', NOW())";
      
      
      if (mysqli_query($conn, $sql)) {
