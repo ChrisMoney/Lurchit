@@ -25,10 +25,25 @@ mysqli_query($conn, $sqlLog);
 	<head>
 
     <script type="text/javascript">
-function disable() { 
+function load() { 
 document.getElementById("save").disabled = true;
 document.getElementById("save").style.backgroundColor = 'gray';
 document.getElementById('loader').style.display = 'none';
+document.getElementById('gender').style.display = 'none';
+var gender = document.getElementById('gender');
+
+var serviceSession = "<?php echo $_SESSION['service'] ?>";
+
+if (service !== null) {
+    if (serviceSession == 'Childcare' || serviceSession == 'Fitness' || 
+             serviceSession == 'Massage Therapy' || serviceSession == 'Mental Therapy') {
+            if (genderView.style.display === "none") {
+                genderView.style.display = "block";
+            } else {
+                genderView.style.display = "none";
+            }
+        }
+    }
 }
 </script>
 
@@ -49,6 +64,44 @@ document.getElementById('loader').style.display = 'none';
     theEvent.returnValue = false;
     if(theEvent.preventDefault) theEvent.preventDefault();
   }
+}
+</script>
+
+<script>
+    function showGender() {
+        
+        var x = document.getElementById('service');
+        var service = x.options[x.selectedIndex].value;
+        
+        var gender = document.getElementById('gender');
+        
+        if (service == 'Childcare' || service == 'Fitness' || 
+            service == 'Massage Therapy' || service == 'Mental Therapy') {
+            if (gender.style.display === "none") {
+                gender.style.display = "block";
+            } else {
+                gender.style.display = "none";
+            }
+        }
+    } 
+</script>
+
+<script>
+    function showPosition() {
+        if(navigator.geolocation) {
+            document.getElementById('loader').style.display = 'block';
+            navigator.geolocation.getCurrentPosition(function(position) {
+            document.cookie = "lat="+ position.coords.latitude;
+            document.cookie = "long="+ position.coords.longitude;
+            var positionInfo = "Your current position is (" + "Latitude: " + position.coords.latitude + ", " + "Longitude: " + position.coords.longitude + ")";
+            document.getElementById("save").disabled = false;
+            document.getElementById("save").style.backgroundColor = 'red';
+            document.getElementById('loader').style.display = 'none';
+
+        });
+    } else {
+        alert("Sorry, your browser does not support HTML5 geolocation.");
+    }
 }
 </script>
 
@@ -133,7 +186,7 @@ select::-ms-expand { display: none; }
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 	</head>
-	<body class="subpage" onload="disable()">
+	<body class="subpage" onload="load()">
 
 		<!-- Header -->
 			<header id="header" style="background-color:grey">
@@ -187,7 +240,7 @@ select::-ms-expand { display: none; }
                     <br/>
 
                     <div class="selectdiv">
-                        <select style="max-width:50%" placeholder = "Service" name="service" id="service">
+                        <select style="max-width:50%" placeholder = "Service" name="service" id="service" onchange="showGender()">
                             <option value="Animal Care" <?php if ($_SESSION['service'] == 'Animal Care') echo 'selected';?>>Animal Care </option>
                             <option value="Arts & Entertainment" <?php if ($_SESSION['service'] == 'Arts & Entertainment') echo 'selected';?>>Arts & Entertainment</option>
                             <option value="Automotive" <?php if ($_SESSION['service'] == 'Automotive') echo 'selected';?>>Automotive</option>
@@ -221,6 +274,15 @@ select::-ms-expand { display: none; }
 
                     <br/><br/>
 
+              
+                        <select class="form-control" style = "width:25%" name="gender" id="gender" placeholder = "Gender">
+                            <option value="M" <?php if ($_SESSION['gender'] == 'M') echo 'selected';?>>Male</option>
+                            <option value="F" <?php if ($_SESSION['gender'] == 'F') echo 'selected';?>>Female</option>
+                        </select>
+           
+
+                    <br/>
+
                     <input style="max-width:80%" type = "text" name = "blurb" id = "blurb" placeholder = "Service Summary/Blurb" maxlength="40" value = "<?php echo $_SESSION['blurb'] ?>" />
 
                     <br/>
@@ -248,26 +310,6 @@ select::-ms-expand { display: none; }
                         </select>
                     </div>
 
-                	
-                    <script>
-                        function showPosition() {
-                            if(navigator.geolocation) {
-                                document.getElementById('loader').style.display = 'block';
-                                navigator.geolocation.getCurrentPosition(function(position) {
-                                document.cookie = "lat="+ position.coords.latitude;
-                                document.cookie = "long="+ position.coords.longitude;
-                                var positionInfo = "Your current position is (" + "Latitude: " + position.coords.latitude + ", " + "Longitude: " + position.coords.longitude + ")";
-                                document.getElementById("save").disabled = false;
-                                document.getElementById("save").style.backgroundColor = 'red';
-                                document.getElementById('loader').style.display = 'none';
-
-                            });
-                        } else {
-                            alert("Sorry, your browser does not support HTML5 geolocation.");
-                        }
-                    }
-                </script>
-					
                     <hr/>
 
                     <button type="button" onclick="showPosition();" style="padding-left:10px;padding-right:10px;">Get Your Location</button>
@@ -303,6 +345,7 @@ select::-ms-expand { display: none; }
      $phone = $_POST['phone'];
      $phoneFormat = phone_number_format($phone);
      $service = $_POST['service'];
+     $gender = $_POST['gender'];
      $blurb = $_POST['blurb'];   
      $description = $_POST['description'];
      $minPrice = $_POST['minPrice'];
@@ -324,6 +367,7 @@ select::-ms-expand { display: none; }
          $_SESSION['description'] =  $description;
          $_SESSION['minPrice'] = $minPrice;
          $_SESSION['password'] = $password;
+         $_SESSION['gender'] = $gender;
     // ---------------------------------------
       $sql1 = "Select ID From Members Where Email = '$email' ";
       $result1 = mysqli_query($conn, $sql1);
@@ -372,8 +416,8 @@ select::-ms-expand { display: none; }
     }
 
      $sql = "INSERT INTO Members
-            (FirstName,   LastName,  Username,     Email,    Phone,     Password,       Latitude, Longitude,     IsActive,       IsLurch,       IsLurchActive,    Service,     Blurb,    Description,   MinPrice,    IsMobile,  SignupDate) Values
-            ('$firstName','$lastName','$username','$email', '$phone', '$password',      '$lat',   '$long',         '1',            '1',               '1',     '$service', '$blurb', '$description', '$minPrice', '$isMobile', NOW())";
+            (FirstName,   LastName,  Username,     Email,    Phone,     Password,       Latitude, Longitude,     IsActive,       IsLurch,       IsLurchActive,    Service,  Gender,    Blurb,    Description,   MinPrice,    IsMobile,  SignupDate) Values
+            ('$firstName','$lastName','$username','$email', '$phone', '$password',      '$lat',   '$long',         '1',            '1',               '1',     '$service',  '$gender', '$blurb', '$description', '$minPrice', '$isMobile', NOW())";
      
      
      if (mysqli_query($conn, $sql)) {
