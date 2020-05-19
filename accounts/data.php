@@ -331,32 +331,46 @@ span.psw {
 							
 							<?php 
 							
-							// Animal Care Specialist
-							$sqlAnimalCareSpecialist = "SELECT ID FROM Members WHERE Service = 'Animal Care Specialist' And IsLurchActive = 1 ";
-							$resultAnimalCareSpecialist = mysqli_query($conn, $sqlAnimalCareSpecialist);
-							if ($resultAnimalCareSpecialist) {
-							    if (mysqli_num_rows($resultAnimalCareSpecialist) > 0) {
-							        $animalCareSpecialist = mysqli_num_rows($resultAnimalCareSpecialist);
+							// Animal Care 
+							$sqlAnimalCare = "SELECT ID FROM Members WHERE Service = 'Animal Care' And IsLurchActive = 1 ";
+							$resultAnimalCare = mysqli_query($conn, $sqlAnimalCare);
+							if ($resultAnimalCare) {
+							    if (mysqli_num_rows($resultAnimalCare) > 0) {
+							        $animalCare = mysqli_num_rows($resultAnimalCare);
 							    } else {
-							        $animalCareSpecialist = 0;
+							        $animalCare= 0;
 							    }
 							} 
 							else {
-							    $animalCareSpecialist = 0;
+							    $animalCare = 0;
 							}
 							
-							// Auto Specialist
-							$sqlAutoSpecialist = "SELECT ID FROM Members WHERE Service = 'Automotive Specialist' And IsLurchActive = 1 ";
-							$resultAutoSpecialist = mysqli_query($conn, $sqlAutoSpecialist);
-							if ($resultAutoSpecialist) {
-							    if (mysqli_num_rows($resultAutoSpecialist) > 0) {
-							        $autoSpecialist = mysqli_num_rows($resultAutoSpecialist);
+							// Arts & Entertainment
+							$sqlArtsEntertainment = "SELECT ID FROM Members WHERE Service = 'Arts & Entertainment' And IsLurchActive = 1 ";
+							$resultArtsEntertainment = mysqli_query($conn, $sqlArtsEntertainment);
+							if ($resultArtsEntertainment) {
+							    if (mysqli_num_rows($resultArtsEntertainment) > 0) {
+							        $artsEntertainment = mysqli_num_rows($resultArtsEntertainment);
 							    } else {
-							        $autoSpecialist = 0;
+							        $artsEntertainment = 0;
 							    }
 							}
 							else {
-							    $autoSpecialist = 0;
+							    $artsEntertainment = 0;
+							}
+
+							// Auto Specialist
+							$sqlAutomotive = "SELECT ID FROM Members WHERE Service = 'Automotive' And IsLurchActive = 1 ";
+							$resultAutomotive = mysqli_query($conn, $sqlAutomotive);
+							if ($resultAutomotive) {
+							    if (mysqli_num_rows($resultAutomotive) > 0) {
+							        $automotive = mysqli_num_rows($resultAutomotive);
+							    } else {
+							        $automotive = 0;
+							    }
+							}
+							else {
+							    $automotive = 0;
 							}
 					
 							// Barber
@@ -373,133 +387,132 @@ span.psw {
 							    $barber = 0;
 							}
 
-							// Business Services
-							$sqlBusinessServices = "SELECT ID FROM Members WHERE Service = 'Business Services' And IsLurchActive = 1 ";
-							$resultBusinessServices = mysqli_query($conn, $sqlBusinessServices);
-							if ($resultBusinessServices) {
-							    if (mysqli_num_rows($resultBusinessServices) > 0) {
-							        $businessServices = mysqli_num_rows($resultBusinessServices);
+							// Business
+							$sqlBusiness = "SELECT ID FROM Members WHERE Service = 'Business' And IsLurchActive = 1 ";
+							$resultBusiness= mysqli_query($conn, $sqlBusiness);
+							if ($resultBusiness) {
+							    if (mysqli_num_rows($resultBusiness) > 0) {
+							        $business= mysqli_num_rows($resultBusiness);
 							    } else {
-							        $businessServices = 0;
+							        $business = 0;
 							    }
 							}
 							else {
-							    $businessServices = 0;
+							    $business = 0;
 							}
 
-							// Childcare Specialist
-							$sqlChildCareSpecialist = "SELECT ID FROM Members WHERE Service = 'Childcare Specialist' And IsLurchAcive = 1 ";
-							$resultChildCareSpecialist = mysqli_query($conn, $sqlChildCareSpecialist);
-							if ($resultChildCareSpecialist) {
-							    if (mysqli_num_rows($resultChildCareSpecialist) > 0) {
-							        $childCareSpecialist = mysqli_num_rows($resultChildCareSpecialist);
+							// Childcare 
+							$sqlChildCare = "SELECT ID FROM Members WHERE Service = 'Childcare' And IsLurchActive = 1 ";
+							$resultChildCare = mysqli_query($conn, $sqlChildCare);
+							if ($resultChildCare) {
+							    if (mysqli_num_rows($resultChildCare) > 0) {
+							        $childCare = mysqli_num_rows($resultChildCare);
 							    } else {
-							        $childCareSpecialist = 0;
+							        $childCare = 0;
 							    }
 							}
 							else {
-							    $childCareSpecialist = 0;
+							    $childCare = 0;
 							}
 							
-							
-							
-							// Chef
-							$sqlChef = "SELECT ID FROM Members WHERE Service = 'Chef' And IsLurchActive = 1 ";
-							$resultChef = mysqli_query($conn, $sqlChef);
-							if ($resultChef) {
-							    if (mysqli_num_rows($resultChef) > 0) {
-							        $chef = mysqli_num_rows($resultChef);
+							// Cleaning
+							$sqlCleaning = "SELECT ID FROM Members WHERE Service = 'Cleaning' And IsLurchActive = 1 ";
+							$resultCleaning = mysqli_query($conn, $sqlCleaning);
+							if ($resultCleaning) {
+							    if (mysqli_num_rows($resultCleaning) > 0) {
+							        $cleaning = mysqli_num_rows($resultCleaning);
 							    } else {
-							        $chef = 0;
+							        $cleaning = 0;
 							    }
 							}
 							else {
-							    $chef = 0;
-							}
-							
-							// Computer & App Specialist
-							$sqlComputerAppSpecialist = "SELECT ID FROM Members WHERE Service = 'Computer & App Specialist' And IsLurchActive = 1 ";
-							$resultComputerAppSpecialist = mysqli_query($conn, $sqlComputerAppSpecialist);
-							if ($resultComputerAppSpecialist) {
-							    if (mysqli_num_rows($resultComputerAppSpecialist) > 0) {
-							        $computerAppSpecialist = mysqli_num_rows($resultComputerAppSpecialist);
-							    } else {
-							        $computerAppSpecialist = 0;
-							    }
-							}
-							else {
-							    $computerAppSpecialist = 0;
-							}
-							
-							$sqlCosmetologist = "SELECT ID FROM Members WHERE Service = 'Cosmetologist' And IsLurchActive = 1 ";
-							$resultCosmetologist = mysqli_query($conn, $sqlCosmetologist);
-							if ($resultCosmetologist) {
-							    if (mysqli_num_rows($resultCosmetologist) > 0) {
-							        $cosmetologist = mysqli_num_rows($resultCosmetologist);
-							    } else {
-							        $cosmetologist = 0;
-							    }
-							}
-							else {
-							    $cosmetologist = 0;
+							    $cleaning = 0;
 							}
 
-							// Delivery Specialist
-							$sqlDelivery = "SELECT ID FROM Members WHERE Service = 'Delivery Specialist' And IsLurchActive = 1 ";
-							$resultDelivery = mysqli_query($conn, $sqlDelivery);
-							if ($resultDelivery) {
-							    if (mysqli_num_rows($resultDelivery) > 0) {
-							        $deliverySpecialist = mysqli_num_rows($resultDelivery);
+							// Cosmetology
+							$sqlCosmetology = "SELECT ID FROM Members WHERE Service = 'Cosmetology' And IsLurchActive = 1 ";
+							$resultCosmetology = mysqli_query($conn, $sqlCosmetology);
+							if ($resultCosmetology) {
+								if (mysqli_num_rows($resultCosmetology) > 0) {
+									$cosmetology = mysqli_num_rows($resultCosmetology);
+								} else {
+									$cosmetology = 0;
+								}
+							}
+							else {
+								$cosmetology = 0;
+							}
+								
+							// Education
+							$sqlEducation = "SELECT ID FROM Members WHERE Service = 'Education' And IsLurchActive = 1 ";
+							$resultEducation = mysqli_query($conn, $sqlEducation);
+							if ($resultEducation) {
+							    if (mysqli_num_rows($resultEducation) > 0) {
+							        $education = mysqli_num_rows($resultEducation);
 							    } else {
-							        $deliverySpecialist = 0;
+							        $education = 0;
 							    }
 							}
 							else {
-							    $deliverySpecialist = 0;
+							    $education = 0;
 							}
 							
-							// Fashion & Design Specialist
-							$sqlFashionDesignSpecialist = "SELECT ID FROM Members WHERE Service = 'Fashion & Design Specialist' And IsLurchActive = 1 ";
-							$resultFashionDesignSpecialist = mysqli_query($conn, $sqlFashionDesignSpecialist);
-							if ($resultFashionDesignSpecialist) {
-							    if (mysqli_num_rows($resultFashionDesignSpecialist) > 0) {
-							        $fashionDesignSpecialist = mysqli_num_rows($resultFashionDesignSpecialist);
+							// Employment
+							$sqlEmployment = "SELECT ID FROM Members WHERE Service = 'Employment' And IsLurchActive = 1 ";
+							$resultEmployment = mysqli_query($conn, $sqlEmployment);
+							if ($resultEmployment) {
+							    if (mysqli_num_rows($resultEmployment) > 0) {
+							        $employment = mysqli_num_rows($resultEmployment);
 							    } else {
-							        $fashionDesignSpecialist = 0;
+							        $employment = 0;
 							    }
 							}
 							else {
-							    $fashionDesignSpecialist = 0;
+							    $employment = 0;
 							}
-							
-							// Entertainer
-							$sqlEntertainer = "SELECT ID FROM Members WHERE Service = 'Entertainer' And IsLurchActive = 1 ";
-							$resultEntertainer = mysqli_query($conn, $sqlEntertainer);
-							if ($resultEntertainer) {
-							    if (mysqli_num_rows($resultEntertainer) > 0) {
-							        $entertainer = mysqli_num_rows($resultEntertainer);
+
+							// Fashion 
+							$sqlFashion = "SELECT ID FROM Members WHERE Service = 'Fashion' And IsLurchActive = 1 ";
+							$resultFashion = mysqli_query($conn, $sqlFashion);
+							if ($resultFashion) {
+							    if (mysqli_num_rows($resultFashion) > 0) {
+							        $fashion = mysqli_num_rows($resultFashion);
 							    } else {
-							        $entertainer = 0;
+							        $fashion = 0;
 							    }
 							}
 							else {
-							    $entertainer = 0;
+							    $fashion = 0;
 							}
 							
-							// Financial Advisor
-							$sqlFinancialAdvisor = "SELECT ID FROM Members WHERE Service = 'Financial Advisor' And IsLurchActive = 1 ";
-							$resultFinancialAdvisor = mysqli_query($conn, $sqlFinancialAdvisor);
-							if ($resultFinancialAdvisor) {
-							    if (mysqli_num_rows($resultFinancialAdvisor) > 0) {
-							        $financialAdvisor = mysqli_num_rows($resultFinancialAdvisor);
+							// Finance
+							$sqlFinance = "SELECT ID FROM Members WHERE Service = 'Finance' And IsLurchActive = 1 ";
+							$resultFinance = mysqli_query($conn, $sqlFinance);
+							if ($resultFinance) {
+							    if (mysqli_num_rows($resultFinance) > 0) {
+							        $finance = mysqli_num_rows($resultFinance);
 							    } else {
-							        $financialAdvisor = 0;
+							        $finance = 0;
 							    }
 							}
 							else {
-							    $financialAdvisor = 0;
+							    $finance = 0;
 							}
 							
+							// Fitness
+							$sqlFitness = "SELECT ID FROM Members WHERE Service = 'Fitness' And IsLurchActive = 1 ";
+							$resultFitness = mysqli_query($conn, $sqlFitness);
+							if ($resultFitness) {
+							    if (mysqli_num_rows($resultFitness) > 0) {
+							        $fitness = mysqli_num_rows($resultFitness);
+							    } else {
+							        $fitness = 0;
+							    }
+							}
+							else {
+							    $fitness = 0;
+							}
+
 							// Handyman
 							$sqlHandyman = "SELECT ID FROM Members WHERE Service = 'Handyman' And IsLurchActive = 1 ";
 							$resultHandyman = mysqli_query($conn, $sqlHandyman);
@@ -513,186 +526,223 @@ span.psw {
 							else {
 							    $handyman = 0;
 							}
-							
-							// Hospice Aid
-							$sqlHospiceAid = "SELECT ID FROM Members WHERE Service = 'Hospice Aid' And IsLurchActive = 1 ";
-							$resultHospiceAid = mysqli_query($conn, $sqlHospiceAid);
-							if ($resultHospiceAid) {
-							    if (mysqli_num_rows($resultHospiceAid) > 0) {
-							        $hospiceAid = mysqli_num_rows($resultHospiceAid);
+
+							// Insurance
+							$sqlInsurance = "SELECT ID FROM Members WHERE Service = 'Insurance' And IsLurchActive = 1 ";
+							$resultInsurance = mysqli_query($conn, $sqlInsurance);
+							if ($resultInsurance) {
+							    if (mysqli_num_rows($resultInsurance) > 0) {
+							        $insurance = mysqli_num_rows($resultInsurance);
 							    } else {
-							        $hospiceAid = 0;
+							        $insurance = 0;
 							    }
 							}
 							else {
-							    $hospiceAid = 0;
+							    $insurance = 0;
 							}
-							
-							// Insurance Agent
-							$sqlInsuranceAgent = "SELECT ID FROM Members WHERE Service = 'Insurance Agent' And IsLurchActive = 1 ";
-							$resultInsuranceAgent = mysqli_query($conn, $sqlInsuranceAgent);
-							if ($resultInsuranceAgent) {
-							    if (mysqli_num_rows($resultInsuranceAgent) > 0) {
-							        $insuranceAgent = mysqli_num_rows($resultInsuranceAgent);
+
+							// Interior Design
+							$sqlInteriorDesign = "SELECT ID FROM Members WHERE Service = 'Interior Design' And IsLurchActive = 1 ";
+							$resultInteriorDesign = mysqli_query($conn, $sqlInteriorDesign);
+							if ($resultInteriorDesign) {
+							    if (mysqli_num_rows($resultInteriorDesign) > 0) {
+							        $interiorDesign = mysqli_num_rows($resultInteriorDesign);
 							    } else {
-							        $insuranceAgent = 0;
+							        $interiorDesign = 0;
 							    }
 							}
 							else {
-							    $insuranceAgent = 0;
+							    $interiorDesign = 0;
 							}
-							
-							// Interior Designer
-							$sqlInteriorDesigner = "SELECT ID FROM Members WHERE Service = 'Interior Designer' And IsLurchActive = 1 ";
-							$resultInteriorDesigner = mysqli_query($conn, $sqlInteriorDesigner);
-							if ($resultInteriorDesigner) {
-							    if (mysqli_num_rows($resultInteriorDesigner) > 0) {
-							        $interiorDesigner = mysqli_num_rows($resultInteriorDesigner);
+
+							// Landscaping
+							$sqlLandscaping = "SELECT ID FROM Members WHERE Service = 'Landscaping' And IsLurchActive = 1 ";
+							$resultLandscaping = mysqli_query($conn, $sqlLandscaping);
+							if ($resultLandscaping) {
+							    if (mysqli_num_rows($resultLandscaping) > 0) {
+							        $landscaping = mysqli_num_rows($resultLandscaping);
 							    } else {
-							        $interiorDesigner = 0;
+							        $landscaping = 0;
 							    }
 							}
 							else {
-							    $interiorDesigner = 0;
+							    $landscaping = 0;
 							}
-							
-							// Landscaper
-							$sqlLandscaper = "SELECT ID FROM Members WHERE Service = 'Landscaper' And IsLurchActive = 1 ";
-							$resultLandscaper = mysqli_query($conn, $sqlLandscaper);
-							if ($resultLandscaper) {
-							    if (mysqli_num_rows($resultLandscaper) > 0) {
-							        $landscaper = mysqli_num_rows($resultLandscaper);
+
+							// Massage Therapy
+							$sqlMassageTherapy = "SELECT ID FROM Members WHERE Service = 'Massage Therapy' And IsLurchActive = 1 ";
+							$resultMassageTherapy = mysqli_query($conn, $sqlMassageTherapy);
+							if ($resultMassageTherapy) {
+							    if (mysqli_num_rows($resultMassageTherapy) > 0) {
+							        $massageTherapy = mysqli_num_rows($resultMassageTherapy);
 							    } else {
-							        $landscaper = 0;
+							        $massageTherapy = 0;
 							    }
 							}
 							else {
-							    $landscaper = 0;
+							    $massageTherapy = 0;
 							}
-							
-							// Maid
-							$sqlMaid = "SELECT ID FROM Members WHERE Service = 'Maid' And IsLurchActive = 1 ";
-							$resultMaid = mysqli_query($conn, $sqlMaid);
-							if ($resultMaid) {
-							    if (mysqli_num_rows($resultMaid) > 0) {
-							        $maid = mysqli_num_rows($resultMaid);
+
+							// Media & Production
+							$sqlMediaProduction = "SELECT ID FROM Members WHERE Service = 'Media & Production' And IsLurchActive = 1 ";
+							$resultMediaProduction = mysqli_query($conn, $sqlMediaProduction);
+							if ($resultMediaProduction) {
+							    if (mysqli_num_rows($resultMediaProduction) > 0) {
+							        $mediaProduction = mysqli_num_rows($resultMediaProduction);
 							    } else {
-							        $maid = 0;
+							        $mediaProduction = 0;
 							    }
 							}
 							else {
-							    $maid = 0;
+							    $mediaProduction = 0;
 							}
 							
-							// Media & Production Specialist
-							$sqlMediaProductionSpecialist = "SELECT ID FROM Members WHERE Service = 'Media & Production Specialist' And IsLurchActive = 1 ";
-							$resultMediaProductionSpecialist = mysqli_query($conn, $sqlMediaProductionSpecialist);
-							if ($resultMediaProductionSpecialist) {
-							    if (mysqli_num_rows($resultMediaProductionSpecialist) > 0) {
-							        $mediaProductionSpecialist = mysqli_num_rows($resultMediaProductionSpecialist);
+							// Medical Care
+							$sqlMedicalCare = "SELECT ID FROM Members WHERE Service = 'Medical Care' And IsLurchActive = 1 ";
+							$resultMedicalCare = mysqli_query($conn, $sqlMedicalCare);
+							if ($resultMedicalCare) {
+							    if (mysqli_num_rows($resultMedicalCare) > 0) {
+							        $medicalCare = mysqli_num_rows($resultMedicalCare);
 							    } else {
-							        $mediaProductionSpecialist = 0;
+							        $medicalCare = 0;
 							    }
 							}
 							else {
-							    $mediaProductionSpecialist = 0;
+							    $medicalCare = 0;
 							}
-							
-							// Masseuse
-							$sqlMasseuse = "SELECT ID FROM Members WHERE Service = 'Masseuse' And IsLurchActive = 1 ";
-							$resultMasseuse = mysqli_query($conn, $sqlMasseuse);
-							if ($resultMasseuse) {
-							    if (mysqli_num_rows($resultMasseuse) > 0) {
-							        $masseuse = mysqli_num_rows($resultMasseuse);
+
+							// Mental Therapy
+							$sqlMentalTherapy = "SELECT ID FROM Members WHERE Service = 'Mental Therapy' And IsLurchActive = 1 ";
+							$resultMentalTherapy = mysqli_query($conn, $sqlMentalTherapy);
+							if ($resultMentalTherapy) {
+							    if (mysqli_num_rows($resultMentalTherapy) > 0) {
+							        $mentalTherapy = mysqli_num_rows($resultMentalTherapy);
 							    } else {
-							        $masseuse = 0;
+							        $mentalTherapy = 0;
 							    }
 							}
 							else {
-							    $masseuse = 0;
+							    $mentalTherapy = 0;
 							}
-							
-							// Occupational Specialist
-							$sqlOccupationalTherapist = "SELECT ID FROM Members WHERE Service = 'Occupational Specialist' And IsLurchActive = 1 ";
-							$resultOccupationalTherapist = mysqli_query($conn, $sqlOccupationalTherapist);
-							if ($resultOccupationalTherapist) {
-							    if (mysqli_num_rows($resultOccupationalTherapist) > 0) {
-							        $occupationalTherapist = mysqli_num_rows($resultOccupationalTherapist);
+
+							// Misc Services
+							$sqlMiscServices = "SELECT ID FROM Members WHERE Service = 'Misc Services' And IsLurchActive = 1 ";
+							$resultMiscServices = mysqli_query($conn, $sqlMiscServices);
+							if ($resultMiscServices) {
+							    if (mysqli_num_rows($resultMiscServices) > 0) {
+							        $miscServices = mysqli_num_rows($resultMiscServices);
 							    } else {
-							        $occupationalTherapist = 0;
+							        $miscServices = 0;
 							    }
 							}
 							else {
-							    $occupationalTherapist = 0;
+							    $miscServices = 0;
 							}
-							
-							// Personal Trainer
-							$sqlPersonalTrainer = "SELECT ID FROM Members WHERE Service = 'Personal Trainer' And IsLurchActive = 1 ";
-							$resultPersonalTrainer = mysqli_query($conn, $sqlPersonalTrainer);
-							if ($resultPersonalTrainer) {
-							    if (mysqli_num_rows($resultPersonalTrainer) > 0) {
-							        $personalTrainer = mysqli_num_rows($resultPersonalTrainer);
+
+							// Moving & Delivery
+							$sqlMovingDelivery = "SELECT ID FROM Members WHERE Service = 'Moving & Delivery' And IsLurchActive = 1 ";
+							$resultMovingDelivery = mysqli_query($conn, $sqlMovingDelivery);
+							if ($resultMovingDelivery) {
+							    if (mysqli_num_rows($resultMovingDelivery) > 0) {
+							        $movingDelivery = mysqli_num_rows($resultMovingDelivery);
 							    } else {
-							        $personalTrainer = 0;
+							        $movingDelivery = 0;
 							    }
 							}
 							else {
-							    $personalTrainer = 0;
+							    $movingDelivery = 0;
 							}
 							
-							// Real Estate Specialist
-							$sqlRealEstateSpecialist = "SELECT ID FROM Members WHERE Service = 'Real Estate Specialist' And IsLurchActive = 1 ";
-							$resultRealEstateSpecialist = mysqli_query($conn, $sqlRealEstateSpecialist);
-							if ($resultRealEstateSpecialist) {
-							    if (mysqli_num_rows($resultRealEstateSpecialist) > 0) {
-							        $realEstateSpecialist = mysqli_num_rows($resultRealEstateSpecialist);
+							// Night Life
+							$sqlNightLife = "SELECT ID FROM Members WHERE Service = 'Night Life' And IsLurchActive = 1 ";
+							$resultNightLife = mysqli_query($conn, $sqlNightLife);
+							if ($resultNightLife) {
+							    if (mysqli_num_rows($resultNightLife) > 0) {
+							        $nightLife = mysqli_num_rows($resultNightLife);
 							    } else {
-							        $realEstateSpecialist = 0;
+							        $nightLife = 0;
 							    }
 							}
 							else {
-							    $realEstateSpecialist = 0;
+							    $nightLife = 0;
 							}
-							
-							// Therapist
-							$sqlTherapist = "SELECT ID FROM Members WHERE Service = 'Therapist' And IsLurchActive = 1 ";
-							$resultTherapist = mysqli_query($conn, $sqlTherapist);
-							if ($resultRealEstateSpecialist) {
-							    if (mysqli_num_rows($resultRealEstateSpecialist) > 0) {
-							        $therapist = mysqli_num_rows($resultTherapist);
+
+							// Photography
+							$sqlPhotography = "SELECT ID FROM Members WHERE Service = 'Photography' And IsLurchActive = 1 ";
+							$resultPhotography = mysqli_query($conn, $sqlPhotography);
+							if ($resultPhotography) {
+							    if (mysqli_num_rows($resultPhotography) > 0) {
+							        $photography = mysqli_num_rows($resultPhotography);
 							    } else {
-							        $therapist = 0;
+							        $photography = 0;
 							    }
 							}
 							else {
-							    $therapist = 0;
+							    $photography = 0;
 							}
-							
-							// Tutor & Training Specialist
-							$sqlTutorTrainingSpecialist = "SELECT ID FROM Members WHERE Service = 'Tutor & Training Specialist' And IsLurchActive = 1 ";
-							$resultTutorTrainingSpecialist = mysqli_query($conn, $sqlTutorTrainingSpecialist);
-							if ($resultTutorTrainingSpecialist) {
-							    if (mysqli_num_rows($resultTutorTrainingSpecialist) > 0) {
-							        $tutorTrainingSpecialist = mysqli_num_rows($resultTutorTrainingSpecialist);
+
+							// Real Estate 
+							$sqlRealEstate = "SELECT ID FROM Members WHERE Service = 'Real Estate' And IsLurchActive = 1 ";
+							$resultRealEstate = mysqli_query($conn, $sqlRealEstate);
+							if ($resultRealEstate) {
+							    if (mysqli_num_rows($resultRealEstate) > 0) {
+							        $realEstate = mysqli_num_rows($resultRealEstate);
 							    } else {
-							        $tutorTrainingSpecialist = 0;
+							        $realEstate = 0;
 							    }
 							}
 							else {
-							    $tutorTrainingSpecialist = 0;
+							    $realEstate = 0;
 							}
+							
+							// Restaurant & Food Service
+							$sqlRestaurantFoodServices = "SELECT ID FROM Members WHERE Service = 'Restaurant & Food Services' And IsLurchActive = 1 ";
+							$resultRestaurantFoodServices = mysqli_query($conn, $sqlRestaurantFoodServices);
+							if ($resultRestaurantFoodServices) {
+							    if (mysqli_num_rows($resultRestaurantFoodServices) > 0) {
+							        $restaurantFoodServices = mysqli_num_rows($resultRestaurantFoodServices);
+							    } else {
+							        $resultRestaurantFoodServices = 0;
+							    }
+							}
+							else {
+							    $resultRestaurantFoodServices = 0;
+							}
+							
+							// Technology
+							$sqlTechnology = "SELECT ID FROM Members WHERE Service = 'Technology' And IsLurchActive = 1 ";
+							$resultTechnology = mysqli_query($conn, $sqlTechnology);
+							if ($resultTechnology) {
+							    if (mysqli_num_rows($resultTechnology) > 0) {
+							        $technology = mysqli_num_rows($resultTechnology);
+							    } else {
+							        $technology = 0;
+							    }
+							}
+							else {
+							    $technology = 0;
+							}
+							
+							
 							?>
 							
 							<table>
 							<tr><td>Active Service Providers By Service</td></tr>
 								<tr>
 									<td>
-							        <span style='color:black'>Animal Care Specialist: <b><?php echo $animalCareSpecialist ?></b></span>
+							        <span style='color:black'>Animal Care <b><?php echo $animalCare ?></b></span>
 							        </td>
 								</tr>
+
 								<tr>
 									<td>
-							        <span style='color:black'>Automotive Specialist: <b><?php echo $autoSpecialist ?></b></span>
+							        <span style='color:black'>Arts & Entertainment: <b><?php echo $artsEntertainment ?></b></span>
+							        </td>
+								</tr>
+
+								<tr>
+									<td>
+							        <span style='color:black'>Automotive: <b><?php echo $automotive ?></b></span>
 							        </td>
 								</tr>
 								<tr>
@@ -702,115 +752,148 @@ span.psw {
 								</tr>
 								<tr>
 									<td>
-							        <span style='color:black'>Business Services: <b><?php echo $businessServices ?></b></span>
+							        <span style='color:black'>Business: <b><?php echo $business ?></b></span>
 							        </td>
 								</tr>
 								<tr>
 									<td>
-							        <span style='color:black'>Childcare Specialist: <b><?php echo $childCareSpecialist ?></b></span>
+							        <span style='color:black'>Childcare: <b><?php echo $childCare ?></b></span>
 							        </td>
 								</tr>
+
 								<tr>
 									<td>
-							        <span style='color:black'>Cosmetologist <b><?php echo $cosmetologist ?></b></span>
+							        <span style='color:black'>Cleaning: <b><?php echo $cleaning ?></b></span>
 							        </td>
 								</tr>
+
 								<tr>
 									<td>
-							        <span style='color:black'>Chef: <b><?php echo $chef ?></b></span>
-							        </td>
-								</tr>
-								<tr>
-									<td>
-							        <span style='color:black'>Computer & App Specialist: <b><?php echo $computerAppSpecialist ?></b></span>
-							        </td>
-								</tr>
-								<tr>
-									<td>
-							        <span style='color:black'>Delivery Specialist: <b><?php echo $deliverySpecialist ?></b></span>
-							        </td>
-								</tr>
-								<tr>
-									<td>
-							        <span style='color:black'>Fashion & Design Specialist: <b><?php echo $fashionDesignSpecialist ?></b></span>
-							        </td>
-								</tr>
-								<tr>
-									<td>
-							        <span style='color:black'>Entertainer: <b><?php echo $entertainer ?></b></span>
-							        </td>
-								</tr>
-								<tr>
-									<td>
-							        <span style='color:black'>Financial Advisor: <b><?php echo $financialAdvisor ?></b></span>
-							        </td>
-								</tr>
-								<tr>
-									<td>
-							        <span style='color:black'>Handyman: <b><?php echo $handyman ?></b></span>
-							        </td>
-								</tr>
-								<tr>
-									<td>
-							        <span style='color:black'>Hospice Aid: <b><?php echo $hospiceAid ?></b></span>
-							        </td>
-								</tr>
-								<tr>
-									<td>
-							        <span style='color:black'>Insurance Agent: <b><?php echo $insuranceAgent ?></b></span>
-							        </td>
-								</tr>
-								<tr>
-									<td>
-							        <span style='color:black'>Interior Designer: <b><?php echo $interiorDesigner ?></b></span>
-							        </td>
-								</tr>
-								<tr>
-									<td>
-							        <span style='color:black'>Landscaper: <b><?php echo $landscaper ?></b></span>
-							        </td>
-								</tr>
-								<tr>
-									<td>
-							        <span style='color:black'>Maid: <b><?php echo $maid ?></b></span>
+							        <span style='color:black'>Cosmetology: <b><?php echo $cosmetology ?></b></span>
 							        </td>
 								</tr>
 								
 								<tr>
 									<td>
-							        <span style='color:black'>Masseuse: <b><?php echo $masseuse ?></b></span>
+							        <span style='color:black'>Education <b><?php echo $education ?></b></span>
 							        </td>
 								</tr>
+
 								<tr>
 									<td>
-							        <span style='color:black'>Media & Production Specialist: <b><?php echo $mediaProductionSpecialist ?></b></span>
+							        <span style='color:black'>Employment: <b><?php echo $employment ?></b></span>
 							        </td>
 								</tr>
+
 								<tr>
 									<td>
-							        <span style='color:black'>Occupational Therapist: <b><?php echo $occupationalTherapist ?></b></span>
+							        <span style='color:black'>Fashion: <b><?php echo $fashion ?></b></span>
 							        </td>
 								</tr>
+
 								<tr>
 									<td>
-							        <span style='color:black'>Personal Trainer: <b><?php echo $personalTrainer ?></b></span>
+							        <span style='color:black'>Finance <b><?php echo $finance ?></b></span>
 							        </td>
 								</tr>
+
 								<tr>
 									<td>
-							        <span style='color:black'>Occupational Therapist: <b><?php echo $realEstateSpecialist ?></b></span>
+							        <span style='color:black'>Fitness: <b><?php echo $fitness ?></b></span>
 							        </td>
 								</tr>
+
 								<tr>
 									<td>
-							        <span style='color:black'>Therapist <b><?php echo $therapist ?></b></span>
+							        <span style='color:black'>Handyman: <b><?php echo $handyman ?></b></span>
 							        </td>
 								</tr>
+								
 								<tr>
 									<td>
-							        <span style='color:black'>Tutor & Training Specialist <b><?php echo $tutorTrainingSpecialist ?></b></span>
+							        <span style='color:black'>Insurance: <b><?php echo $insurance ?></b></span>
 							        </td>
 								</tr>
+
+								<tr>
+									<td>
+							        <span style='color:black'>Interior Design: <b><?php echo $interiorDesign ?></b></span>
+							        </td>
+								</tr>
+
+								<tr>
+									<td>
+							        <span style='color:black'>Landscaping: <b><?php echo $landscaping ?></b></span>
+							        </td>
+								</tr>
+								
+								
+								<tr>
+									<td>
+							        <span style='color:black'>Massage Therapy <b><?php echo $massageTherapy ?></b></span>
+							        </td>
+								</tr>
+
+								<tr>
+									<td>
+							        <span style='color:black'>Media & Production: <b><?php echo $mediaProduction ?></b></span>
+							        </td>
+								</tr>
+
+								<tr>
+									<td>
+							        <span style='color:black'>Medical Care: <b><?php echo $medicalCare ?></b></span>
+							        </td>
+								</tr>
+
+								<tr>
+									<td>
+							        <span style='color:black'>Mental Therapy: <b><?php echo $mentalTherapy ?></b></span>
+							        </td>
+								</tr>
+
+								<tr>
+									<td>
+							        <span style='color:black'>Misc Services: <b><?php echo $miscServices ?></b></span>
+							        </td>
+								</tr>
+
+								<tr>
+									<td>
+							        <span style='color:black'>Moving & Delivery: <b><?php echo $movingDelivery ?></b></span>
+							        </td>
+								</tr>
+
+								<tr>
+									<td>
+							        <span style='color:black'>Night Life: <b><?php echo $nightLife ?></b></span>
+							        </td>
+								</tr>
+
+								<tr>
+									<td>
+							        <span style='color:black'>Photography: <b><?php echo $photography ?></b></span>
+							        </td>
+								</tr>
+
+								<tr>
+									<td>
+							        <span style='color:black'>Real Estate: <b><?php echo $realEstate ?></b></span>
+							        </td>
+								</tr>
+								
+								<tr>
+									<td>
+							        <span style='color:black'>Restaurant & Food Services: <b><?php echo $restaurantFoodServices ?></b></span>
+							        </td>
+								</tr>
+
+								<tr>
+									<td>
+							        <span style='color:black'>Technology: <b><?php echo $technology ?></b></span>
+							        </td>
+								</tr>
+
 							</table>
 						</div>
 						<div>
