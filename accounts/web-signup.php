@@ -1,6 +1,10 @@
 <?php 
 session_start();
 $env = $_GET['ENV'];
+
+if (!isset($env) || empty($env)) {
+    $env = 'PROD';
+}
 require '../api/connect.php';
 require '../api/email.php';
 require_once '../api/helpers.php';
@@ -434,7 +438,7 @@ select::-ms-expand { display: none; }
          unset($_SESSION['minPrice']);
          unset($_SESSION['password']);
          
-         if ($env == 'PROD') {
+         if ($env != 'PROD') {
             providerSignupEmail($username, $service);
          }
          echo "<script>alert('Your service was added to the directory. Bookmark this page to edit your account.'); location = '/admin.php?ID=$lurchID&ENV=$env' </script>";
