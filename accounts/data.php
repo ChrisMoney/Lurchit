@@ -730,7 +730,7 @@ span.psw {
 							<tr><td>Active Service Providers By Service</td></tr>
 								<tr>
 									<td>
-							        <span style='color:black'>Animal Care <b><?php echo $animalCare ?></b></span>
+							        <span style='color:black'>Animal Care: <b><?php echo $animalCare ?></b></span>
 							        </td>
 								</tr>
 
@@ -775,7 +775,7 @@ span.psw {
 								
 								<tr>
 									<td>
-							        <span style='color:black'>Education <b><?php echo $education ?></b></span>
+							        <span style='color:black'>Education: <b><?php echo $education ?></b></span>
 							        </td>
 								</tr>
 
@@ -793,7 +793,7 @@ span.psw {
 
 								<tr>
 									<td>
-							        <span style='color:black'>Finance <b><?php echo $finance ?></b></span>
+							        <span style='color:black'>Finance: <b><?php echo $finance ?></b></span>
 							        </td>
 								</tr>
 
@@ -830,7 +830,7 @@ span.psw {
 								
 								<tr>
 									<td>
-							        <span style='color:black'>Massage Therapy <b><?php echo $massageTherapy ?></b></span>
+							        <span style='color:black'>Massage Therapy: <b><?php echo $massageTherapy ?></b></span>
 							        </td>
 								</tr>
 

@@ -223,13 +223,13 @@ select::-ms-expand { display: none; }
 
 						 <form method = "post" action = "" >
                      
-                    <input style="max-width:50%" type = "text" name = "firstName" id = "firstName" placeholder = "First Name" value = "<?php echo $_SESSION['firstName'] ?>" />
+                    <!--<input style="max-width:50%" type = "text" name = "firstName" id = "firstName" placeholder = "First Name" value = "<?php echo $_SESSION['firstName'] ?>" />
 
                     <br/>
 
                     <input style="max-width:50%" type = "text" name = "lastName" id = "lastName" placeholder = "Last Name" value = "<?php echo $_SESSION['lastName'] ?>" />
 
-                    <br/>
+                    <br/>-->
                     
                     <input style="max-width:80%" type = "text" name = "username" id = "username" placeholder = "Username/Company Name" value = "<?php echo $_SESSION['username'] ?>" />
 
@@ -340,8 +340,8 @@ select::-ms-expand { display: none; }
      
      $lat = $_COOKIE['lat'];
      $long = $_COOKIE['long'];
-     $firstName = $_POST['firstName'];
-     $lastName = $_POST['lastName'];
+     /*$firstName = $_POST['firstName'];
+     $lastName = $_POST['lastName'];*/
      $email = $_POST['email'];
      $email = trim($email);
      $username = $_POST['username'];
@@ -373,26 +373,38 @@ select::-ms-expand { display: none; }
          $_SESSION['password'] = $password;
          $_SESSION['gender'] = $gender;
     // ---------------------------------------
-      $sql1 = "Select ID From Members Where Email = '$email' ";
+      
+      if (strlen($email) != 0) {
+        $sql1 = "Select ID From Members Where Email = '$email' ";
       $result1 = mysqli_query($conn, $sql1);
       
       if (mysqli_num_rows($result1)  > 0) {
          // account already exists
          echo "<script>alert('Email already exists!'); location = '/web-signup.php?ENV=$env';</script>";
          exit;
+        }
+      }
+      else {
+        echo "<script>alert('Email is empty'); location = '/web-signup.php?ENV=$env';</script>";
       }
      
-      $sql2 = "Select ID From Members Where Username = '$username' ";
+      if (strlen($username) != 0) {
+        $sql2 = "Select ID From Members Where Username = '$username' ";
       $result2 = mysqli_query($conn, $sql2);
       
       if (mysqli_num_rows($result2)  > 0) {
          // username already in use
          echo "<script>alert('Username already exists!'); location = '/web-signup.php?ENV=$env';</script>";
          exit;
+        }
       }
+      else {
+        echo "<script>alert('Username is empty'); location = '/web-signup.php?ENV=$env';</script>";
+      }
+      
      
 
-     if (strlen($firstName) == 0 || strlen($lastName) == 0 || strlen($email) == 0 || strlen($phone) == 0 || strlen($blurb) == 0
+     if (strlen($phone) == 0 || strlen($blurb) == 0
      || strlen($password) == 0 || strlen($description) == 0 || strlen($minPrice) == 0) { 
          echo "<script>alert('One or more of your form fields are empty'); location = '/web-signup.php?ENV=$env';</script>";
         exit;
