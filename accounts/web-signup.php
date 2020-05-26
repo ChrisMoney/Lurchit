@@ -322,7 +322,7 @@ select::-ms-expand { display: none; }
                     <div id="loader"></div>
                     <br/>
 
-                    <input type = "submit" name = "save" id = "save" value = "Add to Directory" style="padding-left:10px;padding-right:10px;" 
+                    <input type = "submit" name = "save" id = "save" value = "Join Our Directory" style="padding-left:10px;padding-right:10px;" 
                     onclick = "return confirm('By clicking Add to Directory, you are stating that any service you elect to provide, you can produce with the upmost quality. If the service requires a certificate or any form of accreditation or insurance, you are stating that you have possession of said entities. Any misrepresentation of the ability to deliver services or the ownership of necessary certifications or insurances, etc, is punishable to the fullest degree of the law.');" />
                     
               </form>
@@ -335,7 +335,7 @@ select::-ms-expand { display: none; }
  
   <?php 
  
- if (isset($_POST['save']) && $_POST['save'] == "Add to Directory") {
+ if (isset($_POST['save']) && $_POST['save'] == "Join Our Directory") {
 
      
      $lat = $_COOKIE['lat'];
